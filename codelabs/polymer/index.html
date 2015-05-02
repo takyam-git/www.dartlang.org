@@ -1,0 +1,2145 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Polymer.dart Code Lab | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Polymer.dart Code Lab | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="Learn how to write a Dart app using Polymer GUI elements.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+    <div class="container col-md-12 col-md-offset-0 sub-page">
+      <div class="has-permalinks">
+      <h1 id="polymerdart-code-lab">Polymer.dart Code Lab</h1>
+
+<p>This code lab introduces you to <a href="/polymer/">polymer.dart</a>,
+which helps you to use custom elements to build a web app.
+To complete this lab you should have programming experience,
+but you don’t need experience
+with web programming or the Dart langauge.</p>
+
+<p>In this code lab, you build a single-page admin console for code labs.
+(Yes, this is a meta code lab.) The console lets you add, remove,
+and edit the code labs, as well as filter them by their difficulty level.</p>
+
+<p>You want to build something fast, and you want to write clean,
+maintainable, and elegant code. You decide that Polymer and Dart are
+the right tools for the job.</p>
+
+<p>Here’s a picture of the app you build in this code lab:</p>
+
+<p><img style="border:1px solid #021a40;" src="images/final-app.png" alt="screenshot of final app" /></p>
+
+<p>Now that you know what you will be building, let’s get started.</p>
+
+<ol class="toc" id="markdown-toc">
+  <li><a href="#set-up">Step 0: Setting up</a></li>
+  <li><a href="#get-started">Step 1: Getting started with Polymer</a></li>
+  <li><a href="#create-model">Step 2: Creating a code lab model</a></li>
+  <li><a href="#create-form">Step 3: Creating a code lab form</a></li>
+  <li><a href="#display-form">Step 4: Displaying the form</a></li>
+  <li><a href="#validate-form">Step 5: Validating form data</a></li>
+  <li><a href="#display-codelabs">Step 6: Displaying code labs</a></li>
+  <li><a href="#edit-codelab">Step 7: Editing a code lab</a></li>
+  <li><a href="#delete-codelab">Step 8: Deleting a code lab</a></li>
+  <li><a href="#filter-codelabs">Step 9: Filtering the code labs list</a></li>
+  <li><a href="#wrap-up">Step 10: Wrapping up</a></li>
+</ol>
+
+<hr />
+
+<h2 id="set-up">Step 0: Setting up</h2>
+
+<p>In this step, you download Dart and get the sample code.</p>
+
+<h3 class="no_toc" id="get-dart">Get Dart.</h3>
+
+<div class="trydart-step-details">
+
+  <p>→ If you haven’t already done so, get the Dart download.
+Unzip the ZIP file, which creates a directory called <code>dart</code>.
+(For more options, go to the <a href="/downloads/">download page</a>.)</p>
+
+  <!-- style here is a hack to remove the arrow, which was only partially
+     showing-->
+
+  <div style="padding-left: 10px">
+<div class="editor download-buttons">
+
+  
+
+  <div class="windows downloads" style="display:none">
+    
+      
+      <a data-bits="64" data-os="windows" data-build="integration" data-tool="editor" class="btn download-link" href="https://storage.googleapis.com/dart-archive/channels/stable/release/latest/editor/darteditor-windows-x64.zip">
+  <button class="btn btn-lg download-btn btn-primary">
+    <i class="sprite-icon-download-btn"> </i>
+    Download Dart + Editor (64-bit Windows)
+  </button>
+</a>
+
+      <p></p>
+      
+      <a data-bits="32" data-os="windows" data-build="integration" data-tool="editor" class="btn download-link" href="https://storage.googleapis.com/dart-archive/channels/stable/release/latest/editor/darteditor-windows-ia32.zip">
+  <button class="btn btn-lg download-btn btn-primary">
+    <i class="sprite-icon-download-btn"> </i>
+    Download Dart + Editor (32-bit Windows)
+  </button>
+</a>
+
+    
+  </div>
+
+  
+
+  <div class="macos downloads" style="display:none">
+    
+      <a data-bits="32" data-os="macos" data-build="integration" data-tool="editor" class="btn download-link" href="https://storage.googleapis.com/dart-archive/channels/stable/release/latest/editor/darteditor-macos-ia32.zip">
+  <button class="btn btn-lg download-btn btn-primary">
+    <i class="sprite-icon-download-btn"> </i>
+    Download Dart + Editor (Mac)
+  </button>
+</a>
+
+    
+  </div>
+
+  
+
+  <div class="linux downloads" style="display:none">
+    
+      
+      <a data-bits="64" data-os="linux" data-build="integration" data-tool="editor" class="btn download-link" href="https://storage.googleapis.com/dart-archive/channels/stable/release/latest/editor/darteditor-linux-x64.zip">
+  <button class="btn btn-lg download-btn btn-primary">
+    <i class="sprite-icon-download-btn"> </i>
+    Download Dart + Editor (64-bit Linux)
+  </button>
+</a>
+
+      <p></p>
+      
+      <a data-bits="32" data-os="linux" data-build="integration" data-tool="editor" class="btn download-link" href="https://storage.googleapis.com/dart-archive/channels/stable/release/latest/editor/darteditor-linux-ia32.zip">
+  <button class="btn btn-lg download-btn btn-primary">
+    <i class="sprite-icon-download-btn"> </i>
+    Download Dart + Editor (32-bit Linux)
+  </button>
+</a>
+
+    
+  </div>
+
+  
+
+  <div class="editor-current-version version">
+    Current stable version of Dart:
+    <span class="editor-build-rev-stable">[calculating]</span>
+  </div>
+</div>
+
+</div>
+
+  <p class="os-choices">
+  The Dart tools work in recent versions of
+  <span class="nowrap">
+<input type="radio" name="osChoices" id="windows" />
+<label class="os-choice" for="windows">Windows (Vista, 7, or 8)</label>,
+</span>
+
+<span class="nowrap">
+<input type="radio" name="osChoices" id="linux" checked="checked" />
+<label class="os-choice" for="linux">Linux</label>,
+</span> or
+
+<span class="nowrap">
+<input type="radio" name="osChoices" id="macos" />
+<label class="os-choice" for="macos">Mac</label>.
+</span>
+
+</p>
+</div>
+
+<aside class="alert alert-info">
+  <p><strong>Note:</strong> Dart Editor requires Java version 6 or higher.
+Problems? See <a href="/tools/editor/troubleshoot.html">Troubleshooting Dart Editor</a>.</p>
+</aside>
+
+<h3 class="no_toc" id="start-the-editor">Start the editor.</h3>
+
+<div class="trydart-step-details">
+  <p>→ Go to the <code>dart</code> directory and double-click <strong>DartEditor</strong>.</p>
+
+  <p><strong>Got questions? Having trouble?</strong> Go to the 
+<a href="/tools/editor/troubleshoot.html">Troubleshooting Dart Editor</a> page.</p>
+</div>
+
+<h3 class="no_toc" id="get-the-sample-code">Get the sample code.</h3>
+
+<div class="trydart-step-details">
+  <p>Download the sample code from the
+<a href="https://github.com/dart-lang/polymer-and-dart-codelab">polymer-and-dart-codelab GitHub repo</a>
+using one of the following options:</p>
+
+  <ul>
+<li>
+      <p>Download the zip file,
+  <a href="https://github.com/dart-lang/polymer-and-dart-codelab/archive/master.zip">polymer-and-dart-codelab-master.zip</a>.
+  Unzip the ZIP file, which creates a directory called
+  <code>polymer-and-dart-codelab-master</code>.</p>
+    </li>
+
+<li>
+      <p>Clone the repo. For example, from the command line:</p>
+
+      <pre class="prettyprint lang-sh">
+% git clone https://github.com/dart-lang/polymer-and-dart-codelab.git
+</pre>
+
+      <p>This creates a directory named <code>polymer-and-dart-codelab</code>.</p>
+    </li>
+</ul>
+
+</div>
+
+<h3 class="no_toc" id="open-the-polymer-and-dart-codelab-sample">Open the polymer-and-dart-codelab sample.</h3>
+
+<div class="trydart-step-details">
+  <p>→ In Dart Editor, use <strong>File &gt; Open Existing Folder…</strong> to open
+the <code>polymer-and-dart-codelab</code> directory.</p>
+
+  <p>→ Click to expand the <code>web</code> directory.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+    <p><img src="images/filesanddirs.png" alt="The files and directories in the polymer-and-dart-codelab directory." /></p>
+
+    <div class="trydart-note">
+      <p><strong>Note:</strong> If you see <span style="color:red">red X’s</span> at the
+left of the filenames or if the <code>packages</code> directory is missing,
+the packages are not properly installed. Right-click <strong>pubspec.yaml</strong>
+and choose <strong>Pub Get</strong>.</p>
+    </div>
+
+  </div><div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> Key information </strong></p>
+
+    <ul>
+      <li>
+        <p>The <code>packages</code> directory, as well as the <code>pubspec.yaml</code> and <code>pubspec.lock</code>
+files are related to package dependencies.
+This project has all the dependencies set up for you.
+Dart Editor automatically installs the necessary packages.</p>
+      </li>
+      <li>Several directories contain the app code:
+        <ul>
+          <li>The <strong>begin</strong> directory contains the skeletal version of the app that you
+begin with. This code lab assumes you’ll work in the <strong>begin</strong> directory.</li>
+          <li>The <strong>end</strong> directory contains the commented finished version.</li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>Dart SDK</strong> contains the source code for all of the functions,
+variables, and classes provided by the Dart Software Development Kit.</p>
+      </li>
+      <li><strong>Installed Packages</strong> contains the source code for all of the functions,
+variables, and classes for the additional libraries that this application
+depends on.</li>
+    </ul>
+
+  </div></div>
+
+<hr />
+
+<h2 id="get-started">Step 1: Getting started with Polymer</h2>
+
+<p>Understand the layout of the Polymer code. Learn about custom elements and
+HTML imports.</p>
+
+<h3 class="no_toc" id="understand-the-project-layout">Understand the project layout.</h3>
+
+<div class="trydart-step-details">
+
+  <p>→ In Dart Editor, double-click to expand the <strong>begin</strong> directory
+(under <strong>web</strong>).  Here is a short description of what each file does:</p>
+
+  <ul>
+    <li>
+      <p><code>index.html</code> file is the entry point for this application.</p>
+    </li>
+    <li>
+      <p><code>model.dart</code> contains the <code>Codelab</code> class.</p>
+    </li>
+    <li>
+      <p><code>codelab_element.html</code> and <code>codelab_element.dart</code> contain
+HTML and Dart code for <code>&lt;codelab-element&gt;</code>, a
+Polymer element representing a <code>Codelab</code> object.</p>
+    </li>
+    <li>
+      <p><code>codelab_form.html</code> and <code>codelab_form.dart</code> contain
+HTML and Dart code for <code>&lt;codelab-form&gt;</code>, a
+Polymer element representing a form for creating or updating a <code>Codelab</code>.</p>
+    </li>
+    <li>
+      <p><code>codelab_list.html</code> and <code>codelab_list.dart</code> contain
+HTML and Dart code for <code>&lt;codelab-list&gt;</code>, a
+Polymer element representing a collection of <code>Codelab</code> objects.</p>
+    </li>
+  </ul>
+
+</div>
+
+<h3 class="no_toc" id="learn-about-the-structure-of-a-polymer-element">Learn about the structure of a Polymer element.</h3>
+
+<div class="trydart-step-details">
+
+  <p>A Polymer element is a custom, reusable, complex HTML element.
+In polymer.dart, the visual aspect of the element is implemented in HTML
+and CSS, and the element’s behavior is implemented in Dart.
+You can use Polymer elements that others have created (such as
+<a href="http://pub.dartlang.org/packages/core_elements">core elements</a> or
+<a href="http://pub.dartlang.org/packages/paper_elements">paper elements</a>),
+or you can build your own.</p>
+
+  <p>A Polymer element is defined in an HTML file
+(for example, <code>codelab_list.html</code>).
+A Polymer element typically has the following three-part structure:</p>
+
+  <ul>
+    <li>The markup for the element goes inside <code>&lt;template&gt;</code> tags.</li>
+    <li>The CSS for the element goes inside <code>&lt;style&gt;</code> tags.</li>
+    <li>The Dart code for the element is in a companion file that is linked to from
+within the element.</li>
+  </ul>
+
+  <aside class="alert alert-info">
+    <p><strong>Note:</strong> The Polymer elements in this code lab do not contain any markup
+with the <code>&lt;template&gt;</code> tag at this stage.
+You’ll be adding that as you proceed through the code lab.
+The CSS is already added, and you won’t need to change it.</p>
+  </aside>
+
+</div>
+
+<h3 class="no_toc" id="bootstrap-a-polymer-application">Bootstrap a Polymer application.</h3>
+
+<div class="trydart-step-details">
+
+  <p>The <code>index.html</code> file is this application’s entry point:</p>
+
+  <pre class="prettyprint lang-html">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Polymer: Build an Admin Console Using Dart&lt;/title&gt;
+    &lt;link rel=&quot;import&quot; href=&quot;codelab_list.html&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;app.css&quot;&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Polymer: Build an Admin Console Using Dart&lt;/h1&gt;
+    &lt;codelab-list&gt;&lt;/codelab-list&gt;
+    &lt;script type=&quot;application/dart&quot;&gt;export &#39;package:polymer/init.dart&#39;;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+  <p>The following line is an example of an <strong>HTML import</strong>,
+an important part of the Web Component stack:</p>
+
+  <pre class="prettyprint lang-html">
+&lt;link rel=&quot;import&quot; href=&quot;codelab_list.html&quot;&gt;
+</pre>
+
+  <p>HTML imports are a way to include and reuse HTML documents in other HTML
+documents. We use the <code>&lt;codelab-list&gt;</code> component imported from
+<code>codelab_list.html</code> like any other HTML element:</p>
+
+  <pre class="prettyprint lang-html">
+&lt;body&gt;
+  ...
+  &lt;codelab-list&gt;&lt;/codelab-list&gt;
+  ...
+&lt;/body&gt;
+</pre>
+
+  <p>The following line initializes Polymer:</p>
+
+  <pre class="prettyprint lang-html">
+&lt;script type=&quot;application/dart&quot;&gt;export &#39;package:polymer/init.dart&#39;;&lt;/script&gt;
+</pre>
+
+</div>
+
+<h3 class="no_toc" id="run-your-app">Run your app.</h3>
+
+<div class="trydart-step-details">
+
+  <p>→ Right-click <strong>index.html</strong> (under <strong>begin</strong>) and choose
+<strong>Run in Dartium</strong>. This launches the app in a custom build of Chromium
+which includes the Dart VM. In later steps, you’ll run the app in JavaScript
+as well.</p>
+
+  <p>→ A dialog may ask for remote device access in order to run your Dart
+application.  Click OK to accept this application.</p>
+
+  <p>For now, all you see is a headline. You’ll now write the rest of this app!</p>
+</div>
+
+<h2 id="create-model">Step 2: Creating a code lab model</h2>
+
+<div class="row"> <div class="col-md-7">
+
+    <div class="trydart-step-details">
+
+      <p>→ Open <code>model.dart</code> and replace the contents of the barebones <code>Codelab</code> class
+with the following:</p>
+
+      <pre class="prettyprint lang-dart">
+class Codelab extends Observable {
+  static const List&lt;String&gt; LEVELS
+      = const [&#39;easy&#39;, &#39;intermediate&#39;, &#39;advanced&#39;];
+  static const MIN_TITLE_LENGTH = 10;
+  static const MAX_TITLE_LENGTH = 30;
+  static const MAX_DESCRIPTION_LENGTH = 140;
+
+  @observable String title;
+  @observable String description;
+  @observable String level;
+
+  // Constructor.
+  Codelab([this.title = &quot;&quot;, this.description = &quot;&quot;]);
+}
+</pre>
+
+    </div>
+
+  </div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i><strong> Key information</strong></p>
+
+    <ul>
+      <li>
+        <p>You’ve defined some constants containing validation rules for a
+<code>Codelab</code> object.</p>
+      </li>
+      <li>
+        <p>You’ve defined three fields,  <code>title</code>, <code>description</code>, and <code>level</code>.
+And you’ve restricted each code lab to one of three preset levels.</p>
+      </li>
+      <li>
+        <p>Notice the <code>@observable</code> annotation before <code>title</code>, <code>description</code>, and
+<code>level</code>? This tells Polymer that you want to trigger <em>two-way data binding</em>
+between these fields and the UI. This provides the following functionality:</p>
+
+        <ul>
+          <li>When an @observable field’s value changes, the UI for that field updates
+automatically.</li>
+          <li>When a UI element (such as a <code>&lt;form&gt;</code> element) is bound to an @observable
+field, it can modify its value.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <div class="trydart-step-details">
+      <p>Two-way data binding is very powerful, and you’ll be using it when you
+create the HTML for the <code>&lt;codelab-form&gt;</code> element.</p>
+    </div>
+
+  </div></div>
+
+<h3 class="no_toc" id="run-your-app-1">Run your app.</h3>
+
+<div class="trydart-step-details">
+
+  <p>→ Right-click <strong>index.html</strong> (under <strong>begin</strong>) and choose
+<strong>Run in Dartium</strong>.</p>
+
+  <p>Since we haven’t updated the UI, you still see just the bare headline. We’ll
+be changing the UI soon.</p>
+
+  <p>Check that your project builds without errors.</p>
+
+</div>
+
+<h2 id="create-form">Step 3: Creating a code lab form</h2>
+
+<h3 class="no_toc" id="update-the-form-template">Update the form template.</h3>
+
+<div class="row"> <div class="col-md-7">
+
+    <div class="trydart-step-details">
+
+      <p>→ Open <strong><code>codelab_form.html</code></strong>. Add the following snippet of markup between
+<code>&lt;/style&gt;</code> and the <code>&lt;/template&gt;</code> (there’s nothing there now):</p>
+
+      <pre class="prettyprint lang-html">
+&lt;form&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;textarea placeholder=&quot;Add title&quot; value=&quot;{{codelab.title}}&quot;&gt;
+    &lt;/textarea&gt;
+    &lt;div&gt;
+      &lt;span class=&quot;chars-left&quot;&gt;{{maxTitleLength - codelab.title.length}}&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;textarea placeholder=&quot;Add description&quot; value=&quot;{{codelab.description}}&quot;&gt;
+    &lt;/textarea&gt;
+    &lt;div&gt;
+      &lt;span class=&quot;chars-left&quot;&gt;
+        {{maxDescriptionLength - codelab.description.length}}
+      &lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label&gt;Level: &lt;/label&gt;
+    &lt;select value=&quot;{{codelab.level}}&quot;&gt;
+      &lt;option template repeat=&quot;{{level in allLevels}}&quot;&gt;
+        {{level}}
+      &lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;button type=&quot;submit&quot;&gt;Submit&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+</pre>
+
+    </div>
+
+  </div><div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"></i> <strong>Key information</strong></p>
+
+    <ul>
+<li>
+        <p>You’ve added a couple of <code>&lt;textarea&gt;</code> tags for the <code>title</code> and
+  <code>description</code> fields, a <code>&lt;select&gt;</code> for the <code>level</code> field, and a <code>Submit</code>
+  button.</p>
+      </li>
+
+<li>
+        <p>You bind <code>&lt;form&gt;</code> widgets to fields of the <code>codelab</code> object:</p>
+
+        <pre class="prettyprint lang-html">
+&lt;textarea placeholder=&quot;Add title&quot;
+          value=&quot;{{codelab.title}}&quot;&gt;
+&lt;/textarea&gt;
+...
+&lt;textarea placeholder=&quot;Add description&quot;
+          value=&quot;{{codelab.description}}&quot;&gt;
+&lt;/textarea&gt;
+...
+&lt;select value=&quot;{{codelab.level}}&quot;&gt;
+  ...
+&lt;/select&gt;
+</pre>
+      </li>
+</ul>
+
+    <p>Since the <code>title</code>, <code>description</code>, and <code>level</code> fields in the
+<code>Codelab</code> model are observable, this creates a <strong>two-way data
+binding</strong> between the fields and the UI. This provides the following
+functionality:</p>
+
+    <ul>
+<li>
+        <p>If a field has an initial value, it is displayed
+  (useful when editing an object).</p>
+      </li>
+
+<li>
+        <p>If the user changes the value of a bound form element,
+  the value of the <code>@observable</code> field updates automatically.</p>
+      </li>
+
+<li>
+        <p>Data binding makes it easy to keep track of the characters remaining for
+  each <code>&lt;textarea&gt;</code> field.</p>
+
+        <pre class="prettyprint lang-html">
+&lt;span class=&quot;chars-left&quot;&gt;{{maxTitleLength - codelab.title.length}}&lt;/span&gt;
+...
+&lt;span class=&quot;chars-left&quot;&gt;{{maxDescriptionLength - codelab.description.length}}&lt;/span&gt;
+</pre>
+
+        <p>Since changes to observable fields is live, the counters update as the user
+types into a <code>&lt;textarea&gt;</code>.</p>
+      </li>
+
+<li>
+        <p>You use <code>template repeat</code> to iterate over the three <code>level</code> values:</p>
+
+        <pre class="prettyprint lang-html">
+&lt;select value=&quot;{{codelab.level}}&quot;&gt;
+  &lt;option template
+      repeat=&quot;{{level in allLevels}}&quot;&gt;
+    {{level}}
+  &lt;/option&gt;
+&lt;/select&gt;
+</pre>
+      </li>
+</ul>
+
+  </div></div>
+
+<h3 class="no_toc" id="update-the-dart-code">Update the Dart code.</h3>
+
+<div class="row"> <div class="col-md-7">
+
+    <div class="trydart-step-details">
+
+      <p>→ Open <code>codelab_form.dart</code> and add this line to the beginning of the
+<code>CodelabFormElement</code> class:</p>
+
+      <pre class="prettyprint lang-dart">
+@published Codelab codelab;
+</pre>
+
+    </div>
+
+  </div><div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"></i> <strong>Key information</strong></p>
+
+    <ul>
+<li>
+        <p>This declares a <code>Codelab</code> object as a <code>CodelabFormElement</code> field.
+  The <code>@published</code> annotation lets you pass the
+  <code>codelab</code> object as an attribute to <code>&lt;codelab-form&gt;</code> as is done here,
+  for example:</p>
+
+        <pre class="prettyprint lang-html">
+&lt;codelab-form
+    codelab=&quot;{{codelab}}&quot;&gt;&lt;/codelab-form&gt;
+</pre>
+      </li>
+</ul>
+
+  </div>
+
+<div class="row"> <div class="col-md-7">
+
+      <div class="trydart-step-details">
+
+        <p>→ Next, add the following lines to the <code>CodelabFormElement</code> class:</p>
+
+        <pre class="prettyprint lang-dart">
+List&lt;String&gt; get allLevels =&gt; Codelab.LEVELS;
+int get minTitleLength =&gt;  Codelab.MIN_TITLE_LENGTH;
+int get maxTitleLength =&gt; Codelab.MAX_TITLE_LENGTH;
+int get maxDescriptionLength =&gt; Codelab.MAX_DESCRIPTION_LENGTH;
+</pre>
+
+      </div>
+
+    </div><div class="col-md-5">
+
+      <p><i class="fa fa-key key-header"></i> <strong>Key information</strong></p>
+
+      <ul>
+        <li>Defining these getters lets you use <code>Codelab</code> model’s static
+variables inside Polymer templates.</li>
+      </ul>
+
+    </div></div>
+
+<div class="row"> <div class="col-md-7">
+
+      <div class="trydart-step-details">
+
+        <p>The new version of <code>CodelabFormElement</code> should now look like this:</p>
+
+        <pre class="prettyprint lang-dart">
+@CustomTag(&#39;codelab-form&#39;)
+class CodelabFormElement extends PolymerElement {
+  @published Codelab codelab;
+
+  List&lt;String&gt; get allLevels =&gt; Codelab.LEVELS;
+  int get minTitleLength =&gt;  Codelab.MIN_TITLE_LENGTH;
+  int get maxTitleLength =&gt; Codelab.MAX_TITLE_LENGTH;
+  int get maxDescriptionLength =&gt; Codelab.MAX_DESCRIPTION_LENGTH;
+
+  CodelabFormElement.created() : super.created() {}
+}
+</pre>
+
+      </div>
+
+    </div><div class="col-md-5">
+
+      <p><i class="fa fa-key key-header"></i> <strong>Key information</strong></p>
+
+      <ul>
+<li>
+          <p>In <strong><code>codelab_form.dart</code></strong>, the <code>@CustomTag</code> annotation before the
+  <code>CodelabFormElement</code> class declares the tag for the element. The tag for
+  CodelabFormElement is <code>&lt;codelab-form&gt;</code>.</p>
+        </li>
+
+<li>
+          <p>The <code>CodelabFormElement</code> inherits from
+  <code>PolymerElement</code>.  The following constructor definition is required:</p>
+
+          <pre class="prettyprint lang-dart">
+CodelabFormElement.created() : super.created() {}
+</pre>
+        </li>
+
+<li>
+          <p>In <strong><code>codelab_form.html</code></strong>, you use ‘double curlies’
+  (<code>{{}}</code>) for variable and expression
+  interpolation.</p>
+        </li>
+
+</ul>
+
+    </div></div></div>
+
+<h3 class="no_toc" id="run-your-app-2">Run your app.</h3>
+
+<div class="trydart-step-details">
+
+  <p>→ Right-click <strong>index.html</strong> (under <strong>begin</strong>) and choose
+<strong>Run in Dartium</strong>.</p>
+
+  <p>You still only see the bare headline (this is about to change).
+But make sure that your app runs without any errors.</p>
+</div>
+
+<h2 id="display-form">Step 4: Displaying the form</h2>
+
+<h3 class="no_toc" id="update-the-codelab-list">Update the <code>codelab</code> list.</h3>
+
+<div class="row"> <div class="col-md-7">
+
+    <div class="trydart-step-details">
+
+      <p>You’ve created the form, and now you add it to the <code>&lt;codelab-list&gt;</code>
+element to display it in the UI.</p>
+
+      <p>→ Open <code>codelab_list.html</code>, and add the following between the
+<code>&lt;/style&gt;</code> and the <code>&lt;/template&gt;</code> tags (there is nothing there now):</p>
+
+      <pre class="prettyprint lang-html">
+&lt;div&gt;
+  &lt;codelab-form codelab=&quot;{{newCodelab}}&quot;&gt;&lt;/codelab-form&gt;
+&lt;/div&gt;
+</pre>
+
+      <p>→ In <code>codelab_list.dart</code>, modify the <code>CodelabList</code> class so it looks like
+this:</p>
+
+      <pre class="prettyprint lang-dart">
+@CustomTag(&#39;codelab-list&#39;)
+class CodelabList extends PolymerElement {
+   @observable Codelab newCodelab = new Codelab();
+   String get defaultLevel =&gt; Codelab.LEVELS[1];
+
+   CodelabList.created() : super.created() {
+     newCodelab.level = defaultLevel;
+   }
+}
+</pre>
+    </div>
+
+  </div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i><strong> Key information</strong></p>
+
+    <ul>
+      <li>
+        <p>In <code>codelab_list.dart</code>, you’ve added a <code>newCodelab</code> field that
+binds to the template.</p>
+      </li>
+      <li>
+        <p>You’ve assigned a default value to <code>newCodelab</code>’s <code>level</code>. When the
+<code>&lt;form&gt;</code> loads, the default level is automatically selected.</p>
+      </li>
+    </ul>
+
+  </div></div>
+
+<h3 class="no_toc" id="run-your-app-3">Run your app.</h3>
+
+<div class="trydart-step-details">
+
+  <p>→ Right-click <strong>index.html</strong> (under <strong>begin</strong>) and choose
+<strong>Run in Dartium</strong>.</p>
+
+  <p>You should see the following:</p>
+
+  <ul>
+    <li>The form is now displayed.</li>
+    <li>The ‘intermediate’ level is selected.</li>
+    <li>As you type in the <code>&lt;textarea&gt;</code>s, the counters change.</li>
+  </ul>
+
+  <p>You haven’t implemented <code>Submit</code> functionality for the form yet, so
+hitting ‘Submit’ just reloads the page (and wipes your content). Also,
+while it is nice that counters tell the user about the remaining
+characters for the <code>title</code> and <code>description</code> fields, you want to
+implement better field validation and error handling.</p>
+
+</div>
+
+<h2 id="validate-form">Step 5: Validating form data</h2>
+
+<h3 class="no_toc" id="add-validators">Add validators.</h3>
+
+<div class="row"> <div class="col-md-7">
+
+    <div class="trydart-step-details">
+
+      <p>→ In <strong><code>codelab_form.dart</code></strong>, add the following fields to the
+<code>CodelabFormElement</code> class directly above the <code>CodelabFormElement.created()</code>
+constructor:</p>
+
+      <pre class="prettyprint lang-dart">
+@observable String titleErrorMessage = &#39;&#39;;
+@observable String descriptionErrorMessage = &#39;&#39;;
+</pre>
+
+      <p>→ After the constructor, add the following validator methods:</p>
+
+      <pre class="prettyprint lang-dart">
+bool validateTitle() {
+  if (codelab.title.length &lt; minTitleLength ||
+      codelab.title.length &gt; maxTitleLength) {
+    titleErrorMessage = &quot;Title must be between $minTitleLength and &quot;
+        &quot;$maxTitleLength characters.&quot;;
+    return false;
+  }
+  titleErrorMessage = &#39;&#39;;
+  return true;
+}
+
+bool validateDescription() {
+  if (codelab.description.length &gt; maxDescriptionLength) {
+    descriptionErrorMessage = &quot;Description cannot be more than &quot;
+        &quot;$maxDescriptionLength characters.&quot;;
+    return false;
+  }
+  descriptionErrorMessage = &#39;&#39;;
+  return true;
+}
+</pre>
+
+    </div>
+
+  </div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i><strong> Key information</strong></p>
+
+    <ul>
+      <li>The validation code is pretty straightforward: each method checks a
+code lab field against the validation rules defined in the
+model.  If validation fails, the validator sets an error message and
+returns false. Otherwise it removes the error message and returns true.</li>
+    </ul>
+
+  </div></div>
+
+<h3 class="no_toc" id="plug-the-validators-into-your-template">Plug the validators into your template.</h3>
+
+<div class="row"> <div class="col-md-7">
+
+    <div class="trydart-step-details">
+
+      <p>→ In <strong><code>codelab_form.html</code></strong>, replace the <code>&lt;form&gt;</code> with the
+following:</p>
+
+      <pre class="prettyprint lang-html">
+&lt;form&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;textarea placeholder=&quot;Add title&quot; value=&quot;{{codelab.title}}&quot;
+              on-keyup=&quot;{{validateTitle}}&quot;&gt;
+    &lt;/textarea&gt;
+    &lt;div&gt;
+      &lt;span class=&quot;chars-left&quot;&gt;
+          {{maxTitleLength - codelab.title.length}}&lt;/span&gt;
+      &lt;span class=&quot;error&quot; hidden?=&quot;{{titleErrorMessage.isEmpty}}&quot;&gt;
+          {{titleErrorMessage}}
+      &lt;/span&gt;
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;textarea placeholder=&quot;Add description&quot; value=&quot;{{codelab.description}}&quot;
+              on-keyup=&quot;{{validateDescription}}&quot;&gt;
+    &lt;/textarea&gt;
+    &lt;div&gt;
+      &lt;span class=&quot;chars-left&quot;&gt;
+        {{maxDescriptionLength - codelab.description.length}}
+      &lt;/span&gt;
+      &lt;span class=&quot;error&quot; hidden?=&quot;{{descriptionErrorMessage.isEmpty}}&quot;&gt;
+        {{descriptionErrorMessage}}
+      &lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;field&quot;&gt;
+    &lt;label&gt;Level: &lt;/label&gt;
+    &lt;select value=&quot;{{codelab.level}}&quot;&gt;
+      &lt;option template repeat=&quot;{{level in allLevels}}&quot;&gt;
+        {{level}}
+      &lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;button type=&quot;submit&quot;&gt;Submit&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+</pre>
+
+    </div>
+
+  </div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i><strong> Key information</strong></p>
+
+    <ul>
+<li>
+        <p>You now invoke <code>validateTitle()</code> and <code>validateDescription()</code>
+  every time the user releases a key:</p>
+
+        <pre class="prettyprint lang-html">
+&lt;textarea ...
+   on-keyup=&quot;{{validateTitle}}&quot;&gt;&lt;/textarea&gt;
+...
+&lt;textarea ...
+   on-keyup=&quot;{{validateDescription}}&quot;&gt;&lt;/textarea&gt;
+</pre>
+
+        <p>Polymer uses the <code>on-&lt;event&gt;</code> syntax for events.</p>
+      </li>
+
+<li>
+        <p>You now display error messages when validation fails:</p>
+
+        <pre class="prettyprint lang-html">
+&lt;span class=&quot;error&quot;
+   hidden?=&quot;{{titleErrorMessage.isEmpty}}&quot;&gt;
+  {{titleErrorMessage}}
+&lt;/span&gt;
+...
+&lt;span class=&quot;error&quot;
+   hidden?=&quot;{{descriptionErrorMessage.isEmpty}}&quot;&gt;
+  {{descriptionErrorMessage}}
+&lt;/span&gt;
+</pre>
+
+        <p>When there is no error message, you set the <code>hidden</code> attribute on the
+<code>&lt;span&gt;</code>. Using <code>?=</code> syntax to set boolean attributes is common in
+Polymer.</p>
+      </li>
+</ul>
+
+  </div></div>
+
+<h3 class="no_toc" id="run-your-app-4">Run your app.</h3>
+
+<div class="trydart-step-details">
+
+  <p>→ Right-click <strong>index.html</strong> (under <strong>begin</strong>) and choose
+<strong>Run in Dartium</strong>.</p>
+
+  <p>You should see the following:</p>
+
+  <ul>
+    <li>The form displays error messages as the user interacts with it.</li>
+    <li>The error message clears when a field validates.</li>
+  </ul>
+
+  <p>While validation works now, there is still no way to submit the form and
+display the new code lab object.</p>
+
+</div>
+
+<h2 id="display-codelabs">Step 6: Displaying code labs</h2>
+
+<h3 class="no_toc" id="make-the-submit-button-work">Make the Submit button work.</h3>
+
+<div class="row"> <div class="col-md-7">
+
+    <div class="trydart-step-details">
+
+      <p>→ In <strong><code>codelab_form.dart</code></strong> add the following code to the bottom of
+the <code>CodelabFormElement</code> class:</p>
+
+      <pre class="prettyprint lang-dart">
+validateCodelab(Event event, Object detail, Node sender) {
+  event.preventDefault();
+  if (validateTitle() &amp;&amp; validateDescription()) {
+    dispatchEvent(new CustomEvent(&#39;codelabvalidated&#39;,
+        detail: {&#39;codelab&#39;: codelab}));
+  }
+}
+</pre>
+
+    </div>
+
+  </div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i><strong> Key information</strong></p>
+
+    <ul>
+      <li>
+        <p>The <code>validateCodelab()</code> method calls the code lab validators.</p>
+      </li>
+      <li>
+        <p>If the code lab object validates,
+<code>validateCodelab()</code> fires a <strong>custom event</strong>,
+passing the validated code lab object as data.</p>
+      </li>
+      <li>
+        <p>It is the responsibility of
+<code>&lt;codelab-form&gt;</code>’s parent element to register a
+listener that adds the new code lab to <code>&lt;codelab-list&gt;</code>.
+You implement that code in the next step.</p>
+      </li>
+    </ul>
+
+  </div></div>
+
+<div class="trydart-step-details">
+
+  <aside class="callout">
+<b>Note:</b>
+Using custom events for communication between child and parent elements
+is a common pattern in Polymer.
+</aside>
+</div>
+
+<div class="trydart-step-details">
+
+  <p>Next, you plug <code>validateCodelab()</code> into the template.</p>
+
+  <div class="row"> <div class="col-md-7">
+
+      <p>→ In <strong><code>codelab_form.html</code></strong>,
+add an <code>on-submit</code> event to the <code>&lt;form&gt;</code> element:</p>
+
+      <pre class="prettyprint lang-html">
+&lt;form on-submit=&quot;{{validateCodelab}}&quot;&gt;
+</pre>
+
+      <p>Now write code to handle the <code>codelabvalidated</code> event.</p>
+
+      <p>→ In <strong><code>codelab_list.html</code></strong>, replace the HTML between the <code>&lt;/style&gt;</code>
+and the <code>&lt;/template&gt;</code> tags with the following:</p>
+
+      <pre class="prettyprint lang-html">
+&lt;div on-codelabvalidated=&quot;{{addCodelab}}&quot;&gt;
+  &lt;codelab-form codelab=&quot;{{newCodelab}}&quot;&gt;&lt;/codelab-form&gt;
+&lt;/div&gt;
+&lt;div&gt;
+  &lt;template repeat=&quot;{{codelab in codelabs}}&quot;&gt;
+    &lt;codelab-element codelab=&quot;{{codelab}}&quot;&gt;&lt;/codelab-element&gt;
+  &lt;/template&gt;
+&lt;/div&gt;
+</pre>
+
+      <p>→ In <strong><code>codelab_list.dart</code></strong>, add the following at the top of the
+<code>CodelabList</code> class body:</p>
+
+      <pre class="prettyprint lang-dart">
+@observable List&lt;Codelab&gt; codelabs = toObservable([]);
+</pre>
+
+      <p>→Then add these methods to the bottom of <code>CodelabList</code>:</p>
+
+      <pre class="prettyprint lang-dart">
+resetForm() {
+  newCodelab = new Codelab();
+  newCodelab.level = defaultLevel;
+}
+
+addCodelab(Event e, var detail, Node sender) {
+  e.preventDefault();
+  codelabs.add(detail[&#39;codelab&#39;]);
+  resetForm();
+}
+</pre>
+
+    </div> <div class="col-md-5">
+
+      <p><i class="fa fa-key key-header"> </i><strong> Key information</strong></p>
+
+      <ul>
+<li>
+          <p>You added a <code>codelabs</code> field to <code>CodelabList</code> and made it
+  observable. This is the definitive collection of code labs in this app.</p>
+        </li>
+
+<li>
+          <p>You added an <code>on-codelabvalidated</code> handler to <code>&lt;codelab-form&gt;</code>s
+parent element:</p>
+
+          <pre class="prettyprint lang-html">
+&lt;div on-codelabvalidated=&quot;{{addCodelab}}&quot;&gt;
+  &lt;codelab-form
+   codelab=&quot;{{newCodelab}}&quot;&gt;&lt;/codelab-form&gt;
+&lt;/div&gt;
+</pre>
+
+          <p>When <code>&lt;codelab-form&gt;</code> fires a <code>codelabvalidated</code> event,
+it transmits the newly created code lab in the <code>detail</code> parameter.
+When the parent
+<code>&lt;div&gt;</code> triggers <code>addCodelab()</code>, it appends the code lab to the <code>codelabs</code>
+list and resets the form.</p>
+        </li>
+
+<li>
+          <p>You added code to display all code labs:</p>
+
+          <pre class="prettyprint lang-html">
+&lt;template repeat=&quot;{{codelab in codelabs}}&quot;&gt;
+  &lt;codelab-element
+   codelab=&quot;{{codelab}}&quot;&gt;&lt;/codelab-element&gt;
+&lt;/template&gt;
+</pre>
+        </li>
+</ul>
+
+    </div></div>
+
+  <h3 class="no_toc" id="display-the-code-lab-object">Display the code lab object.</h3>
+
+  <p>→ In <strong><code>codelab_element.html</code></strong>, add the following between the
+<code>&lt;/style&gt;</code> and the <code>&lt;/template&gt;</code> tags (there’s nothing there now):</p>
+
+  <pre class="prettyprint lang-html">
+&lt;div&gt;
+  &lt;div class=&quot;codelab&quot;&gt;
+    &lt;div class=&quot;field&quot;&gt;
+      &lt;h2&gt;{{codelab.title}}&lt;/h2&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;field&quot;&gt;
+      &lt;p&gt;{{codelab.description}}&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;field&quot;&gt;
+      &lt;p&gt;&lt;span&gt;Level: &lt;/span&gt;{{codelab.level}}&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+
+  <div class="row"> <div class="col-md-7">
+
+      <div class="trydart-step-details">
+
+        <p>→ In <strong><code>codelab_element.dart</code></strong>, add the following as the first
+line in the body of the <code>CodelabElement</code> class:</p>
+
+        <pre class="prettyprint lang-dart">
+@published Codelab codelab;
+</pre>
+
+      </div>
+
+    </div> <div class="col-md-5">
+
+      <p><i class="fa fa-key key-header"> </i><strong> Key information</strong></p>
+
+      <ul>
+        <li>Adding the <code>@published</code> annotation lets you pass a code lab as an attribute
+to <code>&lt;codelab-element&gt;</code>.</li>
+      </ul>
+
+    </div></div>
+
+  <h3 class="no_toc" id="run-your-app-5">Run your app.</h3>
+
+  <div class="trydart-step-details">
+
+    <p>→ Right-click <strong>index.html</strong> file (under <strong>begin</strong>) and choose
+<strong>Run in Dartium</strong>.</p>
+
+    <p>You should see the following:</p>
+
+    <ul>
+      <li>Your code lab shows up on the page when you hit “Submit”.</li>
+      <li>You cannot submit a form with validation errors.</li>
+      <li>The form clears after a code lab is successfully created.</li>
+    </ul>
+
+  </div>
+
+  <h2 id="edit-codelab">Step 7: Editing a code lab</h2>
+
+  <h3 class="no_toc" id="update-the-codelab-element-element">Update the <code>codelab-element</code> element.</h3>
+
+  <div class="row"> <div class="col-md-7">
+
+      <div class="trydart-step-details">
+
+        <p>→ In <strong><code>codelab_element.html</code></strong>, replace all content between
+the <code>&lt;/style&gt;</code> and <code>&lt;/template&gt;</code> tags with the following:</p>
+
+        <pre class="prettyprint lang-html">
+&lt;div on-formNotNeeded=&quot;{{cancelEditing}}&quot;
+     on-codelabvalidated=&quot;{{updateCodelab}}&quot;&gt;
+  &lt;template if=&quot;{{!editing}}&quot;&gt;
+    &lt;div class=&quot;codelab&quot;&gt;
+      &lt;div class=&quot;field&quot;&gt;
+        &lt;h2&gt;{{codelab.title}}&lt;/h2&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;field&quot;&gt;
+        &lt;p&gt;{{codelab.description}}&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;field&quot;&gt;
+        &lt;p&gt;&lt;span&gt;Level: &lt;/span&gt;{{codelab.level}}&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;field&quot;&gt;
+        &lt;span on-click=&quot;{{startEditing}}&quot; class=&quot;small&quot;&gt;Edit&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/template&gt;
+  &lt;template if=&quot;{{editing}}&quot;&gt;
+    &lt;codelab-form codelab=&quot;{{codelab}}&quot;&gt;&lt;/codelab-form&gt;
+  &lt;/template&gt;
+&lt;/div&gt;
+</pre>
+
+      </div>
+
+      <div class="trydart-step-details">
+
+        <p>→ In <strong><code>codelab_element.dart</code></strong>, add the following at the top
+of the <code>CodelabElement</code> class body:</p>
+
+        <pre class="prettyprint lang-dart">
+@observable bool editing = false;
+Codelab _cachedCodelab;
+</pre>
+
+        <p>→ After the <code>CodelabElement.created()</code> constructor, add the
+following methods:</p>
+
+        <pre class="prettyprint lang-dart">
+updateCodelab(Event e, var detail, Node sender) {
+  e.preventDefault();
+  editing = false;
+}
+
+startEditing(Event e, var detail, Node sender) {
+  e.preventDefault();
+  _cachedCodelab = new Codelab();
+  copyCodelab(codelab, _cachedCodelab);
+  editing = true;
+}
+
+cancelEditing(Event e, var detail, Node sender) {
+  e.preventDefault();
+  copyCodelab(_cachedCodelab, codelab);
+  editing = false;
+}
+
+copyCodelab(source, destination) {
+  destination.title = source.title;
+  destination.description = source.description;
+  destination.level = source.level;
+}
+</pre>
+
+      </div>
+
+    </div> <div class="col-md-5">
+
+      <p><i class="fa fa-key key-header"> </i><strong> Key information</strong></p>
+
+      <ul>
+<li>
+          <p>You created a boolean <code>editing</code> field to keep track of the
+  editing status of a <code>CodelabElement</code> object.</p>
+        </li>
+
+<li>
+          <p>You use <code>editing</code> to conditionally render templates:</p>
+
+          <pre class="prettyprint lang-html">
+&lt;template if=&quot;{{!editing}}&quot;&gt;
+  ...
+&lt;/template&gt;
+&lt;template if=&quot;{{editing}}&quot;&gt;
+  ...
+&lt;/template&gt;
+</pre>
+        </li>
+
+<li>
+          <p>You created a <code>_cachedCodelab</code> field to store the edited
+  code lab’s contents.
+  If you cancel editing, you restore the original code lab values from
+  <code>_cachedCodelab</code>. See the <code>startEditing()</code> and <code>cancelEditing()</code> methods
+  in <code>CodelabElement</code> for the caching workflow.</p>
+        </li>
+</ul>
+
+    </div></div>
+
+  <h3 class="no_toc" id="add-a-cancel-button">Add a cancel button.</h3>
+
+  <div class="row"> <div class="col-md-7">
+
+      <div class="trydart-step-details">
+
+        <p>→ In <strong><code>codelab_form.dart</code></strong>, add the following method to the
+bottom of the <code>CodelabFormElement</code> class body:</p>
+
+        <pre class="prettyprint lang-dart">
+cancelForm(Event event, Object detail, Node sender) {
+  event.preventDefault();
+  titleErrorMessage = &#39;&#39;;
+  descriptionErrorMessage = &#39;&#39;;
+  dispatchEvent(new CustomEvent(&#39;formnotneeded&#39;));
+}
+</pre>
+
+        <p>→ In <strong><code>codelab_form.html</code></strong>, locate the <code>&lt;div&gt;</code> containing the
+<code>Submit</code> button:</p>
+
+        <pre class="prettyprint lang-btml">
+&lt;div&gt;
+  &lt;button type=&quot;submit&quot;&gt;Submit&lt;/button&gt;
+&lt;/div&gt;
+</pre>
+
+        <p>→ Add a <strong>Cancel</strong> button next to it. The <code>&lt;div&gt;</code> should look like
+this:</p>
+
+        <pre class="prettyprint lang-html">
+&lt;div&gt;
+  &lt;button type=&quot;submit&quot;&gt;Submit&lt;/button&gt;
+  &lt;button type=&quot;button&quot; on-click=&quot;{{cancelForm}}&quot;&gt;Cancel&lt;/button&gt;
+&lt;/div&gt;
+</pre>
+
+        <p>→ In <strong><code>codelab_list.html</code></strong>, find the first <code>&lt;div&gt;</code> (located
+immediately after the <code>&lt;/style&gt;</code> tag):</p>
+
+        <pre class="prettyprint lang-html">
+&lt;div on-codelabvalidated=&quot;{{addCodelab}}&quot;&gt;
+</pre>
+
+        <p>→ Add an <code>on-formnotneeded</code> event handler so that the <code>&lt;div&gt;</code>
+looks like this:</p>
+
+        <pre class="prettyprint lang-html">
+&lt;div on-codelabvalidated=&quot;{{addCodelab}}&quot;
+     on-formnotneeded=&quot;{{resetForm}}&quot;&gt;
+</pre>
+      </div>
+
+    </div> <div class="col-md-5">
+
+      <p><i class="fa fa-key key-header"> </i><strong> Key information</strong></p>
+
+      <ul>
+        <li>
+          <p>In <code>CodelabFormElement</code>, the  <code>cancelForm()</code> method dispatches
+a <code>formnotneeded</code> custom event when <code>&lt;codelab-form&gt;</code> is no longer being
+used. It is up to <code>&lt;codelab-form&gt;</code>’s parent element to decide how to
+handle the custom event.</p>
+        </li>
+        <li>
+          <p>In <code>&lt;codelab-list&gt;</code>, the parent of <code>&lt;codelab-form&gt;</code>
+handles the <code>formnotneeded</code> event by calling <code>CodelabList</code>’s <code>resetForm()</code>
+method, which clears the form.</p>
+        </li>
+        <li>
+          <p>In <code>&lt;codelab-element&gt;</code>, the parent of <code>&lt;codelab-form&gt;</code>
+handles the <code>formnotneeded</code> event by calling <code>CodelabElement</code>’s
+<code>cancelEditing()</code> method, which clears the form, and <em>also closes it</em>.</p>
+        </li>
+      </ul>
+
+    </div></div>
+
+  <h3 class="no_toc" id="run-your-app-6">Run your app.</h3>
+
+  <div class="trydart-step-details">
+
+    <p>→ Right-click <strong>index.html</strong> (under <strong>begin</strong>) and choose
+<strong>Run in Dartium</strong>.</p>
+
+    <p>You should see the following:</p>
+
+    <ul>
+      <li>You can now edit a code lab.</li>
+      <li>While editing, you can press <strong>Cancel</strong> to cancel the edit.</li>
+      <li>You cannot render the code lab in an invalid state, and still
+be able to save it.</li>
+    </ul>
+
+  </div>
+
+  <h2 id="delete-codelab">Step 8: Deleting a code lab</h2>
+
+  <h3 class="no_toc" id="add-the-delete-link">Add the delete link.</h3>
+
+  <div class="trydart-step-details">
+
+    <p>→ In <strong><code>codelab_element.html</code></strong>,
+located the <code>&lt;div&gt;</code> with the <strong>Edit</strong> link:</p>
+
+    <pre class="prettyprint lang-html">
+&lt;div class=&quot;field&quot;&gt;
+  &lt;span on-click=&quot;{{startEditing}}&quot; class=&quot;small&quot;&gt;Edit&lt;/span&gt;
+&lt;/div&gt;
+</pre>
+
+    <p>→ Add a <strong>Delete</strong> link to the <code>&lt;div&gt;</code>, which should now look like
+this:</p>
+
+    <pre class="prettyprint lang-html">
+&lt;div class=&quot;field&quot;&gt;
+  &lt;span on-click=&quot;{{startEditing}}&quot; class=&quot;small&quot;&gt;Edit&lt;/span&gt; |
+  &lt;span on-click=&quot;{{deleteCodelab}}&quot; class=&quot;small&quot;&gt;Delete&lt;/span&gt;
+&lt;/div&gt;
+</pre>
+
+  </div>
+
+  <h3 class="no_toc" id="dispatch-a-custom-event">Dispatch a custom event.</h3>
+
+  <div class="row"> <div class="col-md-7">
+
+      <div class="trydart-step-details">
+
+        <p>→ In <strong><code>codelab_element.dart</code></strong>,
+add the following method to the bottom of the <code>CodelabElement</code> class body:</p>
+
+        <pre class="prettyprint lang-dart">
+deleteCodelab(Event e, var detail, Node sender) {
+  e.preventDefault();
+  dispatchEvent(new CustomEvent(&#39;deletecodelab&#39;,
+      detail: {&#39;codelab&#39;: codelab}));
+}
+</pre>
+
+      </div>
+
+      <h3 class="no_toc" id="handle-the-custom-event">Handle the custom event.</h3>
+
+      <div class="trydart-step-details">
+
+        <p>→ In <strong><code>codelab_list.html</code></strong>, locate the <code>&lt;div&gt;</code> containing the
+<code>template repeat</code>:</p>
+
+        <pre class="prettyprint lang-html">
+&lt;div&gt;
+  &lt;template repeat=&quot;{{codelab in codelabs}}&quot;&gt;
+    ...
+  &lt;/template&gt;
+&lt;/div&gt;
+</pre>
+
+        <p>→ Add a <code>deletecodelab</code> handler to the <code>&lt;div&gt;</code>. It should now look
+like this:</p>
+
+        <pre class="prettyprint lang-html">
+&lt;div on-deletecodelab=&quot;{{deleteCodelab}}&quot;&gt;
+  &lt;template repeat=&quot;{{codelab in codelabs}}&quot;&gt;
+    ...
+  &lt;/template&gt;
+&lt;/div&gt;
+</pre>
+
+        <p>→ In <strong><code>codelab_list.dart</code></strong>, add the following method to the
+bottom of the <code>CodelabList</code> class body:</p>
+
+        <pre class="prettyprint lang-dart">
+deleteCodelab(Event e, var detail, Node sender) {
+  var codelab = detail[&#39;codelab&#39;];
+  codelabs.remove(codelab);
+}
+</pre>
+
+      </div>
+
+    </div> <div class="col-md-5">
+
+      <p><i class="fa fa-key key-header"> </i><strong> Key information</strong></p>
+
+      <ul>
+        <li>
+          <p>The <code>deleteCodelab()</code> method in <code>CodelabElement</code>
+dispatches a <code>deleteCodelab</code> custom event, and forwards the code lab to be
+deleted with that event.</p>
+        </li>
+        <li>
+          <p><code>&lt;codelab-element&gt;</code>’s parent <code>&lt;div&gt;</code> inside
+<code>&lt;codelab-list&gt;</code> handles the <code>deletecodelab</code> custom event by
+invoking <code>CodelabList</code>’s
+<code>deleteCodelab()</code> method. This method removes the code lab from the <code>codelabs</code>
+list. Since <code>codelabs</code> is an observed variable (see the <code>@observable</code>
+annotation that precedes it in <code>CodelabList</code>), the UI updates automatically
+and removes the code lab.</p>
+        </li>
+      </ul>
+
+    </div></div>
+
+  <h3 class="no_toc" id="run-your-app-7">Run your app.</h3>
+
+  <div class="trydart-step-details">
+
+    <p>→ Right-click <strong>index.html</strong> (under <strong>begin</strong>) and choose
+<strong>Run in Dartium</strong>.</p>
+
+    <p>You should see the following:</p>
+
+    <ul>
+      <li>You can now delete a code lab.</li>
+      <li>The UI refreshes automatically with the deleted code lab removed from the
+list of displayed code labs.</li>
+    </ul>
+
+    <p>You have now implemented full CRUD (Create, Read, Update, Delete)
+functionality for code lab objects. The admin you’ve created works well, but as
+the number of code labs increases, you’d like to be able to filter them by
+code lab level.</p>
+
+  </div>
+
+  <h2 id="filter-codelabs">Step 9: Filtering the code labs list</h2>
+
+  <h3 class="no_toc" id="know-what-youre-building">Know what you’re building.</h3>
+
+  <div class="trydart-step-details">
+
+    <p>The <code>codelabs</code> list is the canonical source of truth for this app.
+In this step, you implement functionality to show a filtered subset
+of all code labs.</p>
+
+    <p>This step breaks down into the following sections:</p>
+
+    <ul>
+      <li>
+        <p>You create a <code>filteredCodelabs</code> list to store filtered code lab objects.</p>
+      </li>
+      <li>
+        <p>You update the contents of <code>filteredCodelabs</code> every time a code lab is
+added or removed, or when a code lab’s <code>level</code> is changed.</p>
+      </li>
+      <li>
+        <p>You add a <code>&lt;select&gt;</code> to the <code>&lt;codelab-list&gt;</code> that lets a user
+filter code labs by level.</p>
+      </li>
+    </ul>
+
+    <p>You begin by creating a <code>filteredCodelabs</code> field and a <code>filter()</code> method
+in <code>CodelabList</code>.</p>
+
+  </div>
+
+  <h3 class="no_toc" id="implement-the-filter-code">Implement the filter code.</h3>
+
+  <div class="row"> <div class="col-md-7">
+
+      <div class="trydart-step-details">
+
+        <p>→ In <strong><code>codelab_list.dart</code></strong>,
+begin by adding the following lines at the beginning of the
+<code>CodelabList</code> class body:</p>
+
+        <pre class="prettyprint lang-dart">
+static const ALL = &quot;all&quot;;
+final List&lt;String&gt; filters = [ALL]..addAll(Codelab.LEVELS);
+@observable String filterValue = ALL;
+@observable List&lt;Codelab&gt; filteredCodelabs = toObservable([]);
+</pre>
+
+        <p>→ Inside the <code>CodelabList.created()</code> constructor, add the following
+line:</p>
+
+        <pre class="prettyprint lang-dart">
+filteredCodelabs = codelabs;
+</pre>
+
+        <p>The constructor should now look like this:</p>
+
+        <pre class="prettyprint lang-dart">
+CodelabList.created() : super.created() {
+  filteredCodelabs = codelabs;
+  newCodelab.level = defaultLevel;
+}
+</pre>
+
+        <p>→ In the <code>CodelabList</code> class body, add these methods:</p>
+
+        <pre class="prettyprint lang-dart">
+filter() {
+  if (filterValue == ALL) {
+    filteredCodelabs = codelabs;
+    return;
+  }
+  filteredCodelabs = codelabs.where((codelab) {
+    return codelab.level == filterValue;
+  }).toList();
+}
+
+codelabsChanged() {
+  filter();
+}
+</pre>
+
+      </div>
+
+    </div> <div class="col-md-5">
+
+      <p><i class="fa fa-key key-header"> </i><strong> Key information</strong></p>
+
+      <ul>
+<li>
+          <p>Inside <code>CodelabList</code>, you created a <code>filters</code> field for the
+  filter options you plan to expose through the UI. This includes the
+  three preset code lab levels, as well as ‘all’.</p>
+
+          <pre class="prettyprint lang-dart">
+final List&lt;String&gt; filters = [ALL]..addAll(Codelab.LEVELS);
+</pre>
+        </li>
+
+<li>
+          <p>You created a list, <code>filteredCodelabs</code>, to store the
+  filtered code labs. Since <code>filteredCodelabs</code> is observable(note the
+  @observable annotation), the UI updates
+  automatically when it changes.</p>
+        </li>
+
+<li>
+          <p>You added a <code>filter()</code> method to <code>CodelabList</code> that filters the
+  contents of <code>codelabs</code> and saves the results in <code>filteredCodelabs</code>.</p>
+        </li>
+
+<li>
+          <p>The <code>codelabsChanged()</code> method in <code>CodelabList</code> is an example of a
+  Polymer <em>changed watcher</em>.
+  All properties on Polymer elements can be watched for changes
+  by implementing a <code><em>propertyName</em>Changed</code> handler.
+  When the value of a watched property changes,
+  the watcher runs automatically.
+  Since <code>codelabs</code> is a field in <code>CodelabList</code>, you
+  can watch it for changes by implementing a <code>codelabsChanged()</code> method.</p>
+        </li>
+</ul>
+
+    </div></div>
+
+  <h3 class="no_toc" id="iterate-over-filteredcodelabs">Iterate over filteredCodelabs.</h3>
+
+  <div class="row"> <div class="col-md-7">
+
+      <div class="trydart-step-details">
+
+        <p>→ In <strong><code>codelab_list.html</code></strong>,
+remove everything between the <code>&lt;/template&gt;</code> and <code>&lt;/style&gt;</code> tags,
+and insert the following HTML in its place:</p>
+
+        <pre class="prettyprint lang-html">
+&lt;div&gt;
+  &lt;label&gt;Filter: &lt;/label&gt;
+  &lt;select value=&quot;{{filterValue}}&quot; on-change=&quot;{{filter}}&quot;&gt;
+    &lt;option template repeat=&quot;{{filter in filters}}&quot;&gt;
+      {{filter}}
+    &lt;/option&gt;
+  &lt;/select&gt;
+&lt;/div&gt;
+&lt;div on-codelabvalidated=&quot;{{addCodelab}}&quot;
+     on-formnotneeded=&quot;{{resetForm}}&quot;&gt;
+  &lt;codelab-form codelab=&quot;{{newCodelab}}&quot;&gt;&lt;/codelab-form&gt;
+&lt;/div&gt;
+&lt;div on-deletecodelab=&quot;{{deleteCodelab}}&quot;
+     on-levelchanged=&quot;{{filter}}&quot;&gt;
+  &lt;template repeat=&quot;{{codelab in filteredCodelabs}}&quot;&gt;
+    &lt;codelab-element codelab=&quot;{{codelab}}&quot;&gt;&lt;/codelab-element&gt;
+  &lt;/template&gt;
+&lt;/div&gt;
+</pre>
+
+      </div>
+
+    </div> <div class="col-md-5">
+
+      <p><i class="fa fa-key key-header"> </i><strong> Key information</strong></p>
+
+      <ul>
+<li>
+          <p>You use a <code>template repeat</code> to iterate over the list of filters.</p>
+
+          <pre class="prettyprint lang-html">
+&lt;option template repeat=&quot;{{filter in filters}}&quot;&gt;
+  {{filter}}
+&lt;/option&gt;
+</pre>
+        </li>
+
+<li>
+          <p>When displaying code labs in <code>&lt;codelab-list&gt;</code>, you now iterate
+  over <code>filteredCodelabs</code>, not <code>codelabs</code>:</p>
+
+          <pre class="prettyprint lang-html">
+&lt;template
+ repeat=&quot;{{codelab in filteredCodelabs}}&quot;&gt;
+  &lt;codelab-element
+   codelab=&quot;{{codelab}}&quot;&gt;&lt;/codelab-element&gt;
+&lt;/template&gt;
+</pre>
+        </li>
+</ul>
+
+    </div></div>
+
+  <h3 class="no_toc" id="handle-changes-to-a-code-labs-level">Handle changes to a code lab’s level.</h3>
+
+  <p>You’ve implemented <em>most</em> of the filter functionality. But what happens
+when you’re in a filtered view, decide to edit a code lab, and then
+change its level? You want the filtering to feel live, and you want
+the change in a code lab’s level to automatically trigger the filter
+process. This is easy to implement.</p>
+
+  <div class="row"> <div class="col-md-7">
+
+      <div class="trydart-step-details">
+
+        <p>→ In <strong><code>codelab_element.dart</code></strong>,
+replace the <code>updateCodelab()</code> method with this new version:</p>
+
+        <pre class="prettyprint lang-dart">
+updateCodelab(Event e, var detail, Node sender) {
+  e.preventDefault();
+  if (_cachedCodelab.level != codelab.level) {
+    dispatchEvent(new CustomEvent(&#39;levelchanged&#39;));
+  }
+  editing = false;
+}
+</pre>
+
+      </div>
+
+    </div> <div class="col-md-5">
+
+      <p><i class="fa fa-key key-header"> </i><strong> Key information</strong></p>
+
+      <ul>
+<li>
+          <p>You updated <code>CodelabElement</code>’s <code>updateCodelab()</code> method so that
+  if a code lab’s level changes, it fires a <code>levelchanged</code> custom event.</p>
+        </li>
+
+<li>
+          <p>Earlier in this step, you changed the template in
+  <code>codelab_list.html</code> to handle the <code>levelchanged</code> custom event:</p>
+
+          <pre class="prettyprint lang-html">
+&lt;div on-deletecodelab=&quot;{{deleteCodelab}}&quot;
+     on-levelchanged=&quot;{{filter}}&quot;&gt;
+  ...
+&lt;/div&gt;
+</pre>
+
+          <p>Now when a code lab’s level changes, the <code>CodelabList</code>’s <code>filter()</code> method
+runs and updates <code>filteredCodelabs</code>.</p>
+        </li>
+</ul>
+
+    </div></div>
+
+  <p>That’s it!</p>
+
+  <h3 class="no_toc" id="run-your-app-8">Run your app.</h3>
+
+  <div class="trydart-step-details">
+
+    <p>→ Right-click <strong>index.html</strong> (under <strong>begin</strong>) and choose
+<strong>Run in Dartium</strong>.</p>
+
+    <p>You should see the following:</p>
+
+    <ul>
+      <li>You can filter code labs by level.</li>
+      <li>When you’ve selected a filtered view, and you modify a code lab’s
+level, the filtered view updates automatically.</li>
+    </ul>
+
+  </div>
+
+  <h2 id="wrap-up">Step 10: Wrapping up</h2>
+
+  <div class="trydart-step-details">
+
+    <p>This code lab packs a lot of information in a short time. Here are some
+takeaways:</p>
+
+    <ul>
+      <li>
+        <p>Polymer lets you implement a lot of functionality while writing very little
+code.</p>
+      </li>
+      <li>
+        <p>Create <strong>custom elements</strong> to organize your code.</p>
+      </li>
+      <li>
+        <p>Use <strong>HTML imports</strong> to get access to any custom elements.</p>
+      </li>
+      <li>
+        <p>Use <strong>observable</strong> fields and <strong>data binding</strong> to keep your data and the
+UI in sync.</p>
+      </li>
+      <li>
+        <p>Optionally, use <strong>custom events</strong> to communicate between child and parent
+elements.</p>
+      </li>
+    </ul>
+
+  </div>
+
+  <h3 class="no_toc" id="polymer-resources">Polymer resources.</h3>
+
+  <div class="trydart-step-details">
+
+    <ul>
+      <li>
+        <p>Read more about Polymer at <a href="http://www.polymer-project.org/">polymer-project.org</a>.</p>
+      </li>
+      <li>
+        <p>Polymer implements the <a href="http://www.w3.org/wiki/WebComponents/">Web Components</a> stack.</p>
+      </li>
+    </ul>
+
+    <ul>
+      <li>Polymer.dart is a port of polymer.js to Dart. You can look at
+<a href="https://github.com/dart-lang/bleeding_edge/tree/master/dart/pkg/polymer">polymer.dart code on GitHub</a>.</li>
+    </ul>
+
+  </div>
+
+  <h3 class="no_toc" id="dart-resources">Dart resources.</h3>
+
+  <div class="trydart-step-details">
+
+    <ul>
+      <li>
+        <p>Run some Dart programs online and check out the source code
+on our <a href="/samples/">Samples page</a>.</p>
+      </li>
+      <li>
+        <p>Learn more about Dart from
+the <a href="/docs/tutorials/">Dart tutorials</a>.</p>
+      </li>
+      <li>
+        <p><a href="/docs/dart-up-and-running/ch02.html">A Tour of the Dart Language</a>
+shows you how to use each major Dart feature,
+from variables and operators to classes and libraries.</p>
+      </li>
+      <li>
+        <p><a href="/docs/dart-up-and-running/ch03.html">A Tour of the Dart Libraries</a>
+shows you how to use the major features in Dart’s libraries.</p>
+      </li>
+    </ul>
+
+  </div>
+
+  <h3 class="no_toc" id="give-us-feedback">Give us feedback.</h3>
+
+  <div class="trydart-step-details">
+
+    <p>Please provide feedback about Dart and this code lab at
+<a href="http://dartbug.com/new">dartbug.com</a>.</p>
+
+  </div>
+</div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+<link href="/codelabs/darrrt/darrrt.css" rel="stylesheet" type="text/css">
+
+
+
+</body>
+</html>
+

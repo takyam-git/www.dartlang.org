@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Getting Started with Observatory | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Getting Started with Observatory | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="images/AllocationProfileScreen.png">
+  
+  <meta itemprop="description" content="How to use Observatory to profile and debug your Dart application.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+    <div class="container col-md-10 col-md-offset-1 sub-page">
+      <div>
+      <div>
+<ol class="breadcrumb">
+
+  <li><a href="/tools/">
+  Dart Tools</a></li>
+
+  <li><a href="/tools/observatory/">
+  Observatory</a></li>
+
+
+  <li class="active">Getting Started with Observatory</li>
+</ol>
+</div>
+
+<h1 id="getting-started-with-observatory">Getting Started with Observatory</h1>
+
+<h4>Contents</h4>
+<ol class="toc">
+  <li> <a href="#get-observatory">Get Observatory</a> </li>
+  <li> <a href="#start-observatory">Start Observatory</a>
+  <ol class="toc">
+    <li> <a href="#standalone-Dart-Editor">Standalone apps from Dart Editor</a> </li>
+    <li> <a href="#standalone-command-line">Standalone apps from the command line</a> </li>
+    <li> <a href="#web-launch">Web apps</a> </li>
+  </ol> </li>
+  <li> <a href="#observatory-ui">Observatory UI</a> </li>
+  <li> <a href="#vm-screen">VM screen</a> </li>
+  <li> <a href="#what-next">What next?</a> </li>
+</ol>
+
+<aside class="alert alert-info">
+  Observatory was introduced in 1.4 and continues to evolve.
+  You get Observatory, for free, when you
+  <a href="/downloads/">download the Dart SDK or Dart Editor bundles</a>.
+
+  You can file issues and requests on
+  <a href="http://dartbug.com/new">dartbug.com</a>.
+</aside>
+
+<h2 id="get-observatory">Get Observatory</h2>
+
+<p>To get Observatory, just <a href="/downloads/">download</a> the
+Dart SDK or Dart Editor.
+Both of those downloads include the Observatory tool.</p>
+
+<p>You can use Dart to create two kinds of applications: standalone
+applications (including servers), and web applications
+(which run in a browser).
+For standalone apps, Observatory can be enabled either at the command
+line or from Dart Editor. For browser-based apps, Observatory
+can be opened in any browser using information obtained when launching
+your app in Dartium from the command line.
+So you can use Observatory to profile and debug any Dart application.</p>
+
+<h2 id="start-observatory">Start Observatory</h2>
+
+<p>How you enable Observatory depends on whether you are writing a
+standalone app or a web app, and how you prefer to work.
+No matter how you launch Observatory, its UI is exactly the same.</p>
+
+<aside class="alert alert-info">
+  <p><strong>For Windows users:</strong> Observatory’s <a href="cpu-profile.html">CPU Profile</a>
+screen is disabled by default.  Specify the
+<a href="/tools/dart-vm/#observatory"><code>--profile</code></a> option when
+you launch your app to enable it.</p>
+</aside>
+
+<h3 id="standalone-Dart-Editor">Standalone apps from Dart Editor</h3>
+
+<p>You can open Observatory once you launch your app.</p>
+
+<p>When you launch a standalone app in Dart Editor, it opens a console
+window to display the output.  An “Open Observatory” icon is available
+in the tool bar for the console window:</p>
+
+<p><img src="images/OpenObservatoryButton.png" alt="The Observatory navigation bar" /></p>
+
+<p>Clicking the icon opens a new tab in your default browser and displays
+Observatory’s VM screen.</p>
+
+<p>To customize the launch configuration for your app, select
+<strong>Run &gt; Manage Launches</strong> to bring up the <strong>Manage Launches</strong> dialog.</p>
+
+<p><img src="images/DartEditorEnable.png" alt="The managed launches dialog in Dart Editor" /></p>
+
+<p>Check the <strong>Pause isolate on start</strong> box if you want the root isolate
+to pause before executing—this is equivalent to specifying the
+<code>--pause-isolates-on-start</code> flag and is useful if you want to connect
+to Observatory before the isolate begins running.</p>
+
+<p>Check the <strong>Pause isolate on exit</strong> box if you want the root isolate
+to remain alive when execution has completed—this is
+equivalent to specifying the <code>--pause-isolates-on-exit</code> flag and
+is useful for an application that might otherwise finish executing
+before you can connect it to Observatory.</p>
+
+<p>By default, neither of these boxes are checked.</p>
+
+<p>You can also enter any other flags into the <strong>VM arguments</strong> text
+field—see the <a href="/tools/dart-vm/#observatory">dart</a> reference page
+for a complete list.</p>
+
+<p>The next time you launch the app, it uses the specified configuration.</p>
+
+<h3 id="standalone-command-line">Standalone apps from the command line</h3>
+
+<p>To enable Observatory from the command line, specify one or more 
+Observatory options when launching the dart VM. See the
+<a href="/tools/dart-vm/#observatory">dart</a> reference page for a complete list.</p>
+
+<p>For example:</p>
+
+<pre class="prettyprint lang-sh">
+$ dart --enable-vm-service --pause-isolates-on-start &lt;script&gt;.dart
+</pre>
+
+<p>Open a browser to <code>localhost:8181</code> to see the Observatory UI.</p>
+
+<h3 id="web-launch">Web apps</h3>
+
+<aside class="alert alert-info">
+  <p>Prior to 1.9, you launched Observatory from DevTools within Dartium.
+As of 1.9, you launch Observatory in any browser using the URL
+obtained when launching Dartium from the command line.</p>
+
+  <p>Launching Observatory for web apps will be more streamlined in
+a future release.</p>
+</aside>
+
+<p>From the command-line, launch your app in Dartium. For example,
+the following command launches a local copy of the Sunflower demo:</p>
+
+<p>Mac OS:</p>
+
+<pre class="prettyprint lang-sh">
+$ cd &lt;path-to-demo&gt;/sunflower/web
+$ &lt;path-to-Dartium&gt;/Chromium.app/Contents/MacOS/Chromium sunflower.html
+</pre>
+
+<p>Windows:</p>
+
+<pre class="prettyprint lang-sh">
+&gt; cd &lt;path-to-demo&gt;\sunflower\web
+&gt; &lt;path-to-Dartium&gt;\Chromium\Application\chromium.exe sunflower.html
+</pre>
+
+<p>Linux:</p>
+
+<pre class="prettyprint lang-sh">
+$ cd &lt;path-to-demo&gt;/sunflower/web
+$ &lt;path-to-Dartium&gt;/chromium-browser sunflower.html
+</pre>
+
+<p>The command-line output includes a line similar to the following:</p>
+
+<pre class="prettyprint lang-sh">
+Observatory listening on http://127.0.0.1:49621
+</pre>
+
+<p>Open this URL in any browser to bring up Observatory.</p>
+
+<h2 id="observatory-ui">Observatory UI</h2>
+
+<p>Observatory uses a browser-based UI—the UI is the same no
+matter how it is launched.</p>
+
+<p>A solid blue bar appears at the top of most screens. The word
+<strong>Observatory</strong> is on the left and a <strong>Refresh</strong> button is on the right.
+You can resample the information in any screens, at any time,
+using the Refresh button. (Some screens in Observatory
+provide additional buttons next to the Refresh button.)</p>
+
+<p><img src="images/ObservatoryBar.png" alt="The Observatory navigation bar" /></p>
+
+<p>A breadcrumb trail, inside the blue bar, shows where you are in the 
+Observatory UI.  You can click items in the breadcrumb trail to
+navigate to other parts of the UI.</p>
+
+<p>If you hover over the items in the breadcrumb bar, drop-down menus
+provide additional functionality for each screens. As shown in the
+following screenshot, hovering over <strong>root</strong> brings up a menu that includes
+<em>stack trace</em>, <em>cpu profile</em>, and <em>heap map</em>.</p>
+
+<p><img src="images/ObservatoryBreadCrumb.png" alt="A sample Observatory breadcrumb trail" /></p>
+
+<p>You can return to the <a href="screens.html#vm-screen">VM screen</a> at any time by
+clicking <strong>Observatory</strong> in the breadcrumb bar.</p>
+
+<p>The next section describes the VM screen, Observatory’s landing page.
+For a comprehensive list of all screens,
+see <a href="screens.html">Screens in Observatory</a>.</p>
+
+<h2 id="vm-screen">VM screen</h2>
+
+<p>When you first connect to Observatory, it opens the VM screen,
+which reflects information available at the moment the app was sampled.
+For example:</p>
+
+<p><img src="images/ObservatoryVM.png" alt="A sample VM screen for Observatory" /></p>
+
+<p>To update the information, click the <strong>Refresh</strong> button in the upper
+right corner.</p>
+
+<p>The displayed information includes:</p>
+
+<dl>
+  <dt>version</dt>
+  <dd>When the VM was built and for which architecture.</dd>
+  <dt>uptime</dt>
+  <dd>How long the VM has been running.</dd>
+  <dt>type checks enabled</dt>
+  <dd>True if the VM is checking for type errors.</dd>
+  <dt>asserts enabled</dt>
+  <dd>True if assertion statements are evaluated by the VM.</dd>
+</dl>
+
+<p>Below the VM information is a list of isolates.
+Every app has an initial isolate named <em>root</em>.</p>
+
+<p><img src="images/VM-IsolateList.png" alt="List of isolates on the VM screen" /></p>
+
+<p>For each isolate, a pie chart shows the breakdown of the activities of the
+VM. For more information on the meaning of these activities,
+see <a href="tags.html">User and VM Tags</a>.</p>
+
+<p>A list of links take you to various Observatory screens. For more
+information, see <a href="screens.html">Screens in Observatory</a>.</p>
+
+<p>Clicking the isolate’s name (for example, “root”) brings up an isolate screen,
+with detailed information about that isolate. 
+For more information, see <a href="isolate.html">Isolate</a>.</p>
+
+<h2 id="what-next">What next?</h2>
+
+<p>Where you should go next depends on what questions you’d like to answer.</p>
+
+<dl>
+  <dt>Unfamiliar with the terminology?</dt>
+  <dd><a href="glossary.html">Glossary of VM Terms</a></dd>
+  <dt>Want to find screens and features in the UI?</dt>
+  <dd><a href="screens.html">Screens in Observatory</a></dd>
+  <dt>Want to see where your app is spending its time?</dt>
+  <dd><a href="cpu-profile.html">CPU Profile</a></dd>
+  <dt>And dive into “power” profiling?</dt>
+  <dd><a href="tags.html">User and VM Tags</a></dd>
+  <dt>Curious about memory allocation?</dt>
+  <dd><a href="allocation-profile.html">Allocation Profile</a><br /></dd>
+  <dt>And possible memory fragmentation?</dt>
+  <dd><a href="heap-map.html">Heap Map</a></dd>
+  <dt>Want to query (or modify) Dart code?</dt>
+  <dd><a href="evaluate.html">Evaluating Expressions</a></dd>
+  <dt>Want to see if your code has executed?</dt>
+  <dd><a href="code-coverage.html">Code Coverage</a></dd>
+  <dt>Want a stack trace?</dt>
+  <dd><a href="stack-trace.html">Stack Trace</a></dd>
+  <dt>Want to know the state of the root isolate or another isolate?</dt>
+  <dd><a href="isolate.html">Isolate</a></dd>
+</dl>
+
+<div>
+<hr />
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+<link href="observatory.css" rel="stylesheet" type="text/css">
+
+
+
+</body>
+</html>
+

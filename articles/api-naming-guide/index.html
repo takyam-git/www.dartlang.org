@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>API命名Guide | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="API命名Guide | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="Choose good names to make your API easier to understand.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  <link rel="author" href="/authors/lasse-nielsen.html">
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+  	<div class="container sub-page">
+      <div class="row">
+        <article class="has-permalinks"><div class="col-md-4">
+  <div class="bs-sidebar" data-spy="affix" data-offset-bottom="350" role="complementary">
+
+<ol class="toc nav bs-sidenav" id="markdown-toc">
+  <li><a href="#general-guidelines">General guidelines</a>    <ol>
+      <li><a href="#be-consistent">Be consistent</a></li>
+      <li><a href="#avoid-abbreviations">Avoid abbreviations</a></li>
+      <li><a href="#put-the-most-descriptive-noun-last">Put the most descriptive noun last</a></li>
+      <li><a href="#make-code-read-like-a-sentence">Make code read like a sentence</a></li>
+    </ol>
+  </li>
+  <li><a href="#specific-guidelines">Specific guidelines</a>    <ol>
+      <li><a href="#non-booleans">Non-booleans</a></li>
+      <li><a href="#booleans">Booleans</a></li>
+      <li><a href="#functions">Functions</a></li>
+      <li><a href="#parameterized-properties">Parameterized properties</a></li>
+      <li><a href="#optional-parameters">Optional parameters</a></li>
+    </ol>
+  </li>
+  <li><a href="#api-choices">API choices</a>    <ol>
+      <li><a href="#getters-vs-methods">Getters vs. methods</a></li>
+    </ol>
+  </li>
+  <li><a href="#precedents-to-follow">Precedents to follow</a>    <ol>
+      <li><a href="#tox-and-asx">toX() and asX()</a></li>
+      <li><a href="#ranges">Ranges</a></li>
+      <li><a href="#collections">Collections</a></li>
+    </ol>
+  </li>
+</ol>
+
+  </div>
+</div>
+<div class="col-md-8">
+  <p><!-- Start of content -->
+</p>
+
+  <div>
+    <ol class="breadcrumb">
+
+  <li><a href="/articles/">
+  Articles</a></li>
+
+
+  <li class="active">API命名Guide</li>
+</ol>
+  </div>
+
+  <h1 id="apiguide">API命名Guide</h1>
+
+  <p><em>Written by Lasse Nielsen &amp; Istvan Soos<br />
+<time pubdate="" date="2015-02-03">February 2015</time>
+</em></p>
+
+  <p>This guide aims to help you pick good names for the Dart APIs that you create.
+Although this advice is intended mostly for public APIs,
+you can make all of your code easier to understand
+by following these guidelines for all names—public,
+private, or local.</p>
+
+  <aside class="alert alert-info">
+    <p><strong>Have feedback?</strong>
+Please <a href="https://github.com/dart-lang/www.dartlang.org/issues/new">file an issue</a>
+or add to an <a href="https://github.com/dart-lang/www.dartlang.org/issues?q=is%3Aopen+is%3Aissue+label%3AStyleGuide">existing issue</a>.</p>
+  </aside>
+
+  <p>Most of the guidelines here are common sense.
+The goal, as always, is nice, readable, maintainable code.
+If you feel that breaking the guidelines makes your code
+easier to read or remember,
+then go ahead and break the rules—but
+only after careful consideration.</p>
+
+  <aside class="alert alert-info">
+    <p><strong>Note:</strong>
+The Dart libraries have some examples that don’t follow these guidelines,
+mostly because they’re hard to change without breaking user code.</p>
+  </aside>
+
+  <p>See also these related articles:</p>
+
+  <ul>
+    <li><a href="/articles/doc-comment-guidelines/">Guidelines for Doc Comments</a>:
+How to write API docs.</li>
+    <li>
+      <p><a href="/articles/style-guide/">Dart Style Guide</a>:
+General code conventions.
+Includes a <a href="/articles/style-guide/#names">Names section</a>
+with rules that can be mechanically checked.
+For example:</p>
+
+      <ul>
+        <li>Type names use UpperCamelCase.</li>
+        <li>Identifiers (including constants) use lowerCamelCase.</li>
+        <li>Libraries use lowercase_with_underscores,
+prefixed with the package name and a dot-separated path.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h2 id="general-guidelines">General guidelines</h2>
+
+  <p>The most important rule is to be consistent,
+both within your API and with precedents set by
+commonly used libraries.</p>
+
+  <h3 id="be-consistent">Be consistent</h3>
+
+  <p>Use the same name for the same thing, throughout your API.
+If a precedent already exists outside your API
+that your API’s users are likely to know,
+follow that precedent.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+pageCount         // a field
+updatePageCount() // consistent with pageCount
+toSomething()     // consistent with Iterable&#39;s toList()
+asSomething()     // consistent with List&#39;s asMap()
+Point             // a familiar concept
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+countPages()         // confusingly different from pageCount
+convertToSomething() // inconsistent with toX() precedent
+wrappedAsSomething   // inconsistent with asX() precedent
+Cartesian            // unfamiliar to most users
+</pre>
+  </div>
+
+  <p>Having one case be slightly longer or harder to use,
+as long as it’s consistent with the other cases, is still a win.</p>
+
+  <h3 id="avoid-abbreviations">Avoid abbreviations</h3>
+
+  <p>Unless an abbreviation is more common than the unabbreviated term,
+don’t abbreviate.
+If you do abbreviate,
+<a href="/articles/style-guide/#do-capitalize-acronyms-and-abbreviations-longer-than-two-letters-like-words">capitalize acronyms and abbreviations over two letters like words</a>.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+pageCount
+buildRectangles
+IOStream
+HttpRequest
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+numPages  // num is an abbreviation of number(of)
+buildRects
+InputOutputStream
+HypertextTransferProtocolRequest
+</pre>
+  </div>
+
+  <h3 id="put-the-most-descriptive-noun-last">Put the most descriptive noun last</h3>
+
+  <p>The last word should be the most descriptive of what the thing is.
+You can prefix it with other words, such as adjectives,
+to further describe the thing.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+pageCount             // a count (of pages)
+ConversionSink        // a sink for doing conversions
+ChunkedConversionSink // a ConversionSink that&#39;s chunked
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+numPages              // NOT pages
+LinkedList            // NOT a List
+</pre>
+  </div>
+
+  <p>The LinkedList example would be fine if
+<a href="https://api.dartlang.org/apidocs/channels/dev/dartdoc-viewer/dart:collection.LinkedList">LinkedList</a>
+implemented the
+<a href="https://api.dartlang.org/apidocs/channels/dev/dartdoc-viewer/dart:core.List">List</a>
+interface, but it doesn’t.
+Another problem is that LinkedList has the same name as
+a Java class that <em>is</em> a List,
+which is likely to confuse Dart programmers who have a Java background.</p>
+
+  <h3 id="make-code-read-like-a-sentence">Make code read like a sentence</h3>
+
+  <p>When in doubt about naming,
+write some code that uses your API,
+and try to read it like a sentence.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+// if errors is empty...
+if (errors.isEmpty)
+
+// _subscription:cancel!
+_subscription.cancel();
+
+// stream:listen for data, and do something with that data.
+stream.listen((data) =&gt; ...)
+
+// Skip while x is even.
+skipWhile((x) =&gt; x.isEven)
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+// errors:empty or errors is empty?
+if (errors.empty)
+
+// What does false mean?
+_subscription.changeState(false);
+
+// stream:register a listener for some kind of data?
+stream.registerListener((data) =&gt; ...)
+
+// Get a sublist... when? of what?
+sublistStartingAfter((x) =&gt; x.isEven)
+</pre>
+  </div>
+
+  <p>Throughout this page, blue boxes marked <strong>Readability note</strong>
+go into more detail about this guideline.</p>
+
+  <h2 id="specific-guidelines">Specific guidelines</h2>
+
+  <p>Follow these guidelines when naming fields,
+functions (including methods), and parameters.</p>
+
+  <h3 id="non-booleans">Non-booleans</h3>
+
+  <p>Use noun phrases for non-boolean fields, getters, setters, and parameters.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+iterator
+length
+rampagingSwampBeast
+</pre>
+  </div>
+
+  <aside class="alert alert-info">
+    <p><strong>Note:</strong>
+  Avoid write-only fields (setters without getters).</p>
+  </aside>
+
+  <h3 id="booleans">Booleans</h3>
+
+  <p>Start boolean getters with a verb.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+bool get isEmpty
+bool get hasElements
+bool get canClose
+bool get willCodeForMoney
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+empty        // hard to parse: adjective or verb?
+withElements // sounds like it might hold elements
+closeable    // sounds like an interface
+codeForMoney // unclear
+</pre>
+  </div>
+
+  <aside class="alert alert-info">
+    <p><strong>Readability note:</strong>
+  <code>canClose</code> is better than <code>closeable</code>
+  because it reads better as a sentence.
+  For example, <code>if (thingy.canClose) thingy.close()</code> reads as
+  <em>if thingy can close, thingy:close!</em></p>
+  </aside>
+
+  <p>The names of boolean fields or setters depend on the property.
+Often, instead of having a field or setter,
+it makes more sense to have a getter and
+one or more state-changing methods.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+bool get isPaused
+pause()
+resume()
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+bool isPaused
+</pre>
+  </div>
+
+  <p>Sometimes a boolean property is (and will always be) simple,
+and setting the property has only obvious consequences with no side effects.
+In this case,
+name the field or setter just like a boolean getter.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+bool shouldConsumeInput
+</pre>
+  </div>
+
+  <p>Boolean function parameters can omit the verb.
+For example, the third argument to Isolate’s <code>spawn()</code> method is <code>paused</code>,
+not <code>isPaused</code>, because it’s not a property.
+(The isolate doesn’t even exist, much less have properties,
+until after the call to <code>spawn()</code>.)</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+Isolate.spawn(function, argument, {paused: false, packageRoot})
+</pre>
+  </div>
+
+  <h3 id="functions">Functions</h3>
+
+  <p>Use verb phrases for most functions (including methods)
+and function variables.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+add()
+remove()
+insertAfter()
+updateRecord()
+</pre>
+  </div>
+
+  <p>If parts of a function name refer to the arguments (explicitly or implicitly),
+try to keep the arguments in the same order.
+Often it’s OK to omit a word from the name if it’s just
+repeating the type or name of the argument.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+collection.remove(element)            // collection:remove element
+parent.insertNodeBefore(node1, node2) // parent:insert node1 before node2
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+collection.removeElement(element) // &quot;Element&quot; is redundant.
+parent.insertBefore(node1, node2) // parent:insert before node1: node2?
+</pre>
+  </div>
+
+  <aside class="alert alert-info">
+    <p><strong>Note:</strong>
+Some Dart API designers lean toward omitting words—preferring <code>insertBefore</code>
+over <code>insertNodeBefore</code>, for example.
+Whatever you choose to do,
+be consistent and try to maximize code readability.</p>
+  </aside>
+
+  <h3 id="parameterized-properties">Parameterized properties</h3>
+
+  <p>Methods such as <code>elementAt()</code> represent a property of an object,
+and thus you should name them after the property,
+without the redundant <em>get</em> prefix.
+Without any arguments, these methods would be getters,
+but Dart doesn’t support arguments for getters.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+elementAt(...)
+</pre>
+  </div>
+
+  <p>In some cases you can drop the <code>at</code> or <code>for</code> at the end,
+but only if the method takes at least one required argument.
+The List <code>sublist()</code> method is an example.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+sublist(int start, [int end])
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+sublist()
+</pre>
+  </div>
+
+  <h3 id="optional-parameters">Optional parameters</h3>
+
+  <p>Optional parameters can be either <em>positional</em> (unnamed) or <em>named</em>.</p>
+
+  <p>Use <strong>positional</strong> optional parameters for values that users often provide,
+and that have a logical progression.
+Users should almost never need to provide a later positional argument without
+also wanting to provide the former ones.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+String.fromCharCodes(Iterable source, [int start = 0, int end])
+DateTime(year, month, day, [hours, minutes, seconds, milliseconds])
+</pre>
+  </div>
+
+  <p>Use <strong>named</strong> optional parameters for all boolean flags,
+as well as for variables that apply independently of each other.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+toList({growable: true})
+Duration({days: 0, hours: 0, minutes: 0, seconds: 0, milliseconds: 0, microseconds: 0})
+</pre>
+  </div>
+
+  <aside class="alert alert-info">
+    <p><strong>Dart language note:</strong>
+You can’t use both positional and named optional parameters in the same 
+function.
+For example, we’d like to add <code>{bool isUtc:false}</code> to <code>DateTime()</code>,
+but we can’t.
+A result can be inconsistencies when two similar functions use
+positional and named parameters for the same things.
+To be notified if Dart adds support for using both
+positional and named optional parameters in the same function, star
+<a href="https://code.google.com/p/dart/issues/detail?id=7056">issue 7056</a>.</p>
+  </aside>
+
+  <h2 id="api-choices">API choices</h2>
+
+  <p>This section aims to help you choose between different kinds of API.
+For now, it covers only choosing between a getter and a method.</p>
+
+  <h3 id="getters-vs-methods">Getters vs. methods</h3>
+
+  <p>If you’re unsure whether to create a getter or a no-argument method,
+ask these questions:</p>
+
+  <ul>
+    <li>Does the getter/method give different results if
+called multiple times in a row?
+<br />
+If so, make it a method.</li>
+    <li>Does the getter/method have any other side effects?
+<br />
+If so, make it a method.</li>
+    <li>Does the <em>user</em> of the getter/method care more
+about the <em>computation</em> the getter/method performs
+than the result?
+<br />
+If so, make it a method.</li>
+  </ul>
+
+  <p>Otherwise, make it a getter.</p>
+
+  <p>Whichever you choose, name it according to the conventions in the
+<a href="#specific-guidelines">Specific guidelines</a> section.</p>
+
+  <h2 id="precedents-to-follow">Precedents to follow</h2>
+
+  <p>If your API converts objects, specifies ranges, or manages collections,
+follow these precedents.</p>
+
+  <h3 id="tox-and-asx">toX() and asX()</h3>
+
+  <p>For consistency with established APIs,
+use <code>toX()</code> when making a copy,
+and <code>asX()</code> when the returned value is backed by the original object
+and represents the whole object.
+When the returned value represents only part of the original object,
+then instead of <code>asX()</code> use normal field or getter names—for example,
+Map’s <code>keys</code> and <code>values</code> properties.</p>
+
+  <p>Both <code>toX()</code> and <code>asX()</code> are methods, despite not having verbs.
+The <code>asX()</code> method should probably have been a getter,
+but <code>List.asMap()</code> sets the precedent to follow.</p>
+
+  <h3 id="ranges">Ranges</h3>
+
+  <p>When specifying a range in a sequence with a length,
+use <em>start</em> (inclusive) and <em>end</em> (exclusive)
+to be consistent with existing APIs such as
+<a href="https://api.dartlang.org/apidocs/channels/stable/dartdoc-viewer/dart:core.List#id_sublist">sublist()</a>.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+sublist(int start, [int end])
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+sublist(int from, [int to])
+</pre>
+  </div>
+
+  <h3 id="collections">Collections</h3>
+
+  <p>Collection classes usually omit <em>element</em> from names,
+since it’s understood that you’re operating on
+a collection of elements.
+Also, since collections are used frequently,
+their names tend to omit verbs and, generally,
+be shorter than usual.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+elementAt       // just &quot;at&quot; would be too short
+first           // get the first element
+firstWhere(...) // get the first element where ...
+forEach(...)    // for each element, do ...
+where(...)      // get all elements where ...
+</pre>
+  </div>
+
+  <aside class="alert alert-info">
+    <p><strong>Readability note:</strong>
+The <code>where()</code> method is especially cryptic,
+but it’s a little less so in usage.
+For example, you can read
+<code>iterable.where((element) =&gt; element.isEven)</code> as
+<em>iterable elements where the element is even.</em></p>
+  </aside>
+
+</div>
+
+    	  </div> <!-- End of content from toc.html -->
+        </article>
+	  </div>
+
+	
+	<ul class="pager hidden-print">
+	  <li><a href="/articles/">More articles about Dart <i class="glyphicon glyphicon-chevron-up"></i></a></li>
+	 </ul>
+	 
+
+	</div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+
+
+
+
+</body>
+</html>
+

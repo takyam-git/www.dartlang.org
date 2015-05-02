@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Single-Subscription vs. Broadcast Streams | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Single-Subscription vs. Broadcast Streams | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="Choose the kind of stream that's best for your application: single-subscription or broadcast.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  <link rel="author" href="/authors/florian-loitsch.html">
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+  	<div class="container sub-page">
+      <div class="row">
+        <article class="has-permalinks"><div class="col-md-4">
+  <div class="bs-sidebar" data-spy="affix" data-offset-bottom="350" role="complementary">
+
+<ol class="toc nav bs-sidenav" id="markdown-toc">
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#subscriptions">Subscriptions</a></li>
+  <li><a href="#single-subscription-streams">Single-subscription streams</a>    <ol>
+      <li><a href="#creating-single-subscription-streams">Creating single-subscription streams</a></li>
+    </ol>
+  </li>
+  <li><a href="#broadcast-streams">Broadcast streams</a>    <ol>
+      <li><a href="#creating-broadcast-streams">Creating broadcast streams</a></li>
+    </ol>
+  </li>
+  <li><a href="#alternatives-to-asbroadcaststream">Alternatives to asBroadcastStream</a>    <ol>
+      <li><a href="#listener-swapping">Listener swapping</a></li>
+      <li><a href="#streamiterator">StreamIterator</a></li>
+    </ol>
+  </li>
+  <li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+  </div>
+</div>
+<div class="col-md-8">
+  <p><!-- Start of content -->
+</p>
+
+  <div>
+    <ol class="breadcrumb">
+
+  <li><a href="/articles/">
+  Articles</a></li>
+
+
+  <li class="active">Single-Subscription vs. Broadcast Streams</li>
+</ol>
+  </div>
+
+  <h1 id="single-subscription-vs-broadcast-streams">Single-Subscription vs. Broadcast Streams</h1>
+
+  <p><em>Written by Florian Loitsch <br />
+January 2014</em></p>
+
+  <p>Dart features two different flavors of Streams: 
+<em>single-subscription streams</em> and <em>broadcast streams.</em>
+This article discusses the differences between the two
+and provides recommendations on when to use which.</p>
+
+  <p>If you aren’t already familiar with Dart streams,
+you can learn the basics from the tutorial
+<a href="/docs/tutorials/streams/">Use Streams for Data</a>.</p>
+
+  <h2 id="introduction">Introduction</h2>
+
+  <p>Single-subscription and broadcast streams are intended to be used in
+different contexts and have different requirements.
+In many aspects they’re similar to TCP and UDP:
+single-subscription streams are stable with 
+guaranteed properties (like TCP),
+whereas broadcast streams can lose events and 
+listeners don’t have a tight connection to the source
+(like UDP).</p>
+
+  <p>The following list summarizes the main differences between the two:</p>
+
+  <table class="table">
+<tr>
+<th></th>
+<th>Single subscription</th>
+<th>Broadcast</th>
+</tr>
+<tr>
+<td>Number of listeners</td>
+<td>1</td>
+<td>∞</td>
+</tr>
+<tr>
+<td>Can lose events</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Well-defined life cycle</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Ease of use</td>
+<td>Hard</td>
+<td>Easy</td>
+</tr>
+</table>
+
+  <p>Let’s look at each difference in detail.</p>
+
+  <dl>
+    <dt>Number of listeners</dt>
+    <dd>Single-subscription streams allow
+listening only once to the stream.
+This includes internal listen calls (such as calls to <code>isNotEmpty</code>).
+Broadcast streams don’t have this limitation.</dd>
+    <dt>Can lose events</dt>
+    <dd>Single-subscription streams do not lose events.
+If necessary they buffer their data until a listener appears.
+Broadcast streams are free to drop events if they don’t have any listeners.</dd>
+    <dt>Well-defined life cycle</dt>
+    <dd>Single-subscription streams have a well-defined life cycle:
+they start when a user starts listening,
+and they end when the user cancels or
+when the stream sends a close event.
+Broadcast streams generally don’t give the listener any means to
+influence the lifetime from the listener’s end.
+
+      <p>Getting the lifetime of streams right is very important:
+in dart:io the lifetime of the stream determines how long
+the Dart program holds on to
+the system resource it uses to deliver its data.
+The wrong choice of stream type can lead to resource leaks.</p>
+    </dd>
+    <dt>Ease of use</dt>
+    <dd>Internally, many Stream members (for example <code>first</code>)
+start listening to the stream.
+Because single-subscription streams allow only one listener,
+invoking getters and methods on them can automatically use up the stream.
+As such, single-subscription streams are less convenient to use than
+broadcast streams,
+which do not have this restriction.
+
+      <p>Broadcast streams have their own pitfalls, though.
+For instance, <code>isEmpty</code> returns false only after
+<em>consuming</em> an element.
+The user can then continue listening to the stream,
+but the first event is lost.</p>
+    </dd>
+  </dl>
+
+  <p>Before discussing the stream types in detail,
+let’s take a closer look at subscriptions,
+which are fundamental to understanding how both kinds of streams work.</p>
+
+  <h2 id="subscriptions">Subscriptions</h2>
+
+  <p>The easiest way to receive events from a stream
+(single-subscription and broadcast) is to
+invoke its <code>listen</code> method: 
+<code>stream.listen(onDataCallback)</code>.
+In fact, <code>listen</code> really is the only method 
+where the implementation is different for different streams.
+It connects a stream’s listener to its event source.
+All other methods can be (and usually are) implemented
+on top of the <code>listen</code> method.</p>
+
+  <p>The <code>listen</code> method creates a new <em>stream subscription</em>,
+connects it to the stream’s event source, and
+installs the callbacks (if given) in the subscription. 
+This stream subscription is then returned from the <code>listen</code> call.
+The installation of the callbacks is just for convenience.
+The handlers on the subscription can be changed at a later time.
+It is not uncommon to see a <code>stream.listen(null)</code> just
+to receive the stream subscription.</p>
+
+  <p>Once a stream creates a stream subscription, it hands off the 
+event generation and propagation to the subscription.
+Most implementations of Stream 
+don’t even keep track of their listeners.
+As soon as a stream creates the subscription,
+the stream doesn’t need to know anything about the listener anymore.</p>
+
+  <p>The following diagram explains the <code>listen</code> call:</p>
+
+  <p><img src="images/listen.png" alt="Before listen, Stream points to Event Source; after listen, StreamSubscription and Event Source point to each other" /></p>
+
+  <p>Note that a single-subscription stream
+does not need to keep a reference to the event source,
+once its <code>listen</code> method has been invoked.
+That’s why the arrow from the Stream to the event source is dashed
+in the “after” picture.
+Also note that the event source never sees
+(or needs to see) the stream.
+The event source only needs a reference to its subscription(s).
+In return, a stream subscription needs a pointer to its event source,
+so that it can cancel its subscription and thus shut down the event source.</p>
+
+  <p>Another consequence of this setup is that Stream instances are
+unaware of the state of the event source.
+In particular, they do not know if the event source is paused or not.
+The StreamSubscription instance takes over this task.
+In fact, the stream subscription ensures
+that pause requests are respected.
+If the actual event source can not be paused (for whatever reason)
+the stream subscription must buffer the events.
+In general, streams should inform their users if
+the created subscriptions are able to pause their event source, or not.
+Not knowing could easily lead to excessive memory use.</p>
+
+  <h2 id="single-subscription-streams">Single-subscription streams</h2>
+
+  <p>A single-subscription stream allows only one subscriber.
+Use a single-subscription stream when the consumer can trigger
+the generation (“production”) of events
+and when losing events would be an error.
+The best example for such a stream is File.openRead():
+the user starts the stream by listening to it,
+and the user generally doesn’t want to lose events.</p>
+
+  <p>The fact that single-subscription streams can be listened to only once
+has some important implications.
+First, and most importantly, with a single-subscription stream
+it’s extremely obvious
+when the stream should produce events,
+and when it should stop doing so.
+Second, and more annoyingly, many Stream
+getters and methods are less useful
+for single-subscription streams.
+For example, just using the <code>isNotEmpty</code> getter
+internally listens to the stream and cancels its subscription
+after it gets data.
+At this point a single-subscription stream is finished:
+the stream has already had a listener (the <code>isNotEmpty</code> getter),
+and no other listener is allowed.
+Similarly, the <code>first</code> getter can be invoked only once.</p>
+
+  <h3 id="creating-single-subscription-streams">Creating single-subscription streams</h3>
+
+  <p>The easiest way to create a stream is to use a StreamController
+where the default constructor instantiates a controller
+with a single-subscription stream.</p>
+
+  <p>A controller implements the StreamSink interface with methods like
+<code>add</code>, <code>addError</code>, and <code>close</code>.
+Event sources, such as native I/O extensions, simply
+invoke the corresponding functions when they have new data.
+StreamControllers provide an easy abstraction for implementers of streams,
+but fundamentally the concept explained in the Subscription section is
+still valid, as the following figure shows.</p>
+
+  <p><img src="images/listen-with-controller.png" alt="Before listen, Stream points to StreamController (and vice versa); after listen, StreamController and StreamSubscription point to each other" /></p>
+
+  <p>Because controllers exist before a user listens to its stream,
+the event source can add data to the controller
+before the user starts listening to it.
+To avoid data loss, the controller buffers the data until
+a subscriber starts listening.</p>
+
+  <p><strong>This safeguard is one of the most abused features of a stream controller</strong>. 
+When instantiating a controller,
+you can register an <code>onListen</code> callback
+to be notified when a listener is present.
+Only after this callback is invoked
+should the event source add events to the controller.
+Similarly you should register an <code>onCancel</code> callback
+that shuts down the stream.
+The <code>onCancel</code> callback is invoked
+when the user cancels the subscription,
+or when the controller is shut down with <code>close()</code>.</p>
+
+  <p>Note that generating events only when the stream has a listener
+is not a strict rule, but a good guideline.
+Some perfectly valid use cases exist for adding data to a 
+controller before any subscribers are listening.
+Be aware, however, that StreamSubscription’s
+buffering approach is optimized for just a few events,
+and don’t abuse it.</p>
+
+  <p>Frequently, a good way to avoid data generation is to
+delay computations until a listener exists.
+For example, <code>File.openRead()</code> doesn’t touch the file system until
+a listener exists.
+A strange implication of this fact is that <code>File.openRead()</code> doesn’t throw
+if it’s invoked on a nonexistent file.
+Only when a user starts listening for the file contents does
+the stream open the file on the hard drive.
+If the file is created (through some other means)
+in the time before the listener subscribes,
+the stream works normally.
+A direct corollary is that calling <code>File.openRead()</code>
+doesn’t lock the file on the hard drive.</p>
+
+  <p>As a good guideline, assume that a stream is never listened to. 
+Exceptions to this rule are small, local code snippets,
+such as tests, where the subscription is guaranteed to happen.
+<strong>If a stream must be listened to (to avoid memory leaks)
+clearly state this fact in the comments of
+the function that creates the stream.</strong></p>
+
+  <h2 id="broadcast-streams">Broadcast streams</h2>
+
+  <p>As a counterpart to single-subscription streams,
+Dart also comes with broadcast streams.
+Their intended use is for event sources that
+produce output independently of listeners,
+and where missing some events is not a problem. 
+Typically all DOM event sources are broadcast streams.</p>
+
+  <p>We can extend our subscription diagram for broadcast streams after
+multiple listen calls:</p>
+
+  <p><img src="images/broadcast-listen.png" alt="Before listen, Stream points to Event Source; after listen, Event Source and multiple StreamSubscriptions point to each other" /></p>
+
+  <p>The StreamSubscription instances have, again,
+the responsibility to ensure that pause requests are respected.
+Since stream subscriptions generally don’t know of each other,
+the easiest solution is to buffer all incoming events at
+the subscription level.
+This can lead to memory leaks if the subscription is not 
+resumed or canceled.</p>
+
+  <p>Being able to listen multiple times to a stream has some nice implications.
+One of them is that <code>first</code>, <code>isEmpty</code>, and so on
+don’t make the stream unusable.
+In return, determining the life cycle of a stream is more difficult.
+Should the stream ever shut down?
+If yes, should it shut down after it lost all its subscriptions
+(making the stream multi-subscription only as long as
+it has at least one subscriber),
+or should it allow subscribers only as long as
+a specific, crucial data event hasn’t been emitted?
+All of these proposals are valid,
+so broadcast streams should document their closing behavior.
+Generally we assume that no documentation means that
+the stream has an infinite lifetime.</p>
+
+  <h3 id="creating-broadcast-streams">Creating broadcast streams</h3>
+
+  <p>The StreamController class comes with a factory constructor 
+<code>StreamController.broadcast</code> that has been designed for broadcast streams. 
+Contrary to single-subscription streams, it does not buffer events.
+It either sends events directly to subscribers or,
+if none is present, discards events. </p>
+
+  <aside class="alert alert-info">
+    <p><strong>Note:</strong>
+Without buffering, broadcast controllers seemingly have a
+simpler and thus faster implementation.
+However they need to deal with events that are 
+added to the controller
+while the previous event hasn’t been distributed yet. 
+The current broadcast implementation is therefore
+more complicated than the one for single-subscription streams.</p>
+  </aside>
+
+  <p>The StreamController.broadcast constructor also has two callbacks:
+onListen and onCancel.
+They are invoked whenever the controller switches
+from unsubscribed to subscribed and
+from subscribed to unsubscribed, respectively
+(including when the stream is closed from the event-source side).</p>
+
+  <p>A more dangerous way of creating a stream controller is to
+view a single-subscription controller through <code>asBroadcastStream()</code>.
+Invoking <code>asBroadcastStream</code> basically tells the single-subscription stream
+that the user wants to take over the lifetime management of the stream.
+In combination with cancelOnError subscribers,
+this can easily lead to single-stream subscriptions 
+that are never closed and thus leak memory or resources.</p>
+
+  <p>The following example demonstrates such a case:</p>
+
+  <!--- BEGIN(src/tests/site/articles/broadcast-streams/example1.dart) -->
+  <pre class="prettyprint lang-dart">
+import &#39;dart:io&#39;;
+import &#39;dart:async&#39;;
+
+main() {
+  ServerSocket.bind(&quot;localhost&quot;, 4999).then((socket) {
+    socket.asBroadcastStream()  // &lt;== asBroadcastStream.
+       .map((x) { throw &quot;oops, my mistake&quot;; })
+       .listen(print)
+       .asFuture()  // Automatically cancels on error.
+       .catchError((_) { print(&quot;caught error&quot;); });
+  });
+}
+</pre>
+  <!--- END(PENDING TEST FILE) -->
+
+  <p>In this example, the single-subscription stream <code>socket</code> is
+viewed as a broadcast stream.
+The <code>asBroadcastStream</code> does not shut down after
+its only listener cancels, and the socket remains open.
+This is a typical case of resource leakage. 
+If the <code>asBroadcastStream()</code> call was left out,
+the single-subscription stream would get notified that
+its subscriber has disappeared and would close the socket.</p>
+
+  <p>Remember: <code>asBroadcastStream</code> is dangerous.
+Use it only in rare circumstances.
+We have seen <code>asBroadcastStream</code> used in circumstances where 
+listener changes and StreamIterators are the better choices.
+See the next section for examples.</p>
+
+  <p>Alternatively, use the callbacks that can be given to <code>asBroadcastStream</code>.
+They allow managing subscription changes
+(similar to the StreamController.broadcast constructor)
+and provide means to cancel
+the subscription to the single-subscription stream.</p>
+
+  <h2 id="alternatives-to-asbroadcaststream">Alternatives to asBroadcastStream</h2>
+
+  <p>Commonly <code>asBroadcastStream</code> is (ab)used so that Stream getters and methods,
+such as <code>first</code> and <code>take</code>, can be invoked multiple times.
+As shown above this is a dangerous trade-off.
+This section shows some safer alternatives.</p>
+
+  <h3 id="listener-swapping">Listener swapping</h3>
+
+  <p>Stream subscriptions allow exchanging their listeners.
+Instead of calling <code>first</code> multiple times on the stream,
+you can often just exchange the listener callback
+on the subscription.
+For example:</p>
+
+  <!--- BEGIN(src/tests/site/articles/broadcast-streams/example2.dart) -->
+  <pre class="prettyprint lang-dart">
+var bstream = stream.asBroadcastStream();
+bstream.first.then((x) {
+  handleFirstMessage();
+  return bstream.first;
+}).then((x) {
+  handleSecondMessage();
+  bstream.listen(handleAllOtherMessages);
+});
+</pre>
+  <!--- END(PENDING TEST FILE) -->
+
+  <p>could be written as:</p>
+
+  <!--- BEGIN(src/tests/site/articles/broadcast-streams/example3.dart) -->
+  <pre class="prettyprint lang-dart">
+StreamSubscription subscription = stream.listen(null);
+subscription.onData((x) {
+  handleFirstMessage();
+  subscription.onData((x) {
+    handleSecondMessage();
+    subscription.onData(handleAllOtherMessages);
+  });
+});
+</pre>
+  <!--- END(PENDING TEST FILE) -->
+
+  <p>This introduces some nesting,
+but some abstractions
+(or using methods instead of anonymous closures)
+can easily get rid of them.
+A popular abstraction is, for example, a state machine.
+Another one is the StreamIterator class.</p>
+
+  <h3 id="streamiterator">StreamIterator</h3>
+
+  <p>Frequently, different events of an asynchronous stream
+are destined for different parts of a system.
+In such a case, a StreamIterator is often convenient.
+Events of StreamIterators are pulled one by one,
+and each part can pull the event it needs separately.
+The operation is still asynchronous, though:
+contrary to synchronous Iterators, moving to the next event can take time,
+and the <code>moveNext</code> function therefore returns a future.</p>
+
+  <!--- BEGIN(src/tests/site/articles/broadcast-streams/example4.dart) -->
+  <pre class="prettyprint lang-dart">
+Future moveNextAssert(iterator) {
+  var future = iterator.moveNext();
+  return future.then((hasNext) {
+    if (!hasNext) throw new StateError(&quot;missing element&quot;);
+    return iterator.current;
+  });
+}
+
+var lines = new File(...).openRead()
+    .transform(UTF8.decoder)
+    .transform(new LineSplitter());
+var iterator = new StreamIterator(lines);
+moveNextAssert(iterator)
+  .then((line) {
+    print(&quot;First line: $line&quot;);
+    return moveNextAssert(iterator);
+  })
+  .then((fileName) {  // Assume second line is a file.
+    return handleFile(fileName)  // Wait for it to finish.
+      .then((_) =&gt; moveNextAssert(iterator));
+  })
+  .then((line) {
+    print(&quot;Last line: $line&quot;);
+    return iterator.moveNext();
+  })
+  .then((hasNext) {
+    if (hasNext) throw &quot;More lines than expected&quot;;
+  });
+</pre>
+  <!--- END(PENDING TEST FILE) -->
+
+  <h2 id="conclusion">Conclusion</h2>
+
+  <p>Despite their similarities, single-subscription and broadcast streams
+have important differences.
+You need to understand these differences,
+so you can avoid
+resource leaks and unnecessary memory consumption.</p>
+
+  <p>Single-subscription streams are designed for use cases where
+events must not be lost,
+and/or where the stream must have a well-defined lifetime.
+Broadcast streams are tuned for event sources that are
+not necessarily controlled by the listeners and
+where some events can be lost or ignored.</p>
+
+  <p>Using <code>asBroadcastStream</code> on single-subscription streams
+can lead to resource leaks.
+Consider safer alternatives such as
+listener swapping and StreamIterators.</p>
+
+  <p>For more information, see the API documentation:</p>
+
+  <ul>
+    <li><a href="http://api.dartlang.org/dart_async/Stream.html">Stream</a></li>
+    <li><a href="http://api.dartlang.org/dart_async/StreamSubscription.html">StreamSubscription</a></li>
+    <li><a href="http://api.dartlang.org/dart_async/StreamIterator.html">StreamIterator</a></li>
+  </ul>
+
+  <p><em>Thanks to Lasse Reichstein Holst Nielsen, Anders Johnsen,
+and Kathy Walrath for their suggestions and help to improve this article.</em></p>
+
+</div>
+
+    	  </div> <!-- End of content from toc.html -->
+        </article>
+	  </div>
+
+	
+	<ul class="pager hidden-print">
+	  <li><a href="/articles/">More articles about Dart <i class="glyphicon glyphicon-chevron-up"></i></a></li>
+	 </ul>
+	 
+
+	</div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+
+
+
+
+</body>
+</html>
+

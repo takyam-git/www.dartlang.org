@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Building Single Page Apps using Polymer.dart | Polymer.dart | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Building Single Page Apps using Polymer.dart | Polymer.dart | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="The Polymer.dart approach to building single page applications">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+    <div class="container col-md-10 col-md-offset-1 sub-page">
+      <div class="has-permalinks">
+      <style>
+paper-button.blue {
+  background: #4285f4;
+  color: #fff;
+}
+paper-button.blue:hover {
+  background: #2a56c6;
+}
+</style>
+
+<div class="col-md-4">
+  <div class="bs-sidebar" data-spy="affix" data-offset-bottom="350" role="complementary">
+
+<ol class="toc nav bs-sidenav" id="markdown-toc">
+  <li><a href="#app-structure">App structure</a>    <ol>
+      <li><a href="#drawer">Drawer</a></li>
+      <li><a href="#toolbar">Toolbar</a></li>
+      <li><a href="#maincontent">Main content</a></li>
+    </ol>
+  </li>
+  <li><a href="#creating-views">Creating views</a>    <ol>
+      <li><a href="#databinding">Using data binding</a>        <ol>
+          <li><a href="#creating-top-level">Creating a top-level element</a></li>
+          <li><a href="#datamodel">Simplifying the markup using a data model</a></li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li><a href="#routing">Setting up URL routing</a></li>
+  <li><a href="#keyboard">Enabling keyboard navigation</a></li>
+  <li><a href="#extras">Finishing touches</a></li>
+  <li><a href="#completed-example">Completed example</a></li>
+</ol>
+
+  </div>
+</div>
+<div class="col-md-8">
+  <p><!-- Start of content -->
+</p>
+
+  <div>
+    <ol class="breadcrumb">
+
+  <li><a href="/polymer/">
+  Polymer.dart</a></li>
+
+
+  <li class="active">Building Single Page Apps using Polymer.dart</li>
+</ol>
+  </div>
+
+  <h1 id="building-single-page-apps-using-polymerdart">Building Single Page Apps using Polymer.dart</h1>
+
+  <p layout="" vertical="" center="" style="float:right;margin: 0 0 0 10px;">
+  <a href="http://dart-lang.github.io/polymer-spa-example/final/" target="_blank"><img src="images/screenshot.png" style="width:300px;" /></a>
+</p>
+
+  <p>This page shows you how to build a full-featured single page
+application that:</p>
+
+  <ul>
+    <li>Is built using Polymer’s
+<a href="https://www.polymer-project.org/docs/elements/core-elements.html">core elements</a></li>
+    <li>Practices responsive design</li>
+    <li>Transitions between views that use data-binding features</li>
+    <li>Features URL routing and deep linking</li>
+    <li>Is keyboard accessible</li>
+  </ul>
+
+  <aside class="alert alert-info">
+    <p><strong>Note:</strong>
+This page is based on the Polymer article
+<a href="https://www.polymer-project.org/articles/spa.html">Building single page apps using web components</a>.
+It shows how to implement the same single-page app (SPA) example using Dart.</p>
+
+    <p>The code samples used by this page reflect <strong>polymer.dart 0.16</strong>.
+For information about polymer.dart versions, see the
+<a href="/polymer/reference/release-notes/">Release Notes</a>.</p>
+
+    <p>This document assumes a working knowledge of Polymer.dart.
+For an introduction to Polymer.dart see the
+<a href="/docs/tutorials/polymer-intro">Define a Custom Element</a> tutorial or the
+<a href="/codelabs/polymer/">Polymer.dart Code Lab</a>.</p>
+  </aside>
+
+  <p layout="" horizontal="" center-center="">
+<a href="http://dart-lang.github.io/polymer-spa-example/final/" target="_blank">
+  <paper-button raised="" class="blue">
+    <core-icon icon="arrow-forward"></core-icon>Launch the demo
+  </paper-button>
+</a>
+</p>
+
+  <p>If you like to eat dessert first,
+you can find the files for the finished demo,
+<a href="https://github.com/dart-lang/polymer-spa-example">polymer-spa-example</a>,
+on GitHub. This page uses three branches from the GitHub repo,
+where each branch builds on the previous one:</p>
+
+  <ul>
+    <li><a href="https://github.com/dart-lang/polymer-spa-example/tree/example-1-styles">example-1-styles</a>:
+The basic example uses only one file, index.html.
+The <a href="#app-structure">App structure</a> section uses this example.</li>
+    <li><a href="https://github.com/dart-lang/polymer-spa-example/tree/example-2">example-2</a>:
+The intermediate example uses Dart and implements data binding. 
+The <a href="#creating-views">Creating views</a> section uses this example.</li>
+    <li><a href="https://github.com/dart-lang/polymer-spa-example">master</a>:
+The completed example adds URL routing and keyboard navigation.
+The <a href="#routing">Setting up URL Routing</a> section (and beyond) uses
+this example.</li>
+  </ul>
+
+  <h2 style="clear:both" id="app-structure">App structure</h2>
+
+  <p>Designing a layout is one of the first tasks when starting a project.
+As part of its
+<a href="https://www.polymer-project.org/docs/elements/core-elements.html">core element collection</a>,
+Polymer has several
+<a href="https://www.polymer-project.org/docs/elements/layout-elements.html">layout elements</a>
+for scaffolding an application’s structure.
+These components are useful by themselves,
+but for a quick start,
+we’re going to focus on the <code>&lt;core-scaffold&gt;</code> layout element.
+It starts you off with a responsive mobile layout by assembling several
+of the foundational elements.</p>
+
+  <p><code>&lt;core-scaffold&gt;</code>’s children are arranged by specifying attributes
+or using specific tags. For example, using a <code>&lt;nav&gt;</code> element creates
+the app drawer. Alternatively, you can use the <code>navigation</code> attribute on
+any element (for example, <code>&lt;core-header-panel navigation&gt;</code>).
+The <code>tool</code> attribute identifies the toolbar.
+All other children end up in the main content area.</p>
+
+  <p>The following HTML shows the overall structure:</p>
+
+  <pre class="prettyprint lang-html">
+&lt;body unresolved fullbleed&gt;
+  &lt;core-scaffold id=&quot;scaffold&quot;&gt;
+    &lt;nav&gt;...Left drawer...&lt;/nav&gt;
+    &lt;core-toolbar tool&gt;...Application...&lt;/core-toolbar&gt;
+    &lt;div&gt;...Main content...&lt;/div&gt;
+  &lt;/core-scaffold&gt;
+&lt;/body&gt;
+</pre>
+
+  <p>The following Dart imports add support for the core elements used;
+the export initializes the Polymer application.</p>
+
+  <pre class="prettyprint lang-dart">
+&lt;script type=&quot;application/dart&quot;&gt;
+  import &#39;package:core_elements/core_scaffold.dart&#39;;
+  import &#39;package:core_elements/core_toolbar.dart&#39;;
+  export &#39;package:polymer/init.dart&#39;;
+&lt;/script&gt;
+</pre>
+
+  <p>Let’s dive deeper into each of these sections.</p>
+
+  <h3 id="drawer">Drawer</h3>
+
+  <p>Markup that you put in the navigation element ends up in a slide-away app
+drawer.  For our purposes, we’ll stick with a heading
+(<code>&lt;core-toolbar&gt;</code>) and navigational links (<code>&lt;core-menu&gt;</code>):</p>
+
+  <pre class="prettyprint lang-html">
+&lt;nav&gt;
+  &lt;core-toolbar&gt;&lt;span&gt;Single Page Polymer&lt;/span&gt;&lt;/core-toolbar&gt;
+  &lt;core-menu selected=&quot;0&quot;&gt;
+    &lt;paper-item noink&gt;
+      &lt;core-icon icon=&quot;label-outline&quot;&gt;&lt;/core-icon&gt;
+      &lt;a href=&quot;#one&quot;&gt;Single&lt;/a&gt;
+    &lt;/paper-item&gt;
+    &lt;paper-item noink&gt;
+      &lt;core-icon icon=&quot;label-outline&quot;&gt;&lt;/core-icon&gt;
+      &lt;a href=&quot;#two&quot;&gt;page&lt;/a&gt;
+    &lt;/paper-item&gt;
+    ...
+  &lt;/core-menu&gt;
+&lt;/nav&gt;
+</pre>
+
+  <aside class="alert alert-info">
+    <p><strong>Note:</strong>
+Right now, <code>&lt;core-menu selected="0"&gt;</code> is hard coded to select the
+first item.  We’ll <a href="#databinding">make that dynamic</a> later.</p>
+  </aside>
+
+  <h3 id="toolbar">Toolbar</h3>
+
+  <p>A toolbar spans the top of the page and contains functional icon buttons.
+A perfect element for that type of behavior is <code>&lt;core-toolbar&gt;</code>:</p>
+
+  <pre class="prettyprint lang-html">
+&lt;!-- flex makes the bar span across the top of the main content area --&gt;
+&lt;core-toolbar tool flex&gt;
+  &lt;div flex&gt;{{selectedPage.name}}&lt;/div&gt;
+  &lt;core-icon-button icon=&quot;refresh&quot;&gt;&lt;/core-icon-button&gt;
+  &lt;core-icon-button icon=&quot;add&quot;&gt;&lt;/core-icon-button&gt;
+&lt;/core-toolbar&gt;
+</pre>
+
+  <h3 id="maincontent">Main content</h3>
+
+  <p>The last section is left for your content! It can be any type of element.
+A <code>&lt;div&gt;</code> is perfectly fine:</p>
+
+  <pre class="prettyprint lang-html">
+&lt;div layout horizontal center-center fit&gt;
+  &lt;!-- fill with pages --&gt;
+&lt;/div&gt;
+</pre>
+
+  <p>The <code>fit</code> attribute instructs the main area to take up the full width
+and height of its parent. The <code>layout horizontal center-center</code> attributes
+center that content horizontally and vertically using flexbox.</p>
+
+  <h2 id="creating-views">Creating views</h2>
+
+  <p>Multiple views (or pages) can be created with <code>&lt;core-pages&gt;</code> or
+<code>&lt;core-animated-pages&gt;</code>. Both elements are useful for displaying
+only one child at a time. The benefit of <code>&lt;core-animated-pages&gt;</code>
+is that it provides more defaults and slick transitions between pages.</p>
+
+  <p>The demo uses <code>&lt;core-animated-pages&gt;</code> with the <code>slide-from-right</code>
+transition. The first thing to do is import the element definition
+and the <code>slide-from-right</code> transition. </p>
+
+  <p>First import the necessary packages:</p>
+
+  <pre class="prettyprint lang-dart">
+&lt;script type=&quot;application/dart&quot;&gt;
+  import &#39;package:core_elements/core_animated_pages.dart&#39;;
+  import &#39;package:core_elements/core_animated_pages/transitions/slide_from_right.dart&#39;;
+  ...
+&lt;/script&gt;
+</pre>
+
+  <p>Then drop in your content. The following code is from
+<a href="https://github.com/dart-lang/polymer-spa-example/blob/example-1-styles/web/index.html">index.html</a>.</p>
+
+  <pre class="prettyprint lang-html">
+&lt;div layout horizontal center-center fit&gt;
+  &lt;<code class="nocode highlight">core-animated-pages</code> id=&quot;pages&quot; <code class="nocode highlight">selected=&quot;0&quot;</code>&gt;
+    &lt;section layout vertical center-center&gt;
+      &lt;div&gt;Single&lt;/div&gt;
+    &lt;/section&gt;
+    &lt;section layout vertical center-center&gt;
+      &lt;div&gt;page&lt;/div&gt;
+    &lt;/section&gt;
+    ...
+  &lt;<code class="nocode highlight">/core-animated-pages</code>&gt;
+&lt;/div&gt;
+</pre>
+
+  <aside class="alert alert-info">
+    <p><strong>Note:</strong>
+Right now, <code>&lt;core-animated-pages selected="0"&gt;</code> is hard coded to
+select the first page. We’ll <a href="#databinding">make that dynamic</a> later.</p>
+  </aside>
+
+  <p>By now you should have
+<a href="http://dart-lang.github.io/polymer-spa-example/example-1-without-styles/" target="_blank">a
+basic app</a>, but did you notice <strong>something subtle</strong>? Thanks to Polymer’s
+<a href="https://www.polymer-project.org/docs/polymer/layout-attrs.html">layout attributes</a>
+and the
+<a href="https://www.polymer-project.org/articles/styling-elements.html#default-styles">default styles</a>
+provided by each element, you’ve <strong>achieved a responsive app without
+writing any CSS</strong>! Of course, with a little inspiration from the
+<a href="http://www.google.com/design/spec/style/color.html">material design color palette</a>,
+writing
+<a href="https://github.com/dart-lang/polymer-spa-example/blob/master/lib/src/example_app.css">fewer than 10 CSS rules</a>
+turns the app into something beautiful.</p>
+
+  <p layout="" horizontal="" center-center="">
+<a href="http://dart-lang.github.io/polymer-spa-example/example-1-without-styles/" target="_blank">
+  <paper-button raised="" class="blue">
+    <core-icon icon="arrow-forward"></core-icon>Demo: without CSS
+  </paper-button>
+</a>
+<a href="http://dart-lang.github.io/polymer-spa-example/example-1-with-styles/" target="_blank">
+  <paper-button raised="" class="blue">
+    <core-icon icon="arrow-forward"></core-icon>Demo: with CSS
+  </paper-button>
+</a>
+</p>
+
+  <p layout="" horizontal="" center-center="">
+<a href="https://github.com/dart-lang/polymer-spa-example/blob/example-1-styles/web/index.html" target="_blank">
+
+  <paper-button raised="" class="blue">
+    <core-icon icon="arrow-forward"></core-icon>See the HTML 
+  </paper-button>
+</a>
+
+<a href="https://github.com/dart-lang/polymer-spa-example/blob/example-1-styles/web/index.css" target="_blank">
+  <paper-button raised="" class="blue">
+    <core-icon icon="arrow-forward"></core-icon>See the CSS
+  </paper-button>
+</a>
+</p>
+
+  <h3 id="databinding">Using data binding</h3>
+
+  <p>We have an app, but it’s nothing to write home about.
+It’s far from D.R.Y. (Don’t Repeat Yourself).
+Similar markup is repeated all over the place:</p>
+
+  <pre class="prettyprint lang-js">
+&lt;nav&gt;
+  &lt;core-toolbar&gt;&lt;span&gt;Single Page Polymer&lt;/span&gt;&lt;/core-toolbar&gt;
+  &lt;core-menu selected=&quot;0&quot;&gt;
+    &lt;paper-item noink&gt;
+      &lt;core-icon icon=&quot;label-outline&quot;&gt;&lt;/core-icon&gt;
+      &lt;a href=&quot;#one&quot;&gt;Single&lt;/a&gt;
+    &lt;/paper-item&gt;
+    &lt;paper-item noink&gt;
+      &lt;core-icon icon=&quot;label-outline&quot;&gt;&lt;/core-icon&gt;
+      &lt;a href=&quot;#two&quot;&gt;page&lt;/a&gt;
+    &lt;/paper-item&gt;
+    &lt;paper-item noink&gt;
+      &lt;core-icon icon=&quot;label-outline&quot;&gt;&lt;/core-icon&gt;
+      &lt;a href=&quot;#three&quot;&gt;app&lt;/a&gt;
+    ...
+  &lt;/core-menu&gt;
+&lt;/nav&gt;
+</pre>
+
+  <p>It’s also not dynamic.
+When a user selects a menu item, the view doesn’t update.
+Luckily, both of these problems are easily solved by
+creating a top-level element, as shown in the following section.</p>
+
+  <h4 id="creating-top-level">Creating a top-level element</h4>
+
+  <p>To implement data binding in your app,
+create a top-level element that extends <code>PolymerElement</code>.
+This element represents the entire app—only one top-level element
+exists at a time, and all other elements are children of this element.</p>
+
+  <p>Here’s how to implement the top-level element:</p>
+
+  <ol>
+<li>
+      <p>Move the contents of the original HTML body to an
+     <code>example_app.html</code> file, and then wrap it in a
+     <code>&lt;polymer-element&gt;</code> tag. The body of the new
+     <code>index.html</code> file should contain only the following code:</p>
+
+      <pre class="prettyprint lang-HTML">
+&lt;example-app&gt;&lt;/example-app&gt;
+
+&lt;script type=&quot;application/dart&quot;&gt;
+  import &#39;package:polymer_spa_example/example_app.dart&#39;;
+  export &#39;package:polymer/init.dart&#39;;
+&lt;/script&gt;
+</pre>
+    </li>
+
+<li>
+      <p>Rename <code>index.css</code> to <code>example_app.css</code>,
+     and reference it inside an HTML template.
+     We created an <code>example_app.html</code> file and referenced 
+     the CSS like this:</p>
+
+      <pre class="prettyprint lang-html">
+&lt;polymer-element name=&quot;example-app&quot;&gt;
+    &lt;template&gt;
+        &lt;link rel=&quot;stylesheet&quot; <code class="nocode highlight">href=&quot;example_app.css&quot;</code>&gt;
+        &lt;!-- Old index.html body here --&gt;
+    &lt;/template&gt;
+&lt;/polymer-element&gt;
+</pre>
+    </li>
+
+<li>
+      <p>Move the imports from the old inline script tag into
+     <code>example_app.dart</code>, and add an <code>@HtmlImport</code> annotation to
+     <code>example_app.html</code>.</p>
+
+      <pre class="prettyprint lang-html">
+// The HTML import containing our &lt;polymer-element&gt;
+<code class="nocode highlight">@HtmlImport(&#39;src/example_app.html&#39;)</code>
+library polymer_core_and_paper_examples.spa.app;
+
+// Moved all imports from the inline script tag into this file.
+import &#39;package:core_elements/core_animated_pages.dart&#39;;
+import &#39;package:core_elements/core_animated_pages/transitions/slide_from_right.dart&#39;;
+import &#39;package:core_elements/core_icon.dart&#39;;
+import &#39;package:core_elements/core_icon_button.dart&#39;;
+import &#39;package:core_elements/core_menu.dart&#39;;
+import &#39;package:core_elements/core_scaffold.dart&#39;;
+import &#39;package:core_elements/core_toolbar.dart&#39;;
+import &#39;package:core_elements/roboto.dart&#39;;
+import &#39;package:paper_elements/paper_item.dart&#39;;
+
+@CustomTag(&#39;example-app&#39;)
+class ExampleApp extends PolymerElement {
+  ExampleApp.created() : super.created();
+  ...
+}
+</pre>
+
+      <h4 id="datamodel">Simplifying the markup using a data model</h4>
+
+      <p>You can greatly <strong>reduce the amount of markup you write by generating
+it from a data model</strong>. The <code>Page</code> class defines our data model—we
+use it to create a list of 5 pages.</p>
+
+      <pre class="prettyprint lang-dart">
+class Page {
+  final String name;
+  final String path;
+  final bool isDefault;
+  const Page(this.name, this.path, {this.isDefault: false});
+
+  String toString() =&gt; &#39;$name&#39;;
+}
+
+@CustomTag(&#39;example-app&#39;)
+class ExampleApp extends PolymerElement {
+  ExampleApp.created() : super.created();
+
+  /// The list of pages in our app.
+  final List&lt;Page&gt; pages = const [
+    const Page(&#39;Single&#39;, &#39;one&#39;, isDefault: true),
+    const Page(&#39;page&#39;, &#39;two&#39;),
+    const Page(&#39;app&#39;, &#39;three&#39;),
+    const Page(&#39;using&#39;, &#39;four&#39;),
+    const Page(&#39;Polymer&#39;, &#39;five&#39;),
+  ];
+
+  /// The current route.
+  @observable var route;
+}
+</pre>
+
+      <p>The menu items and pages are rendered with a <code>&lt;template repeat&gt;</code> tag:</p>
+
+      <pre class="prettyprint lang-html">
+&lt;core-menu id=&quot;menu&quot; valueattr=&quot;path&quot; selected=&quot;{{route}}&quot;&gt;
+  <code class="nocode highlight">&lt;template repeat=&quot;{{page in pages}}&quot;&gt;</code>
+    &lt;paper-item path=&quot;{{page.path}}&quot; noink&gt;
+      &lt;core-icon
+        icon=&quot;label{{route != page.path ? &#39;-outline&#39; : &#39;&#39;}}&quot;&gt;
+      &lt;/core-icon&gt;
+      &lt;a _href=&quot;#{{page.path}}&quot;&gt;{{page.name}}&lt;/a&gt;
+    &lt;/paper-item&gt;
+  &lt;<code class="nocode highlight">/template</code>&gt;
+&lt;/core-menu&gt;
+
+&lt;core-animated-pages id=&quot;pages&quot; selected=&quot;{{route}}&quot;
+                     valueattr=&quot;path&quot;
+                     transitions=&quot;slide-from-right&quot;
+                     on-tap=&quot;{{cyclePages}}&quot;&gt;
+  <code class="nocode highlight">&lt;template repeat=&quot;{{page in pages}}&quot;&gt;</code>
+    &lt;section path=&quot;{{page.path}}&quot; layout vertical center-center&gt;
+      &lt;div&gt;{{page.name}}&lt;/div&gt;
+    &lt;/section&gt;
+  &lt;<code class="nocode highlight">/template</code>&gt;
+&lt;/core-animated-pages&gt;
+</pre>
+
+      <p>Notice that <code>&lt;core-animated-pages&gt;</code> and <code>&lt;core-menu&gt;</code>
+are <strong>linked by binding their <code>selected</code> attributes</strong> together.
+Now, when a user clicks on a nav item the view updates accordingly.
+The <code>valueattr="path"</code> attribute tells both elements to use the <code>path</code>
+attribute on each item as the selected value.</p>
+
+      <pre class="prettyprint lang-html">
+&lt;!-- data-bind the menu selection with the page selection --&gt;
+&lt;core-menu id=&quot;menu&quot; <code class="nocode highlight">valueattr=&quot;path&quot;</code> selected=&quot;{{route}}&quot;&gt;
+...
+&lt;core-animated-pages id=&quot;pages&quot; selected=&quot;{{route}}&quot;
+                     <code class="nocode highlight">valueattr=&quot;path&quot;</code>
+                     transitions=&quot;slide-from-right&quot;
+                     on-tap=&quot;{{cyclePages}}&quot;&gt;
+</pre>
+
+      <p layout="" horizontal="" center-center="">
+<a href="http://dart-lang.github.io/polymer-spa-example/example-2/" target="_blank">
+  <paper-button raised="" class="blue">
+    <core-icon icon="arrow-forward"></core-icon>Demo
+  </paper-button>
+</a>
+
+<a href="https://github.com/dart-lang/polymer-spa-example/blob/example-2/lib/src/example_app.html" target="_blank">
+  <paper-button raised="" class="blue">
+    <core-icon icon="arrow-forward"></core-icon>See the HTML
+  </paper-button>
+</a>
+
+<a href="https://github.com/dart-lang/polymer-spa-example/blob/example-2/lib/example_app.dart" target="_blank">
+  <paper-button raised="" class="blue">
+    <core-icon icon="arrow-forward"></core-icon>See the Dart code
+  </paper-button>
+</a>
+</p>
+
+      <h2 id="routing">Setting up URL routing</h2>
+
+      <p>URL routing support is provided by the
+<a href="https://pub.dartlang.org/packages/route_hierarchical">route_hierarchical</a>
+library. The router instance is created and configured by the
+<code>ExampleApp</code> class.
+When the user selects a new page, the path for that page is retrieved
+from the list of pages, and the routing package loads the content for
+that URL, as shown in the routing code:</p>
+
+      <pre class="prettyprint lang-dart">
+import &#39;package:route_hierarchical/client.dart&#39;;
+
+@CustomTag(&#39;example-app&#39;)
+class ExampleApp extends PolymerElement {
+
+  /// The path of the current [Page].
+  @observable var route;
+
+  /// The [Router] that controls the app.
+  final Router router = new Router(useFragment: true);
+
+  domReady() {
+    // Set up the routes for all the pages.
+    for (var page in pages) {
+      router.root.addRoute(
+          name: page.name, path: page.path,
+          defaultRoute: page.isDefault,
+          enter: enterRoute);
+    }
+    router.listen();
+  }
+
+  /// Updates [selectedPage] and the current route whenever
+  /// the route changes.
+  void routeChanged() {
+    if (route is! String) return;
+    if (route.isEmpty) {
+      selectedPage = pages.firstWhere((page) =&gt; page.isDefault);
+    } else {
+      selectedPage =
+        pages.firstWhere((page) =&gt; page.path == route);
+    }
+    router.go(selectedPage.name, {});
+  }
+
+  /// Updates [route] whenever we enter a new route.
+  void enterRoute(RouteEvent e) {
+    route = e.path;
+  }
+}
+</pre>
+
+      <h2 id="keyboard">Enabling keyboard navigation</h2>
+
+      <p>Keyboard support is not only important for accessibility
+but also makes your SPA feel more like an app.</p>
+
+      <p>The following code shows how keyboard support is implemented.
+<code>&lt;core-a11y-keys&gt;</code> is a drop-in component, provided
+by Polymer, for normalizing browser keyboard events.</p>
+
+      <p>HTML:</p>
+
+      <pre class="prettyprint lang-html">
+&lt;!-- Keyboard nav controller. --&gt;
+&lt;core-a11y-keys id=&quot;keys&quot; target=&quot;{{body}}&quot;
+                keys=&quot;up down left right space space+shift&quot;
+                on-keys-pressed=&quot;{{keyHandler}}&quot;&gt;&lt;/core-a11y-keys&gt;
+</pre>
+
+      <p>Dart:</p>
+
+      <pre class="prettyprint lang-dart">
+class ExampleApp extends PolymerElement {
+
+  CoreA11yKeys get keys =&gt; $[&#39;keys&#39;];
+
+  domReady() {
+
+    // Set up the number keys to send you to pages.
+    int i = 0;
+    var keysToAdd = pages.map((page) =&gt; ++i);
+    keys.keys = &#39;${keys.keys} ${keysToAdd.join(&#39; &#39;)}&#39;;
+  }
+}
+</pre>
+
+      <p>The <code>key</code> attribute contains a space-separated list of keys to listen for.
+When one of those combinations is pressed, <code>&lt;core-a11y-keys&gt;</code> fires a
+<code>keys-pressed</code> event and invokes your callback.</p>
+
+      <p>The handler for the keys-pressed event uses <code>CoreAnimatedPage</code>’s
+<code>selectNext()</code> and <code>selectPrevious()</code> methods to advance to the
+next page or go back to the previous page:</p>
+
+      <pre class="prettyprint lang-dart">
+CoreAnimatedPages get corePages =&gt; $[&#39;pages&#39;];
+
+/// Handler for key events.
+void keyHandler(e) {
+  var detail = new <code class="nocode highlight">JsObject</code>.fromBrowserObject(e)[&#39;detail&#39;];
+
+  switch (detail[&#39;key&#39;]) {
+    case &#39;left&#39;:
+    case &#39;up&#39;:
+      <code class="nocode highlight">corePages.selectPrevious(false);</code>
+      return;
+    case &#39;right&#39;:
+    case &#39;down&#39;:
+      <code class="nocode highlight">corePages.selectNext(false);</code>
+      return;
+    case &#39;space&#39;:
+      detail[&#39;shift&#39;] ? <code class="nocode highlight">corePages.selectPrevious(false)</code>
+                      : <code class="nocode highlight">corePages.selectNext(false);</code>
+      return;
+  }
+
+  // Try to parse as a number if we didn&#39;t recognize
+  // it as something else.
+  try {
+    var num = int.parse(detail[&#39;key&#39;]);
+    if (num &lt;= pages.length) {
+      route = pages[num - 1].path;
+    }
+    return;
+  } catch (e) {}
+}
+</pre>
+
+      <p>The <code>JsObject</code> class is part of the
+<a href="https://github.com/dart-lang/js-interop">js-interop</a> package.
+This package provides high-level interoperability between Dart and
+JavaScript.</p>
+
+      <h2 id="extras">Finishing touches</h2>
+
+      <p>Use these final tips to polish your app.</p>
+
+      <h3 class="no_toc" id="clicking-a-menu-item-closes-the-app-drawer">Clicking a menu item closes the app drawer</h3>
+
+      <p>HTML:</p>
+
+      <pre class="prettyprint lang-html">
+&lt;paper-item path=&quot;{{page.path}}&quot;
+                  <code class="nocode highlight">on-click=&quot;{{menuItemClicked}}&quot;</code> noink&gt;
+</pre>
+
+      <p>Dart:</p>
+
+      <pre class="prettyprint lang-dart">
+class ExampleApp extends PolymerElement {
+  ...
+
+  CoreScaffold get scaffold =&gt; $[&#39;scaffold&#39;];
+
+  void menuItemClicked(_) {
+    scaffold.closeDrawer();
+  }
+}
+</pre>
+
+      <h3 class="no_toc" id="tapping-on-a-page-cycles-through-the-pages">Tapping on a page cycles through the pages</h3>
+
+      <p>HTML:</p>
+
+      <pre class="prettyprint lang-html">
+&lt;core-animated-pages id=&quot;pages&quot; selected=&quot;{{route}}&quot;
+                     valueattr=&quot;path&quot;
+                     transitions=&quot;slide-from-right&quot;
+                     <code class="nocode highlight">on-tap=&quot;{{cyclePages}}&quot;</code>&gt;
+</pre>
+
+      <p>Dart:</p>
+
+      <pre class="prettyprint lang-dart">
+class ExampleApp extends PolymerElement {
+  ...
+
+  /// Cycles pages on click.
+  void cyclePages(Event e, detail, sender) {
+    var event = new JsObject.fromBrowserObject(e);
+    // Clicks on links should not cycle pages.
+    if (event[&#39;target&#39;].localName == &#39;a&#39;) {
+      return;
+    }
+
+    event[&#39;shiftKey&#39;] ?
+      <code class="nocode highlight">sender.selectPrevious(true) : sender.selectNext(true);</code>
+  }
+}
+</pre>
+
+      <h2 id="completed-example">Completed example</h2>
+
+      <p>And that’s it! You can see the final source code or play with
+the example at the following links.</p>
+
+      <p layout="" horizontal="" center-center="">
+<a href="http://dart-lang.github.io/polymer-spa-example/final/" target="_blank">
+  <paper-button raised="" class="blue">
+    <core-icon icon="arrow-forward"></core-icon>Launch the demo
+  </paper-button>
+</a>
+
+<a href="https://github.com/dart-lang/polymer-spa-example/" target="_blank">
+  <paper-button raised="" class="blue">
+    <core-icon icon="arrow-forward"></core-icon>See the Dart code
+  </paper-button>
+</a></p>
+
+      <p>If you find bugs in the code, or have a question, please 
+<a href="https://github.com/dart-lang/polymer-spa-example/issues">file an issue</a>.</p>
+
+    </li></ol>
+</div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+
+
+
+
+</body>
+</html>
+

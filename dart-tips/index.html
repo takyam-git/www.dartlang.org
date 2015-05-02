@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Dart Tips: Short Video Tutorials about Dart | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Dart Tips: Short Video Tutorials about Dart | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="Super short video intros to Dart language and library features.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+    <div class="container col-md-10 col-md-offset-1 sub-page">
+      <div>
+      
+<h1 id="dart-tips-short-video-tutorials">Dart Tips: Short Video Tutorials</h1>
+
+<p>Sometimes, you only have 5 minutes. Watch super short introductions to
+Dart language and library topics.</p>
+
+<div class="row" style="margin-bottom:1em">
+  <div class="col-md-2">
+    <a href="dart-tips-ep-1.html"><img style="margin-top:25px; box-shadow: 5px 5px 10px #CCC; width:100%" src="//i.ytimg.com/vi/g09UVKyYfIs/0.jpg" /></a>
+  </div>
+  <div class="col-md-10">
+    <h3><a href="dart-tips-ep-1.html">Ep. 1: A Simple Dart Script</a></h3>
+    
+    <p>Welcome to Dart Tips, the video series that teaches you all about Dart. In our first episode, we show you a simple Dart script and get you comfortable with reading Dart code.  </p>
+
+    <p>2012-12-12</p>
+  </div>
+</div>
+
+<div class="row" style="margin-bottom:1em">
+  <div class="col-md-2">
+    <a href="dart-tips-ep-2.html"><img style="margin-top:25px; box-shadow: 5px 5px 10px #CCC; width:100%" src="//i.ytimg.com/vi/CfRFixQTJWA/0.jpg" /></a>
+  </div>
+  <div class="col-md-10">
+    <h3><a href="dart-tips-ep-2.html">Ep. 2: Runtime Modes</a></h3>
+    
+    <p>Dart runs fast in production mode, and runs with type assertions in checked mode. Learn about Dart's two runtime modes and when to use each of them for maximum developer feedback and speed.  </p>
+
+    <p>2012-12-12</p>
+  </div>
+</div>
+
+<div class="row" style="margin-bottom:1em">
+  <div class="col-md-2">
+    <a href="dart-tips-ep-3.html"><img style="margin-top:25px; box-shadow: 5px 5px 10px #CCC; width:100%" src="//i.ytimg.com/vi/_td6qXi_GmA/0.jpg" /></a>
+  </div>
+  <div class="col-md-10">
+    <h3><a href="dart-tips-ep-3.html">Ep. 3: Variables</a></h3>
+    
+    <p>Dart is optionally typed, so variables can have type annotations. You can also mark variables as final to ensure they will point to one and only one object. Watch this episode to learn more about variables in Dart.  </p>
+
+    <p>2013-01-04</p>
+  </div>
+</div>
+
+<div class="row" style="margin-bottom:1em">
+  <div class="col-md-2">
+    <a href="dart-tips-ep-4.html"><img style="margin-top:25px; box-shadow: 5px 5px 10px #CCC; width:100%" src="//i.ytimg.com/vi/-LmD0hghGjo/0.jpg" /></a>
+  </div>
+  <div class="col-md-10">
+    <h3><a href="dart-tips-ep-4.html">Ep. 4: Strings, Numbers, Booleans, Oh My!</a></h3>
+    
+    <p>The trifecta of built-in types is strings, numbers, and booleans. Watch this episode to learn how to initialize them with literals, the difference between ints and doubles, and what is truthy and falsey in Dart.  </p>
+
+    <p>2013-01-04</p>
+  </div>
+</div>
+
+<div class="row" style="margin-bottom:1em">
+  <div class="col-md-2">
+    <a href="dart-tips-ep-5.html"><img style="margin-top:25px; box-shadow: 5px 5px 10px #CCC; width:100%" src="//i.ytimg.com/vi/fh1Cztaw9tI/0.jpg" /></a>
+  </div>
+  <div class="col-md-10">
+    <h3><a href="dart-tips-ep-5.html">Ep. 5: Collections In Dart</a></h3>
+    
+    <p>Dart comes with lists, queues, maps, and sets out of the box. Watch this episode to learn how to pick the right collection class for the job. Fun tip: did you know that the Dart language spec doesn't use the word 'array'?  </p>
+
+    <p>2013-01-24</p>
+  </div>
+</div>
+
+<div class="row" style="margin-bottom:1em">
+  <div class="col-md-2">
+    <a href="dart-tips-ep-6.html"><img style="margin-top:25px; box-shadow: 5px 5px 10px #CCC; width:100%" src="//i.ytimg.com/vi/DWtvhdJkiRE/0.jpg" /></a>
+  </div>
+  <div class="col-md-10">
+    <h3><a href="dart-tips-ep-6.html">Ep. 6: Functions Are Fun, Pt 1</a></h3>
+    
+    <p>Functions are the basic building blocks for any app. Dart supports top-level functions, optional parameters, default parameter values, and more. Watch this episode to learn about the basics of functions in Dart.  </p>
+
+    <p>2013-02-01</p>
+  </div>
+</div>
+
+<div class="row" style="margin-bottom:1em">
+  <div class="col-md-2">
+    <a href="dart-tips-ep-7.html"><img style="margin-top:25px; box-shadow: 5px 5px 10px #CCC; width:100%" src="//i.ytimg.com/vi/RJujzs2ts4s/0.jpg" /></a>
+  </div>
+  <div class="col-md-10">
+    <h3><a href="dart-tips-ep-7.html">Ep. 7: Functions Are Fun, Pt 2</a></h3>
+    
+    <p>Functions are true objects in Dart. Watch this video to learn more about nested functions, functions as arguments, and lexical closures. Get ready for more FUNctional tips in Dart!  </p>
+
+    <p>2013-02-08</p>
+  </div>
+</div>
+
+<div class="row" style="margin-bottom:1em">
+  <div class="col-md-2">
+    <a href="dart-tips-ep-8.html"><img style="margin-top:25px; box-shadow: 5px 5px 10px #CCC; width:100%" src="//i.ytimg.com/vi/XdqZdsdzD2A/0.jpg" /></a>
+  </div>
+  <div class="col-md-10">
+    <h3><a href="dart-tips-ep-8.html">Ep. 8: Control Flow Statements</a></h3>
+    
+    <p>Take back control and learn more about Dart's control flow statements. All the greatest hits are here, if, while, for, and switch. Plus, this video shows you a helpful tweak that should make web developers quite happy.  </p>
+
+    <p>2013-02-15</p>
+  </div>
+</div>
+
+<div class="row" style="margin-bottom:1em">
+  <div class="col-md-2">
+    <a href="dart-tips-ep-9.html"><img style="margin-top:25px; box-shadow: 5px 5px 10px #CCC; width:100%" src="//i.ytimg.com/vi/J94I70uqr6w/0.jpg" /></a>
+  </div>
+  <div class="col-md-10">
+    <h3><a href="dart-tips-ep-9.html">Ep. 9: Exceptions</a></h3>
+    
+    <p>Learn how to gracefully handle exceptions and errors in Dart. Don't get caught off guard the next time you run into an error, learn more about try, catch, finally, and throw.  </p>
+
+    <p>2013-03-07</p>
+  </div>
+</div>
+
+<div class="row" style="margin-bottom:1em">
+  <div class="col-md-2">
+    <a href="dart-tips-ep-10.html"><img style="margin-top:25px; box-shadow: 5px 5px 10px #CCC; width:100%" src="//i.ytimg.com/vi/2woBWdBQ4Ro/0.jpg" /></a>
+  </div>
+  <div class="col-md-10">
+    <h3><a href="dart-tips-ep-10.html">Ep. 10: Classes: Setters &amp; Getters</a></h3>
+    
+    <p>Dart is a pure class-based object oriented language. In this first video covering classes in Dart, learn more about how getters and setters help you scale Dart code from simple fields to richer encapsulation.  </p>
+
+    <p>2013-03-07</p>
+  </div>
+</div>
+
+<div class="row" style="margin-bottom:1em">
+  <div class="col-md-2">
+    <a href="dart-tips-ep-11.html"><img style="margin-top:25px; box-shadow: 5px 5px 10px #CCC; width:100%" src="//i.ytimg.com/vi/k2R_HwZzogQ/0.jpg" /></a>
+  </div>
+  <div class="col-md-10">
+    <h3><a href="dart-tips-ep-11.html">Ep. 11: Classes: Constructors</a></h3>
+    
+    <p>Dart offers many types of constructors, including an implementation of the factory pattern. Learn more about constructors, field initialization, named constructors, and factory constructors in Dart.  </p>
+
+    <p>2013-03-22</p>
+  </div>
+</div>
+
+<p><a href="http://marakana.com"><img src="imgs/marakana-logo.png" alt="Marakana Logo" /></a></p>
+
+<p>Our thanks go out to <a href="http://www.marakana.com">Marakana</a> for producing this
+video series.</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+
+
+
+
+</body>
+</html>
+

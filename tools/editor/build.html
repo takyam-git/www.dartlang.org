@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Build.dart and the Dart Editor Build System | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Build.dart and the Dart Editor Build System | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="Customize your Dart Editor build with build.dart.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+    <div class="container col-md-10 col-md-offset-1 sub-page">
+      <div>
+      <div class="col-md-4">
+  <div class="bs-sidebar" data-spy="affix" data-offset-bottom="350" role="complementary">
+
+<ol class="toc nav bs-sidenav" id="markdown-toc">
+  <li><a href="#flags">Flags</a></li>
+  <li><a href="#an-example">An example</a></li>
+  <li><a href="#the-machine-interface">The machine interface</a>    <ol>
+      <li><a href="#errors-warnings-and-informational-messages">Errors, warnings, and informational messages</a></li>
+      <li><a href="#file-mappings">File mappings</a></li>
+    </ol>
+  </li>
+  <li><a href="#another-example">Another example</a></li>
+</ol>
+
+  </div>
+</div>
+<div class="col-md-8">
+  <p><!-- Start of content -->
+</p>
+
+  <div>
+    <ol class="breadcrumb">
+
+  <li><a href="/tools/">
+  Dart Tools</a></li>
+
+  <li><a href="/tools/editor/">
+  Dart Editor</a></li>
+
+
+  <li class="active">Build.dart</li>
+</ol>
+  </div>
+
+  <h1 id="builddart-and-the-dart-editor-build-system">Build.dart and the Dart Editor Build System</h1>
+
+  <p>Build.dart is a simple build script convention
+that lets you add behavior to the Dart Editor build system.
+If the root of a Dart Editor project has a script named <code>build.dart</code>,
+that script is invoked during a build
+with information about the changed files.
+You can use build.dart to post-process changed files,
+generate other files,
+or drive other aspects of the build system.  </p>
+
+  <aside class="alert alert-info">
+    <p><strong>Note</strong>:
+For the most part, <code>build.dart</code> (which is used only by Dart Editor)
+has been replaced by pub transformers (which are used by <code>pub serve</code>,
+<code>pub run</code>, <code>pub build</code>, <em>and</em> Dart Editor).
+Pub uses transformers to transform a package’s assets before serving the app.</p>
+
+    <p>To learn how to use transformers, see
+<a href="/tools/pub/assets-and-transformers.html">Assets and Transformers</a>.
+To learn how to write transformers, see
+<a href="/tools/pub/transformers/">Writing a Pub Transformer</a>.</p>
+  </aside>
+
+  <h2 id="flags">Flags</h2>
+
+  <p>Dart Editor can invoke build.dart with
+any of the following command-line flags:</p>
+
+  <dl>
+    <dt><code>--changed=&lt;filename&gt;</code></dt>
+    <dd>Specifies a file that changed and should be rebuilt.
+One instance of the <code>--changed</code> flag is passed in for every changed file.</dd>
+    <dt><code>--removed=&lt;filename&gt;</code></dt>
+    <dd>Specifies a file that was removed and might affect the build.
+One instance of the <code>--removed</code> flag is passed in for every deleted file.</dd>
+    <dt><code>--clean</code></dt>
+    <dd>Requests that the build.dart script delete all generated files
+and reset any saved state.
+No other flags are passed in,
+except for <code>--machine</code>.</dd>
+    <dt><code>--full</code></dt>
+    <dd>Requests a full build;
+no incremental information is available.</dd>
+    <dt><code>--machine</code></dt>
+    <dd>Requests the build.dart script
+to print rich JSON error messages to the standard output (stdout),
+so that Dart Editor can interpret the messages.</dd>
+    <dt><code>--deploy</code></dt>
+    <dd>Creates a directory containing the files needed to deploy this
+application to a server.
+Used only for the <a href="/polymer/">Polymer.dart</a>
+linter and build tool.
+You can find more information in the polymer library file
+<a href="https://code.google.com/p/dart/source/browse/trunk/dart/pkg/polymer/lib/builder.dart">builder.dart</a>.</dd>
+  </dl>
+
+  <p>Currently, the editor always passes the <code>--machine</code> flag
+into the build script.
+The other flags include either a single <code>--full</code> flag,
+a single <code>--clean</code> flag,
+or one or more <code>--changed</code> and <code>--removed</code> flags.</p>
+
+  <p>If a build script returns a non-zero exit code,
+all the stdout and stderr produced by the script
+is displayed in the Console view.
+Zero exit codes do <em>not</em> display any output;
+build.dart is usually called many times a minute,
+and having the Console view always scrolling output
+would be distracting to the user.</p>
+
+  <p>Any changes that build.dart makes within a directory named <code>out</code>
+are <em>not</em> fed back into build.dart using <code>--changed</code> flags.
+Any other changed or created files <em>are</em> fed back.</p>
+
+  <h2 id="an-example">An example</h2>
+
+  <p>Here is a sample build.dart file
+that processes all .foo files into .foobar files.</p>
+
+  <pre class="prettyprint lang-dart">
+import &#39;dart:io&#39;;
+
+void main(List&lt;String&gt; args) {
+  for (String arg in args) {
+    if (arg.startsWith(&#39;--changed=&#39;)) {
+      String file = arg.substring(&#39;--changed=&#39;.length);
+
+      if (file.endsWith(&#39;.foo&#39;)) {
+        _processFile(file);
+      }
+    }
+  }
+}
+
+void _processFile(String file) {
+  String contents = new File(file).readAsStringSync();
+
+  if (contents != null) {
+    File outFile = new File(&#39;${file}bar&#39;);
+    outFile.writeAsStringSync(&#39;// processed from ${file}:\n${contents}&#39;);
+  }
+}
+
+</pre>
+
+  <h2 id="the-machine-interface">The machine interface</h2>
+
+  <p>Sometimes the build.dart script needs to
+get information back to the editor.
+The general mechanism for doing this is
+for the editor to scrape the stdout from build.dart,
+looking for well-formed messages.
+When Dart Editor starts build.dart,
+it passes in a <code>--machine</code> flag
+indicating that the editor is looking for
+well-formed messages.</p>
+
+  <p>Well-formed messages follow these rules:</p>
+
+  <ul>
+    <li>Each message is on its own line.</li>
+    <li>Each message is formed as a JSON RPC command/method call.</li>
+    <li>Each message is wrapped in square brackets.</li>
+  </ul>
+
+  <p>The next sections give examples of two kinds of messages:</p>
+
+  <ul>
+    <li>Errors, warnings, and informational messages</li>
+    <li>File mappings</li>
+  </ul>
+
+  <h3 id="errors-warnings-and-informational-messages">Errors, warnings, and informational messages</h3>
+
+  <p>As build.dart processes input files,
+it might call out some input files as badly formed,
+using <strong>error</strong> or <strong>warning</strong> messages.
+You can also generate informational (<strong>info</strong>) messages—for
+example, scraping TODO messages from user code.
+The editor uses these messages
+to create markers for the given file and line combination,
+and it displays the messages in the Problems view.</p>
+
+  <p>Here is an example of stdout
+that contains error and warning messages:</p>
+
+  <pre class="prettyprint lang-json">
+[{&quot;method&quot;:&quot;error&quot;,&quot;params&quot;:{&quot;file&quot;:&quot;foo.html&quot;,&quot;line&quot;:23,&quot;message&quot;:&quot;no ID found&quot;}}]
+
+[{&quot;method&quot;:&quot;warning&quot;,&quot;params&quot;:{&quot;file&quot;:&quot;foo.html&quot;,&quot;line&quot;:23,&quot;message&quot;:&quot;no ID found&quot;}}]
+
+[{&quot;method&quot;:&quot;error&quot;,&quot;params&quot;:{&quot;file&quot;:&quot;foo.html&quot;,&quot;line&quot;:23,&quot;message&quot;:&quot;no ID found&quot;,&quot;charStart&quot;:123,&quot;charEnd&quot;:130}}]
+</pre>
+
+  <p>The JSON RPC method name for these messages
+can be <strong>error</strong>, <strong>warning</strong>, or <strong>info</strong>.
+The parameters are:</p>
+
+  <dl>
+    <dt>file</dt>
+    <dd>An absolute or script relative file path</dd>
+    <dt>line</dt>
+    <dd>The line with the error or warning (1-based)</dd>
+    <dt>message</dt>
+    <dd>A message to display to the user</dd>
+    <dt>charStart</dt>
+    <dd>The starting position of the error from the beginning of the file (0-based)</dd>
+    <dt>charEnd</dt>
+    <dd>The ending position of the error from the beginning of the file (0-based)</dd>
+  </dl>
+
+  <p>The charStart and charEnd parameters are optional but encouraged.
+Including them allows the editor to provide
+nice tooltip help for the error or warning.</p>
+
+  <h3 id="file-mappings">File mappings</h3>
+
+  <p>When a build.dart script generates an output file from an input file,
+the script can tell the editor about this mapping.</p>
+
+  <aside class="alert alert-info">
+    <p><strong>Note:</strong>
+Not all mappings need to be reported to the editor—just
+the ones where the mapping is semantically important to the user
+and special editor behavior is desired.</p>
+  </aside>
+
+  <p>When you specify a file mapping,
+Dart Editor redirects HTTP requests
+and replaces launch attempts
+so that they use the mapped-to file.
+For example,
+if you map <code>index.html</code> to <code>out/index.html</code>,
+Dart Editor redirects HTTP requests from <code>index.html</code> to <code>out/index.html</code>,
+and it replaces the user’s attempt to launch <code>index.html</code>
+with a launch of <code>out/index.html</code>.</p>
+
+  <p>Here’s an example of mapping foo.html to out/foo.html:</p>
+
+  <pre class="prettyprint lang-json">
+[{&quot;method&quot;:&quot;mapping&quot;,&quot;params&quot;:{&quot;from&quot;:&quot;foo.html&quot;,&quot;to&quot;:&quot;out/foo.html&quot;}}]
+</pre>
+
+  <p>The JSON RPC method name for a file mapping is <strong>mapping</strong>.
+The parameters are:</p>
+
+  <dl>
+    <dt>from</dt>
+    <dd>An absolute or script relative file path</dd>
+    <dt>to</dt>
+    <dd>An absolute or script relative file path</dd>
+  </dl>
+
+  <h2 id="another-example">Another example</h2>
+
+  <p>You might find the following to be helpful:</p>
+
+  <ul>
+    <li><a href="https://code.google.com/p/dart/source/browse/trunk/dart/samples/build_dart/build.dart">dart/samples/build_dart/build.dart</a></li>
+  </ul>
+</div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Write Command-Line Apps | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Write Command-Line Apps | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="Basics for command-line apps">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+    <div class="container col-md-12 col-md-offset-0 sub-page">
+      <div class="has-permalinks">
+      
+<!-- NAVI LINKS -->
+<div id="tutorial-navigation-links-top" class="row">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-3">
+        <a href="/docs/tutorials/"><img src="/docs/tutorials/images/tute-home.png" width="36" /></a>
+      </div>
+      <div class="col-md-3">
+        <a href="/docs/tutorials/indexeddb/"><i class="glyphicon glyphicon-chevron-left"> </i> Use IndexedDB</a>
+      </div>
+      <div class="col-md-3">
+      </div>
+      <div class="col-md-3">
+        <a href="/docs/tutorials/httpserver" class="pull-right">Write HTTP Clients &amp; Servers <i class="glyphicon glyphicon-chevron-right"> </i> </a>
+      </div>
+    </div> 
+    <hr />
+  </div> 
+</div>
+
+<!-- PAGE -->
+<div class="row">
+
+  <!-- LEFT SIDE BAR -->
+  <div class="col-md-3">
+
+    <div id="tutorial-side">
+      <div id="whats-the-point">
+        <h4 id="page-highlights">What's the point?</h4>
+        
+<ul>
+  <li>Command-line applications need to do input and output.</li>
+  <li>The dart:io library provides I/O functionality.</li>
+  <li>The args package helps define and parse command-line arguments.</li>
+  <li>Most input and output requires the use of Streams.</li>
+  <li>Streams provide a series of asynchronous data events.</li>
+  <li>To handle asynchronous data, you need to use Futures.</li>
+</ul>
+
+
+      </div> <!-- whats-the-point -->
+
+      <div id="code-links">
+        <h4 id="examples">Examples</h4>
+
+        
+<p>This tutorial features the following example
+under the <strong>cmdline/bin</strong> directory:</p>
+
+<ul>
+  <li>dcat.dart</li>
+</ul>
+
+<p>
+Don't have the source code?
+<a href="https://github.com/dart-lang/dart-tutorials-samples/archive/master.zip">
+  Download it.
+</a>
+
+</p>
+
+
+        <a href="https://drone.io/github.com/dart-lang/dart-tutorials-samples/latest">
+           <img src="https://drone.io/github.com/dart-lang/dart-tutorials-samples/status.png" alt="Build Status" style="margin-top:10px;max-width:100%;" />
+        </a>
+      </div> <!-- end code-links -->
+
+      <div id="tutorial-toc">
+        <a href="https://github.com/dart-lang/dartlang.org/issues" target="_blank">
+        <i class="glyphicon glyphicon-comment"> </i>
+        Send feedback
+        </a>
+      </div> <!-- tutorial-toc -->
+      
+    </div> <!-- tutorial-side -->
+
+  </div> <!-- end div col-md-3 -->
+
+  <!-- CONTENT-->
+  <article class="col-md-9 tutorial-content">
+
+    
+<div class="tute-target-title">
+<h1>Write Command-Line Apps</h1>
+<h3>An introduction to standalone apps</h3>
+</div>
+
+<p>This tutorial teaches you how to build command-line apps
+and shows you a few small command-line applications.
+These programs use resources that most command-line applications need,
+including the standard output, error, and input streams,
+command-line arguments, files and directories, and more.</p>
+
+<ul>
+  <li><a href="#run-the-first-app">Running an app with the standalone Dart VM</a></li>
+  <li><a href="#dcat-code">Review briefly the dcat example code</a></li>
+  <li><a href="#cmd-line-args">Parsing command-line arguments</a></li>
+  <li><a href="#std-in-out-err">Reading and writing with stdin, stdout, and stderr</a></li>
+  <li><a href="#filesystementity">Getting info about a file</a></li>
+  <li><a href="#reading-a-file">Reading a file</a></li>
+  <li><a href="#writing-a-file">Writing a file</a></li>
+  <li><a href="#env-var">Getting environment information</a></li>
+  <li><a href="#exit-codes">Setting exit codes</a></li>
+  <li><a href="#summary">Summary</a></li>
+  <li><a href="#other-resources">Other resources</a></li>
+  <li><a href="#what-next">What next?</a></li>
+</ul>
+
+<h2 id="run-the-first-app">Running an app with the standalone Dart VM</h2>
+
+<p>To run a command-line app, you need the Dart VM (<code>dart</code>),
+which comes in the <a href="/tools/sdk/">Dart SDK download</a>.
+(If you downloaded Dart Editor, you already have the Dart VM.)</p>
+
+<p>If you installed the Dart download in a directory called <code>~/myDartDownload</code>,
+you can find <code>dart</code>
+in <code>~/myDartDownload/dart-sdk/bin</code>.</p>
+
+<div>
+
+  <p><img src="images/filestructure.png" alt="The path to the Dart VM" /></p>
+
+</div>
+
+<p>By putting this directory in your PATH
+you can refer to the <code>dart</code> command and other commands,
+such as the dart analyzer, by name.</p>
+
+<p>Let’s run a small program.</p>
+
+<ol>
+<li>
+    <p>Create a file called <code>helloworld.dart</code> that contains this code:</p>
+
+    <pre class="prettyprint lang-dart">
+void main() {
+  print(&#39;Hello, World!&#39;);
+}
+</pre>
+  </li>
+
+<li>
+    <p>In the directory that contains the file you just created,
+run the program with the command as shown by the highlighted text.</p>
+
+    <pre class="prettyprint lang-bash">
+% <code class="nocode highlight">dart helloworld.dart</code>
+Hello, World!
+%
+</pre>
+
+  </li>
+</ol>
+
+<p>The Dart VM supports many options.
+Use <code>dart --help</code> to see commonly used options.
+Use <code>dart --verbose</code> to see all options.</p>
+
+<h2 id="dcat-code">Review briefly the dcat example code</h2>
+
+<p>Take a quick look at the code for a small sample called <code>dcat</code>,
+which displays the contents of any files listed on the command line.
+This program uses various classes, functions, and properties
+available to command-line apps.
+This tutorial goes into detail about this app in the following sections.
+For a brief look now, hover over the highlighted code below for explanations.</p>
+
+<pre class="prettyprint lang-dart">
+import 'dart:async';
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:args/args.dart';
+
+const LINE_NUMBER = 'line-number';
+var NEWLINE = '\n';
+
+ArgResults argResults;
+
+void main(<a href="#" class="dart-popover" data-toggle="popover" title="Command-line arguments" data-html="true" data-trigger="hover focus" data-content="Command-line arguments are passed in by the system when the program starts.">List&lt;String&gt; arguments</a>) {
+  final parser = new ArgParser()
+      ..addFlag(LINE_NUMBER, negatable: false, abbr: 'n');
+
+  <a href="#" class="dart-popover" data-toggle="popover" title="Arguments parser" data-html="true" data-trigger="hover focus" data-content="The ArgParser class provides help with parsing command-line arguments.">argResults = parser.parse(arguments);</a>
+  List&lt;String&gt; paths = argResults.rest;
+
+  dcat(paths, argResults[LINE_NUMBER]);
+}
+
+Future dcat(List&lt;String&gt; paths, bool showLineNumbers) {
+  if (paths.isEmpty) {
+    // No files provided as arguments. Read from stdin and print each line.
+    return <a href="#" class="dart-popover" data-toggle="popover" title="Standard I/O streams" data-html="true" data-trigger="hover focus" data-content="This code reads from the standard input stream and pipes the data to the standard output stream.">stdin.pipe(stdout);</a>
+  } else {
+    return Future.forEach(paths, (path) {
+      int lineNumber = 1;
+      <a href="#" class="dart-popover" data-toggle="popover" title="Open a file for reading" data-html="true" data-trigger="hover focus" data-content="Use the File class to represent a file on the native file system.">Stream&lt;List&lt;int&gt;&gt; stream = new File(path).openRead();</a>
+      return stream
+          <a href="#" class="dart-popover" data-toggle="popover" title="Data converters" data-html="true" data-trigger="hover focus" data-content="Convert data as it becomes available on a stream.">.transform(UTF8.decoder)</a>
+          .transform(const LineSplitter())
+          <a href="#" class="dart-popover" data-toggle="popover" title="Get data from a stream" data-html="true" data-trigger="hover focus" data-content="Listen to a stream to get data when it becomes available.">.listen((line)</a> {
+            if (showLineNumbers) {
+              stdout.write('${lineNumber++} ');
+            }
+            stdout.writeln(line);
+          }).asFuture().catchError((_) =&gt; _handleError(path));
+    });
+  }
+}
+
+_handleError(String path) {
+  <a href="#" class="dart-popover" data-toggle="popover" title="Test a path" data-html="true" data-trigger="hover focus" data-content="You can get information about the file system on which your program is running.">FileSystemEntity.isDirectory(path)</a>.then((isDir) {
+    if (isDir) {
+      print('error: $path is a directory');
+    } else {
+      print('error: $path not found');
+    }
+  });
+  <a href="#" class="dart-popover" data-toggle="popover" title="Exit code" data-html="true" data-trigger="hover focus" data-content="A well-behaved command-line app sets an exit code to indicate whether the program was successful.">exitCode = 2;</a>
+}
+
+</pre>
+
+<h2 id="cmd-line-args">Parsing command-line arguments</h2>
+
+<p>The
+<a href="https://api.dartlang.org/args.html" target="_blank">args</a>
+package, a software bundle that contains a library of Dart code, provides
+parser support for transforming raw command-line arguments
+into a set of options, flags, and additional values.
+Import the library as follows:</p>
+
+<pre class="prettyprint lang-dart">
+import &#39;package:args/args.dart&#39;;
+</pre>
+
+<p>The args library contains two classes:</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Library</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://api.dartlang.org/args/ArgParser" target="_blank">ArgParser</a></td>
+      <td>A class that parses command-line arguments</td>
+    </tr>
+    <tr>
+      <td><a href="https://api.dartlang.org/args/ArgResults" target="_blank">ArgResults</a></td>
+      <td>The result of parsing command-line arguments using ArgParser.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Let’s take a look at the <code>dcat</code> sample,
+which uses ArgParser and ArgResults to parse and store its command-line arguments.</p>
+
+<ol>
+<li>
+    <p>Copy the sample file from the github repo:
+<a href="https://github.com/dart-lang/dart-tutorials-samples/blob/master/cmdline/bin/dcat.dart">dcat.dart</a>.</p>
+  </li>
+
+<li>
+    <p>Run the program from the command line as shown by the <strong>boldface</strong> text.</p>
+
+    <pre>
+$ <b>dart dcat.dart -n quotes.txt</b>
+1 Be yourself. Everyone else is taken. -Oscar Wilde
+2 Don't cry because it's over, smile because it happened. -Dr. Seuss
+3 You only live once, but if you do it right, once is enough. -Mae West
+...
+</pre>
+
+    <p>The program displays the contents of the source code file and
+preceeds each line with a line number.</p>
+  </li>
+
+</ol>
+
+<p>The following diagram shows how the <code>dcat</code> command line used above
+is parsed into the <code>ArgResults</code> object.</p>
+
+<p><img src="images/commandlineargs.png" alt="ArgsParser parses command-line arguments" /></p>
+
+<p>You can access flags and options by name,
+treating the ArgResults object like a Map.
+You can access other values with properties such as <code>rest</code>.</p>
+
+<p>Here’s the code from <code>dcat</code> that deals with command-line arguments:</p>
+
+<pre class="prettyprint lang-dart">
+...
+<a href="#" class="dart-popover" data-toggle="popover" title="Parsed arguments" data-html="true" data-trigger="hover focus" data-content="This object contains parsed options and flags.">ArgResults argResults;</a>
+
+void main(<a href="#" class="dart-popover" data-toggle="popover" title="Command-line arguments" data-html="true" data-trigger="hover focus" data-content="The system passes command-line arguments into the program in a list of strings.">List&lt;String&gt; arguments</a>) {
+  final parser = new ArgParser()
+      <a href="#" class="dart-popover" data-toggle="popover" title="Define a valid flag" data-html="true" data-trigger="hover focus" data-content="Add a flag definition to the command-line argument parser. This code defines the flag -n, which when used displays line numbers.">..addFlag(LINE_NUMBER, negatable: false, abbr: 'n')</a>;
+
+  argResults = parser.<a href="#" class="dart-popover" data-toggle="popover" title="Parse the arguments" data-html="true" data-trigger="hover focus" data-content="Parse the arguments that were passed into the main() function. The parser stops parsing if it finds an undefined option or flag.">parse(arguments)</a>;
+  List&lt;String&gt; paths = <a href="#" class="dart-popover" data-toggle="popover" title="Remaining arguments" data-html="true" data-trigger="hover focus" data-content="To get the arguments that remain after parsing all of the valid options and flags, use the rest property.">argResults.rest</a>;
+
+  dcat(paths, <a href="#" class="dart-popover" data-toggle="popover" title="Refer to options and flags by name" data-html="true" data-trigger="hover focus" data-content="You can refer to an option or flag by name treating the ArgResults object like a Map.">argResults[LINE_NUMBER])</a>;
+}
+...
+</pre>
+
+<p>The 
+<a href="https://api.dartlang.org/args.html" target="_blank">API docs</a>
+for the args library
+provide detailed information
+to help you use ArgsParser and ArgResults classes.</p>
+
+<h2 id="std-in-out-err">Reading and writing with stdin, stdout, and stderr</h2>
+
+<p>Like other languages,
+Dart has standard output, standard error, and standard input streams.
+The standard I/O streams are defined at the top level of the dart:io library,</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Stream</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://api.dartlang.org/dart_io.html#stdout" target="_blank">stdout</a></td>
+      <td>The standard output</td>
+    </tr>
+    <tr>
+      <td><a href="https://api.dartlang.org/dart_io.html#stderr" target="_blank">stderr</a></td>
+      <td>The standard error</td>
+    </tr>
+    <tr>
+      <td><a href="https://api.dartlang.org/dart_io.html#stdin" target="_blank">stdin</a></td>
+      <td>The standard input</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Import the dart:io library as follows:</p>
+
+<pre class="prettyprint lang-dart">
+import &#39;dart:io&#39;;
+</pre>
+
+<p>Only command-line applications, not web applications,
+can use the dart:io library.</p>
+
+<h3 id="stdout">stdout</h3>
+
+<p>Here’s the code from the <code>dcat</code> program that writes the line number to the <code>stdout</code>
+(if the -n flag is set) followed by the line from the file.</p>
+
+<pre class="prettyprint lang-dart">
+if (showLineNumbers) {
+  <code class="nocode highlight">stdout.write(&#39;${lineNumber++} &#39;);</code>
+}
+
+<code class="nocode highlight">stdout.writeln(line);</code>
+</pre>
+
+<p>The <code>write()</code> and <code>writeln()</code> methods take an object of any type,
+convert it to a string, and print it. The <code>writeln()</code> method
+also prints a newline character.
+<code>dcat</code> uses the <code>write()</code> method to print the line number so the
+line number and the text appear on the same line.</p>
+
+<p>You can also use the <code>writeAll()</code> method to print a list of objects,
+or use <code>addStream()</code> to asynchronously print all of the elements from a stream.</p>
+
+<p><code>stdout</code> provides more functionality than the <code>print()</code> function.
+For example, you can display the contents of a stream with <code>stdout</code>.
+However, you must use <code>print()</code> instead of <code>stdout</code>
+for programs that are converted to and run in JavaScript.</p>
+
+<h3 id="stderr">stderr</h3>
+
+<p>Use <code>stderr</code> to write error messages to the console.
+The standard error stream has the same methods as <code>stdout</code>,
+and you use it in the same way.
+Although both <code>stdout</code> and <code>stderr</code> print to the console,
+their output is separate
+and can be redirected or piped at the command line
+or programmatically to different destinations.</p>
+
+<p>This code from <code>dcat</code> prints an error message if the user
+tries to list a directory or if the file is not found.</p>
+
+<pre class="prettyprint lang-dart">
+if (isDir) {
+  <code class="nocode highlight">stderr.writeln(&#39;error: $path is a directory&#39;);</code>
+} else {
+  <code class="nocode highlight">stderr.writeln(&#39;error: $path not found&#39;);</code>
+}
+</pre>
+
+<h3 id="stdin">stdin</h3>
+
+<p>The standard input stream typically
+reads data synchronously from the keyboard,
+although it can read asynchronously
+and it can get input piped in from the standard
+output of another program.</p>
+
+<p>Here’s a small program that reads a single line from <code>stdin</code>:</p>
+
+<pre class="prettyprint lang-dart">
+import &#39;dart:io&#39;;
+
+void main() {
+  stdout.writeln(&#39;Type something&#39;);
+  String input = stdin.readLineSync();
+  stdout.writeln(&#39;You typed: $input&#39;);
+}
+</pre>
+
+<p>The <code>readLineSync()</code> method reads text from the standard input stream,
+blocking until the user types in text and presses return.
+This little program prints out the typed text.</p>
+
+<p>In the <code>dcat</code> program,
+if the user does not provide a filename on the command line,
+the program instead reads synchronously from stdin
+using the <code>pipe()</code> method.</p>
+
+<pre class="prettyprint lang-dart">
+return <code class="nocode highlight">stdin</code>.pipe(stdout);
+</pre>
+
+<p>In this case,
+the user types in lines of text and the program copies them to stdout.
+The user signals the end of input by typing &lt;ctl-d&gt;.</p>
+
+<pre class="prettyprint lang-bash">
+$ <code class="nocode highlight">dart dcat.dart</code>
+<code class="nocode highlight">The quick brown fox jumped over the lazy dog.</code>
+The quick brown fox jumped over the lazy dog.
+...
+</pre>
+
+<h2 id="filesystementity">Getting info about a file</h2>
+
+<p>The 
+<a href="https://api.dartlang.org/dart_io/FileSystemEntity.html" target="_blank">FileSystemEntity</a>
+class in the dart:io library provides
+properties and static methods that help you inspect and manipulate the file system.</p>
+
+<p>For example, if you have a path,
+you can determine whether the path is a file, a directory, a link, or not found
+by using the <code>type()</code> method from the <code>FileSystemEntity</code> class.
+Because the <code>type()</code> method accesses the file system,
+it performs the check asynchronously within a Future.</p>
+
+<p>The following code from
+the <code>dcat</code> example uses <code>FileSystemEntity</code> to determine if the path provided
+on the command line is a directory.
+The Future returns a boolean that indicates
+if the path is a directory or not.</p>
+
+<pre class="prettyprint lang-dart">
+<code class="nocode highlight">FileSystemEntity.isDirectory(path)</code>.then((isDir) {
+  if (isDir) {
+    stderr.writeln(&#39;error: $path is a directory&#39;);
+  } else {
+    stderr.writeln(&#39;error: $path not found&#39;);
+  }
+  exit(2);
+});
+</pre>
+
+<p>Other interesting methods in the <code>FileSystemEntity</code> class
+include <code>isFile()</code>, <code>exists()</code>, <code>stat()</code>, <code>delete()</code>,
+and <code>rename()</code>,
+all of which also use a Future to return a value.</p>
+
+<p>FileSystemEntity is the superclass for the File, Directory, and Link classes.</p>
+
+<h2 id="reading-a-file">Reading a file</h2>
+
+<p><code>dcat</code> opens each file listed on the command line
+with the <code>openRead()</code> method,
+which returns a stream.
+The <code>listen()</code> method registers a callback function that runs
+when data becomes available on the stream.
+The callback function writes that data to stdout.</p>
+
+<pre class="prettyprint lang-dart">
+return Future.forEach(paths, (path) {
+  int lineNumber = 1;
+  Stream&lt;List&lt;int&gt;&gt; stream = new File(path).openRead();
+
+  return stream
+      ...
+      <code class="nocode highlight">.listen((line) {
+        if (showLineNumbers) {
+          stdout.write(&#39;${lineNumber++} &#39;);
+        }
+        stdout.writeln(line);
+      })</code>.asFuture()
+          .catchError((_) =&gt; _handleError(path));
+});
+</pre>
+
+<p>The following shows the rest of the
+code, which uses two decoders that transform the data before the
+<code>listen()</code> callback function runs.
+The UTF8 decoder converts the data into Dart strings.
+<code>LineSplitter</code> splits the data at newlines.</p>
+
+<pre class="prettyprint lang-dart">
+return Future.forEach(paths, (path) {
+  int lineNumber = 1;
+  Stream&lt;List&lt;int&gt;&gt; stream = new File(path).openRead();
+
+  return stream
+      <code class="nocode highlight">.transform(UTF8.decoder)
+      .transform(const LineSplitter())</code>
+      .listen((line) {
+        if (showLineNumbers) {
+          stdout.write(&#39;${lineNumber++} &#39;);
+        }
+        stdout.writeln(line);
+      }).asFuture()
+          .catchError((_) =&gt; _handleError(path));
+});
+</pre>
+
+<p>The dart:convert library contains these and other data converters, including
+one for JSON.
+To use these converters you need to import the dart:convert library:</p>
+
+<pre class="prettyprint lang-dart">
+import &#39;dart:convert&#39;;
+</pre>
+
+<h2 id="writing-a-file">Writing a file</h2>
+
+<p>The easiest way to write text to a file is to
+create a 
+<a href="https://api.dartlang.org/dart_io/File.html" target="_blank">File</a>
+object and use the <code>writeAsString()</code> method:</p>
+
+<pre class="prettyprint lang-dart">
+File quotesFile = new File(&#39;quotes.txt&#39;);
+String stronger = &#39;That which does not kill us makes us stronger. -Nietzsche&#39;;
+
+quotesFile.writeAsString(stronger, mode: FileMode.APPEND)
+    .then((_) { print(&#39;Data written.&#39;); });
+</pre>
+
+<p>The <code>writeAsString()</code> method writes the data asynchronously via a Future.
+It opens the file before writing and closes the file when done.
+To append data to an existing file, you can use the optional
+parameter <code>mode</code> and set its value to <code>FileMode.APPEND</code>.
+Otherwise, the mode is <code>FileMode.WRITE</code> and the previous contents of the file,
+if any, are overwritten.</p>
+
+<p>If you want to write more data, you can open the file for writing.
+The <code>openWrite()</code> method returns an IOSink (the same type as stdin and stderr).
+You can continue to write to the file until done,
+at which time, you must close the file.
+The <code>close()</code> method is asynchronous and returns a Future.</p>
+
+<pre class="prettyprint lang-dart">
+IOSink quotes = new File(&#39;quotes.txt&#39;).openWrite(mode: FileMode.APPEND);
+
+quotes.write(&#39;A woman is like a tea bag; &#39;);
+quotes.write(&quot;you never know how strong it is until it&#39;s in hot water.&quot;);
+quotes.writeln(&quot; -Eleanor Roosevelt&quot;);
+quotes.close().then((_) { print(&#39;done&#39;); } );
+</pre>
+
+<h2 id="env-var">Getting environment information</h2>
+
+<p>Use the
+<a href="https://api.dartlang.org/dart_io/Platform.html" target="_blank">Platform</a>
+class
+to get information about the machine and OS that the program is running on.
+Note: Use the Platform class from the dart:io library,
+not from the dart:html library.</p>
+
+<p><code>Platform.environment</code> provides a copy of the environment
+variables in an immutable map. If you need a mutable map (modifiable copy) you 
+can use <code>Map.from(Platform.environment)</code>.</p>
+
+<pre class="prettyprint lang-dart">
+Map environmentVars = Platform.environment;
+
+print(&#39;PWD = ${environmentVars[&quot;PWD&quot;]}&#39;);
+print(&#39;LOGNAME = ${environmentVars[&quot;LOGNAME&quot;]}&#39;);
+print(&#39;PATH = ${environmentVars[&quot;PATH&quot;]}&#39;);
+</pre>
+
+<p><code>Platform</code> provides other useful properties that give
+information about the machine, OS, and currently
+running program.
+For example:</p>
+
+<ul>
+  <li><code>Platform.isMacOS()</code></li>
+  <li><code>Platform.numberOfProcessors</code></li>
+  <li><code>Platform.script.path</code></li>
+</ul>
+
+<h2 id="exit-codes">Setting exit codes</h2>
+
+<p>The dart:io library defines a top-level property,
+<code>exitCode</code>, that you can change to set the exit code for
+the current invocation of the Dart VM.
+An exit code is a number passed from
+the Dart program to the parent process
+to indicate the success, failure, or other state of the
+execution of the program.</p>
+
+<p>The <code>dcat</code> program sets the exit code
+in the <code>_handleError()</code> function to indicate that an error
+occcurred during execution.</p>
+
+<pre class="prettyprint lang-dart">
+_handleError(String path) {
+  FileSystemEntity.isDirectory(path).then((isDir) {
+    if (isDir) {
+      stderr.writeln(&#39;error: $path is a directory&#39;);
+    } else {
+      stderr.writeln(&#39;error: $path not found&#39;);
+    }
+    <code class="nocode highlight">exitCode = 2;</code>
+  });
+}
+</pre>
+
+<p>An exit code of 2 indicates that the program encountered an error.</p>
+
+<p>An alternative to using <code>exitCode</code> is to use the top-level <code>exit()</code> function,
+which sets the exit code and quits the program immediately.
+For example, the <code>_handleError()</code> function could call <code>exit(2)</code>
+instead of setting <code>exitCode</code> to 2,
+but <code>exit()</code> would quit the program
+and it might not process all of the files on the command line.</p>
+
+<aside class="alert alert-info">
+  <p>Generally speaking, you are better off using the <code>exitCode</code> property,
+which sets the exit code but allows the program to continue through to its
+natural completion.</p>
+</aside>
+
+<p>Although you can use any number for an exit code,
+by convention, the codes in the table below have the following meanings:</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>Success</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>Warnings</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Errors</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="summary">Summary</h2>
+
+<p>This tutorial described some basic API found in these classes from the dart:io library:</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>API</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://api.dartlang.org/dart_io/IOSink.html" target="_blank">IOSink</a></td>
+      <td>Helper class for objects that consume data from streams.</td>
+    </tr>
+    <tr>
+      <td><a href="https://api.dartlang.org/dart_io/File.html" target="_blank">File</a></td>
+      <td>Represents a file on the native file system</td>
+    </tr>
+    <tr>
+      <td><a href="https://api.dartlang.org/dart_io/Directory.html" target="_blank">Directory</a></td>
+      <td>Represents a directory on the native file system</td>
+    </tr>
+    <tr>
+      <td><a href="https://api.dartlang.org/dart_io/FileSystemEntity.html" target="_blank">FileSystemEntity</a></td>
+      <td>Superclass for File and Directory</td>
+    </tr>
+    <tr>
+      <td><a href="https://api.dartlang.org/dart_io/Platform.html" target="_blank">Platform</a></td>
+      <td>Provides information about the machine and operating system</td>
+    </tr>
+    <tr>
+      <td><a href="https://api.dartlang.org/dart_io.html#stdout" target="_blank">stdout</a></td>
+      <td>The standard output</td>
+    </tr>
+    <tr>
+      <td><a href="https://api.dartlang.org/dart_io.html#stderr" target="_blank">stderr</a></td>
+      <td>The standard error</td>
+    </tr>
+    <tr>
+      <td><a href="https://api.dartlang.org/dart_io.html#stdin" target="_blank">stdin</a></td>
+      <td>The standard input</td>
+    </tr>
+    <tr>
+      <td><a href="https://api.dartlang.org/dart_io.html#exitCode" target="_blank">exitCode</a></td>
+      <td>Sets the exit code</td>
+    </tr>
+    <tr>
+      <td><a href="https://api.dartlang.org/dart_io.html#exit" target="_blank">exit()</a></td>
+      <td>Sets the exit code and quits</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>In addition, this tutorial covers two classes that help with command-line arguments:</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Class</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://api.dartlang.org/args/ArgParser" target="_blank">ArgParser</a></td>
+      <td>A class that transforms a list of raw arguments and into a set of options, flags, and remaining values.</td>
+    </tr>
+    <tr>
+      <td><a href="https://api.dartlang.org/args/ArgResults" target="_blank">ArgResults</a></td>
+      <td>The result of parsing raw command line arguments using ArgParser.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="other-resources">Other resources</h2>
+
+<p>Check out the <a href="/docs/serverguide.html">Command-line Apps Programmers’ Guide</a>
+to find more resources related to writing command-line apps.</p>
+
+<p>See the
+<a href="/docs/dart-up-and-running/ch05.html">Dartiverse Search walkthrough</a>
+for an example of another kind of command-line app: an HTTP server.</p>
+
+<p>Refer to the API docs for <a href="https://api.dartlang.org/dart_io.html" target="_blank">dart:io</a>,
+<a href="https://api.dartlang.org/dart_async.html" target="_blank">dart:async</a>,
+<a href="https://api.dartlang.org/dart_convert.html" target="_blank">dart:convert</a>,
+and the
+<a href="https://api.dartlang.org/dart_args.html" target="_blank">args</a>
+package for more classes, functions, and properties.</p>
+
+<h2 id="what-next">What next?</h2>
+
+<ul>
+  <li>
+    <p>If you are interested in server-side programming,
+check out the next tutorial,
+<a href="/docs/tutorials/httpserver/">Write HTTP Clients &amp; Servers</a>.</p>
+  </li>
+  <li>
+    <p>The <a href="/docs/tutorials/forms/">Get Input from a Form</a> tutorial
+features a client-server.
+The code for the server, which uses CORS headers and handles
+POST requests, is explained in detail.</p>
+  </li>
+</ul>
+
+
+
+  </article>
+</div>
+
+<!-- NAVI LINKS -->
+<div id="tutorial-navigation-links-bottom" class="row">
+  <div class="col-md-12">
+    <hr />
+    <div class="row">
+      <div class="col-md-3">
+        <a href="/docs/tutorials/"><img src="/docs/tutorials/images/tute-home.png" width="36" /></a>
+      </div>
+      <div class="col-md-3">
+        <a href="/docs/tutorials/indexeddb/"><i class="glyphicon glyphicon-chevron-left"> </i> Use IndexedDB</a>
+      </div>
+      <div class="col-md-3">
+      </div>
+      <div class="col-md-3">
+        <a href="/docs/tutorials/httpserver" class="pull-right">Write HTTP Clients &amp; Servers <i class="glyphicon glyphicon-chevron-right"> </i> </a>
+      </div>
+    </div> 
+  </div> 
+</div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+
+
+
+
+</body>
+</html>
+

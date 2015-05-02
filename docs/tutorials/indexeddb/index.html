@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Use IndexedDB | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Use IndexedDB | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="Use IndexedDB for persistence and offline capability for your app.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+    <div class="container col-md-12 col-md-offset-0 sub-page">
+      <div class="has-permalinks">
+      
+<!-- NAVI LINKS -->
+<div id="tutorial-navigation-links-top" class="row">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-3">
+        <a href="/docs/tutorials/"><img src="/docs/tutorials/images/tute-home.png" width="36" /></a>
+      </div>
+      <div class="col-md-3">
+        <a href="/docs/tutorials/forms/"><i class="glyphicon glyphicon-chevron-left"> </i> Get Input from a Form</a>
+      </div>
+      <div class="col-md-3">
+      </div>
+      <div class="col-md-3">
+        <a href="/docs/tutorials/cmdline/" class="pull-right">Write Command-Line Apps <i class="glyphicon glyphicon-chevron-right"> </i> </a>
+      </div>
+    </div> 
+    <hr />
+  </div> 
+</div>
+
+<!-- PAGE -->
+<div class="row">
+
+  <!-- LEFT SIDE BAR -->
+  <div class="col-md-3">
+
+    <div id="tutorial-side">
+      <div id="whats-the-point">
+        <h4 id="page-highlights">What's the point?</h4>
+        
+<ul>
+  <li>IndexedDB is a new standard for client-side storage in modern web browsers.</li>
+  <li>Client-side storage provides persistence, offline capability,
+and other advantages.</li>
+  <li>IndexedDB lets you store significant amounts of structured data.</li>
+  <li>Indices allow for high performance searches.</li>
+  <li>The dart:indexed_db library provides the API for IndexedDB for Dart apps.</li>
+  <li>Save and retrieve data in IndexedDB using key-value pairs.</li>
+</ul>
+
+
+      </div> <!-- whats-the-point -->
+
+      <div id="code-links">
+        <h4 id="examples">Examples</h4>
+
+        
+<p> This tutorial features this example:</p>
+<ul>
+  <li>count_down</li>
+</ul>
+
+<p>
+Don't have the source code?
+<a href="https://github.com/dart-lang/dart-tutorials-samples/archive/master.zip">
+  Download it.
+</a>
+
+</p>
+
+
+        <a href="https://drone.io/github.com/dart-lang/dart-tutorials-samples/latest">
+           <img src="https://drone.io/github.com/dart-lang/dart-tutorials-samples/status.png" alt="Build Status" style="margin-top:10px;max-width:100%;" />
+        </a>
+      </div> <!-- end code-links -->
+
+      <div id="tutorial-toc">
+        <a href="https://github.com/dart-lang/dartlang.org/issues" target="_blank">
+        <i class="glyphicon glyphicon-comment"> </i>
+        Send feedback
+        </a>
+      </div> <!-- tutorial-toc -->
+      
+    </div> <!-- tutorial-side -->
+
+  </div> <!-- end div col-md-3 -->
+
+  <!-- CONTENT-->
+  <article class="col-md-9 tutorial-content">
+
+    
+<div class="tute-target-title">
+<h1>Use IndexedDB</h1>
+<h3>Save data on the client.</h3>
+</div>
+
+<p>Browsers provide several ways for your apps to store data on the client side.
+One storage option is IndexedDB—a
+web standard supported by
+<a href="http://caniuse.com/#feat=indexeddb" target="_blank">many browsers</a>.
+IndexedDB provides an implementation of an indexed database,
+in which each record is identified by a unique index or key,
+making data retrieval speedy.
+You can store large amounts of structured data,
+such as images, arrays, maps, and objects using IndexedDB.
+The standard does not specify size limits for
+individual data items or for the database itself,
+but browsers may impose storage limits.</p>
+
+<p>IndexedDB provides several advantages.
+Your apps</p>
+
+<ul>
+  <li>can have full functionality even if a network connection is not available.</li>
+  <li>can cache data and restore state between invocations.</li>
+  <li>won’t lose data if the network connection is interrupted.</li>
+  <li>generate less network traffic.</li>
+  <li>perform better because data management happens on the local computer
+rather than over the Internet.</li>
+</ul>
+
+<aside class="alert alert-info">
+  <p><strong>Note:</strong>
+Some browsers don’t yet support IndexedDB.
+Check
+<a href="http://caniuse.com/#feat=indexeddb" target="_blank">caniuse.com</a>
+for up-to-date information.
+Your app can check programmatically
+if the current platform supports IndexedDB
+and adjust accordingly.</p>
+</aside>
+
+<p>This tutorial shows you how to use
+<a href="https://api.dartlang.org/dart_indexed_db.html" target="_blank">dart:indexed_db</a>
+to store data to and retrieve data from the browser’s IndexedDB.</p>
+
+<ul>
+  <li><a href="#run-the-app">Run the app</a></li>
+  <li><a href="#the-basics">About the app: The basics</a></li>
+  <li><a href="#details-about-indexeddb">Details about IndexedDB</a></li>
+  <li><a href="#import-indexeddb">Importing the IndexedDB library</a></li>
+  <li><a href="#checking-indexeddb">Checking for IndexedDB support</a></li>
+  <li><a href="#opening-indexeddb">Creating and opening a database</a></li>
+  <li><a href="#creating-object-store">Creating an object store</a></li>
+  <li><a href="#using-a-name-index">Using a name index</a></li>
+  <li><a href="#using-transactions">Using transactions</a></li>
+  <li><a href="#adding-data">Adding data</a></li>
+  <li><a href="#removing-data">Removing data</a></li>
+  <li><a href="#clearing-all-data">Clearing all data</a></li>
+  <li><a href="#getting-data">Using a cursor to get all the records</a></li>
+  <li><a href="#other-resources">Other resources</a></li>
+  <li><a href="#what-next">What next?</a></li>
+</ul>
+
+<h2 id="run-the-app">Run the app</h2>
+
+<p>The <code>count_down</code> app below maintains a list of milestones
+and displays a countdown timer for each one.</p>
+
+<p><strong>Try it!</strong>
+Enter the name, date, and time of a milestone—your
+birthday, for example—and click the plus (<strong>+</strong>) button.
+The app starts a countdown timer
+and displays the amount of time remaining until the milestone occurs.
+The app updates the display every second.</p>
+
+<p>Close this browser window and reload
+<a href="index.html#run-the-app">this page</a>.
+The milestone you created still exists
+because the app stored it in an IndexedDB in the browser.</p>
+
+<p>Use the minus (<strong>-</strong>) button to the right of a milestone
+to delete that milestone.
+Use the <strong>Clear</strong> button to delete all the milestones.</p>
+
+<iframe class="running-app-frame" style="height:400px;width:600px;" src="examples/count_down/web/count_down.html">
+</iframe>
+
+<aside class="alert">
+<strong>Version Note:</strong> The count_down app
+is compatible with
+<a href="https://pub.dartlang.org/packages/polymer#versions">polymer.dart 0.15.1</a>.
+</aside>
+
+<h3 id="using-developer-tools-to-look-at-the-database">Using developer tools to look at the database</h3>
+
+<p>You can use the browser’s developer tools
+to explore the IndexedDB databases used by your apps.
+In Chrome, select <strong>View &gt; Developer &gt; Developer Tools</strong>,
+then choose <strong>Resources</strong> from the tabs along the top of the window.
+The following diagram shows the database
+for the count_down app with two milestones.</p>
+
+<p>The count_down app has a single database named <code>milestoneDB</code>.
+and within it, a single object store named <code>milestoneStore</code>.
+In this example, each record in the object store
+is a milestone stored as a Map.
+The index, called <code>name_index</code>, associates each milestone
+name with a database key allowing for searches by milestone name.</p>
+
+<p><img class="scale-img-max" src="images/devtools-intro.png" alt="Using Dev Tools to view indexed databases" /></p>
+
+<h2 id="the-basics">About the app: The basics</h2>
+
+<p>The count_down app uses a Model, View, View-model (MVVM) structure.</p>
+
+<p><img class="scale-img-max" src="images/MVVM-simple.png" alt="Structure of the count_down app" /></p>
+
+<ul>
+  <li>
+    <p>The <strong>View-model</strong>, in the center of the diagram,
+connects the View and the Model,
+using UI and Timer events
+to make changes to the Model.
+The MilestoneApp class is the primary class
+that implements the View-Model—it
+manages the timer,
+and implements the app’s business logic,
+which manages the information exchange between the Model and the View.</p>
+  </li>
+  <li>
+    <p>The <strong>View</strong> provides the user interface for the app.
+Two custom elements implement the View in the count_down app:
+CountDownComponent describes the user interface for the app as a whole,
+and MilestoneComponent describes the UI for an individual milestone.
+These components inform the View-model of UI events.</p>
+  </li>
+  <li>
+    <p>The <strong>Model</strong> contains and manages the data.
+The Model,
+implemented by the MilestoneStore class,
+manages a list of Milestone objects in memory
+and keeps an IndexedDB in sync with the list,
+saving the milestone data persistently.
+The View-model queries the Model upon initialization
+and uses Polymer data-bindings to keep the View in sync.
+Also, it uses Timer events to trigger updates in the Model.</p>
+  </li>
+</ul>
+
+<h3 id="the-libraries-used-by-the-countdown-app">The libraries used by the count_down app</h3>
+
+<p>The count_down app uses the following libraries:</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Library</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://api.dartlang.org/dart_indexed_db.html" target="_blank">dart:indexed_db</a></td>
+      <td>Save data into an indexed database for persistence and offline capability</td>
+    </tr>
+    <tr>
+      <td><a href="https://api.dartlang.org/dart_async.html" target="_blank">dart:async</a></td>
+      <td>Perform tasks asynchronously with Futures</td>
+    </tr>
+    <tr>
+      <td><a href="https://api.dartlang.org/dart_core.html" target="_blank">dart:core</a></td>
+      <td>Use DateTime and Duration to manage time-related tasks</td>
+    </tr>
+    <tr>
+      <td><a href="https://api.dartlang.org/polymer.html" target="_blank">Polymer</a></td>
+      <td>Create UIs with custom elements and data binding.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>This tutorial explains the Dart API for IndexedDB used by the count_down app.</p>
+
+<aside class="alert alert-info">
+  <p><strong>Note:</strong>
+This tutorial does not cover Futures or Polymer.
+For information about Futures,
+see
+<a href="/docs/tutorials/futures/">Use Future-Based APIs</a>
+and 
+<a href="/articles/futures-and-error-handling/">Futures and Error Handling</a>.
+For information about Polymer,
+refer to <a href="/docs/tutorials/polymer-intro/">Define a Custom Element</a>.</p>
+
+</aside>
+
+<h2 id="details-about-indexeddb">Details about IndexedDB</h2>
+
+<p>Some important facts you need to know about IndexedDB:</p>
+
+<ul>
+  <li>
+    <p>Each origin (host, protocol, and port) has its own set of databases.
+A unique name identifies each database within an origin.
+IndexedDB has a same-origin policy,
+which requires that the database and the app be from the same origin.</p>
+  </li>
+  <li>
+    <p>A <em>database</em> is identified by a name and version number.
+A database can have only one version at a time.</p>
+  </li>
+  <li>
+    <p>An <em>object store</em> is identified by a unique name.
+You can create an object store only during an “upgrade needed” event.
+You store data in records in an object store.
+A database can have multiple named object stores.</p>
+  </li>
+  <li>
+    <p>A <em>transaction</em> provides reliable data access
+and data modification on a database.
+All interactions with the data in the database must happen within
+the scope of a transaction.</p>
+  </li>
+  <li>
+    <p>A <em>record</em> is a key-value pair,
+where the key is a unique identifier for the corresponding data value.
+You can set your own keys
+or you can have the object store create them for you.</p>
+  </li>
+  <li>
+    <p>An <em>index</em> is a specialized object store that
+maps database keys to the key field in the saved object.
+Using an index is optional.</p>
+  </li>
+  <li>
+    <p>An app may use multiple databases,
+each of which may have multiple object stores,
+each of which may have multiple records.</p>
+  </li>
+</ul>
+
+<p><img class="scale-img-max" src="images/generaldatabase.png" alt="Indexed Databases in general" /></p>
+
+<h3 id="indexeddb-in-the-countdown-app">IndexedDB in the count_down app</h3>
+
+<p>The count_down app uses one database,
+named <code>milestoneDB</code> with the version number <code>1</code>,
+and one object store named <code>milestoneStore</code>.
+The app stores a milestone object as a Map;
+both the key and the value in the map are strings.
+The <code>milestoneName</code> field is the unique name of the milestone.
+The <code>happensOn</code> field is the date and time concatenated together.
+This is enough information to restore the state of the app
+when it’s restarted.</p>
+
+<p><img class="scale-img-max" src="images/database.png" alt="Indexed Database in the count_down app" /></p>
+
+<p>Because the milestone names are unique,
+the app could use them as primary keys in the database.
+Instead, for illustration purposes,
+the app uses a primary key generated by the database.
+You can see this in the Developer Tools window:</p>
+
+<p><img class="scale-img-max" src="images/devtools-details.png" alt="Milestone objects in the object store" /></p>
+
+<h2 id="import-indexeddb">Importing the IndexedDB library</h2>
+
+<p>To use the Dart IndexedDB API,
+your app must import the IndexedDB library
+provided with the Dart SDK:</p>
+
+<pre class="prettyprint lang-dart">
+import &#39;dart:indexed_db&#39; as idb;
+</pre>
+
+<h2 id="checking-indexeddb">Checking for IndexedDB support</h2>
+
+<p>Use the getter <code>supported</code> from the IdbFactory class
+to determine if IndexedDB is supported.</p>
+
+<pre class="prettyprint lang-dart">
+bool idbAvailable = IdbFactory.supported;
+</pre>
+
+<p>If <code>supported</code> is false, your app could</p>
+
+<ul>
+  <li>throw an exception and quit,</li>
+  <li>use an alternative API,
+such as <code>window.localStorage</code>,
+for client-side storage,</li>
+  <li>run anyway, sacrificing persistence and offline capability,</li>
+  <li>or, like the count_down app, disable the UI and display an error message.</li>
+</ul>
+
+<h2 id="opening-indexeddb">Creating and opening a database</h2>
+
+<p>Use <code>window.indexedDB.open()</code> to create a new database
+or to open an existing database.
+Whether it opens or creates the database
+depends on the name and version number you pass in as parameters.</p>
+
+<ul>
+  <li>
+    <p>To open a database,
+use the name and current version number
+of an existing database.</p>
+  </li>
+  <li>
+    <p>To update to a new version,
+call open() with the name of an existing database
+and a higher version number.
+(A database can have only one version at a time;
+it can’t exist in multiple versions at once.)
+This fires an upgrade needed event.</p>
+  </li>
+  <li>
+    <p>To create a completely new database,
+open it with a new, unique name.
+This also fires an upgrade needed event.</p>
+  </li>
+</ul>
+
+<p>Here’s the function in the MilestoneStore class
+that creates and opens the database:</p>
+
+<pre class="prettyprint lang-dart">
+Future open() {
+  return window.indexedDB.open(&#39;milestoneDB&#39;,
+      version: 1,
+      onUpgradeNeeded: _initializeDatabase)
+    .then(_loadFromDB);
+}
+</pre>
+
+<p>The first two parameters indicate the name and version of the
+database to open.
+The first time the count_down app runs from a particular origin,
+<code>milestoneDB</code> version 1 gets created and opened.
+The next time the app runs from that same origin,
+the database is simply opened.</p>
+
+<p>The third parameter, <code>onUpgradeNeeded</code>,
+provides a callback function that gets called
+when an upgrade needed event is fired,
+which happens when a new database is created
+or the version of a database is updated.
+This gives your app an opportunity to create an object store.
+The only place you can create an object store
+is within an upgrade needed event.
+You <em>must</em> have an object store to add records to the database.
+The next section covers how to create an object store.</p>
+
+<p>The following flow chart describes the logic of the
+<code>window.indexedDB.open()</code> function.</p>
+
+<p><img class="scale-img-max" src="images/flowchart.png" alt="Logic flow of database creation" /></p>
+
+<p>Because creating and opening a database can take time,
+<code>window.indexedDB.open()</code> returns a Future object,
+which runs asynchronously and returns a value, the database object,
+sometime in the future.
+The database object is returned to a callback function
+registered with <code>then()</code>.
+In this example,
+the callback function is called <code>_loadFromDB()</code>.
+Using cursors,
+<code>_loadFromDB()</code> reads all the milestones 
+from the database and populates the app.
+The details are covered in
+<a href="#getting-data">Using a cursor to get all the records</a>.</p>
+
+<h2 id="creating-object-store">Creating an object store</h2>
+
+<p>When a new database
+is created,
+it contains no object stores.
+The only place you can create an object store
+is during an upgrade needed event.
+Fortunately, an upgrade needed event is
+fired when a new database
+(or a new version of a database)
+is created.</p>
+
+<p>The callback function for upgrade needed events
+in the count_down app is <code>_initializeDatabase</code>.
+This function creates an object store and an index.</p>
+
+<pre class="prettyprint lang-dart">
+static const String MILESTONE_STORE = &#39;milestoneStore&#39;;
+static const String NAME_INDEX = &#39;name_index&#39;;
+
+void _initializeDatabase(idb.VersionChangeEvent e) {
+  idb.Database db = (e.target as idb.Request).result;
+  
+  var objectStore = db.createObjectStore(MILESTONE_STORE,
+      autoIncrement: true);
+  objectStore.createIndex(NAME_INDEX, &#39;milestoneName&#39;, unique: true);
+}
+</pre>
+
+<p>The code gets the database object from the
+VersionChangeEvent object that is passed into the
+callback function as an argument.</p>
+
+<p>Use the Database object’s <code>createObjectStore()</code> method
+to create a new object store with the given name.
+Each object store must have a unique name.
+The count_down app uses one object store called <code>milestoneStore</code>.
+All the countdown milestones are stored and retrieved
+in this object store.</p>
+
+<p>The code sets <code>autoIncrement</code> on the object store to true.
+When autoIncrement is true,
+the database generates unique, primary keys for you,
+which saves you the trouble of ensuring unique keys.</p>
+
+<p>Finally, <code>_initializeDatabase</code> creates a name index.</p>
+
+<h2 id="using-a-name-index">Using a name index</h2>
+
+<p>An index provides a lookup table.
+You can associate a primary key with a field in the stored objects.
+In the example,
+the index associates a primary key with the milestoneName field.</p>
+
+<p><img class="scale-img-max" src="images/devtools-with-index.png" alt="Use an index to allow for searches on a field in the objects" /></p>
+
+<p>Using an index provides two benefits:</p>
+
+<ul>
+  <li>you can search on a field in the object instead of by primary key,</li>
+  <li>and you can use the index to ensure the value of the field is unique.</li>
+</ul>
+
+<p>The count_down app creates an index at the same
+time it creates the object store:
+during an upgrade needed event,
+which is the
+the only time you can create an index.</p>
+
+<pre class="prettyprint lang-dart">
+static const String NAME_INDEX = &#39;name_index&#39;;
+...
+objectStore.createIndex(NAME_INDEX, &#39;milestoneName&#39;, unique: true);
+</pre>
+
+<p>The createIndex method takes three parameters:</p>
+
+<ul>
+  <li>the name of the index, here ‘name_index’. This must be unique.</li>
+  <li>the <em>key path</em>, which indicates the field in the stored object to index.</li>
+  <li>unique, a boolean value.
+When true, the index ensures that the milestone name is unique.
+In the count_down app,
+if you try to add a milestone with the same name as another,
+it is this index that causes the add() to fail.</li>
+</ul>
+
+<h2 id="using-transactions">Using transactions</h2>
+
+<p>All database operations must be performed
+within a
+<a href="https://api.dartlang.org/dart_indexedDb/Transaction.html" target="_blank">Transaction</a>.</p>
+
+<aside class="alert alert-info">
+  <p><strong>Important: About the life-cycle of a transaction</strong></p>
+
+  <p>The life-cycle of a transaction is as follows:</p>
+
+  <ul>
+    <li>Open a transaction.</li>
+    <li>Place requests on the transaction and register callbacks.</li>
+    <li>When there are no more requests
+and the last callback finishes, the transaction completes.</li>
+  </ul>
+
+  <p>So, a transaction remains alive until all requests are complete and
+the final callback completes.
+You can keep a transaction alive by placing a new request
+within a callback.</p>
+
+  <p><strong>A good rule:</strong>
+During the scope of a transaction,
+perform only database-related tasks
+to avoid crazy, mind-boggling bugs related to the DOM event loop.</p>
+
+</aside>
+
+<p>Get a transaction from the Database object,
+which in the count_app is named <code>_db</code>.</p>
+
+<pre class="prettyprint lang-dart">
+Transaction t = _db.transaction(storeNameOrNames, mode);
+</pre>
+
+<p>The first argument to <code>transaction()</code> is the scope of the transaction.
+In the count_down app,
+the scope is always <code>milestoneStore</code>,
+the lone object store in the database,
+but you could specify multiple object stores.
+For efficiency, you should specify only the stores you need.</p>
+
+<p>The second argument is a string that specifies the mode;
+it can be <code>readwrite</code> or <code>readonly</code> or <code>versionchange</code>.
+The count_down app uses only readwrite and readonly transactions.
+Use readwrite transactions only when necessary:
+readonly transactions are more efficient,
+and you can run multiple readonly transactions
+concurrently on overlapping scopes,
+but only one readwrite transaction.</p>
+
+<p>Once you’ve created a transaction,
+you can perform one or more operations
+using that transaction.
+Database operations can take time,
+so the work is performed off of the main UI thread and
+results are provided via Futures.
+Each operation uses a Future,
+which completes when the operation is complete.
+The transaction itself also uses a Future,
+which completes when all operations on the transaction complete.</p>
+
+<p>For example,
+you might use one transaction to add multiple records to an object store.
+Each add is a separate operation and uses a separate Future.
+The following diagram shows the logic flow
+of a program that adds three records to a database.
+When all three add operations complete,
+the transaction completes.</p>
+
+<p><img class="scale-img-max" src="images/futures-flow.png" alt="Transactions, object store operations, and futures" /></p>
+
+<p>Many database transactions follow this pattern:</p>
+
+<ul>
+  <li>Create a transaction on an object store.</li>
+  <li>Perform one or more operations using the transaction.</li>
+  <li>Use the operation’s callback function
+to perform a task when the operation completes successfully.
+For example, when adding records to a database,
+you can get the key generated by the database for the added record.</li>
+  <li>Use the <code>transaction.completed</code> callback function
+to perform a task when all the operations complete successfully.
+Generally, the count_down app uses this callback function
+to keep the list of milestones in sync with the database.</li>
+</ul>
+
+<h2 id="adding-data">Adding data</h2>
+
+<p>Here’s the code that adds a new record to the database.</p>
+
+<p><img class="scale-img-max" src="images/add-operation.png" alt="Adding a record to an IndexedDB" /></p>
+
+<p>The code creates a new Milestone object and converts it to a Map,
+then creates a new readwrite Transaction on the object store.</p>
+
+<p>Then, to add the milestone Map to the database,
+the code calls the <code>add()</code> method on the object store.
+and registers a callback function using <code>then()</code>.
+Because the object store was created with <code>autoIncrement: true</code>,
+adding a record to the database automatically creates
+a unique primary key for the new record.
+This key is returned as a parameter to the callback function.</p>
+
+<p>Finally, the code registers a callback function
+for the transaction.</p>
+
+<p>When the add operation has been performed on the database,
+the Future related to the add operation completes
+and the callback function is called with the auto-generated key.
+The count_down app saves the key in the Milestone object.</p>
+
+<p>At this point,
+it is important to note that although the add operation is complete,
+the transaction is not!
+Any changes made to the database by the operation
+are not available until the transaction completes.</p>
+
+<p>When all operations on a transaction complete,
+in this case, a single add operation,
+the transaction completes and its callback function is called.
+In the transaction’s callback function,
+the count_down app adds the milestone to the list in memory
+and the Future returns with the new milestone object
+(and the View-model starts the Timer).</p>
+
+<h2 id="removing-data">Removing data</h2>
+
+<p>Here’s the code that removes a key-value pair from a database.</p>
+
+<pre class="prettyprint lang-dart">
+var transaction = _db.transaction(MILESTONE_STORE, &#39;readwrite&#39;);
+transaction.objectStore(MILESTONE_STORE).delete(milestone.dbKey);
+
+return transaction.completed.then((_) {
+  milestone.dbKey = null;
+  milestones.remove(milestone);
+});
+</pre>
+
+<p>Again the code creates a readwrite transaction on a named object store.
+To delete a key-value pair, the mode must be readwrite.
+Use the <code>delete()</code> method on the object store to delete a key-value pair.
+Specify the key as the argument to delete().</p>
+
+<p>When the transaction completes successfully,
+the count_down app can safely remove the milestone from the list in
+local memory and stop the timer, if necessary.</p>
+
+<p>Note that this code
+does not specify a callback function for the delete operation,
+only for the transaction.
+The task it needs to do,
+namely to remove the milestone from the list in memory,
+can occur when the transaction completes.</p>
+
+<h2 id="clearing-all-data">Clearing all data</h2>
+
+<p>Use the <code>clear</code> method on the object store to remove all records.</p>
+
+<pre class="prettyprint lang-dart">
+var transaction = _db.transaction(MILESTONE_STORE, &#39;readwrite&#39;);
+transaction.objectStore(MILESTONE_STORE).clear();
+
+return transaction.completed.then((_) {
+  milestones.clear();
+});
+</pre>
+
+<h2 id="getting-data">Using a cursor to get all the records</h2>
+
+<p>When the app starts,
+if there’s an existing database
+and that database has milestones,
+the count_down app reads
+the records from the database
+and initializes the internal list of milestones
+from that information.</p>
+
+<p>The <code>_loadFromDB()</code> method
+gets called after the database has been successfully opened.
+It is within this method that the database is read.</p>
+
+<pre class="prettyprint lang-dart">
+Future _loadFromDB(Database db) {
+  _db = db;
+
+  var trans = db.transaction(MILESTONE_STORE, &#39;readonly&#39;);
+  var store = trans.objectStore(MILESTONE_STORE);
+
+  var cursors = store.openCursor(autoAdvance: true).asBroadcastStream();
+  cursors.listen((cursor) {
+    var milestone = new Milestone.fromRaw(cursor.key, cursor.value);
+    milestones.add(milestone);
+  });
+
+  return cursors.length.then((_) {
+    return milestones.length;
+  });
+}
+</pre>
+
+<p>Because getting records does not modify the database,
+this transaction is readonly.</p>
+
+<p>You can use a
+<a href="https://api.dartlang.org/dart_indexedDb/Cursor.html" target="_blank">Cursor</a>
+object to step through the records in the database one by one,
+creating a Milestone object for each.
+The object store uses a stream to fire an event for each record
+retrieved from the database.
+By listening on the stream,
+your code can be notified for each record read.
+The count_down app creates a corresponding Milestone object
+in the internal list in memory for each database record retrieved.</p>
+
+<p>Open a cursor on a transaction’s object store with <code>openCursor</code>.
+The cursor indicates the current position in the database.
+The count_down app opens a cursor and sets the optional
+<code>autoAdvance</code> argument to true.
+This means that after reading a record from the database
+and returning its value,
+the cursor advances automatically to the next record.
+If you don’t use autoAdvance, 
+your code has to use the <code>next()</code> method
+to advance the cursor to the next record.</p>
+
+<p><img class="scale-img-max" src="images/cursoradvance.png" alt="Advance the cursor with autoAdvance or cursor.next" /></p>
+
+<p>The openCursor() method returns a stream on which you can listen for events.
+Here,
+the stream is a broadcast stream,
+so the app can listen both for read events
+and for a final count of records retrieved.</p>
+
+<p>For each record retrieved from the database,
+an event fires and the callback function is called.
+A
+<a href="https://api.dartlang.org/dart_indexedDb/CursorWithValue.html" target="_blank">CursorWithValue</a>
+object, named <code>cursor</code> in this example,
+is passed to the callback function.
+Use <code>cursor.key</code> to get the key for the record just retrieved.
+Use <code>cursor.value</code> to get the value for that record.</p>
+
+<p>The _loadFromDB method returns a Future that returns the length of the stream.</p>
+
+<h2 id="other-resources">Other resources</h2>
+
+<ul>
+  <li> For information about Futures, see
+  <a href="/docs/tutorials/futures/">Use Future-Based APIs</a>
+  and 
+  <a href="/articles/futures-and-error-handling/">Futures and Error Handling</a>.
+  </li>
+  <li>
+  For information about Polymer,
+  read <a href="/docs/tutorials/polymer-intro">Define a Custom Element</a>.
+  </li>
+</ul>
+
+<h3 id="what-next">What next?</h3>
+
+<p>You’ve completed the tutorials!
+Check out the Dart
+<a href="/samples/">code samples</a> and <a href="/articles/">articles</a>.</p>
+
+
+
+  </article>
+</div>
+
+<!-- NAVI LINKS -->
+<div id="tutorial-navigation-links-bottom" class="row">
+  <div class="col-md-12">
+    <hr />
+    <div class="row">
+      <div class="col-md-3">
+        <a href="/docs/tutorials/"><img src="/docs/tutorials/images/tute-home.png" width="36" /></a>
+      </div>
+      <div class="col-md-3">
+        <a href="/docs/tutorials/forms/"><i class="glyphicon glyphicon-chevron-left"> </i> Get Input from a Form</a>
+      </div>
+      <div class="col-md-3">
+      </div>
+      <div class="col-md-3">
+        <a href="/docs/tutorials/cmdline/" class="pull-right">Write Command-Line Apps <i class="glyphicon glyphicon-chevron-right"> </i> </a>
+      </div>
+    </div> 
+  </div> 
+</div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+
+
+
+
+</body>
+</html>
+

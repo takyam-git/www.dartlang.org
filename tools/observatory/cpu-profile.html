@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>CPU Profile | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="CPU Profile | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="Observatory's CPU profile feature shows where the VM is spending its time so you can debug bottlenecks in your Dart code.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+    <div class="container col-md-10 col-md-offset-1 sub-page">
+      <div>
+      <div>
+<ol class="breadcrumb">
+
+  <li><a href="/tools/">
+  Dart Tools</a></li>
+
+  <li><a href="/tools/observatory/">
+  Observatory</a></li>
+
+
+  <li class="active">CPU Profile</li>
+</ol>
+</div>
+
+<h1 id="cpu-profile">CPU Profile</h1>
+
+<h4 class="no_toc" id="contents">Contents</h4>
+
+<ol id="markdown-toc">
+  <li><a href="#profile-tree">Profile tree</a></li>
+  <li><a href="#tags">Tags</a>    <ol>
+      <li><a href="#inspecting-vm-tags">Inspecting VM tags</a></li>
+      <li><a href="#defining-user-tags">Defining user tags</a></li>
+      <li><a href="#configuring-tag-display">Configuring tag display</a></li>
+    </ol>
+  </li>
+</ol>
+
+<p>The CPU profile tells you how the virtual
+machine (VM) has been spending its time when executing an isolate.
+The following video gives a brief overview of Observatory with some
+specific tips on how to use the profiling feature.</p>
+
+<iframe style="display:block;margin: 0 auto;" width="560" height="315" src="//www.youtube.com/embed/Ww8ISWzZGRE" frameborder="0" allowfullscreen=""></iframe>
+
+<p>Observatory achieves this by <em>sampling</em> the isolate at regular intervals.
+The sampled data is aggregated and displayed in a <em>profile tree</em>.</p>
+
+<p>When Observatory samples the isolate, it saves the sampled data
+in a ring buffer, called the <em>profile</em>, which can hold up to 
+two minutes worth of data.  Once the buffer becomes full,
+the oldest samples are replaced with new samples.</p>
+
+<aside class="alert alert-info">
+  <p><strong>For Windows users:</strong> Observatory’s <a href="cpu-profile.html">CPU Profile</a>
+screen is disabled by default.  Specify the
+<a href="/tools/dart-vm/#observatory"><code>--profile</code></a> option when
+you launch your app to enable it.</p>
+</aside>
+
+<p>At the top of the screen, a summary tells you a bit about
+how the data was gathered:</p>
+
+<p><img src="images/CPU-profile.png" alt="CPU profile screen" /></p>
+
+<dl>
+  <dt>Timestamp</dt>
+  <dd>The time of the last profile refresh.</dd>
+  <dt>Time span</dt>
+  <dd>The time span of the profile data. The profile buffer holds a maximum
+of two minutes worth of samples.</dd>
+  <dt>Sample count</dt>
+  <dd>The number of samples in the profile.</dd>
+  <dt>Sample rate</dt>
+  <dd>How often the isolate is sampled. The default, 1000 Hz, samples the
+isolate once per millisecond.</dd>
+  <dt>Sample depth</dt>
+  <dd>How many levels into the stack the sampling is performed.
+The default is 8 stack frames deep. Sampling begins at the
+currently executing (bottommost) stack frame and walks up
+the stack towards <code>main()</code>.</dd>
+  <dt>Display cutoff</dt>
+  <dd>If a function or tag uses less of the CPU than this percentage,
+it is not displayed.  The default display cutoff is 0.02%.</dd>
+  <dt>Tags</dt>
+  <dd>Tags represent the different activities of the VM.
+This pulldown lets you control whether you want to see tags and
+how they should be displayed. For more information, see
+<a href="#displaying-tags">Displaying tags</a>.</dd>
+</dl>
+
+<h2 id="profile-tree">Profile tree</h2>
+
+<p>Below the summary is a two-column profile tree that reflects the
+activity of the sampled isolate.
+Each row in the tree is a <a href="#vm-tags">VM tag</a>,
+a <a href="#user-tags">user tag</a>, or a function.
+A function can be native (C/C++) code or Dart code.
+You can expand or collapse nodes in the tree by clicking the
+arrows to the left.</p>
+
+<p>The percentages on the left are the percent of calls to the parent.
+These percentages add up to 100%.
+The percentages on the right show the percentage of samples where
+the tag was active, or where the function was executing.</p>
+
+<p>The following screenshot shows a sample profile tree with tags suppressed
+so that only function calls are displayed.</p>
+
+<p><img src="images/ProfileTree-NoTags.png" alt="A profile tree with tags suppressed" /></p>
+
+<aside class="alert alert-info">
+  <p><strong>Note:</strong> Hovering over a row in the tree brings up a tool tip with more
+information about that entry. In the previous screenshot,
+the tool tip gives information about the top entry.</p>
+</aside>
+
+<p>Because tags are hidden in the previous example,
+each row contains a function. The functions
+are listed in order from most CPU intensive to least.</p>
+
+<p>The first row in the previous screenshot shows the
+<code>ContactSolver.solveVelocityConstraints</code> function.
+The percentage on the left shows that
+this function used 4.12% of the root isolate’s CPU time.
+The percentage on the right shows that 4.12% of the samples
+were taken while this function was active.</p>
+
+<p>Note that, for the topmost level of the tree, the percentages
+in the right column are the same as those in the left column.</p>
+
+<p>Clicking an arrow to the left of a function expands the tree to show
+the calling function.
+You can drill down the stack 8 levels deep, or until you reach the
+<code>main</code> function, whichever comes first.</p>
+
+<p>While this information is useful, it is difficult to understand,
+at a high level, what is really going on.  To help make sense of this
+information, tags are used to impose structure on the data
+so that you can more easily interpret where the VM is spending its time.</p>
+
+<h2 id="tags">Tags</h2>
+
+<p>Tags help you understand the big picture of what is going on in
+an isolate.  Observatory supports two kinds of tags.
+<em>VM tags</em> are predefined by Observatory, and <em>user tags</em>
+are custom tags that you create in your Dart code.</p>
+
+<h3 id="inspecting-vm-tags">Inspecting VM tags</h3>
+
+<p>Observatory sorts the VM’s activities into categories of
+execution by labeling each activity with a predefined tag,
+called a VM tag. (These are also called Default tags.)</p>
+
+<p>The only VM tag that you have direct control over is the Script tag,
+which indicates time spent executing your Dart code.  The other categories
+(Native, Compile, VM, Runtime, GCNewSpace, and GCOldSpace)
+are activities performed by the VM on behalf of your application,
+such as compilation. For more information on these tags,
+see <a href="tags.html">User and VM Tags</a>.</p>
+
+<p>The following screenshot shows a sample profile tree with the
+Default node expanded to show the activity of the VM tags:</p>
+
+<p><img src="images/VM-tags.png" alt="A list of the default VM tags" /></p>
+
+<p>In the previous example, the VM has spent 35.26% of its time executing
+the application’s Dart code. If you expand the Script node,
+the functions labeled with the Script tag are displayed, 
+listed from most CPU intensive to least. The following screenshot
+shows the first 11 rows of the Script subtree:</p>
+
+<p><img src="images/VM-tags-detail.png" alt="A list of the default VM tags, with the Script tag expanded" /></p>
+
+<p>The first function listed under the script tag,
+<code>DynamicTree._query</code>, used 11.23% of the entire Script category.
+Also, 3.96% of all samples were made while this function was executing.</p>
+
+<p>This is a rather flat profile tree where the activity is distributed
+throughout the category—no single function is using most of the CPU time.</p>
+
+<h3 id="defining-user-tags">Defining user tags</h3>
+
+<p>You can also label your code with custom tags, called <em>user tags</em>, using the
+<a href="https://api.dartlang.org/apidocs/channels/be/dartdoc-viewer/dart-profiler">dart:profiler</a> library.</p>
+
+<p>For more information, see <a href="tags.html">User and VM tags</a>.</p>
+
+<h3 id="configuring-tag-display">Configuring tag display</h3>
+
+<p>Use the <strong>Tags</strong> pulldown to configure how the profile tree displays tags.</p>
+
+<dl>
+  <dt>User &gt; VM</dt>
+  <dd>The default. User-defined tags are displayed at
+the top level of the profile tree, as siblings to the Default category.
+The tags are listed from most CPU intensive to least.
+When you expand a top-level tag, you see the VM tags underneath.</dd>
+  <dt>User</dt>
+  <dd>The top level is the same as for <strong>User &gt; VM</strong>, with the user-defined
+tabs listed as siblings to the Default category. However, when you
+expand a top-level tag, you see function calls listed, from most CPU
+intensive to least.</dd>
+  <dt>VM &gt; User</dt>
+  <dd>Lists the VM tags only at the top level. When you expand a VM tag,
+you see both default and user tags listed.</dd>
+  <dt>VM</dt>
+  <dd>Lists the VM tags only. User tags are hidden.</dd>
+  <dt>None</dt>
+  <dd>Hides all tags. The functions are displayed from most CPU intensive to least.</dd>
+</dl>
+
+<aside class="alert alert-info">
+  Observatory was introduced in 1.4 and continues to evolve.
+  You get Observatory, for free, when you
+  <a href="/downloads/">download the Dart SDK or Dart Editor bundles</a>.
+
+  You can file issues and requests on
+  <a href="http://dartbug.com/new">dartbug.com</a>.
+</aside>
+
+<div>
+<hr />
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+<link href="observatory.css" rel="stylesheet" type="text/css">
+
+
+
+</body>
+</html>
+

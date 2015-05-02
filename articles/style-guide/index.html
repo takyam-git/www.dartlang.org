@@ -1,0 +1,1841 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Dart Style Guide | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Dart Style Guide | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="Follow these guidelines for consistent, readable Dart code.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  <link rel="author" href="/authors/bob-nystrom.html">
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+  	<div class="container sub-page">
+      <div class="row">
+        <article class="has-permalinks"><div class="col-md-4">
+  <div class="bs-sidebar" data-spy="affix" data-offset-bottom="350" role="complementary">
+
+<ol class="toc nav bs-sidenav" id="markdown-toc">
+  <li><a href="#how-to-read-this">How to read this</a></li>
+  <li><a href="#types">Types</a></li>
+  <li><a href="#members">Members</a></li>
+  <li><a href="#type-annotations">Type annotations</a></li>
+  <li><a href="#names">Names</a></li>
+  <li><a href="#comments">Comments</a></li>
+  <li><a href="#whitespace">Whitespace</a></li>
+  <li><a href="#strings">Strings</a></li>
+  <li><a href="#ordering">Ordering</a></li>
+</ol>
+
+  </div>
+</div>
+<div class="col-md-8">
+  <p><!-- Start of content -->
+</p>
+
+  <div>
+    <ol class="breadcrumb">
+
+  <li><a href="/articles/">
+  Articles</a></li>
+
+
+  <li class="active">Dart Style Guide</li>
+</ol>
+  </div>
+
+  <h1 id="dart-style-guide">Dart Style Guide</h1>
+
+  <p><em>Written by Bob Nystrom<br />
+<time pubdate="" date="2011-10-27">October 2011</time>
+(updated February 2015)
+</em></p>
+
+  <p>As we build up an ecosystem of Dart code, it’s helpful if it follows a
+consistent coding style. A dedicated style guide for Dart helps us make
+the most of the features unique to the language and makes it easier for
+users to collaborate.</p>
+
+  <p>There will likely be things you disagree with in this guide. As the author,
+there are things even I disagree with. I hope you’ll agree that consistency is
+often worth more than our individual preferences.</p>
+
+  <p>Keep in mind that, like many things with Dart, this guide isn’t carved in
+stone. As the language evolves and we gain experience with it, our style
+will evolve too. This means that there will inevitably be code that doesn’t
+follow the latest style, or places where the style guide is ambiguous or
+open-ended. Bear with us and it will get better as the language and its
+libraries settle down.</p>
+
+  <p>See also these related articles:</p>
+
+  <ul>
+    <li><a href="/articles/api-naming-guide/">API Naming Guide</a></li>
+    <li><a href="/articles/doc-comment-guidelines/">Guidelines for Doc Comments</a></li>
+  </ul>
+
+  <h2 id="how-to-read-this">How to read this</h2>
+
+  <p>This guide is broken into a few sections roughly working from the macro scale
+down to the micro. Sections contain a list of guidelines. Each guideline starts
+with one of these words:</p>
+
+  <ul>
+    <li>
+      <p><strong>DO</strong> guidelines describe practices that should always be followed. There
+will almost never be a valid reason to stray from them.</p>
+    </li>
+    <li>
+      <p><strong>DON’T</strong> guidelines are the converse: things that are almost never a good
+idea. You’ll note there are few of these here. Guidelines like these in
+other languages help to avoid the pitfalls that appear over time. Dart is
+new enough that we can just fix those pitfalls directly instead of putting
+up ropes around them.</p>
+    </li>
+    <li>
+      <p><strong>PREFER</strong> guidelines are practices that you <em>should</em> follow. However, there
+may be circumstances where it makes sense to do otherwise. Just make sure
+you understand the full implications of ignoring the guideline when you
+do.</p>
+    </li>
+    <li>
+      <p><strong>AVOID</strong> guidelines are the dual to “prefer”: stuff you shouldn’t do but
+where there may be good reasons to on rare occasions.</p>
+    </li>
+    <li>
+      <p><strong>CONSIDER</strong> guidelines are practices that you might or might not want to
+follow, depending on circumstances, precedents, and your own preference.</p>
+    </li>
+  </ul>
+
+  <p>This sounds like the style police are going to beat down your door if you don’t
+have your laces tied correctly. Things aren’t that bad. Most of the guidelines
+here are common sense and we’re all reasonable people. The goal, as always, is
+nice, readable and maintainable code.</p>
+
+  <h2 id="types">Types</h2>
+
+  <h4 class="no_toc" id="avoid-defining-a-one-member-abstract-class-when-a-simple-function-will-do">AVOID defining a one-member abstract class when a simple function will do.</h4>
+
+  <p>Unlike Java, Dart has first-class functions, closures, and a nice light syntax
+for using them. If all you need is something like a callback, just use a
+function. If you’re defining an class and it only has a single abstract member
+with a meaningless name like <code>call</code> or <code>invoke</code>, there is a good chance you
+just want a function.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+typedef bool Predicate(item);
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+abstract class Predicate {
+  bool test(item);
+}
+</pre>
+  </div>
+
+  <h2 id="members">Members</h2>
+
+  <h4 class="no_toc" id="prefer-using-constructors-instead-of-static-methods-to-create-instances">PREFER using constructors instead of static methods to create instances.</h4>
+
+  <p>Constructors are invoked using <code>new</code> or <code>const</code>, which communicates
+that the main purpose of the call is to return an instance of the class
+(or at least something that implements its interface).</p>
+
+  <p>You never <em>need</em> to use a static method to create an instance. Named
+constructors let you clarify how the object is created, and factory
+constructors let you construct instances of subclasses or
+subinterfaces when appropriate.</p>
+
+  <p>Still, some methods that technically create a new object don’t feel
+“constructor-like”. For example,
+<a href="https://api.dartlang.org/apidocs/channels/stable/dartdoc-viewer/dart-core.Uri#id_parse"><code>Uri.parse()</code></a>
+is a static method even though it creates a new URI from the given arguments.
+Likewise, classes implementing the
+<a href="http://en.wikipedia.org/wiki/Builder_pattern">Builder pattern</a>
+may read better using static methods.</p>
+
+  <p>But, in most cases, you should use a constructor even though it’s more verbose.
+When users want a new instance of your class, they expect a constructor to be
+the normal way to create one.</p>
+
+  <!-- /src/tests/site/articles/style-guide/prefer-constructors-good.dart -->
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+class Point {
+  num x, y;
+  Point(this.x, this.y);
+  Point.polar(num theta, num radius)
+      : x = radius * math.cos(theta),
+        y = radius * math.sin(theta);
+}
+</pre>
+  </div>
+
+  <!-- /src/tests/site/articles/style-guide/prefer-constructors-bad.dart -->
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+class Point {
+  num x, y;
+  Point(this.x, this.y);
+  static Point polar(num theta, num radius) {
+    return new Point(radius * math.cos(theta),
+        radius * math.sin(theta));
+  }
+}
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="do-use--instead-of--for-empty-constructor-bodies">DO use <code>;</code> instead of <code>{}</code> for empty constructor bodies.</h4>
+
+  <p>In Dart, a constructor with an empty body can be terminated with just a
+semicolon. This is <em>required</em> for const constructors. For consistency and
+brevity, other constructors should also do this.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+class Point {
+  int x, y;
+  Point(this.x, this.y);
+}
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+class Point {
+  int x, y;
+  Point(this.x, this.y) {}
+}
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="do-place-the-super-call-last-in-a-constructor-initialization-list">DO place the <code>super()</code> call last in a constructor initialization list.</h4>
+
+  <p>Field initializers are evaluated in the order that they appear in the
+constructor initialization list. If you place a <code>super()</code> call in the middle of
+an initializer list, the superclass’s initializers will be evaluated right then
+before evaluating the rest of the subclass’s initializers.</p>
+
+  <p>What it <em>doesn’t</em> mean is that the superclass’s <em>constructor body</em> will be
+executed then. That always happens after all initializers are run regardless of
+where <code>super()</code> appears. It’s vanishingly rare that the order of initializers
+matters, so the placement of <code>super()</code> in the list almost never matters either.</p>
+
+  <p>Getting in the habit of placing it last improves consistency, visually
+reinforces when the superclass’s constructor body is run, and may help
+performance.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+View(Style style, List children)
+    : _children = children,
+      super(style) {
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+View(Style style, List children)
+    : super(style),
+      _children = children {
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="do-use-a-getter-for-operations-that-conceptually-access-a-property">DO use a getter for operations that conceptually access a property.</h4>
+
+  <p>If the name of the method starts with <code>get</code> or is an adjective like <code>visible</code> or
+<code>empty</code> that’s a sign you’re better off using a getter. More specifically, you
+should use a getter instead of a method when it:</p>
+
+  <ul>
+    <li><strong>Does not take any arguments.</strong></li>
+    <li><strong>Returns a value.</strong></li>
+    <li><strong>Is side-effect free.</strong> Invoking a getter shouldn’t change any
+  externally-visible state (caching internally or lazy initialization is
+  OK). Invoking the same getter repeatedly should return the same value
+  unless the object is explicitly changed between calls.</li>
+    <li><strong>Is fast.</strong> Users expect expressions like <code>foo.bar</code> to execute quickly.</li>
+  </ul>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+num width = rect.width;
+bool allGone = collection.isEmpty;
+bool canSee = button.visible;
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+num amount = accounts.sum;           // may be slow to calculate
+DateTime timeStamp = DateTime.now;   // returns different value each call
+window.refresh;                      // doesn&#39;t return a value
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="do-use-a-setter-for-operations-that-conceptually-change-a-property">DO use a setter for operations that conceptually change a property.</h4>
+
+  <p>If the name of the method starts with <code>set</code> that’s often a sign that it could be
+a setter. More specifically, use a setter instead of a method when it:</p>
+
+  <ul>
+    <li><strong>Takes a single argument.</strong></li>
+    <li><strong>Changes some state in the object.</strong></li>
+    <li><strong>Has a corresponding getter.</strong> It feels weird for users to have state that
+  they can modify but not see. (The converse is not true; it’s fine to have
+  getters that don’t have setters.)</li>
+    <li><strong>Is idempotent.</strong> Calling the same setter twice with the same value
+  should do nothing the second time.</li>
+    <li><strong>Is fast.</strong> Users expect expressions like <code>foo.bar = value</code> to execute quickly.</li>
+  </ul>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+rect.width = 3;
+button.visible = false;
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="avoid-wrapping-fields-in-getters-and-setters-just-to-be-safe">AVOID wrapping fields in getters and setters just to be “safe”.</h4>
+
+  <p>In Java and C#, it’s common to hide all fields behind getters and setters (or
+properties in C#), even if the implementation just forwards to the field. That
+way, if you ever need to do more work in those members, you can without needing
+to touch the callsites. This is because calling a getter method is different
+than accessing a field in Java, and accessing a property isn’t binary-compatible
+with accessing a raw field in C#.</p>
+
+  <p>Dart doesn’t have this limitation. Fields and getters/setters are completely
+indistinguishable. You can expose a field in a class and later wrap it in a
+getter and setter without having to touch any code that uses that field.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+class Box {
+  var contents;
+}
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+class Box {
+  var _contents;
+  get contents =&gt; _contents;
+  set contents(value) {
+    _contents = value;
+  }
+}
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="prefer-using-a-public-final-field-instead-of-a-private-field-with-a-public-getter">PREFER using a public final field instead of a private field with a public getter.</h4>
+
+  <p>If you have a field that outside code should be able to see but not assign to
+(and you don’t need to set it outside of the constructor), a simple solution
+that works in many cases is to just mark it <code>final</code>.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+class Box {
+  final contents = [];
+}
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+class Box {
+  var _contents;
+  get contents =&gt; _contents;
+}
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="consider-using--to-define-members-whose-body-returns-the-result-of-a-single-expression">CONSIDER using <code>=&gt;</code> to define members whose body returns the result of a single expression.</h4>
+
+  <p>In addition to using <code>=&gt;</code> for function expressions, Dart also lets you define
+members with them. They are a good fit for simple members that just calculate
+and return a value.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+get width =&gt; right - left;
+bool ready(num time) =&gt; minTime == null || minTime &lt;= time;
+containsValue(String value) =&gt; getValues().contains(value);
+</pre>
+  </div>
+
+  <p>Members that don’t fit on one line can still use <code>=&gt;</code>, but if you find yourself
+cramming a single expression into several continued lines, it is probably
+cleaner to just use a curly body with an explicit <code>return</code>.</p>
+
+  <h4 class="no_toc" id="avoid-returning-this-from-methods-just-to-enable-a-fluent-interface">AVOID returning <code>this</code> from methods just to enable a fluent interface.</h4>
+  <!-- https://github.com/dart-lang/www.dartlang.org/issues/754 -->
+
+  <p>Method cascades are a better solution for chaining method calls.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+var buffer = new StringBuffer()
+  ..write(&quot;one&quot;)
+  ..write(&quot;two&quot;)
+  ..write(&quot;three&quot;);
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+var buffer = new StringBuffer();
+buffer
+  .write(&quot;one&quot;)
+  .write(&quot;two&quot;)
+  .write(&quot;three&quot;);
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="avoid-boolean-arguments-unless-their-meaning-is-completely-obvious">AVOID boolean arguments unless their meaning is completely obvious.</h4>
+
+  <p>Unlike other types, booleans are usually used in literal form. Things like
+numbers are usually wrapped in named constants, but we usually just pass around
+<code>true</code> and <code>false</code> directly. That can make callsites unreadable if it isn’t
+clear what the boolean represents:</p>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+new Task(true);
+new Task(false);
+new ListBox(false, true, true);
+</pre>
+  </div>
+
+  <p>Instead, consider using named arguments, named constructors, or named constants
+to clarify what the call is doing.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+new Task.oneShot();
+new Task.repeating();
+new ListBox(scroll: true, showScrollbars: true);
+</pre>
+  </div>
+
+  <h2 id="type-annotations">Type annotations</h2>
+
+  <h4 class="no_toc" id="prefer-providing-type-annotations-on-public-apis">PREFER providing type annotations on public APIs.</h4>
+
+  <p>Type annotations are important documentation for how a library should be used.
+Annotating the parameter and return types of public methods and functions helps
+users understand what the API expects and what it provides.</p>
+
+  <p>If, however, a public API does accept any type, or accepts a range of values
+that Dart’s type system cannot express, then it is acceptable to leave that
+untyped.</p>
+
+  <p>For code internal to a library (either private, or things like nested functions)
+annotate where you feel it helps, but don’t feel that you <em>must</em> provide them.</p>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+install(id, destPath) {
+  // ...
+}
+</pre>
+  </div>
+
+  <p>Here, it’s unclear what <code>id</code> is. A string? And what is <code>destPath</code>? A string or a
+<code>File</code> object? Is this method synchronous or asynchronous?</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+Future&lt;bool&gt; install(PackageId id, String destPath) {
+  // ...
+}
+</pre>
+  </div>
+
+  <p>With types, all of this is clarified.</p>
+
+  <h4 class="no_toc" id="prefer-using-var-without-a-type-annotation-for-local-variables">PREFER using <code>var</code> without a type annotation for local variables.</h4>
+
+  <p>Method bodies in modern code tend to be short, and the types of local variables
+are almost always trivially inferrable from the initializing expression, so
+explicit type annotations are usually just visual noise. Decent editors can
+infer the type of local variables and still provide the auto-complete and
+tooling support you expect.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+Map&lt;int, List&lt;Person&gt;&gt; groupByZip(Iterable&lt;Person&gt; people) {
+  var peopleByZip = new Map&lt;int, List&lt;Person&gt;&gt;();
+  for (var person in people) {
+    peopleByZip.putIfAbsent(person.zip, () =&gt; &lt;Person&gt;[]);
+    peopleByZip[person.zip].add(person);
+  }
+  return peopleByZip;
+}
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+Map&lt;int, List&lt;Person&gt;&gt; groupByZip(Iterable&lt;Person&gt; people) {
+  Map&lt;int, List&lt;Person&gt;&gt; peopleByZip = new Map&lt;int, List&lt;Person&gt;&gt;();
+  for (Person person in people) {
+    peopleByZip.putIfAbsent(person.zip, () =&gt; &lt;Person&gt;[]);
+    peopleByZip[person.zip].add(person);
+  }
+  return peopleByZip;
+}
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="prefer-using-double-or-int-instead-of-num-for-parameter-type-annotations-in-performance-sensitive-code">PREFER using <code>double</code> or <code>int</code> instead of <code>num</code> for parameter type annotations in performance sensitive code.</h4>
+
+  <p>Monomorphic call sites (sites that have stable input types)
+can be optimized much easier than polymorphic call sites (sites that have
+varying input types).</p>
+
+  <p>Whenever you can, pick a specific number type for your type annotation.
+Explicitly say <code>double</code> or <code>int</code> to help your users pass in a consistent type
+to your function or method.</p>
+
+  <p>When you use <code>num</code> as a type annotation, you are saying “either an int or
+a double can go here.” This ambiguity it harder for Dart runtimes to optimize.</p>
+
+  <h4 class="no_toc" id="dont-type-annotate-initializing-formals">DON’T type annotate initializing formals.</h4>
+
+  <p>If a constructor parameter is using <code>this.</code> to initialize a field, then the type
+of the parameter is understood to be the same type as the field.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+class Point {
+  int x, y;
+  Point(this.x, this.y);
+}
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+class Point {
+  int x, y;
+  Point(int this.x, int this.y);
+}
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="avoid-annotating-types-on-function-expressions">AVOID annotating types on function expressions.</h4>
+
+  <p>The value of function expressions is their brevity. If a function is complex
+enough that types are needed to understand it, it should probably be a function
+statement or a method. Conversely, if it is short enough to be an expression, it
+likely doesn’t need types.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+var names = people.map((person) =&gt; person.name);
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+var names = people.map((Person person) {
+  return person.name;
+});
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="avoid-annotating-with-dynamic-when-not-required">AVOID annotating with <code>dynamic</code> when not required.</h4>
+
+  <p>In most places in Dart, a type annotation can be omitted, in which case the type
+will automatically be <code>dynamic</code>. Thus, omitting the type annotation entirely is
+semantically equivalent but more terse.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+lookUpOrDefault(String name, Map map, defaultValue) {
+  var value = map[name];
+  if (value != null) return value;
+  return defaultValue;
+}
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+dynamic lookUpOrDefault(String name, Map map, dynamic defaultValue) {
+  var value = map[name];
+  if (value != null) return value;
+  return defaultValue;
+}
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="do-annotate-with-object-instead-of-dynamic-to-indicate-any-object-is-accepted">DO annotate with <code>Object</code> instead of <code>dynamic</code> to indicate any object is accepted.</h4>
+
+  <p>Some operations will work with any possible object. For example, a log method
+could take any object and call <code>toString()</code> on it. Two types in Dart permit all
+objects: <code>Object</code> and <code>dynamic</code>. However, they convey two different things.</p>
+
+  <p>The <code>Object</code> annotation says “I accept any object, and I only require it to have
+the methods that <code>Object</code> itself defines.”</p>
+
+  <p>A <code>dynamic</code> type annotation means that no type annotation can express what
+objects you actually allow. (Or maybe one could, but you don’t care to write
+it.)</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+// Accepts any object.
+void log(Object object) {
+  print(object.toString());
+}
+
+// Only accepts bool or String, which can&#39;t be expressed in a type annotation.
+bool convertToBool(arg) {
+  if (arg is bool) return arg;
+  if (arg is String) return arg == &#39;true&#39;;
+  throw new ArgumentError(&#39;Cannot convert $arg to a bool.&#39;);
+}
+</pre>
+  </div>
+
+  <h2 id="names">Names</h2>
+
+  <h4 class="no_toc" id="do-name-types-using-uppercamelcase">DO name types using <code>UpperCamelCase</code>.</h4>
+
+  <p>Classes, enums, and typedefs should capitalize the first letter of each word
+(including the first word), and use no separators.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+class SliderMenu {
+  // ...
+}
+
+class HttpRequest {
+  // ...
+}
+
+typedef num Adder(num x, num y);
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="prefer-using-lowercamelcase-for-constant-names">PREFER using <code>lowerCamelCase</code> for constant names.</h4>
+  <!-- https://github.com/dart-lang/www.dartlang.org/issues/831 -->
+
+  <p>In new code, use <code>lowerCamelCase</code> for constant variables, including enum
+values.</p>
+
+  <p>In existing code that uses <code>ALL_CAPS_WITH_UNDERSCORES</code> for constants, you
+may continue to use all caps to stay consistent.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+const pi = 3.14;
+const defaultTimeout = 1000;
+final urlScheme = new RegExp(&#39;^([a-z]+):&#39;);
+
+class Dice {
+  static final numberGenerator = new Random();
+}
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+const PI = 3.14;
+const kDefaultTimeout = 1000;
+final URL_SCHEME = new RegExp(&#39;^([a-z]+):&#39;);
+
+class Dice {
+  static final NUMBER_GENERATOR = new Random();
+}
+</pre>
+  </div>
+
+  <aside class="alert alert-info">
+    <p><strong>Change note:</strong> The rule used to be “DO name constants using
+<code>ALL_CAPS_WITH_UNDERSCORES</code>”. We changed the rule because sometimes constants
+migrate from final to const. Also, few wanted to require enums to be
+ALL_CAPS.</p>
+  </aside>
+
+  <h4 class="no_toc" id="do-name-other-identifiers-using-lowercamelcase">DO name other identifiers using <code>lowerCamelCase</code>.</h4>
+
+  <p>Class members, top-level definitions, variables, parameters, and named
+parameters should capitalize the first letter of each word <em>except</em> the first
+word, and use no separators.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+var item;
+
+HttpRequest httpRequest;
+
+align(clearItems) {
+  // ...
+}
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="do-use-uppercamelcase-names-for-classes-intended-to-be-used-in-metadata-annotations">DO use <code>UpperCamelCase</code> names for classes intended to be used in metadata annotations.</h4>
+  <!-- https://github.com/dart-lang/www.dartlang.org/issues/707 -->
+
+  <p>If the annotation takes no parameters, you might want to create a
+<code>lowerCamelCase</code> constant for it.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+@Foo(anArg)
+class A { ... }
+
+@Foo()
+class B { ... }
+
+@foo
+class C { ... }
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="do-name-libraries-and-source-files-using-lowercasewithunderscores">DO name libraries and source files using <code>lowercase_with_underscores</code>.</h4>
+
+  <p>Some file systems are not case-sensitive, so many projects require filenames to
+be all lowercase. Using a separate character allows names to still be readable
+in that form. Using underscores as the separator ensures that the name is still
+a valid Dart identifier, which may be helpful if the language later supports
+symbolic imports.</p>
+
+  <div class="good">
+    <p>Good:</p>
+
+    <ul>
+      <li><code>slider_menu.dart</code></li>
+      <li><code>file_system.dart</code></li>
+      <li><code>library peg_parser;</code></li>
+    </ul>
+  </div>
+
+  <div class="bad">
+    <p>Bad:</p>
+
+    <ul>
+      <li><code>SliderMenu.dart</code></li>
+      <li><code>filesystem.dart</code></li>
+      <li><code>library peg-parser;</code></li>
+    </ul>
+  </div>
+
+  <h4 class="no_toc" id="do-use-lowercasewithunderscores-when-specifying-a-library-prefix">DO use <code>lowercase_with_underscores</code> when specifying a library prefix.</h4>
+  <!-- https://github.com/dart-lang/www.dartlang.org/issues/671 -->
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+import &#39;dart:math&#39; as math;
+import &#39;dart:json&#39; as json;
+import &#39;package:js/js.dart&#39; as js;
+import &#39;package:javascript_utils/javascript_utils.dart&#39; as js_utils;
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+import &#39;dart:math&#39; as Math;
+import &#39;dart:json&#39; as JSON;
+import &#39;package:js/js.dart&#39; as JS;
+import &#39;package:javascript_utils/javascript_utils.dart&#39; as jsUtils;
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="do-prefix-library-names-with-the-package-name-and-a-dot-separated-path">DO prefix library names with the package name and a dot-separated path.</h4>
+  <!-- https://github.com/dart-lang/www.dartlang.org/issues/806 -->
+
+  <p>This guideline helps avoid the warnings you get when two libraries have the
+same name. Here are the rules we recommend:</p>
+
+  <ul>
+    <li>Prefix all library names with the package name.</li>
+    <li>Make the entry library have the same name as the package.</li>
+    <li>For all other libraries in a package, after the package name add the
+dot-separated path to the library’s Dart file. For libraries under <code>lib</code>,
+omit the top directory name.</li>
+  </ul>
+
+  <p>For example, say the package name is <code>my_package</code>. Here are the library names
+for various files in the package:</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+// In lib/my_package.dart
+library my_package;
+
+// In lib/other.dart
+library my_package.other;
+
+// In lib/foo/bar.dart
+library my_package.foo.bar;
+
+// In example/foo/bar.dart
+library my_package.example.foo.bar;
+
+// In lib/src/private.dart
+library my_package.src.private;
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="do-capitalize-acronyms-and-abbreviations-longer-than-two-letters-like-words">DO capitalize acronyms and abbreviations longer than two letters like words.</h4>
+
+  <p>Capitalized acronyms can be harder to read, and are ambiguous when you have
+multiple adjacent acronyms. Given the name <code>HTTPSFTPConnection</code>, there’s no way
+to tell if that’s an HTTPS FTP connection or an HTTP SFTP one.</p>
+
+  <p>To avoid this, acronyms and abbreviations are capitalized like regular words,
+except for two-letter acronyms. (Two-letter <em>abbreviations</em> like
+ID and Mr. are still capitalized like words.)</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+HttpConnection
+uiHandler
+IOStream
+HttpRequest
+Id
+id
+Pt
+DB
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+HTTPConnection
+UiHandler
+IoStream
+HTTPRequest
+ID
+PT
+Db
+</pre>
+  </div>
+
+  <h2 id="comments">Comments</h2>
+
+  <h4 class="no_toc" id="do-use-doc-comments-when-commenting-members-and-types">DO use doc comments when commenting members and types.</h4>
+  <!-- https://github.com/dart-lang/www.dartlang.org/issues/668 -->
+
+  <p>Although Dart supports two syntaxes of doc comments (<code>///</code> and <code>/**</code>), we prefer
+using <code>///</code> because it’s more compact. (<code>/**</code> and <code>*/</code> add two
+content-free lines to a multiline doc comment.) The <code>///</code> syntax is also easier
+to read in some situations, such as when a doc comment contains a bulleted list
+that uses <code>*</code> to mark list items.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+/// Parses a set of option strings.
+///
+/// For each option:
+///
+/// * If it is `null`, then it is ignored.
+/// * If it is a string, then [validate] is called on it.
+/// * If it is any other type, it is *not* validated.
+void parse(List options) {
+  // ...
+}
+</pre>
+  </div>
+
+  <p>Within a doc comment, you can use <a href="http://daringfireball.net/projects/markdown/">markdown</a> for formatting.</p>
+
+  <h4 class="no_toc" id="do-use-line-comments-everywhere">DO use line comments everywhere.</h4>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+greet(name) {
+  // Assume we have a valid name.
+  print(&#39;Hi, $name!&#39;);
+}
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+greet(name) {
+  /* Assume we have a valid name. */
+  print(&#39;Hi, $name!&#39;);
+}
+</pre>
+  </div>
+
+  <p>You can use a block comment (<code>/* ... */</code>) to temporarily comment out a section
+of code.</p>
+
+  <h4 class="no_toc" id="do-capitalize-and-punctuate-comments-like-sentences">DO capitalize and punctuate comments like sentences.</h4>
+
+  <p>This doesn’t mean that the comment must always be a complete sentence, though it
+usually should. “Returns the number of items.” is an acceptable comment.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+// Remove the last item from the collection.
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+// remove the last item from the collection
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="do-use-square-brackets-in-doc-comments-for-identifiers-that-are-in-scope">DO use square brackets in doc comments for identifiers that are in scope.</h4>
+
+  <p>If you surround things like variable, method or type names in square brackets,
+then documentation generators can look up the name and cross-link the two
+together.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+import &#39;dart:math&#39;;
+
+/// Rolls both [Dice] and returns the highest rolled value.
+num greatestRoll(Dice a, Dice b) =&gt; max(a.roll(), b.roll());
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="do-describe-method-signatures-in-the-prose-of-the-documentation-comment">DO describe method signatures in the prose of the documentation comment.</h4>
+
+  <p>Other languages use verbose tags and sections to describe what the parameters
+and returns of a method are.</p>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+/// Defines a flag with the given name and abbreviation.
+///
+/// @param name The name of the flag.
+/// @param abbr The abbreviation for the flag.
+/// @returns The new flag.
+/// @throws IllegalArgumentException If there is already an option with
+///     the given name or abbreviation.
+Flag addFlag(String name, String abbr) {
+  // ...
+}
+</pre>
+  </div>
+
+  <p>The convention in Dart is to just integrate that into the description of the
+method and highlight parameters using square brackets.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+/// Defines a flag.
+///
+/// Throws an [IllegalArgumentException] if there is already an option named
+/// [name] or there is already an option using abbreviation [abbr]. Returns
+/// the new flag.
+Flag addFlag(String name, String abbr) {
+  // ...
+}
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="do-put-doc-comments-before-metadata-annotations">DO put doc comments before metadata annotations.</h4>
+  <!-- https://github.com/dart-lang/www.dartlang.org/issues/964 -->
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+/// _Deprecated: Use [newMethod] instead._
+@deprecated
+oldMethod();
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+@deprecated
+/// _Deprecated: Use [newMethod] instead._
+oldMethod();
+</pre>
+  </div>
+
+  <h2 id="whitespace">Whitespace</h2>
+
+  <p>Like many languages, Dart ignores whitespace. However, <em>humans</em> don’t. Having a
+consistent whitespace style helps ensure that human readers see code the same
+way the compiler does.</p>
+
+  <h4 class="no_toc" id="dont-use-tabs">DON’T use tabs.</h4>
+
+  <p>Using spaces for formatting ensures the code looks the same in everyone’s
+editor. It also makes sure it looks the same when posted to blogs, or on code
+sites like <a href="http://code.google.com/projecthosting/">Google Code</a> or <a href="http://github.com">GitHub</a>.</p>
+
+  <p>Modern editors emulate the behavior of tabs while inserting spaces, giving you
+the easy editing of tabs and the consistency of spaces.</p>
+
+  <h4 class="no_toc" id="avoid-lines-longer-than-80-characters">AVOID lines longer than 80 characters.</h4>
+
+  <p>Readability studies show that long lines of text are harder to read because your
+eye has to travel farther when moving to the beginning of the next line. This is
+why newspapers and magazines use multiple columns of text.</p>
+
+  <p>If you really find yourself wanting lines longer than 80 characters, our
+experience is that your code is likely too verbose and could be a little more
+compact. Do you really need to call that class
+<code>AbstractWidgetFactoryManagerBuilder</code>?</p>
+
+  <h4 class="no_toc" id="do-place-binary-operators-on-the-preceding-line-in-a-multi-line-expression">DO place binary operators on the preceding line in a multi-line expression.</h4>
+
+  <p>There are valid arguments for both styles but most of our code seems to go this
+way, and consistency matters most.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+if (isDeepFried ||
+    (hasPieCrust &amp;&amp; !vegan) ||
+    containsBacon) {
+  print(&#39;Bob likes it.&#39;);
+}
+</pre>
+  </div>
+
+  <p>Note that this includes <code>=&gt;</code> as well:</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+bobLikes() =&gt;
+    isDeepFried || (hasPieCrust &amp;&amp; !vegan) || containsBacon;
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+bobLikes()
+    =&gt; isDeepFried || (hasPieCrust &amp;&amp; !vegan) || containsBacon;
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="do-place-ternary-operators-on-the-next-line-in-a-multi-line-expression">DO place ternary operators on the next line in a multi-line expression.</h4>
+
+  <p>Also, if you break the line before one of the operators, prefer breaking
+around both.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+return someCondition
+    ? whenTrue
+    : whenFalse;
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+return someCondition ?
+    whenTrue :
+    whenFalse;
+return someCondition
+    ? whenTrue : whenFalse;
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="do-place-the--on-the-next-line-in-a-multi-line-expression">DO place the <code>.</code> on the next line in a multi-line expression.</h4>
+
+  <p>This supercedes the previous rule. Unlike other operators, if you split an
+expression on a <code>.</code>, then put that at the beginning of the second line.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+someVeryLongVariable.withAVeryLongProperty
+    .aMethodOnThatObject();
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="do-indent-block-bodies-two-spaces">DO indent block bodies two spaces.</h4>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+if (condition) {
+  print(&#39;hi&#39;);
+}
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="do-indent-continued-lines-with-at-least-four-spaces">DO indent continued lines with at least four spaces.</h4>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+someLongObject.aReallyLongMethodName(longArg, anotherLongArg,
+    wrappedToNextLine);
+</pre>
+  </div>
+
+  <p>You may indent more than four spaces to line things up if you like:</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+someLongObject.aReallyLongMethodName(longArg, anotherLongArg,
+                                     wrappedToNextLine);
+</pre>
+  </div>
+
+  <p>Note that this includes <code>=&gt;</code> as well:</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+bobLikes() =&gt;
+    isDeepFried || (hasPieCrust &amp;&amp; !vegan) || containsBacon;
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+bobLikes() =&gt;
+  isDeepFried || (hasPieCrust &amp;&amp; !vegan) || containsBacon;
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="dont-indent-lines-that-are-continued-with-a-function-expression">DON’T indent lines that are continued with a function expression.</h4>
+
+  <p>The one exception to the above rule is function expressions used within larger
+expressions, like being passed to methods. These are formatted like so:</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+new Future.delayed(const Duration(seconds: 1), () {
+  print(&#39;I am a callback&#39;);
+});
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+new Future.delayed(const Duration(seconds: 1), () {
+      print(&#39;I am a callback&#39;);
+    });
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="do-place-the-opening-curly-brace--on-the-same-line-as-what-it-follows">DO place the opening curly brace (<code>{</code>) on the same line as what it follows.</h4>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+class Foo {
+  method() {
+    if (true) {
+      // ...
+    } else {
+      // ...
+    }
+  }
+}
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="do-use-curly-braces-for-all-flow-control-structures">DO use curly braces for all flow control structures.</h4>
+
+  <p>Doing so avoids the <a href="http://en.wikipedia.org/wiki/Dangling_else">dangling else</a> problem.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+if (true) {
+  print(&#39;sanity&#39;);
+} else {
+  print(&#39;opposite day!&#39;);
+}
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+if (true) print(&#39;sanity&#39;);
+else
+  print(&#39;opposite day!&#39;);
+</pre>
+  </div>
+
+  <p>There is one exception to this: short <code>if</code> statements with no <code>else</code> clause that
+fit on one line may omit the braces.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+if (arg == null) return defaultValue;
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="do-indent-switch-cases-two-spaces-and-case-bodies-four-spaces">DO indent switch cases two spaces and case bodies four spaces.</h4>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+switch (fruit) {
+  case &#39;apple&#39;:
+    print(&#39;delish&#39;);
+    break;
+
+  case &#39;durian&#39;:
+    print(&#39;stinky&#39;);
+    break;
+}
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="dont-include-a-space-between-the-declared-name-of-a-method-operator-or-setter-and-its-parameter-list">DON’T include a space between the declared name of a method, operator, or setter and its parameter list.</h4>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+bool convertToBool(arg) { ... }
+bool operator ==(other) { ... }
+set contents(value) { ... }
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+bool convertToBool (arg) { ... }
+bool operator == (other) { ... }
+set contents (value) { ... }
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="do-include-a-space-after-the-operator-keyword">DO include a space after the <code>operator</code> keyword.</h4>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+bool operator ==(other) =&gt; ...;
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+bool operator==(other) =&gt; ...;
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="do-use-spaces-around-binary-and-ternary-operators-after-commas-and-not-around-unary-operators">DO use spaces around binary and ternary operators, after commas, and not around unary operators.</h4>
+
+  <p>Note that <code>&lt;</code> and <code>&gt;</code> are considered binary operators when used as expressions,
+but not for specifying generic types. Both <code>is</code> and <code>is!</code> are considered single
+binary operators. However, the <code>.</code> used to access members is not and should
+<em>not</em> have spaces around it.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+a = 1 + 2 / (3 * -b);
+c = !condition == a &gt; b;
+d = condition ? b : object.method(a, b, c);
+if (obj is! SomeType) print(&#39;not SomeType&#39;);
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+a=1+2/(3* - b);
+c= ! condition==a&gt;b;
+d= condition?b:object.method(a,b,c);
+if (obj is !SomeType) print(&#39;not SomeType&#39;);
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="do-place-spaces-around-in-and-after-each--in-a-loop">DO place spaces around <code>in</code>, and after each <code>;</code> in a loop.</h4>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+for (var i = 0; i &lt; 100; i++) {
+  // ...
+}
+
+for (final item in collection) {
+  // ...
+}
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="do-use-a-space-after-flow-control-keywords">DO use a space after flow-control keywords.</h4>
+
+  <p>This is unlike function and method calls, which do <em>not</em> have a space between
+the name and the opening parenthesis.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+while (foo) {
+  // ...
+}
+
+try {
+  // ...
+} catch (e) {
+  // ...
+}
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="dont-use-a-space-after---and--or-before---and-">DON’T use a space after <code>(</code>, <code>[</code>, and <code>{</code>, or before <code>)</code>, <code>]</code>, and <code>}</code>.</h4>
+
+  <p>Also, do not use a space when using <code>&lt;</code> and <code>&gt;</code> for generic types.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+var numbers = &lt;int&gt;[1, 2, (3 + 4)];
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="do-use-a-space-before--in-function-and-method-bodies">DO use a space before <code>{</code> in function and method bodies.</h4>
+
+  <p>This is an exception to the above rule. When a <code>{</code> is used after a parameter
+list in a function or method, there should be a space between it and the <code>)</code>
+ending the parameters.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+getEmptyFn(a) {
+  return () {};
+}
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+getEmptyFn(a){
+  return (){};
+}
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="do-format-constructor-initialization-lists-with-each-field-on-its-own-line">DO format constructor initialization lists with each field on its own line.</h4>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+MyClass()
+    : firstField = &quot;some value&quot;,
+      secondField = &quot;another&quot;,
+      thirdField = &quot;last&quot; {
+  // ...
+}
+</pre>
+  </div>
+
+  <p>Note that the <code>:</code> should be wrapped to the next line and indented four spaces.
+Fields should all line up (so all but the first field end up indented six
+spaces).</p>
+
+  <h4 class="no_toc" id="do-use-a-space-after--in-named-parameters-and-named-arguments">DO use a space after <code>:</code> in named parameters and named arguments.</h4>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+class ListBox {
+  bool showScrollbars;
+
+  ListBox({this.showScrollbars: false});
+}
+
+main() {
+  new ListBox(showScrollbars: true);
+}
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+new ListBox(showScrollbars:true);
+new ListBox(showScrollbars : true);
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="do-use-a-spaces-around--in-optional-positional-parameters">DO use a spaces around <code>=</code> in optional positional parameters.</h4>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+class HttpServer {
+  static Future&lt;HttpServer&gt; listen([int port = 80]) {
+    // ...
+  }
+}
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+import &#39;dart:async&#39;;
+
+class HttpServer {
+  static Future&lt;HttpServer&gt; listen([int port=80]) {
+    // ...
+  }
+}
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="do-indent-method-cascades-at-least-two-spaces">DO indent method cascades at least two spaces.</h4>
+  <!-- https://github.com/dart-lang/www.dartlang.org/issues/878 -->
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+list = new List()
+  ..addAll([1, 2, 3])
+  ..addAll([4, 5, 6]);
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+list = new List()
+    ..addAll([1, 2, 3])
+    ..addAll([4, 5, 6]);
+</pre>
+  </div>
+
+  <aside class="alert alert-info">
+    <p><strong>Change note:</strong> This rule used to say “use four spaces,” but a survey of
+published code showed that two-space indentation for cascades is much more
+common.</p>
+  </aside>
+
+  <h4 class="no_toc" id="do-indent-the-bodies-of-multi-line-list-and-map-literals-at-least-two-spaces-and-place-the-closing--or--on-the-next-line">DO indent the bodies of multi-line list and map literals at least two spaces, and place the closing <code>]</code> or <code>}</code> on the next line.</h4>
+  <!-- https://github.com/dart-lang/www.dartlang.org/issues/658 -->
+
+  <p>Try to wrap multi-line list and map literals after the commas.</p>
+
+  <p>Indent the closing <code>]</code> or <code>}</code> of a multi-line list or map literal so that it
+lines up with the surrounding code.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+var simpleList = [1, 2, 3];
+var simpleMap = {&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3};
+
+var fooList = [
+  &#39;a&#39;,
+  &#39;b&#39;,
+  &#39;c&#39;
+];
+
+var barMap = {
+  &#39;a&#39;: &#39;b&#39;,
+  &#39;c&#39;: &#39;d&#39;
+};
+
+var listInsideMap = {
+  &#39;a&#39;: [&#39;b&#39;, &#39;c&#39;, &#39;d&#39;],
+  &#39;e&#39;: [
+    &#39;f&#39;,
+    &#39;g&#39;,
+    &#39;h&#39;
+  ]
+};
+
+var mapInsideMap = {
+  &#39;a&#39;: {&#39;b&#39;: &#39;c&#39;, &#39;d&#39;: &#39;e&#39;},
+  &#39;f&#39;: {
+    &#39;f&#39;: &#39;g&#39;,
+    &#39;h&#39;: &#39;i&#39;
+  }
+};
+
+var mapInsideList = [
+  {
+    &#39;a&#39;: &#39;b&#39;,
+    &#39;c&#39;: &#39;d&#39;
+  },
+  {
+    &#39;a&#39;: &#39;b&#39;,
+    &#39;c&#39;: &#39;d&#39;
+  },
+];
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+var fooList = [
+    1,
+    2,
+    3
+];
+
+var fooList = [
+  1,
+  2,
+  3];
+
+var fooList = [1, 2,
+  3, 4];
+</pre>
+  </div>
+
+  <h2 id="strings">Strings</h2>
+
+  <h4 class="no_toc" id="avoid-using-curly-braces-in-interpolation-when-not-needed">AVOID using curly braces in interpolation when not needed.</h4>
+
+  <p>If you’re just interpolating a simple identifier that’s not immediately
+followed by more alphanumeric text, the <code>{}</code> can and should be omitted.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+&#39;Hi, $name!&#39;
+&quot;Wear your wildest $decade&#39;s outfit.&quot;
+&#39;Wear your wildest ${decade}s outfit.&#39;
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+&#39;Hi, ${name}!&#39;
+&quot;Wear your wildest ${decade}&#39;s outfit.&quot;
+</pre>
+  </div>
+
+  <h2 id="ordering">Ordering</h2>
+
+  <h4 class="no_toc" id="do-specify-dart-imports-then-package-imports-and-then-relative-imports">DO specify dart: imports, then package: imports, and then relative imports</h4>
+
+  <p>Separate import sections from each other with a single blank line.</p>
+
+  <p>Within each section, prefer sorting alphabetically. If you use a
+<code>package:</code> import to import from your own package, consider putting
+that import in the relative import section.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+import &#39;dart:async&#39;;
+import &#39;dart:convert&#39; show JSON;
+import &#39;dart:html&#39;;
+
+import &#39;package:bar/bar.dart&#39;
+import &#39;package:bar/foo.dart&#39;
+import &#39;package:foo/bar.dart&#39;
+
+import &#39;a.dart&#39;;
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+import &#39;dart:html&#39;;
+import &#39;dart:async&#39;;
+import &#39;dart:convert&#39; show JSON;
+
+import &#39;a.dart&#39;;
+import &#39;package:bar/bar.dart&#39;
+import &#39;package:foo/bar.dart&#39;
+import &#39;package:bar/foo.dart&#39;
+</pre>
+  </div>
+
+  <h4 class="no_toc" id="prefer-specifying-exports-in-a-separate-section-after-all-imports">PREFER specifying exports in a separate section after all imports</h4>
+
+  <p>Put a single blank line above the exports section.</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+import &#39;src/error.dart&#39;;
+import &#39;src/string_source.dart&#39;;
+
+export &#39;src/error.dart&#39;;
+</pre>
+  </div>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+import &#39;src/error.dart&#39;;
+export &#39;src/error.dart&#39;;
+
+import &#39;src/string_source.dart&#39;;
+</pre>
+  </div>
+</div>
+
+    	  </div> <!-- End of content from toc.html -->
+        </article>
+	  </div>
+
+	
+	<ul class="pager hidden-print">
+	  <li><a href="/articles/">More articles about Dart <i class="glyphicon glyphicon-chevron-up"></i></a></li>
+	 </ul>
+	 
+
+	</div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+
+
+
+
+</body>
+</html>
+

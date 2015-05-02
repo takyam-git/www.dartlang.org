@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Reflection in Dart with Mirrors: An Introduction | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Reflection in Dart with Mirrors: An Introduction | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="Use the dart:mirrors library for introspection: discovering and using your program's structure.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  <link rel="author" href="/authors/gilad-bracha.html">
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+  	<div class="container sub-page">
+      <div class="row">
+        <article class="has-permalinks"><div>
+<ol class="breadcrumb">
+
+  <li><a href="/articles/">
+  Articles</a></li>
+
+
+  <li class="active">Reflection in Dart with Mirrors: An Introduction</li>
+</ol>
+</div>
+
+<h1 id="reflection-in-dart-with-mirrors-an-introduction">Reflection in Dart with Mirrors: An Introduction</h1>
+
+<p><em>Written by Gilad Bracha <br />
+November 2012 (updated November 2013)</em></p>
+
+<p>Reflection in Dart is based on the concept of <em>mirrors</em>,
+which are simply objects that reflect other objects.
+In a mirror-based API,
+whenever one wants to reflect on an entity,
+one must obtain a separate object called a mirror. </p>
+
+<p>Mirror-based reflective APIs have substantial advantages
+with respect to security, distribution, and deployment.
+On the other hand,
+using them is sometimes more verbose than older approaches.  </p>
+
+<p>For a thorough introduction to the rationale for mirror-based reflection,
+see the references at the end of this document.
+However, you don’t need to delve into all that if you don’t want to;
+what you really need to know about Dart’s mirror API will be covered here.  </p>
+
+<aside>
+<div class="alert alert-warning">
+<strong>Caveat 1:</strong>
+Dart's mirror API is evolving; while most of the introspection API
+is stable, there will be some additions and
+adjustments going forward, even post 1.0.
+</div>
+</aside>
+
+<p>At this time, only part of the planned API has been realized.
+The part that exists deals with <em>introspection</em>,
+the ability of a program to discover and use its own structure.
+The introspection API has been largely implemented on the Dart VM.
+In dart2js, a similar implementation is under development, but is 
+still incomplete.  </p>
+
+<p>The introspection API is declared in the library named <code>dart:mirrors</code>.
+If you wish to use introspection, import it:</p>
+
+<pre class="prettyprint lang-dart">
+import &#39;dart:mirrors&#39;;
+</pre>
+
+<p>For the sake of illustration,
+we’ll assume you’ve defined the following class:</p>
+
+<pre class="prettyprint lang-dart">
+class MyClass {
+  int i, j;
+  int sum() =&gt; i + j;
+
+  MyClass(this.i, this.j);
+
+  static noise() =&gt; 42;
+
+  static var s;
+}
+</pre>
+
+<p>The easiest way to get a mirror is to call the top-level function
+<a href="http://api.dartlang.org/dart_mirrors.html#reflect">reflect()</a>.</p>
+
+<aside>
+<div class="alert alert-warning">
+<strong>Caveat 2:</strong>
+Currently, reflection works only if the reflection code
+and the object being reflected are running in the same isolate.
+In the future, we expect to extend the API to support reflection 
+across isolates.
+</div>
+</aside>
+
+<p>The reflect() method takes an object and returns an
+<a href="http://api.dartlang.org/dart_mirrors/InstanceMirror.html">InstanceMirror</a>
+on it. </p>
+
+<pre class="prettyprint lang-dart">
+InstanceMirror myClassInstanceMirror = reflect(new MyClass(3, 4));
+</pre>
+
+<p>InstanceMirror is a subclass of
+<a href="http://api.dartlang.org/dart_mirrors/Mirror.html">Mirror</a>,
+the root of the mirror hierarchy.
+An InstanceMirror allows one to invoke dynamically chosen code on an object. </p>
+
+<pre class="prettyprint lang-dart">
+InstanceMirror f = myClassInstanceMirror.invoke(#sum, []); 
+// Returns an InstanceMirror on 7.
+</pre>
+
+<p>The invoke() method takes a symbol (in this case, #sum)
+representing the method name,
+a list of positional arguments,
+and (optionally) a map describing named arguments. </p>
+
+<p>Why doesn’t invoke() take a string representing the method name?
+Because of <em>minification</em>.
+Minification is the process of mangling names in web programs in
+order to reduced download size.</p>
+
+<p>Symbols were introduced into Dart to help reflection work
+in the presence of minification.
+The big advantage of symbols is that when a Dart program is minified,
+symbols get minified as well.
+For this reason, the mirror API traffics in symbols rather than strings.
+You can convert between symbols and strings;
+typically, you will do that in order to
+print out names of declarations as we’ll see below.</p>
+
+<p>Suppose you want to print out all the declarations in a class.
+You’ll need a
+<a href="http://api.dartlang.org/dart_mirrors/ClassMirror.html">ClassMirror</a>,
+which as you’d expect reflects a class.
+One way to get a class mirror is from an instance mirror.</p>
+
+<pre class="prettyprint lang-dart">
+ClassMirror MyClassMirror = myClassInstanceMirror.type; // Reflects MyClass
+</pre>
+
+<p>Another way is to use the top-level function
+<a href="http://api.dartlang.org/dart_mirrors.html#reflectClass">reflectClass()</a>.</p>
+
+<pre class="prettyprint lang-dart">
+ClassMirror cm = reflectClass(MyClass); // Reflects MyClass
+</pre>
+
+<p>Once we’ve obtained a class mirror <code>cm</code> by whatever means, 
+we can print out the names of all declarations of the class
+reflected by <code>cm</code>.</p>
+
+<pre class="prettyprint lang-dart">
+for (var m in cm.declarations.values) print(MirrorSystem.getName(m.simpleName));
+</pre>
+
+<p>ClassMirror has a getter
+<a href="http://api.dartlang.org/dart_mirrors/ClassMirror.html#declarations">declarations</a>
+that returns a map from the names of the reflected class’ declarations
+to mirrors on those declarations.
+The map contains all declarations listed
+explicitly in source code of the class:
+its fields and methods (including getters,
+setters and regular methods) be they static or not,
+and constructors of all stripes.
+The map will not contain any inherited members, nor any synthetic members,
+such as the getters and setters generated automatically for fields.</p>
+
+<p>We extract the values from the map;
+each of these will be a mirror on one of the declarations of MyClass,
+and will support the getter <code>simpleName</code> that returns
+the name of the declaration.
+The returned name is a Symbol,
+so we must convert it to a string in order to print it.
+The static method
+<a href="http://api.dartlang.org/dart_mirrors/MirrorSystem.html#getName">MirrorSystem.getName</a>
+does that for us.</p>
+
+<p>Obviously, we know what the declarations in MyClass are in this case;
+the point is that the <code>for</code> loop above works for any class mirror,
+and therefore we can use it to print the declarations of any class.</p>
+
+<pre class="prettyprint lang-dart">
+printAllDeclarationsOf(ClassMirror cm) {
+  for (var m in cm.declarations.values) print(MirrorSystem.getName(m.simpleName));
+}
+</pre>
+
+<p>A number of methods in the mirror API
+return maps in a similar fashion.
+The maps allow you to look up members by name,
+to iterate over all the names, or to iterate over all the members.
+In fact, there is a simpler way to accomplish what we just did.</p>
+
+<pre class="prettyprint lang-dart">
+printAllDeclarationsOf(ClassMirror cm) {
+  for (var k in cm.declarations.keys) print(MirrorSystem.getName(k));
+}
+</pre>
+
+<p>What if we want to invoke static code reflectively?
+We can call invoke() on a ClassMirror as well.</p>
+
+<pre class="prettyprint lang-dart">
+cm.invoke(#noise, []); // Returns an InstanceMirror on 42
+</pre>
+
+<p>In fact, invoke() is defined in class
+<a href="http://api.dartlang.org/dart_mirrors/ObjectMirror.html">ObjectMirror</a>,
+a common superclass for mirror classes
+that reflect Dart entities that have state and executable code
+such as regular instances, classes, libraries, and so on.</p>
+
+<p>Here is a complete example incorporating what we’ve done so far:</p>
+
+<pre class="prettyprint lang-dart">
+import &#39;dart:mirrors&#39;;
+
+class MyClass {
+  int i, j;
+  void my_method() {  }
+  
+  int sum() =&gt; i + j;
+
+  MyClass(this.i, this.j);
+  
+  static noise() =&gt; 42;
+  
+  static var s;
+}
+
+main() {
+  MyClass myClass = new MyClass(3, 4);
+  InstanceMirror myClassInstanceMirror = reflect(myClass);
+  
+  ClassMirror MyClassMirror = myClassInstanceMirror.type;
+
+  InstanceMirror res = myClassInstanceMirror.invoke(#sum, []);
+  print(&#39;sum = ${res.reflectee}&#39;);
+
+  var f = MyClassMirror.invoke(#noise, []);
+  print(&#39;noise = $f&#39;);
+
+  print(&#39;\nMethods:&#39;);  
+  Iterable&lt;DeclarationMirror&gt; decls =
+      MyClassMirror.declarations.values.where(
+        (dm) =&gt; dm is MethodMirror &amp;&amp; dm.isRegularMethod);
+  decls.forEach((MethodMirror mm) {
+    print(MirrorSystem.getName(mm.simpleName));
+  });
+  
+  print(&#39;\nAll declarations:&#39;);
+  for (var k in MyClassMirror.declarations.keys) {
+    print(MirrorSystem.getName(k));
+  }
+  
+  MyClassMirror.setField(#s, 91);
+  print(MyClass.s);
+}
+</pre>
+
+<p>And here’s the output:</p>
+
+<pre class="prettyprint">
+sum = 7
+noise = InstanceMirror on 42
+
+Methods:
+my_method
+
+sum
+
+noise
+
+All declarations:
+i
+j
+s
+my_method
+
+sum
+noise
+MyClass
+91
+</pre>
+
+<p>At this point we’ve shown you enough to get started.
+Some more things you should be aware of follow.</p>
+
+<aside>
+<div class="alert alert-warning">
+<strong>Caveat 3:</strong>
+What you deploy is often less than what you wrote.
+This may interact with reflection in annoying ways. 
+</div>
+</aside>
+
+<p>Because the size of web applications needs to be kept down,
+deployed Dart applications may be subject to minification and tree shaking.
+We discussed minification above; 
+<em>Tree shaking</em> refers to the elimination of source code that isn’t called.
+Both of these steps cannot generally detect reflective uses of code.</p>
+
+<p>Such optimizations are a fact of life in Dart,
+because of the need to deploy to JavaScript.
+We need to avoid downloading the entire Dart platform
+with every web page written in Dart.
+Tree shaking does this by detecting
+what method names are actually invoked in the source code.
+However, code that is invoked based on dynamically computed symbols
+cannot be detected this way, and is therefore subject to elimination.</p>
+
+<p>The above means that the actual code that exists at runtime
+may differ from the code you had during development.
+Code you only used reflectively may not be deployed.
+Runtime reflection is only aware of what actually exists at
+runtime in the running program.
+This can lead to surprises.
+For example, one may attempt to reflectively invoke a method
+that exists in the source code,
+but has been optimized away because no non-reflective invocations exist.
+Such an invocation will result in a call to
+<a href="http://api.dartlang.org/dart_core/Object.html#noSuchMethod">noSuchMethod()</a>.
+Tree shaking has implications for structural introspection as well.
+Again, what members a library or type has at runtime
+may be at variance with what the source code states.</p>
+
+<p>In the presence of mirrors, one could choose to be more conservative.
+Unfortunately, since one can obtain mirrors for any object in an application,
+all code in the application would have to be preserved,
+including the Dart platform itself.
+Instead, we may choose to treat such invocations
+as if the method never existed in the source. </p>
+
+<p>We are experimenting with mechanisms
+for programmers to specify that certain code
+may not be eliminated by tree shaking.
+Currently, you may use the
+<a href="http://api.dartlang.org/dart_mirrors/MirrorsUsed.html">MirrorsUsed</a> 
+annotation for this purpose
+but we expect the details to change significantly over time.</p>
+
+<aside>
+<div class="alert alert-warning">
+<strong>Caveat 4:</strong>
+One thing we can promise you is that MirrorsUsed will change.
+If you use it, be prepared for breaking changes.
+</div>
+</aside>
+
+<p>The above should be enough to get you started using mirrors.
+There is a good deal more to the introspection API;
+you can
+<a href="http://api.dartlang.org/dart_mirrors.html">explore the API</a>
+to see what else is there. </p>
+
+<p>We’d like to support more powerful reflective features in the future.
+These would include <em>mirror builders</em>,
+designed to allow programs to extend and modify themselves,
+and a mirror-based debugging API as well.  </p>
+
+<h2 id="references">References</h2>
+
+<p>Gilad Bracha and David Ungar.
+<em><a href="http://www.bracha.org/mirrors.pdf">Mirrors: Design Principles for Meta-level Facilities of Object-Oriented
+Programming Languages</a>.</em>
+In  Proc. of the ACM Conf. on Object-Oriented Programming,
+Systems, Languages and Applications, October 2004.</p>
+
+<p>Gilad Bracha.
+<em><a href="http://www.hpi.uni-potsdam.de/hirschfeld/events/past/media/100105_Bracha_2010_LinguisticReflectionViaMirrors_HPI.mp4">Linguistic Reflection via Mirrors</a>.</em>
+Screencast of a lecture at HPI Potsdam in January 2010.  57 minutes.</p>
+
+<p>These blog posts on mirrors may also prove useful
+(and less time consuming to digest):</p>
+
+<ul>
+  <li>Gilad Bracha.
+<a href="http://gbracha.blogspot.com/2010/03/through-looking-glass-darkly.html">Through the Looking Glass Darkly</a>.</li>
+  <li>Allen Wirfs-Brock.
+<a href="http://www.wirfs-brock.com/allen/posts/228">Experimenting with Mirrors for JavaScript</a>.</li>
+  <li>Gilad Bracha.
+<a href="http://gbracha.blogspot.com/2012/07/seeking-closure-in-mirror.html">Seeking Closure in the Mirror</a>. </li>
+</ul>
+
+    	  </div> <!-- End of content from toc.html -->
+        </article>
+	  </div>
+
+	
+	<ul class="pager hidden-print">
+	  <li><a href="/articles/">More articles about Dart <i class="glyphicon glyphicon-chevron-up"></i></a></li>
+	 </ul>
+	 
+
+	</div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+
+
+
+
+</body>
+</html>
+

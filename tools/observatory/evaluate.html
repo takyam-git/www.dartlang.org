@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Evaluating Expressions | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Evaluating Expressions | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="Observatory's Evaluate feature lets you enter expressions to be evaluated by your application in real time.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+    <div class="container col-md-10 col-md-offset-1 sub-page">
+      <div>
+      <h1 id="evaluating-expressions">Evaluating Expressions</h1>
+
+<div>
+<ol class="breadcrumb">
+
+  <li><a href="/tools/">
+  Dart Tools</a></li>
+
+  <li><a href="/tools/observatory/">
+  Observatory</a></li>
+
+
+  <li class="active">Evaluating Expressions</li>
+</ol>
+</div>
+
+<h4>Contents</h4>
+<ol class="toc">
+  <li> <a href="#overview">Overview</a> </li>
+  <li> <a href="#example-1">Example 1: Restarting an application </a> </li>
+  <li> <a href="#example-2">Example 2: Querying and setting variables</a> </li>
+  <li> <a href="#example-3">Example 3: Defining a closure on the fly</a> </li>
+</ol>
+
+<h2 id="overview">Overview</h2>
+
+<p>A text field, with an <strong>Evaluate</strong> button, appears in several
+screens in Observatory’s UI.  It looks like the following:</p>
+
+<p><img src="images/EvaluateTextField.png" alt="a text field with an Evaluate button" /></p>
+
+<p>When you see this text field, you can enter
+a Dart expression to be evaluated in the running application
+<em>in real time</em>.  You can <em>query</em> the app, or you can <em>modify</em> it.
+Even if an application has exited, you can use this text field
+to start it again if you have specified the <code>--pause-isolates-on-exit</code> option
+when starting Observatory.
+(To see how to restart an app, see <a href="#example-1">Example 1</a>.)</p>
+
+<aside class="alert alert-info">
+  <p><strong>Tip:</strong> When the <strong>1-line</strong> radio button is selected, you can enter
+a single line of Dart code and press Enter to evaluate the code.</p>
+
+  <p>When the <strong>N-line</strong> radio button is selected, focus stays in the text
+box when you press Enter and the cursor moves to the next line.
+In N-line mode, you can change the size of the text box by clicking and
+dragging the lower right corner of the box.</p>
+</aside>
+
+<p>You can enter any valid expression into the text field.
+The <a href="/docs/spec/">Dart Language specification</a> has a section
+on what constitutes a valid expression. If the expression is
+not valid, an error message displays.</p>
+
+<p>The scope of the evaluation depends on where you are in Observatory’s UI:</p>
+
+<ul>
+  <li>From any <a href="screens.html#isolate-screen">isolate screen</a>,
+you can evaluate expressions in the context of the root library
+of that isolate.</li>
+  <li>From any <a href="screens.html#library-screen">library screen</a>,
+you can evaluate expressions in the context of that library.</li>
+  <li>From any <a href="screens.html#class-screen">class screen</a>,
+you can evaluate expressions in the context of that class.
+For example, you might query or change the value of a static class variable.</li>
+  <li>From any <a href="screens.html#instance-screen">instance screen</a>,
+you can evaluate expressions in the context of that instance.</li>
+</ul>
+
+<p>While the scope is different in these situations, the process of
+evaluation is the same.</p>
+
+<h2 id="example-1">Example 1: Restarting an application</h2>
+
+<p>You can restart an  application by entering <code>main()</code>
+into the expression evaluation field in either the root
+<a href="screens.html#isolate-screen">isolate screen</a>,
+or the <a href="screens.html#library-screen">library screen</a>.
+If the main method requires any arguments, enter those as well.</p>
+
+<aside class="alert alert-info">
+  <p><strong>Note:</strong> This tip applies only to standalone apps.
+A web app doesn’t exit until the browser’s tab has closed.</p>
+</aside>
+
+<p>The <code>main</code> method of the following example accepts an optional argument to
+determine how many times it should print the “Hello World” string.
+The default is one time.</p>
+
+<pre class="prettyprint lang-Dart">
+void main(List&lt;String&gt; args) {
+  var num;
+  if (args.length==0) num = 1;
+  else num=int.parse(args[0]);
+
+  for (int i = 0;i &lt; num; i++) {
+    print(&quot;Hello, World!&quot;);
+  }
+  print(&quot;That&#39;s all!\n&quot;);
+}
+</pre>
+
+<p>Launch the app and open Observatory.</p>
+
+<p>The following output prints to the console when <code>main(['3'])</code>, followed by
+<code>main(['5'])</code>, is entered into the isolate’s expression evaluation field:</p>
+
+<pre class="prettyprint lang-none">
+Observatory listening on http://127.0.0.1:61852
+Hello, World!
+That&#39;s all!
+
+Isolate helloworld.dart$main-316431991 paused before exiting. Use Observatory to release it.
+Hello, World!
+Hello, World!
+Hello, World!
+That&#39;s all!
+
+Hello, World!
+Hello, World!
+Hello, World!
+Hello, World!
+Hello, World!
+That&#39;s all!
+</pre>
+
+<h2 id="example-2">Example 2: Querying and setting variables</h2>
+
+<p>You can use the expression evaluation field to examine and set the value
+of variables in real time.</p>
+
+<p>The following sample program defines several top-level variables:</p>
+
+<pre class="prettyprint lang-dart">
+String str=&quot;Howdy!&quot;;
+double db, db2;
+List aList=[1, 2, 3];
+
+void main() {
+    // ...
+}
+</pre>
+
+<p>Launch the app and open Observatory.</p>
+
+<p>The <a href="screens.html#library-screen">library screen</a> shows
+the following:</p>
+
+<pre class="prettyprint lang-none">
+variables (4)
+    static String str    &quot;Howdy!&quot;
+    static double db     null
+    static double db2    null
+    static List aList    _GrowableList(3)
+</pre>
+
+<p>Use the expression evaluation field to modify the variables.
+Some examples are:</p>
+
+<pre class="prettyprint lang-dart">
+str = &quot;Hola!&quot;
+
+db = 10.3
+
+db2 = db
+
+aList.add(15)
+</pre>
+
+<p>While the variable values have changed, note that the variable
+summary does not refresh
+(<a href="https://code.google.com/p/dart/issues/detail?id=18856">issue 18856</a>).
+Click the variable name to see the updated value.</p>
+
+<h2 id="example-3-defining-a-closure-on-the-fly">Example 3: Defining a closure on the fly</h2>
+
+<p>With a little planning, you can use the evaluate expression field to
+write brand new code that immediately executes. For example, you can
+use this feature to print logging information.</p>
+
+<p>This technique requires some minimal setup in your code. You must:</p>
+
+<ul>
+  <li>Define a closure variable.</li>
+  <li>Inside a work loop, test the closure variable. If the variable
+is non-null, then execute it.</li>
+</ul>
+
+<p>A <em>closure</em> is a function object. To learn more, read
+<a href="/docs/dart-up-and-running/ch02.html#lexical-closures">Lexical Closures</a>.</p>
+
+<aside class="alert alert-info">
+  <p><strong>Note:</strong> Be aware that modifying your code can crash the application.</p>
+</aside>
+
+<p>The following example defines a closure variable named <code>closureFoo</code>.
+The code then iterates in an endless loop, increasing the value of a top-level
+counter variable.</p>
+
+<pre class="prettyprint lang-dart">
+var closureFoo;
+int counter = 0;
+
+void main() {
+
+  while (true) {
+    if (closureFoo != null) {
+      closureFoo();
+    }
+    counter++;
+  }
+}
+</pre>
+
+<p>Launch the app and open Observatory.</p>
+
+<p>Enter closure code into the expression evaluation field in either the
+root <a href="screens.html#isolate-screen">isolate screen</a> screen,
+or the <a href="screens.html#library-screen">library screen</a>.</p>
+
+<p>The following example defines the <code>closureFoo</code> function to print
+the value of the counter:</p>
+
+<pre class="prettyprint lang-dart">
+closureFoo = (){print(counter);}
+</pre>
+
+<p>As soon as the expression is evaluated, the output prints to the console:</p>
+
+<pre class="prettyprint lang-sh">
+13903954684
+13903954685
+13903954686
+13903954687
+13903954688
+13903954689
+13903954690
+</pre>
+
+<p>You can change the definition of <code>closureFoo</code>. For example, the following
+code prints only even counter values:</p>
+
+<pre class="prettyprint lang-dart">
+closureFoo=() {if (counter.isEven) { print(counter); } }
+</pre>
+
+<p>The output changes immediately:</p>
+
+<pre class="prettyprint lang-sh">
+115296439424
+115296439426
+115296439428
+115296439430
+115296439432
+115296439434
+115296439436
+</pre>
+
+<p>To disable the closure code, reset the closure variable to null in the
+expression evaluation field:</p>
+
+<pre class="prettyprint lang-dart">
+closureFoo = null
+</pre>
+
+<p>The output immediately stops.</p>
+
+<aside class="alert alert-info">
+  Observatory was introduced in 1.4 and continues to evolve.
+  You get Observatory, for free, when you
+  <a href="/downloads/">download the Dart SDK or Dart Editor bundles</a>.
+
+  You can file issues and requests on
+  <a href="http://dartbug.com/new">dartbug.com</a>.
+</aside>
+
+<div>
+<hr />
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+<link href="observatory.css" rel="stylesheet" type="text/css">
+
+
+
+</body>
+</html>
+

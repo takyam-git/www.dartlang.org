@@ -1,0 +1,2739 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Avast, Ye Pirates: Write a Web App | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Avast, Ye Pirates: Write a Web App | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="images/piratemap.jpg">
+  
+  <meta itemprop="description" content="Take your first step to learning Dart fast.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+    <div class="container col-md-12 col-md-offset-0 sub-page">
+      <div class="has-permalinks">
+      <h1 id="avast-ye-pirates-write-a-web-app">Avast, Ye Pirates: Write a Web App</h1>
+
+<p>In this code lab,
+you build a pirate badge generator from a skeleton app.
+The sample app provides a brief look at some Dart language and library features.
+This code lab assumes that you have some programming experience.</p>
+
+<p><strong>Build this app!</strong></p>
+
+<iframe class="running-app-frame" style="height:220px;width:550px;" src="examples/6-piratebadge/piratebadge.html">
+</iframe>
+
+<hr />
+
+<div class="piratemap" style="min-height:325px">
+
+  <h2 id="map">Map</h2>
+
+  <ul>
+    <li><a href="#set-up">Step 0: Set up</a></li>
+    <li><a href="#step-one">Step 1: Run the skeleton app</a></li>
+    <li><a href="#step-two">Step 2: Add an input field</a></li>
+    <li><a href="#step-three">Step 3: Add a button</a></li>
+    <li><a href="#step-four">Step 4: Create a class</a></li>
+    <li><a href="#step-five">Step 5: Save to local storage</a></li>
+    <li><a href="#step-six">Step 6: Read names from JSON file using HttpRequest</a></li>
+    <li><a href="#step-seven">Step 7: Build and run the app</a></li>
+    <li><a href="#whatnext">What next?</a></li>
+    <li><a href="#resources">Summary and resources</a></li>
+  </ul>
+
+</div>
+
+<hr />
+
+<h2 id="set-up">Step 0: Set up</h2>
+
+<p>In this step, you download Dart and get the sample code.</p>
+
+<h3 id="i-classfa-fa-anchor-i-get-dart"><i class="fa fa-anchor"> </i> Get Dart.</h3>
+
+<div class="trydart-step-details">
+  <p>If you haven’t already done so, get the Dart download.
+Unzip the ZIP file, which creates a directory called <code>dart</code>.
+(For more options, go to the <a href="/downloads/">download page</a>.)</p>
+
+  <!--style here is a hack to remove the arrow, which was only partially showing. -->
+  <div style="padding-left: 10px"> 
+<div class="editor download-buttons">
+
+  
+
+  <div class="windows downloads" style="display:none">
+    
+      
+      <a data-bits="64" data-os="windows" data-build="integration" data-tool="editor" class="btn download-link" href="https://storage.googleapis.com/dart-archive/channels/stable/release/latest/editor/darteditor-windows-x64.zip">
+  <button class="btn btn-lg download-btn btn-primary">
+    <i class="sprite-icon-download-btn"> </i>
+    Download Dart + Editor (64-bit Windows)
+  </button>
+</a>
+
+      <p></p>
+      
+      <a data-bits="32" data-os="windows" data-build="integration" data-tool="editor" class="btn download-link" href="https://storage.googleapis.com/dart-archive/channels/stable/release/latest/editor/darteditor-windows-ia32.zip">
+  <button class="btn btn-lg download-btn btn-primary">
+    <i class="sprite-icon-download-btn"> </i>
+    Download Dart + Editor (32-bit Windows)
+  </button>
+</a>
+
+    
+  </div>
+
+  
+
+  <div class="macos downloads" style="display:none">
+    
+      <a data-bits="32" data-os="macos" data-build="integration" data-tool="editor" class="btn download-link" href="https://storage.googleapis.com/dart-archive/channels/stable/release/latest/editor/darteditor-macos-ia32.zip">
+  <button class="btn btn-lg download-btn btn-primary">
+    <i class="sprite-icon-download-btn"> </i>
+    Download Dart + Editor (Mac)
+  </button>
+</a>
+
+    
+  </div>
+
+  
+
+  <div class="linux downloads" style="display:none">
+    
+      
+      <a data-bits="64" data-os="linux" data-build="integration" data-tool="editor" class="btn download-link" href="https://storage.googleapis.com/dart-archive/channels/stable/release/latest/editor/darteditor-linux-x64.zip">
+  <button class="btn btn-lg download-btn btn-primary">
+    <i class="sprite-icon-download-btn"> </i>
+    Download Dart + Editor (64-bit Linux)
+  </button>
+</a>
+
+      <p></p>
+      
+      <a data-bits="32" data-os="linux" data-build="integration" data-tool="editor" class="btn download-link" href="https://storage.googleapis.com/dart-archive/channels/stable/release/latest/editor/darteditor-linux-ia32.zip">
+  <button class="btn btn-lg download-btn btn-primary">
+    <i class="sprite-icon-download-btn"> </i>
+    Download Dart + Editor (32-bit Linux)
+  </button>
+</a>
+
+    
+  </div>
+
+  
+
+  <div class="editor-current-version version">
+    Current stable version of Dart:
+    <span class="editor-build-rev-stable">[calculating]</span>
+  </div>
+</div>
+
+</div>
+
+  <p class="os-choices">
+  The Dart tools
+  work in recent versions of
+  <span class="nowrap">
+<input type="radio" name="osChoices" id="windows" />
+<label class="os-choice" for="windows">Windows (Vista, 7, or 8)</label>,
+</span>
+
+<span class="nowrap">
+<input type="radio" name="osChoices" id="linux" checked="checked" />
+<label class="os-choice" for="linux">Linux</label>,
+</span> or
+
+<span class="nowrap">
+<input type="radio" name="osChoices" id="macos" />
+<label class="os-choice" for="macos">Mac</label>.
+</span>
+
+</p>
+</div>
+
+<aside class="alert alert-info">
+  <p><strong>Note:</strong> Dart Editor requires Java version 6 or higher.
+Problems? See <a href="/tools/editor/troubleshoot.html">Troubleshooting Dart Editor</a>.</p>
+</aside>
+
+<h3 id="i-classfa-fa-anchor-i-start-the-editor"><i class="fa fa-anchor"> </i> Start the editor.</h3>
+
+<div class="trydart-step-details">
+  <p>Go to the <code>dart</code> directory and double-click <strong>DartEditor</strong>.</p>
+
+  <p><strong>Got questions? Having trouble?</strong> Go to the
+<a href="/tools/editor/troubleshoot.html">Troubleshooting Dart Editor</a> page.</p>
+
+</div>
+
+<h3 id="i-classfa-fa-anchor-i-get-the-sample-code"><i class="fa fa-anchor"> </i> Get the sample code.</h3>
+
+<div class="trydart-step-details">
+  <p>Download the sample code from the
+<a href="https://github.com/dart-lang/one-hour-codelab">one-hour-codelab GitHub repo</a>
+using one of the following options:</p>
+
+  <ul>
+<li>
+      <p>Download the zip file, 
+  <a href="https://github.com/dart-lang/one-hour-codelab/archive/master.zip">one-hour-codelab-master.zip</a>.
+  Unzip the ZIP file, which creates a directory called
+  <code>one-hour-codelab-master</code>.</p>
+    </li>
+
+<li>
+      <p>Clone the repo. For example, from the command line:</p>
+
+      <pre class="prettyprint lang-sh">
+% git clone https://github.com/dart-lang/one-hour-codelab.git
+</pre>
+
+      <p>This creates a directory named <code>one-hour-codelab</code>.</p>
+    </li>
+</ul>
+
+</div>
+
+<h3 id="i-classfa-fa-anchor-i-open-the-one-hour-codelab-sample"><i class="fa fa-anchor"> </i> Open the one-hour-codelab sample.</h3>
+
+<div class="trydart-step-details">
+  <p>In Dart Editor,
+use <strong>File &gt; Open Existing Folder…</strong>
+to open the <code>darrrt</code> directory under <code>one-hour-codelab</code>.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+    <p><img src="images/filesanddirs.png" alt="The files and directories in the darrrt directory." /></p>
+
+    <div class="trydart-note">
+      <p><strong>Note:</strong>
+If you see <span style="color:red">red X’s</span> at the left of the
+filenames or if a <code>packages</code> directory is missing,
+the packages are not properly installed.
+Right click <code>pubspec.yaml</code> and select <strong>Pub Get</strong>.</p>
+    </div>
+
+  </div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> Key information </strong></p>
+
+    <ul>
+      <li>
+        <p>Several numbered directories contain the completed code for each step.
+<code>1-blankbadge</code> contains the skeletal version of the app that you begin with.
+<code>6-piratebadge</code> contains the final version of the app.</p>
+      </li>
+      <li>Each numbered directory contains a complete project that includes:
+        <ul>
+          <li>a <code>packages</code> directory containing libraries and other files from
+packages that the app depends on</li>
+          <li><code>pubspec.yaml</code> and <code>pubspec.lock</code> files that specify package dependencies
+This project has all the dependencies set up for you.
+Dart Editor automatically installs the necessary packages.</li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>Dart SDK</strong> contains the source code for all of the functions,
+variables, and classes provided by the Dart Software Development Kit.</p>
+      </li>
+      <li><strong>Referenced Packages</strong> contains the source code for all of the functions,
+variables, and classes for the additional libraries that this application
+depends on.</li>
+    </ul>
+
+    <p>  </p>
+
+  </div> </div>
+
+<hr />
+
+<h2 id="step-one">Step 1: Run the skeleton app</h2>
+
+<p>In this step, you open the source files,
+familiarize yourself with the Dart and HTML code,
+and run the app.</p>
+
+<h3 id="i-classfa-fa-anchor-i-expand-the-1-blankbadge-directory"><i class="fa fa-anchor"> </i> Expand the 1-blankbadge directory.</h3>
+
+<div class="trydart-step-details">
+  <p>In Dart Editor, expand the <code>web</code> directory under <code>1-blankbadge</code>
+by clicking the little arrow
+<img src="images/wee-arrow.png" alt="wee arrow" /> to the left of its name.
+The directory contains <code>piratebadge.css</code>, <code>piratebadge.dart</code>,
+and <code>piratebadge.html</code>.</p>
+</div>
+
+<h3 id="i-classfa-fa-anchor-i-open-the-files"><i class="fa fa-anchor"> </i> Open the files.</h3>
+
+<div class="trydart-step-details">
+  <p>Open <code>piratebadge.dart</code> and <code>piratebadge.html</code>,
+by double-clicking each filename in Dart Editor.</p>
+</div>
+
+<h3 id="i-classfa-fa-anchor-i-review-the-code"><i class="fa fa-anchor"> </i> Review the code.</h3>
+
+<div class="trydart-step-details">
+  <p>Get familiar with the HTML and the Dart code for the skeleton version of the app.</p>
+</div>
+
+<div class="trydart-step-details">
+  <h4 id="piratebadgehtml">piratebadge.html</h4>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+      <pre class="prettyprint lang-html">
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;Pirate badge&lt;/title&gt;
+    &lt;meta name=&quot;viewport&quot;
+          content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;piratebadge.css&quot;&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Pirate badge&lt;/h1&gt;
+    
+    <code class="nocode highlight">&lt;div class=&quot;widgets&quot;&gt;</code>
+      <code class="nocode highlight">TO DO: Put the UI widgets here.</code>
+    <code class="nocode highlight">&lt;/div&gt;</code>
+    &lt;div class=&quot;badge&quot;&gt;
+      &lt;div class=&quot;greeting&quot;&gt;
+        Arrr! Me name is
+      &lt;/div&gt;
+      &lt;div class=&quot;name&quot;&gt;
+        <code class="nocode highlight">&lt;span id=&quot;badgeName&quot;&gt; &lt;/span&gt;</code>
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    <code class="nocode highlight">&lt;script type=&quot;application/dart&quot; src=&quot;piratebadge.dart&quot;&gt;&lt;/script&gt;</code>
+    <code class="nocode highlight">&lt;script src=&quot;packages/browser/dart.js&quot;&gt;&lt;/script&gt;</code>
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+    </div>
+<div class="trydart-filename">piratebadge.html</div>
+
+</div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> Key information </strong></p>
+
+    <ul>
+      <li>
+        <p>During this code lab,
+all the changes you make to <code>piratebadge.html</code> are within
+the &lt;div&gt; element identified with the class <code>widgets</code>.</p>
+      </li>
+      <li>
+        <p>In later steps,
+the &lt;span&gt; element with the ID <code>badgeName</code>
+is programmatically updated by the Dart code
+based on user input.</p>
+      </li>
+      <li>
+        <p>The first &lt;script&gt; tag identifies
+the main file that implements the app.
+Here, it’s the <code>piratebadge.dart</code> file.</p>
+      </li>
+      <li>
+        <p>The Dart Virtual Machine (Dart VM) runs Dart code natively.
+The Dart VM is built into Dartium,
+a special build of the Chromium browser in which you can run Dart apps
+natively.</p>
+      </li>
+      <li>
+        <p>The <code>packages/browser/dart.js</code> script checks for native Dart support
+and either bootstraps the Dart VM or loads compiled JavaScript instead.</p>
+      </li>
+    </ul>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+  <h4 id="piratebadgedart">piratebadge.dart</h4>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+    <div class="trydart-step-details">
+      <pre class="prettyprint lang-dart">
+<code class="nocode highlight">void main() {
+  // Your app starts here.
+}</code>
+</pre>
+    </div>
+    <div class="trydart-filename">piratebadge.dart</div>
+
+  </div> <div class="col-md-5">
+
+    <ul>
+      <li>
+        <p>This file contains the single entry point for the app—the <code>main()</code> function.
+The &lt;script&gt; tags in the <code>piratebadge.html</code> file start the application
+by running this function.</p>
+      </li>
+      <li>
+        <p>The <code>main()</code> function is a top-level function.</p>
+      </li>
+      <li>
+        <p>A top-level variable or function is one that is declared outside
+a class definition.</p>
+      </li>
+    </ul>
+
+    <p>  </p>
+  </div> </div>
+
+<h3 id="i-classfa-fa-anchor-i-run-the-app"><i class="fa fa-anchor"> </i> Run the app.</h3>
+
+<div class="trydart-step-details">
+  <p>To run the app in Dart Editor, right click <code>piratebadge.html</code>
+and select <strong>Run in Dartium</strong>.</p>
+
+  <p><img src="images/clickrun2.png" alt="Select Run in Dartium" /></p>
+
+  <p>Dart Editor launches <em>Dartium</em>, a special build of Chromium
+that has the Dart Virtual Machine built in,
+and loads the <code>piratebadge.html</code> file.
+The <code>piratebadge.html</code> file loads the app
+and calls the <code>main()</code> function.</p>
+
+  <p>You should see a TO DO comment on the left
+and a red and white name badge on the right.</p>
+</div>
+
+<div class="trydart-step-details">
+  <iframe class="running-app-frame" style="height:220px;width:600px;" src="examples/1-blankbadge/piratebadge.html">
+</iframe>
+</div>
+
+<hr />
+
+<h2 id="step-two">Step 2: Add an input field</h2>
+
+<div class="trydart-note">
+  <p><strong>Note:</strong> Throughout this code lab,
+continue to edit the files in <code>1-blankbadge</code>.
+You can use the files in the other directories to compare to your code
+or to recover if you get off track.</p>
+</div>
+
+<p>In this step, you add an input field to the app.
+As the user types into the text field,
+the Dart code updates the badge from the value of the text field.</p>
+
+<h3 id="i-classfa-fa-anchor-i-edit-piratebadgehtml"><i class="fa fa-anchor"> </i> Edit piratebadge.html.</h3>
+
+<div class="row"> <div class="col-md-7">
+
+    <div class="trydart-step-details">
+
+      <p>Add the &lt;input&gt; tag to the HTML code
+within the <code>widgets</code> &lt;div&gt;.</p>
+
+      <pre class="prettyprint lang-html">
+...
+&lt;div class=&quot;widgets&quot;&gt;
+<code class="nocode highlight">  &lt;div&gt;
+    &lt;input type=&quot;text&quot; id=&quot;inputName&quot; maxlength=&quot;15&quot;&gt;
+  &lt;/div&gt;</code>
+&lt;/div&gt;
+...
+</pre>
+    </div>
+
+    <div class="trydart-filename">piratebadge.html</div>
+
+  </div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> Key information </strong></p>
+
+    <ul>
+      <li>The ID for the input element is <code>inputName</code>.
+Dart uses CSS selectors, such as <code>#inputName</code>,
+to get elements from the DOM.</li>
+    </ul>
+
+    <p>  </p>
+
+  </div> </div>
+
+<h3 id="i-classfa-fa-anchor-i-edit-piratebadgedart"><i class="fa fa-anchor"> </i> Edit piratebadge.dart.</h3>
+
+<div class="trydart-step-details">
+
+  <p>Import the <code>dart:html</code>
+library at the top of the file
+(below the copyright).</p>
+
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+
+      <pre class="prettyprint lang-dart">
+<code class="nocode highlight">import &#39;dart:html&#39;;</code>
+</pre>
+    </div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>
+        <p>This imports <em>all</em> classes and other resources from dart:html.</p>
+      </li>
+      <li>
+        <p>Don’t worry about bloated code.
+The build process performs tree-shaking to help minimize code.</p>
+      </li>
+      <li>
+        <p>The dart:html library contains the classes for all DOM element types,
+in addition to functions for accessing the DOM.</p>
+      </li>
+      <li>
+        <p>Later you’ll use import with the <code>show</code> keyword,
+which imports only the specified classes.</p>
+      </li>
+      <li>
+        <p>Dart Editor helpfully warns you that the import is unused.
+Don’t worry about it. You’ll fix it in the next step.</p>
+      </li>
+    </ul>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>Register a function to handle input events on the input field.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+
+      <pre class="prettyprint lang-dart">
+void main() {
+  <code class="nocode highlight">querySelector(&#39;#inputName&#39;).onInput.listen(updateBadge);</code>
+}
+</pre>
+    </div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>
+        <p>The <code>querySelector()</code> function, defined in
+dart:html, gets the specified element from the DOM.
+Here, the code uses the selector <code>#inputName</code>
+to specify the input field.</p>
+      </li>
+      <li>
+        <p>The object returned from <code>querySelector()</code> 
+<em>is</em> the DOM element object.</p>
+      </li>
+      <li>
+        <p>Mouse and keyboard events are served over a stream.</p>
+      </li>
+      <li>
+        <p>A Stream provides an asynchronous sequence of data.
+Using the <code>listen()</code> method, a stream client
+registers a callback function that gets called when
+data is available.</p>
+      </li>
+      <li>
+        <p><code>onInput.listen()</code> listens to the text field’s event stream for input events.
+When such an event occurs, <code>updateBadge()</code> is called.</p>
+      </li>
+      <li>
+        <p>An input event occurs when the user presses a key.</p>
+      </li>
+      <li>
+        <p>You can use either single or double quotes to create a string.</p>
+      </li>
+      <li>
+        <p>Dart Editor warns you that the function doesn’t exist.
+Let’s fix that now.</p>
+      </li>
+    </ul>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>Implement the event handler as a top-level function.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+
+      <pre class="prettyprint lang-dart">
+...
+
+<code class="nocode highlight">void updateBadge(Event e) { 
+  querySelector(&#39;#badgeName&#39;).text = e.target.value;
+}</code>
+</pre>
+    </div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>
+        <p>This function sets the text of the <code>badgeName</code> element from the value of the input field.</p>
+      </li>
+      <li>
+        <p><code>Event e</code> is the argument to the updateBadge function.
+The argument’s name is <code>e</code>; its type is <code>Event</code>.</p>
+      </li>
+      <li>
+        <p>You can tell that <code>updateBadge()</code> is an event handler because
+its parameter is an <code>Event</code> object.</p>
+      </li>
+      <li>
+        <p>The element that generated the event, the input field, is <code>e.target</code>.</p>
+      </li>
+      <li>
+        <p>Note the warning symbol next to this line of code in Dart Editor.
+<code>e.target</code> is typed as an <code>EventTarget</code> which does not have a <code>value</code> property.</p>
+      </li>
+    </ul>
+
+    <p>  </p>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>Fix the warning message.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+
+      <pre class="prettyprint lang-dart">
+...
+
+void updateBadge(Event e) { 
+  querySelector(&#39;#badgeName&#39;).text = <code class="nocode highlight">(e.target as InputElement)</code>.value;
+}
+</pre>
+    </div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>
+        <p>In this example, <code>e.target</code> is the input element
+that generated the event.</p>
+      </li>
+      <li>
+        <p>The <code>as</code> keyword typecasts <code>e.target</code> to an
+<code>InputElement</code> to silence warnings from Dart Editor.</p>
+      </li>
+    </ul>
+
+    <p>  </p>
+
+  </div> </div>
+
+<h3 id="i-classfa-fa-anchor-i-run-the-app-1"><i class="fa fa-anchor"> </i> Run the app.</h3>
+
+<div class="trydart-step-details">
+
+  <p>Save your files with <strong>File &gt; Save All</strong>.</p>
+
+  <p>Run the app by right clicking <code>piratebadge.html</code> and select <strong>Run in Dartium</strong>.</p>
+
+  <p>Compare your app to the one running below.</p>
+
+  <p>Type in the input field.</p>
+
+  <iframe class="running-app-frame" style="height:220px;width:550px;" src="examples/2-inputnamebadge/piratebadge.html">
+</iframe>
+
+  <h4 id="problems">Problems?</h4>
+
+  <p>Check your code against the files in <code>2-inputnamebadge</code>.</p>
+
+  <ul>
+    <li>
+      <p><a href="https://github.com/dart-lang/one-hour-codelab/blob/master/2-inputnamebadge/web/piratebadge.html">piratebadge.html</a></p>
+    </li>
+    <li>
+      <p><a href="https://github.com/dart-lang/one-hour-codelab/blob/master/2-inputnamebadge/web/piratebadge.dart">piratebadge.dart</a></p>
+    </li>
+  </ul>
+</div>
+
+<hr />
+
+<h2 id="step-three">Step 3: Add a button</h2>
+
+<p>In this step, you add a button to the app.
+The button is enabled when the text field contains no text.
+When the user clicks the button,
+the app puts the name <code>Anne Bonney</code> on the badge.</p>
+
+<h3 id="i-classfa-fa-anchor-i-edit-piratebadgehtml-1"><i class="fa fa-anchor"> </i> Edit piratebadge.html.</h3>
+
+<div class="trydart-step-details">
+  <p>Add the &lt;button&gt; tag below the input field.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-html">
+...
+&lt;div class=&quot;widgets&quot;&gt;
+  &lt;div&gt;
+    &lt;input type=&quot;text&quot; id=&quot;inputName&quot; maxlength=&quot;15&quot;&gt;
+  &lt;/div&gt;
+<code class="nocode highlight">  &lt;div&gt;
+    &lt;button id=&quot;generateButton&quot;&gt;Aye! Gimme a name!&lt;/button&gt;
+  &lt;/div&gt;</code>
+&lt;/div&gt;
+...
+</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.html</div>
+
+</div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> Key information </strong></p>
+
+    <ul>
+      <li>The button has the ID <code>generateButton</code> so
+the Dart code can get the element.</li>
+    </ul>
+
+  </div> </div>
+
+<h3 id="i-classfa-fa-anchor-i-edit-piratebadgedart-1"><i class="fa fa-anchor"> </i> Edit piratebadge.dart.</h3>
+
+<div class="trydart-step-details">
+  <p>Below the import, declare a top-level variable to hold the <code>ButtonElement</code>.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+import &#39;dart:html&#39;;
+
+<code class="nocode highlight">ButtonElement genButton;</code>
+</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>
+        <p>ButtonElement is one of many different kinds of DOM elements
+provided by the dart:html library.</p>
+      </li>
+      <li>
+        <p>Variables, including numbers, initialize to null if no value is provided.</p>
+      </li>
+    </ul>
+
+    <p>  </p>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>Wire up the button with an event handler.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+void main() {
+  querySelector(&#39;#inputName&#39;).onInput.listen(updateBadge);
+  <code class="nocode highlight">genButton = querySelector(&#39;#generateButton&#39;);
+  genButton.onClick.listen(generateBadge);</code>
+}
+</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li><code>onClick</code> registers a mouse click handler.</li>
+    </ul>
+
+    <p>  </p>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>Add a top-level function that changes the name on the badge.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+...
+
+<code class="nocode highlight">void setBadgeName(String newName) {
+  querySelector(&#39;#badgeName&#39;).text = newName;
+} </code>
+</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>The function updates the HTML page with a new name.</li>
+    </ul>
+
+    <p>  </p>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>Implement the click handler for the button.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+...
+
+<code class="nocode highlight">void generateBadge(Event e) {
+  setBadgeName(&#39;Anne Bonney&#39;);
+}</code>
+</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>This function sets the badge name to <code>Anne Bonney</code>.</li>
+    </ul>
+
+    <p>  </p>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>Modify <code>updateBadge()</code> to call <code>setBadgeName()</code>.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+void updateBadge(Event e) {
+<code class="nocode highlight">  String inputName = </code>(e.target as InputElement).value;
+<code class="nocode highlight">  setBadgeName(inputName);</code>
+}
+</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>Assign the input field’s value to a local string.</li>
+    </ul>
+
+  </div></div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>Add a skeleton if-else statement to <code>updateBadge()</code>.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+void updateBadge(Event e) {
+  String inputName = (e.target as InputElement).value;
+  setBadgeName(inputName);
+<code class="nocode highlight">  if (inputName.trim().isEmpty) {
+    // To do: add some code here.
+  } else {
+    // To do: add some code here.
+  }</code>
+}
+</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>
+        <p>The <code>String</code> class has useful functions and properties 
+for working with string data,
+such as <code>trim()</code> and <code>isEmpty</code>.</p>
+      </li>
+      <li>
+        <p>String comes from the <code>dart:core</code> library,
+which is automatically imported into every Dart program.</p>
+      </li>
+      <li>
+        <p>Dart has common programming language constructs like <code>if</code>-<code>else</code>.</p>
+      </li>
+    </ul>
+
+  </div></div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>Now fill in the if-else statement to modify the button as needed.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+void updateBadge(Event e) {
+  String inputName = (e.target as InputElement).value;
+  setBadgeName(inputName);
+  if (inputName.trim().isEmpty) {
+    <code class="nocode highlight">genButton..disabled = false
+             ..text = &#39;Aye! Gimme a name!&#39;;</code>
+  } else {
+    <code class="nocode highlight">genButton..disabled = true
+             ..text = &#39;Arrr! Write yer name!&#39;;</code>
+  }
+}
+</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>
+        <p>The cascade operator (<code>..</code>) allows you to perform multiple
+operations on the members of a single object. </p>
+      </li>
+      <li>
+        <p>The <code>updateBadge()</code> code uses the cascade operator
+to set two properties on the button element.
+The result is the same as this more verbose code:</p>
+      </li>
+    </ul>
+
+    <pre class="prettyprint lang-dart">
+genButton.disabled = false;
+genButton.text = &#39;Aye! Gimme a name!&#39;;
+</pre>
+
+  </div></div>
+
+<h3 id="i-classfa-fa-anchor-i-run-the-app-2"><i class="fa fa-anchor"> </i> Run the app.</h3>
+
+<div class="trydart-step-details">
+
+  <p>Save your files with <strong>File &gt; Save All</strong>.</p>
+
+  <p>Run the app by right clicking <code>piratebadge.html</code> and select <strong>Run in Dartium</strong>.</p>
+
+  <p>Compare your app to the one running below.</p>
+
+  <p>Type in the input field.
+Remove the text from the input field.
+Click the button.</p>
+
+  <iframe class="running-app-frame" style="height:220px;width:550px;" src="examples/3-buttonbadge/piratebadge.html">
+</iframe>
+
+  <h4 id="problems-1">Problems?</h4>
+
+  <p>Check your code against the files in <code>3-buttonbadge</code>.</p>
+
+  <ul>
+    <li>
+      <p><a href="https://github.com/dart-lang/one-hour-codelab/blob/master/3-buttonbadge/web/piratebadge.html">piratebadge.html</a></p>
+    </li>
+    <li>
+      <p><a href="https://github.com/dart-lang/one-hour-codelab/blob/master/3-buttonbadge/web/piratebadge.dart">piratebadge.dart</a></p>
+    </li>
+  </ul>
+
+</div>
+
+<hr />
+
+<h2 id="step-four">Step 4: Create a PirateName class</h2>
+
+<p>In this step, you change only the Dart code.
+You create a class to represent a pirate name.
+When created, an instance of this class
+randomly selects a name and appellation from a list,
+or optionally you can provide a name
+and an appellation to the constructor.</p>
+
+<h3 id="i-classfa-fa-anchor-i-edit-piratebadgedart-2"><i class="fa fa-anchor"> </i> Edit piratebadge.dart.</h3>
+
+<div class="trydart-step-details">
+  <p>Add an import to the top of the file.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+import &#39;dart:html&#39;;
+
+<code class="nocode highlight">import &#39;dart:math&#39; show Random;</code>
+</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> Key information </strong></p>
+
+    <ul>
+      <li>
+        <p>Using the <code>show</code> keyword,
+you can import only the classes, functions, or properties you need.</p>
+      </li>
+      <li>
+        <p><code>Random</code> provides a random number generator.</p>
+      </li>
+    </ul>
+
+  </div></div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>Add a class declaration to the bottom of the file.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+...
+
+<code class="nocode highlight">class PirateName {
+}</code>
+</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>The class declaration provides the class name.</li>
+    </ul>
+
+  </div></div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>Create a class-level Random object.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+class PirateName {
+  <code class="nocode highlight">static final Random indexGen = new Random();</code>
+}
+</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>
+        <p><code>static</code> defines a class-level field. That is,
+the random number generator is shared with all
+instances of this class.</p>
+      </li>
+      <li>
+        <p>Dart Editor italicizes static names.</p>
+      </li>
+      <li>
+        <p>Use <code>new</code> to call a constructor.</p>
+      </li>
+    </ul>
+
+  </div></div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>Add two instance variables to the class,
+one for the first name and one for the appellation.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+class PirateName {
+  static final Random indexGen = new Random();
+<code class="nocode highlight">  String _firstName;
+  String _appellation;</code>
+}
+</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>Private variables start with underscore (<code>_</code>).
+Dart has no <code>private</code> keyword.</li>
+    </ul>
+
+  </div></div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>Create two static lists within the class
+that provide a small collection of names and appellations to choose from.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+class PirateName {
+  ...
+<code class="nocode highlight">  static final List names = [
+    &#39;Anne&#39;, &#39;Mary&#39;, &#39;Jack&#39;, &#39;Morgan&#39;, &#39;Roger&#39;,
+    &#39;Bill&#39;, &#39;Ragnar&#39;, &#39;Ed&#39;, &#39;John&#39;, &#39;Jane&#39; ];
+  static final List appellations = [
+    &#39;Jackal&#39;, &#39;King&#39;, &#39;Red&#39;, &#39;Stalwart&#39;, &#39;Axe&#39;,
+    &#39;Young&#39;, &#39;Brave&#39;, &#39;Eager&#39;, &#39;Wily&#39;, &#39;Zesty&#39;];</code>
+}
+</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>
+        <p><code>final</code> variables cannot change.</p>
+      </li>
+      <li>
+        <p>Lists are built into the language.
+These lists are created using list literals.</p>
+      </li>
+      <li>
+        <p>The <code>List</code> class provides the API for lists.</p>
+      </li>
+    </ul>
+
+  </div></div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>Provide a constructor for the class.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+class PirateName {
+  ...
+<code class="nocode highlight">  PirateName({String firstName, String appellation}) {
+    if (firstName == null) {
+      _firstName = names[indexGen.nextInt(names.length)];
+    } else {
+      _firstName = firstName;
+    }
+    if (appellation == null) {
+      _appellation = appellations[indexGen.nextInt(appellations.length)];
+    } else {
+      _appellation = appellation;
+    }
+  }</code>
+}
+</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>
+        <p>Constructors have the same name as the class.</p>
+      </li>
+      <li>
+        <p>The parameters enclosed in curly brackets (<code>{</code> and <code>}</code>)
+are optional, named parameters.</p>
+      </li>
+      <li>
+        <p>The <code>nextInt()</code> function gets a new random integer
+from the random number generator.</p>
+      </li>
+      <li>
+        <p>Use square brackets (<code>[</code> and <code>]</code>) to index into a list.</p>
+      </li>
+      <li>
+        <p>The <code>length</code> property returns the number of items in a list.</p>
+      </li>
+      <li>
+        <p>The code uses a random number as an index into the list.</p>
+      </li>
+    </ul>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>Provide a getter for the pirate name.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+class PirateName {
+  ...
+<code class="nocode highlight">  String get pirateName =&gt;
+    _firstName.isEmpty ? &#39;&#39; : &#39;$_firstName the $_appellation&#39;;</code>
+}
+</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div><div class="col-md-5">
+
+    <ul>
+      <li>
+        <p>Getters are special methods that provide read access to an object’s properties.</p>
+      </li>
+      <li>
+        <p>The ternary operator <code>?:</code> is short-hand for an if-then-else statement.</p>
+      </li>
+      <li>
+        <p>String interpolation
+(<code>'$_firstName the $_appellation'</code>)
+lets you easily build strings from other objects.</p>
+      </li>
+      <li>
+        <p>The fat arrow (<code> =&gt; expr; </code>) syntax is a shorthand for <code>{ return expr; }</code>.</p>
+      </li>
+    </ul>
+
+  </div></div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>Override the toString() method.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+class PirateName {
+  ...
+<code class="nocode highlight">  String toString() =&gt; pirateName;</code>
+}
+</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div><div class="col-md-5">
+
+    <ul>
+      <li>
+        <p>Because the Object implementation of <code>toString()</code> doesn’t give much information,
+many classes override <code>toString()</code>.</p>
+      </li>
+      <li>
+        <p>When you call <code>print(anObject)</code> for any non-String, it prints the value
+returned by <code>anObject.toString()</code>.</p>
+      </li>
+      <li>
+        <p>Overriding <code>toString()</code> can be especially helpful for debugging or logging.</p>
+      </li>
+    </ul>
+
+  </div></div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>Modify the function <code>setBadgeName()</code> to use a PirateName instead of a String:</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+void setBadgeName(<code class="nocode highlight">PirateName</code> newName) {
+  querySelector(&#39;#badgeName&#39;).text = newName<code class="nocode highlight">.pirateName</code>;
+}
+</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div><div class="col-md-5">
+
+    <ul>
+      <li>This code calls the getter to get the PirateName as a string.</li>
+    </ul>
+
+  </div></div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>Change <code>updateBadge()</code> to generate a PirateName based on the input field value.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+void updateBadge(Event e) {
+  String inputName = (e.target as InputElement).value;
+  
+  <code class="nocode highlight">setBadgeName(new PirateName(firstName: inputName));</code>
+  ...
+}
+</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div><div class="col-md-5">
+
+    <ul>
+      <li>The call to the constructor provides a value for one optional named parameter.</li>
+    </ul>
+
+  </div></div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>Change <code>generateBadge()</code> to generate a PirateName instead of using <code>Anne Bonney</code>.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+void generateBadge(Event e) {
+  setBadgeName(<code class="nocode highlight">new PirateName()</code>);
+}
+</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div><div class="col-md-5">
+
+    <ul>
+      <li>In this case, the call to the constructor passes no parameters.</li>
+    </ul>
+
+  </div></div>
+
+<h3 id="i-classfa-fa-anchor-i-run-the-app-3"><i class="fa fa-anchor"> </i> Run the app.</h3>
+
+<div class="trydart-step-details">
+
+  <p>Save your files with <strong>File &gt; Save All</strong>.</p>
+
+  <p>Run the app by right clicking <code>piratebadge.html</code> and select <strong>Run in Dartium</strong>.</p>
+
+  <p>Compare your app to the one running below.</p>
+
+  <p>Type in the input field.
+Remove the text from the input field.
+Click the button.</p>
+
+  <iframe class="running-app-frame" style="height:220px;width:550px;" src="examples/4-classbadge/piratebadge.html">
+</iframe>
+
+  <h4 id="problems-2">Problems?</h4>
+
+  <p>Check your code against the files in <code>4-classbadge</code>.</p>
+
+  <ul>
+    <li>
+      <p><a href="https://github.com/dart-lang/one-hour-codelab/blob/master/4-classbadge/web/piratebadge.html">piratebadge.html</a></p>
+    </li>
+    <li>
+      <p><a href="https://github.com/dart-lang/one-hour-codelab/blob/master/4-classbadge/web/piratebadge.dart">piratebadge.dart</a></p>
+    </li>
+  </ul>
+
+</div>
+
+<hr />
+
+<h2 id="step-five">Step 5: Save to local storage</h2>
+
+<p>In this step, you give the app some persistence
+by saving the badge name to local storage each time it changes.
+When you restart the app,
+it initializes the badge from the saved name.</p>
+
+<h3 id="i-classfa-fa-anchor-i-edit-piratebadgedart-3"><i class="fa fa-anchor"> </i> Edit piratebadge.dart.</h3>
+
+<div class="trydart-step-details">
+  <p>Import the JSON converter from the <code>dart:convert</code> library.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+import &#39;dart:html&#39;;
+import &#39;dart:math&#39; show Random;
+<code class="nocode highlight">
+import &#39;dart:convert&#39; show JSON;</code>
+</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> Key information </strong></p>
+
+    <ul>
+      <li><code>JSON</code> provides convenient access to the most common JSON use cases.</li>
+    </ul>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>Add a named constructor to the PirateName class.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+class PirateName {
+  ...
+<code class="nocode highlight">  PirateName.fromJSON(String jsonString) {
+    Map storedName = JSON.decode(jsonString);
+    _firstName = storedName[&#39;f&#39;];
+    _appellation = storedName[&#39;a&#39;];
+  }</code>
+}
+</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>
+        <p>The constructor creates a new PirateName instance from a JSON-encoded string.</p>
+      </li>
+      <li>
+        <p><code>PirateName.fromJSON</code> is a named constructor.</p>
+      </li>
+      <li>
+        <p><code>JSON.decode()</code> parses a JSON string and creates Dart objects from it.</p>
+      </li>
+      <li>
+        <p>The pirate name is decoded into a <code>Map</code> object.</p>
+      </li>
+    </ul>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>Add a getter to the PirateName class
+that encodes a pirate name in a JSON string.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+class PirateName {
+  ...
+  <code class="nocode highlight">String get jsonString =&gt; JSON.encode({&quot;f&quot;: _firstName, &quot;a&quot;: _appellation});</code>
+}
+</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>The getter formats the JSON string using the map format.</li>
+    </ul>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>Declare a top-level string.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+<code class="nocode highlight">final String TREASURE_KEY = &#39;pirateName&#39;;</code>
+
+void main() {
+  ...
+}
+</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>You store key-value pairs in local storage. This string is the key.
+The value is the pirate name.</li>
+    </ul>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>Save the pirate name when the badge name changes.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+void setBadgeName(PirateName newName) {
+  <code class="nocode highlight">if (newName == null) {
+    return;
+  }</code>
+  querySelector(&#39;#badgeName&#39;).text = newName.pirateName;
+  <code class="nocode highlight">window.localStorage[TREASURE_KEY] = newName.jsonString;</code>
+}
+</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>Local storage is provided by the browser’s <code>Window</code>.</li>
+    </ul>
+
+    <p>  </p>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>Add a top-level function called <code>getBadgeNameFromStorage()</code>.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+void setBadgeName(PirateName newName) {
+  ...
+}
+
+<code class="nocode highlight">PirateName getBadgeNameFromStorage() {
+  String storedName = window.localStorage[TREASURE_KEY];
+  if (storedName != null) {
+    return new PirateName.fromJSON(storedName);
+  } else {
+    return null;
+  }
+}</code>
+</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>The function retrieves the pirate name from local storage
+and creates a PirateName object from it.</li>
+    </ul>
+
+    <p>  </p>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+  <hr />
+
+  <p>Call the function from the <code>main()</code> function.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+void main() {
+  ...
+  <code class="nocode highlight">setBadgeName(getBadgeNameFromStorage());</code>
+}
+</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>Initialize the badge name from local storage.</li>
+    </ul>
+
+    <p>  </p>
+
+  </div> </div>
+
+<h3 id="i-classfa-fa-anchor-i-run-the-app-4"><i class="fa fa-anchor"> </i> Run the app.</h3>
+
+<div class="trydart-step-details">
+
+  <p>Save your files with <strong>File &gt; Save All</strong>.</p>
+
+  <p>Run the app by right clicking <code>piratebadge.html</code> and select <strong>Run in Dartium</strong>.</p>
+
+  <p>Compare your app to the one running below.</p>
+
+  <p>Click the button to put a name on the badge.
+Start the app again by duplicating this window.</p>
+
+  <iframe class="running-app-frame" style="height:220px;width:550px;" src="examples/5-localbadge/piratebadge.html">
+</iframe>
+
+  <h4 id="problems-3">Problems?</h4>
+
+  <p>Check your code against the files in <code>5-localbadge</code>.</p>
+
+  <ul>
+    <li>
+      <p><a href="https://github.com/dart-lang/one-hour-codelab/blob/master/5-localbadge/web/piratebadge.html">piratebadge.html</a></p>
+    </li>
+    <li>
+      <p><a href="https://github.com/dart-lang/one-hour-codelab/blob/master/5-localbadge/web/piratebadge.dart">piratebadge.dart</a></p>
+    </li>
+  </ul>
+
+</div>
+
+<hr />
+
+<h2 id="step-six">Step 6: Read names from JSON-encoded file</h2>
+
+<p>In this step, you change the PirateName class to get
+the list of names and appellations from a JSON file.
+This gives you a chance to add more names and
+appellations to the program.</p>
+
+<h3 id="i-classfa-fa-anchor-i-create-piratenamesjson"><i class="fa fa-anchor"> </i> Create piratenames.json.</h3>
+
+<div class="trydart-step-details">
+  <p>Use <strong>File &gt; New File…</strong> to create a JSON-encoded file
+named <code>piratenames.json</code> with the following content.</p>
+
+  <p>Put the file in <code>1-blankbadge</code> alongside the Dart and HTML files you’ve been editing.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+{ &quot;names&quot;: [ &quot;Anne&quot;, &quot;Bette&quot;, &quot;Cate&quot;, &quot;Dawn&quot;,
+        &quot;Elise&quot;, &quot;Faye&quot;, &quot;Ginger&quot;, &quot;Harriot&quot;,
+        &quot;Izzy&quot;, &quot;Jane&quot;, &quot;Kaye&quot;, &quot;Liz&quot;,
+        &quot;Maria&quot;, &quot;Nell&quot;, &quot;Olive&quot;, &quot;Pat&quot;,
+        &quot;Queenie&quot;, &quot;Rae&quot;, &quot;Sal&quot;, &quot;Tam&quot;,
+        &quot;Uma&quot;, &quot;Violet&quot;, &quot;Wilma&quot;, &quot;Xana&quot;,
+        &quot;Yvonne&quot;, &quot;Zelda&quot;,
+        &quot;Abe&quot;, &quot;Billy&quot;, &quot;Caleb&quot;, &quot;Davie&quot;,
+        &quot;Eb&quot;, &quot;Frank&quot;, &quot;Gabe&quot;, &quot;House&quot;,
+        &quot;Icarus&quot;, &quot;Jack&quot;, &quot;Kurt&quot;, &quot;Larry&quot;,
+        &quot;Mike&quot;, &quot;Nolan&quot;, &quot;Oliver&quot;, &quot;Pat&quot;,
+        &quot;Quib&quot;, &quot;Roy&quot;, &quot;Sal&quot;, &quot;Tom&quot;,
+        &quot;Ube&quot;, &quot;Val&quot;, &quot;Walt&quot;, &quot;Xavier&quot;,
+        &quot;Yvan&quot;, &quot;Zeb&quot;],
+  &quot;appellations&quot;: [ &quot;Awesome&quot;, &quot;Captain&quot;,
+        &quot;Even&quot;, &quot;Fighter&quot;, &quot;Great&quot;, &quot;Hearty&quot;,
+        &quot;Jackal&quot;, &quot;King&quot;, &quot;Lord&quot;,
+        &quot;Mighty&quot;, &quot;Noble&quot;, &quot;Old&quot;, &quot;Powerful&quot;,
+        &quot;Quick&quot;, &quot;Red&quot;, &quot;Stalwart&quot;, &quot;Tank&quot;,
+        &quot;Ultimate&quot;, &quot;Vicious&quot;, &quot;Wily&quot;, &quot;aXe&quot;, &quot;Young&quot;,
+        &quot;Brave&quot;, &quot;Eager&quot;,
+        &quot;Kind&quot;, &quot;Sandy&quot;,
+        &quot;Xeric&quot;, &quot;Yellow&quot;, &quot;Zesty&quot;]}
+</pre>
+</div>
+
+<div class="trydart-filename">piratenames.json</div>
+
+</div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> Key information </strong></p>
+
+    <ul>
+      <li>The file contains a JSON-encoded map,
+which contains two lists of strings.</li>
+    </ul>
+
+  </div> </div>
+
+<h3 id="i-classfa-fa-anchor-i-edit-piratebadgehtml-2"><i class="fa fa-anchor"> </i> Edit piratebadge.html.</h3>
+
+<div class="trydart-step-details">
+  <p>Disable the input field and the button.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-html">
+...
+  &lt;div&gt;
+    &lt;input type=&quot;text&quot; id=&quot;inputName&quot; maxlength=&quot;15&quot; <code class="nocode highlight">disabled</code>&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;button id=&quot;generateButton&quot; <code class="nocode highlight">disabled</code>&gt;Aye! Gimme a name!&lt;/button&gt;
+  &lt;/div&gt;
+...
+</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.html</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>The Dart code enables the text field and
+the button after the pirate names are successfully read from
+the JSON file.</li>
+    </ul>
+
+  </div> </div>
+
+<h3 id="i-classfa-fa-anchor-i-edit-piratebadgedart-4"><i class="fa fa-anchor"> </i> Edit piratebadge.dart.</h3>
+
+<div class="trydart-step-details">
+
+  <p>Add an import to the top of the file.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+import &#39;dart:html&#39;;
+import &#39;dart:math&#39; show Random;
+import &#39;dart:convert&#39; show JSON;
+
+<code class="nocode highlight">import &#39;dart:async&#39; show Future;</code>
+</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>
+        <p>The <code>dart:async</code> library provides for asynchronous programming.</p>
+      </li>
+      <li>
+        <p>A <code>Future</code> provides a way to get a value in the future.
+(For JavaScript developers: Futures are similar to Promises.)</p>
+      </li>
+    </ul>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>Replace the <code>names</code> and <code>appellations</code> lists with these static, empty lists:</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+class PirateName {
+  ...
+  <code class="nocode highlight">static List&lt;String&gt; names = [];
+  static List&lt;String&gt; appellations = [];</code>
+  ...
+}
+</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>
+        <p><strong>Be sure to remove <code>final</code> from these declarations.</strong></p>
+      </li>
+      <li>
+        <p><code>[]</code> is equivalent to <code>new List()</code>.</p>
+      </li>
+      <li>
+        <p>A List is a <em>generic</em> type—a List can contain any kind of object.
+If you intend for a list to contain only strings,
+you can declare it as <code>List&lt;String&gt;</code>.</p>
+      </li>
+    </ul>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+
+  <hr />
+
+  <p>Add two static functions to the PirateName class:</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+class PirateName {
+  ...
+
+  <code class="nocode highlight">static Future readyThePirates() async {
+    String path = &#39;piratenames.json&#39;;
+    String jsonString = await HttpRequest.getString(path);
+    _parsePirateNamesFromJSON(jsonString);
+  }
+  
+  static _parsePirateNamesFromJSON(String jsonString) {
+    Map pirateNames = JSON.decode(jsonString);
+    names = pirateNames[&#39;names&#39;];
+    appellations = pirateNames[&#39;appellations&#39;];
+  }</code>
+}
+</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>
+        <p><code>readyThePirates</code> is marked with the <code>async</code> keyword. An async
+function returns a Future immediately,
+so the caller has the opportunity to do
+something else while waiting for the function to complete its work.</p>
+      </li>
+      <li>
+        <p><code>HttpRequest</code> is a utility for retrieving data from a URL.</p>
+      </li>
+      <li>
+        <p><code>getString()</code> is a convenience method for doing a simple
+GET request that returns a string.</p>
+      </li>
+      <li>
+        <p><code>getString()</code> is asynchronous. It sets up the GET request
+and returns a Future that <em>completes</em> when the GET request is
+finished.</p>
+      </li>
+      <li>
+        <p>The <code>await</code> expression, which can only be used in an async
+function, causes execution to pause until the GET request is
+finished (when the Future returned by <code>getString()</code> completes).</p>
+      </li>
+      <li>
+        <p>After the GET request returns a JSON string, the code extracts
+pirate names and appellations from the string.</p>
+      </li>
+    </ul>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+  <hr />
+
+  <p>Add a top-level variable.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+<code class="nocode highlight">SpanElement badgeNameElement;</code>
+
+void main() {
+  ...
+}
+</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>Stash the span element for repeated use instead of querying the DOM for it.</li>
+    </ul>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+  <hr />
+
+  <p>Make these changes to the <code>main()</code> function.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+void main() {
+  <code class="nocode highlight">InputElement inputField = querySelector(&#39;#inputName&#39;);
+  inputField.onInput.listen(updateBadge);</code>
+  genButton = querySelector(&#39;#generateButton&#39;);
+  genButton.onClick.listen(generateBadge);
+  
+  <code class="nocode highlight">badgeNameElement = querySelector(&#39;#badgeName&#39;);</code>
+  ...
+}
+</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>Stash the span element in the global variable.
+Also, stash the input element in a local variable.</li>
+    </ul>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+  <hr />
+
+  <p>Then, add the code to get the names from the JSON file,
+handling both success and failure.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+main() <code class="nocode highlight">async</code> {
+  ...
+  
+<code class="nocode highlight">  try {
+    await PirateName.readyThePirates();
+    //on success
+    inputField.disabled = false; //enable
+    genButton.disabled = false; //enable
+    setBadgeName(getBadgeNameFromStorage());
+  } catch (arrr) {
+    print(&#39;Error initializing pirate names: $arrr&#39;);
+    badgeNameElement.text = &#39;Arrr! No names.&#39;;
+  }</code>
+}
+</pre>
+</div>
+
+<div class="trydart-filename">piratebadge.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>
+        <p>Mark the function body with <code>async</code>, so this function can use the
+<code>await</code> keyword.</p>
+      </li>
+      <li>
+        <p>Remove <code>void</code> as the return type for <code>main()</code>.
+Asynchronous functions must return a Future,
+so you can either specify a Future return type or leave it blank.</p>
+      </li>
+      <li>
+        <p>Call the <code>readyThePirates()</code> function, which immediately returns
+a Future.</p>
+      </li>
+      <li>
+        <p>Use the <code>await</code> keyword to make execution pause until that Future
+completes.</p>
+      </li>
+      <li>
+        <p>When the Future returned by <code>readyThePirates()</code> successfully completes,
+set up the UI.</p>
+      </li>
+      <li>
+        <p>Use <code>try</code> and <code>catch</code> to detect and handle errors.</p>
+      </li>
+    </ul>
+
+  </div> </div>
+
+<h3 id="i-classfa-fa-anchor-i-run-the-app-5"><i class="fa fa-anchor"> </i> Run the app.</h3>
+
+<div class="trydart-step-details">
+
+  <p>Save your files with <strong>File &gt; Save All</strong>.</p>
+
+  <p>Run the app by right clicking <code>piratebadge.html</code> and select <strong>Run in Dartium</strong>.</p>
+
+  <p>If you want to see what happens when the app can’t find the <code>.json</code> file,
+change the file name in the code and run the program again.</p>
+
+  <p>Compare your app to the final version running below.</p>
+
+  <iframe class="running-app-frame" style="height:220px;width:550px;" src="examples/6-piratebadge/piratebadge.html">
+</iframe>
+
+  <h4 id="problems-4">Problems?</h4>
+
+  <p>Check your code against the files in <code>6-piratebadge</code>.</p>
+
+  <ul>
+    <li>
+      <p><a href="https://github.com/dart-lang/one-hour-codelab/blob/master/6-piratebadge/web/piratebadge.html">piratebadge.html</a></p>
+    </li>
+    <li>
+      <p><a href="https://github.com/dart-lang/one-hour-codelab/blob/master/6-piratebadge/web/piratebadge.dart">piratebadge.dart</a></p>
+    </li>
+  </ul>
+
+</div>
+
+<h3 id="i-classfa-fa-anchor-i-share-your-pirate-name"><i class="fa fa-anchor"> </i> Share your pirate name.</h3>
+
+<div class="trydart-step-details">
+
+  <p>Share your pirate name with the world.</p>
+
+  <ul>
+    <li>
+      <p><a href="https://twitter.com/share" class="twitter-share-button" data-text="Arrr! I've generated me pirate name and learnt Dart, to boot. http://dartlang.org/darrrt" data-count="none" data-hashtags="dartlang">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></p>
+    </li>
+    <li>
+      <script src="https://apis.google.com/js/plusone.js"></script>
+
+      <g:plus action="share"></g:plus>
+    </li>
+  </ul>
+
+</div>
+
+<hr />
+
+<h2 id="step-seven">Step 7: Build and run the app</h2>
+
+<p>In this step, you use <code>pub build</code> to 
+generate the assets for the app
+and put them into a new directory named <code>build</code>.
+In addition to other tasks,
+the build process generates minified JavaScript that
+can be run by any modern browser.</p>
+
+<p>Note that the <code>one-hour-codelab</code> directory
+contains several directories, one for each step,
+all of which are considered
+part of the one-hour-codelab application.
+The build process builds the assets for each directory.
+Each directory can be individually deployed.</p>
+
+<h3 id="i-classfa-fa-anchor-i-check-out-pubspecyaml"><i class="fa fa-anchor"> </i> Check out pubspec.yaml</h3>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+
+      <p>Double-click the <code>pubspec.yaml</code> file to open it.
+Click the <strong>Source</strong> tab at the bottom of the editing pane.</p>
+
+      <pre class="prettyprint lang-dart">
+name: avast_ye_pirates
+description: Write a Dart web app code lab
+dependencies:
+  <code class="nocode highlight">browser: any</code>
+</pre>
+
+    </div>
+
+<div class="trydart-filename">pubspec.yaml</div>
+
+</div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> Key information </strong></p>
+
+    <ul>
+      <li>
+        <p>A <code>pubspec.yaml</code> file in a directory identifies the directory
+and its contents as an application.</p>
+      </li>
+      <li>
+        <p><code>pubspec.yaml</code> provides meta-data for the application,
+such as its name.</p>
+      </li>
+      <li>
+        <p>The <code>pubspec.yaml</code> file also lists the libraries on which the app depends.
+The <code>browser</code> library needed by this app is hosted on
+<a href="https://pub.dartlang.org/">pub.dartlang.org</a> along with many others.</p>
+      </li>
+      <li>
+        <p><code>any</code> selects the latest package that matches your SDK.</p>
+      </li>
+    </ul>
+
+  </div></div>
+
+<h3 id="i-classfa-fa-anchor-i-look-at-the-packages-directory"><i class="fa fa-anchor"> </i> Look at the packages directory</h3>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+
+      <p>In Dart Editor, expand the <code>packages</code> directory under <code>1-blankbadge</code>.</p>
+
+      <p><img src="images/packagesfiles.png" alt="Packages contains the code for the package dependencies" /></p>
+
+    </div>
+
+</div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> Key information </strong></p>
+
+    <ul>
+      <li>
+        <p>The <code>packages</code> directory contains the code for all of the dependencies
+listed in the <code>pubspec.yaml</code> file.
+These are installed automatically by Dart Editor.</p>
+      </li>
+      <li>
+        <p>The <code>browser</code> package contains the <code>dart.js</code> script
+that checks for native Dart support.</p>
+      </li>
+      <li>
+        <p>The packages must be included in the built application
+in order for the app to be successfully deployed.</p>
+      </li>
+    </ul>
+
+  </div></div>
+
+<h3 id="i-classfa-fa-anchor-i-run-pub-build"><i class="fa fa-anchor"> </i> Run pub build</h3>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+
+      <p>Select <code>pubspec.yaml</code>
+then select <strong>Tools &gt; Pub Build - Minified</strong>,
+which builds everything under the <code>one-hour-codelab</code> directory.
+The output looks something like this:</p>
+
+      <pre class="prettyprint lang-bash">
+Loading source assets...
+Building avast_ye_pirates...
+[Info from Dart2JS]:
+Compiling avast_ye_pirates|web/piratebadge.dart...
+[Info from Dart2JS]:
+Took 0:00:08.671410 to compile avast_ye_pirates|web/piratebadge.dart.
+Built 6 files to &quot;build&quot;.
+</pre>
+
+    </div>
+
+<div class="trydart-filename">terminal</div>
+
+</div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> Key information </strong></p>
+
+    <ul>
+      <li>
+        <p>The <code>pub build</code> command creates a <code>build</code> directory.</p>
+      </li>
+      <li>
+        <p>You can select either <strong>Pub Build - Minified</strong> or <strong>Pub Build - Debug</strong>.
+When building minified JavaScript, all whitespace and extraneous characters
+are removed, creating a more compact file, but one that is less readable.</p>
+      </li>
+      <li>
+        <p>The <code>build</code> directory contains everything needed to deploy the project.</p>
+      </li>
+    </ul>
+
+  </div></div>
+
+<h3 id="i-classfa-fa-anchor-i-look-at-the-build-directory"><i class="fa fa-anchor"> </i> Look at the <code>build</code> directory</h3>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+
+      <p>In the <code>1-blankbadge</code> directory where you have been working,
+expand the <code>build</code> directory, then expand the <code>web</code> directory.</p>
+
+      <p><img src="images/builddir.png" alt="The build directory contains everything you need to deploy." /></p>
+    </div>
+
+</div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> Key information </strong></p>
+
+    <ul>
+      <li>
+        <p><code>build/web</code> contains all of the files
+needed for the app to be deployed separately.</p>
+      </li>
+      <li>
+        <p>The <code>piratebadge.dart.js</code> file is a JavaScript file that has been minified.
+When deployed, this file runs in the browser.</p>
+      </li>
+    </ul>
+
+  </div></div>
+
+<h3 id="i-classfa-fa-anchor-i-run-the-app-6"><i class="fa fa-anchor"> </i> Run the app</h3>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+
+      <p>Right click the <code>piratebadge.html</code> file
+and choose <strong>Run in Browser</strong> from the menu.</p>
+
+    </div>
+
+</div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> Key information </strong></p>
+
+    <ul>
+      <li>The app runs on localhost.
+To share your app with others,
+you need to deploy the app to a hosting service.</li>
+    </ul>
+
+  </div></div>
+
+<hr />
+
+<h2 id="whatnext">What next?</h2>
+
+<p>Now that you’ve written your app, what do you do now? Here are some suggestions.</p>
+
+<h3 id="i-classfa-fa-anchor-i-deploy-a-server-and-your-app"><i class="fa fa-anchor"> </i> Deploy a server and your app</h3>
+
+<div class="trydart-step-details">
+
+  <p>The <a href="/codelabs/server/">server side code lab</a> allows you
+create a pirate crew by storing pirate names to a RESTful Dart server.</p>
+
+  <p>Also, see the <a href="/docs/tutorials/httpserver/">Write HTTP Clients &amp; Servers</a>
+tutorial if you are interested in server-side programming.</p>
+
+</div>
+
+<h3 id="i-classfa-fa-anchor-i-check-out-the-samples"><i class="fa fa-anchor"> </i> Check out the samples.</h3>
+
+<div class="trydart-step-details">
+
+  <p>Run some Dart programs online and check out the source code
+on our <a href="/samples/">Samples page</a>.</p>
+</div>
+
+<h3 id="i-classfa-fa-anchor-i-read-the-tutorials"><i class="fa fa-anchor"> </i> Read the tutorials.</h3>
+
+<div class="trydart-step-details">
+  <p>Learn more about Dart from
+the <a href="/docs/tutorials/">Dart tutorials</a>.</p>
+</div>
+
+<hr />
+
+<h2 id="resources">Summary and resources</h2>
+
+<h3 id="i-classfa-fa-anchor-i-think-about-what-youve-done"><i class="fa fa-anchor"> </i> Think about what you’ve done!</h3>
+
+<div class="trydart-step-details">
+
+  <p>This code lab provided a tour of most Dart language features
+and many library features.
+Here’s where to go to learn more.</p>
+
+  <h4 id="the-dart-language">The Dart language</h4>
+
+  <p><a href="/docs/dart-up-and-running/ch02.html">
+A Tour of the Dart Language</a>
+shows you how to use each major Dart feature,
+from variables and operators to classes and libraries.
+This code lab introduced the following Dart language features,
+all of which are covered in more detail in the language tour.</p>
+
+  <ul>
+    <li>string interpolation (<code>'$_firstName the $_appellation'</code>)</li>
+    <li>the cascade operator (<code>..</code>)</li>
+    <li>the fat arrow (<code>=&gt;</code>) function syntax</li>
+    <li>the ternary operator (<code>?:</code>)</li>
+    <li>named constructors (<code>PirateName.fromJSON(...)</code>)</li>
+    <li>optional parameters</li>
+    <li>a class</li>
+    <li>getters</li>
+    <li>instance methods and fields</li>
+    <li>class level methods and fields</li>
+    <li>top-level variables and functions</li>
+    <li>typecasting with <code>as</code> (<code>(e.target as InputElement)</code>)</li>
+    <li>import, and import with <code>show</code> (<code>import 'dart:math' show Random;</code>)</li>
+    <li>generics</li>
+    <li>asynchrony support (<code>async</code> and <code>await</code>)</li>
+  </ul>
+</div>
+
+<h3 id="i-classfa-fa-anchor-i-online-documentation"><i class="fa fa-anchor"> </i> Online documentation</h3>
+
+<div class="trydart-step-details">
+
+  <h4 id="the-dart-libraries">The Dart libraries</h4>
+
+  <ul>
+    <li><a href="/docs/dart-up-and-running/ch03.html">
+A Tour of the Dart Libraries</a>
+shows you how to use the major features in Dart’s libraries.</li>
+  </ul>
+
+  <h4 id="api-documentation-for-classes">API documentation for classes</h4>
+
+  <ul>
+    <li><a href="https://api.dartlang.org/dart_core/String.html" target="_blank">String</a>,
+<a href="https://api.dartlang.org/dart_core/List.html" target="_blank">List</a>,
+<a href="https://api.dartlang.org/dart_core/Map.html" target="_blank">Map</a>,
+<a href="https://api.dartlang.org/dart_math/Random.html" target="_blank">Random</a>,
+<a href="https://api.dartlang.org/dart_html/InputElement.html" target="_blank">InputElement</a>,
+<a href="https://api.dartlang.org/dart_html/ButtonElement.html" target="_blank">ButtonElement</a>,
+<a href="https://api.dartlang.org/dart_html/Event.html" target="_blank">Event</a>,
+<a href="https://api.dartlang.org/dart_html/HttpRequest.html" target="_blank">HttpRequest</a>
+<a href="https://api.dartlang.org/dart_async/Future.html" target="_blank">Future</a>, and
+<a href="https://api.dartlang.org/dart_async/Stream.html" target="_blank">Stream</a></li>
+  </ul>
+
+  <h4 id="api-documentation-for-libraries">API documentation for libraries</h4>
+
+  <ul>
+    <li><a href="https://api.dartlang.org/dart_core.html" target="_blank">dart:core</a>,
+<a href="https://api.dartlang.org/dart_math.html" target="_blank">dart:math</a>,
+<a href="https://api.dartlang.org/dart_html.html" target="_blank">dart:html</a>,
+<a href="https://api.dartlang.org/dart_async.html" target="_blank">dart:async</a>, and
+<a href="https://api.dartlang.org/dart_convert.html" target="_blank">dart:convert</a></li>
+  </ul>
+
+  <h4 id="api-documentation-for-json-and-local-storage">API documentation for JSON and local storage</h4>
+
+  <ul>
+    <li><a href="https://api.dartlang.org/dart_html/Window.html#localStorage" target="_blank">LocalStorage</a>, and
+<a href="https://api.dartlang.org/dart_convert.html#JSON" target="_blank">JSON</a></li>
+  </ul>
+
+</div>
+
+<h3 id="i-classfa-fa-anchor-i-feedback"><i class="fa fa-anchor"> </i> Feedback</h3>
+
+<div class="trydart-step-details">
+
+  <p>Please provide feedback on the
+<a href="https://github.com/dart-lang/www.dartlang.org/issues">dartlang repo</a>
+on GitHub.</p>
+
+</div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+<link href="/codelabs/darrrt/darrrt.css" rel="stylesheet" type="text/css">
+
+
+
+</body>
+</html>
+

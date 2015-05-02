@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Optional Types in Dart | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Optional Types in Dart | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="One of the Dart programming language's most innovative features is the use of optional types. This document seeks to explain how optional types work.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  <link rel="author" href="/authors/gilad-bracha.html">
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+  	<div class="container sub-page">
+      <div class="row">
+        <article><div class="col-md-4">
+  <div class="bs-sidebar" data-spy="affix" data-offset-bottom="350" role="complementary">
+
+<ol class="toc nav bs-sidenav" id="markdown-toc">
+  <li><a href="#overview">Overview</a></li>
+  <li><a href="#the-static-checker">The static checker</a></li>
+  <li><a href="#type-dynamic">Type dynamic</a></li>
+  <li><a href="#generics">Generics</a></li>
+  <li><a href="#checked-mode">Checked mode</a></li>
+  <li><a href="#using-types">Using types</a></li>
+</ol>
+
+  </div>
+</div>
+<div class="col-md-8">
+  <p><!-- Start of content -->
+</p>
+
+  <div>
+    <ol class="breadcrumb">
+
+  <li><a href="/articles/">
+  Articles</a></li>
+
+
+  <li class="active">Optional Types in Dart</li>
+</ol>
+  </div>
+
+  <h1 id="optional-types-in-dart">Optional Types in Dart</h1>
+
+  <p><em>Written by Gilad Bracha<br />
+October 2011 (updated September 2012)</em></p>
+
+  <p>One of the Dart programming language’s most innovative features
+is the use of optional types.
+This document seeks to explain how optional types work.</p>
+
+  <h2 id="overview">Overview</h2>
+
+  <p>The Dart language is dynamically typed. You can write programs that have no type
+annotations whatsoever, and run them, much as you would in JavaScript.</p>
+
+  <p>You may choose to add type annotations to your program:</p>
+
+  <ul>
+    <li>Adding types will <em>not</em> prevent your program from
+	compiling and running—even if
+	your annotations are incomplete or plain wrong.</li>
+    <li>Your program will have exactly the same semantics
+  no matter what type annotations you add.</li>
+  </ul>
+
+  <p>You can nevertheless profit from adding type annotations to your code.
+Types provide the following benefits:</p>
+
+  <ul>
+    <li>Documentation for humans.
+  It is much easier for people to read your code
+  if it has judiciously placed type annotations. </li>
+    <li>Documentation for machines.
+  Tools can leverage type annotations in various ways.
+  In particular, they can help provide nice features such as
+  name completion and improved navigation in IDEs. </li>
+    <li>Early error detection.
+  Dart provides a static checker that can warn you about potential problems,
+  without getting in your way.
+  In addition, in developer mode,
+  Dart automatically converts type annotations to runtime assertion checks
+  as a debugging aid. </li>
+    <li>Sometimes, types can help improve performance
+  when compiling to JavaScript.
+  We’ll say more about this later. </li>
+  </ul>
+
+  <h2 id="the-static-checker">The static checker</h2>
+
+  <p>The static checker acts a lot like lint in C.
+It warns you about potential problems at compile-time.
+Many of these warnings are related to types.
+The static checker does <em>not</em> produce errors—you
+can always compile and run your code, no matter what the checker says.</p>
+
+  <p>The checker does not scream about every possible type violation.
+It is not a typechecker,
+because Dart doesn’t use types the way a classic type system does.
+The checker complains about things that are very likely to be real problems,
+rather than forcing you to jump through hoops
+to satisfy a narrow-minded type system.</p>
+
+  <p>For example, consider:</p>
+
+  <pre class="prettyprint lang-dart">
+class Point {
+  final num x, y;
+  Point(this.x, this.y);
+  Point operator +(Point other) {
+    return new Point(x+other.x, y+other.y);
+  }
+  String toString() {
+    return &quot;x: $x, y: $y&quot;;
+  }
+}
+
+main() {
+  Point p1 = new Point(0, 0);
+  Point p2 = new Point(10, 10);
+
+  int n = p1 + p2;
+
+  print(n);
+}
+</pre>
+
+  <p>This is clearly a problem.
+The static checker will issue a warning in this case.</p>
+
+  <p><img src="imgs/static-warning.png" width="744" height="435" alt="Static warning in Dart Editor" style="border: 1px solid gray; box-shadow: 5px 5px 5px rgba(50, 50, 50, 0.25);" /></p>
+
+  <p>Note that the code still runs,
+setting <code>n</code> to an instance of Point
+and printing <code>x: 10, y: 10</code>. </p>
+
+  <p>However, unlike a classic mandatory type system, code like this</p>
+
+  <pre class="prettyprint lang-dart">
+Object lookup(String key) { /* ... */ } // a lookup method in a heterogenous table
+String s = lookup(&#39;Frankenstein&#39;);
+</pre>
+
+  <p>will not cause any complaints from the checker.
+That’s because there is a very good chance that the code is correct,
+despite the lack of type information.
+You, the programmer, often have semantic knowledge
+that a typechecker does not.
+You know that the value stored in the table under ‘Frankenstein’ is a string,
+even though the lookup method is declared to return <code>Object</code>.</p>
+
+  <h2 id="type-dynamic">Type dynamic</h2>
+
+  <p>How does Dart avoid complaints when no types are provided?
+The key to this is the type <code>dynamic</code>,
+which is the default type given when no type
+is explicitly given by the programmer.
+Using type <code>dynamic</code> makes the checker shut up.</p>
+
+  <p>Occasionally, you may want to use <code>dynamic</code> explicitly.</p>
+
+  <pre class="prettyprint lang-dart">
+Map&lt;String, dynamic&gt; m = {
+    &#39;one&#39;: new Partridge(),
+    &#39;two&#39;: new TurtleDove(),
+    /* ..., */
+    &#39;twelve&#39;: new Drummer()};
+</pre>
+
+  <p>We could have used the type
+<code>Map&lt;String, Object&gt;</code> for <code>m</code>,
+but then, when we extracted the contents,
+they would have static type <code>Object</code>,
+about which very little is known.
+Since the contents of the map have no common superinterface
+other than <code>Object</code>,
+we may prefer to use <code>dynamic</code>.
+If we try to call methods on the map’s values, for example,</p>
+
+  <pre class="prettyprint lang-dart">
+pearTree = m[&#39;one&#39;].container();
+</pre>
+
+  <p>we would get a warning if the contents were of type <code>Object</code>,
+because <code>Object</code> does not support container.
+If we use type <code>dynamic</code>, no warning is issued. </p>
+
+  <h2 id="generics">Generics</h2>
+
+  <p>Dart supports reified generics.
+That is, objects of generic type carry
+their type arguments with them at run time.
+Passing type arguments to a constructor of a generic type
+is a runtime operation.
+How does this square with the claim that types are optional?</p>
+
+  <p>Well, if you don’t want to ever think about types,
+generics won’t force you to.
+You can create instances of generic classes without providing type parameters.
+For example:</p>
+
+  <pre class="prettyprint lang-dart">
+new List();
+</pre>
+
+  <p>works just fine. Of course, you can write</p>
+
+  <pre class="prettyprint lang-dart">
+new List&lt;String&gt;();
+</pre>
+
+  <p>if you want. </p>
+
+  <pre class="prettyprint lang-dart">
+new List();
+</pre>
+
+  <p>is just a shorthand for </p>
+
+  <pre class="prettyprint lang-dart">
+new List&lt;dynamic&gt;();
+</pre>
+
+  <p>In constructors, type parameters play a runtime role.
+They are actually passed at run time,
+so that you can use them when you do dynamic type tests.</p>
+
+  <pre class="prettyprint lang-dart">
+new List&lt;String&gt;() is List&lt;Object&gt;  // true: every string is an object 
+new List&lt;Object&gt;() is List&lt;String&gt;  // false: not all objects are strings
+</pre>
+
+  <p>Generics in Dart conform to programmer intuition.
+Here are some more interesting cases:</p>
+
+  <pre class="prettyprint lang-dart">
+new List&lt;String&gt;() is List&lt;int&gt;     // false
+new List&lt;String&gt;() is List          // true
+new List&lt;String&gt;() is List&lt;dynamic&gt; // same as line above
+new List() is List&lt;dynamic&gt;         // true, these are exactly the same
+</pre>
+
+  <p>In contrast, type annotations
+(for example, types added to the declarations of variables,
+or as return types of functions and methods)
+play no runtime role and have no effect on program semantics.
+One last case worth studying:</p>
+
+  <pre class="prettyprint lang-dart">
+new List() is List&lt;String&gt;          // true as well!
+</pre>
+
+  <p>You may be writing your program without types,
+but you will frequently be passing data into typed libraries.
+To prevent types getting in your way,
+generic types without type parameters are considered substitutable
+(subtypes of) for any other version of that generic.</p>
+
+  <h2 id="checked-mode">Checked mode</h2>
+
+  <p>Dart programs can be run in checked mode during development.
+If you run a program in checked mode,
+the system will automatically execute certain type checks
+when passing in parameters,
+when returning results,
+and when executing assignments.
+If the checks fail,
+execution will stop at that point with a clear error message. So, </p>
+
+  <pre class="prettyprint lang-dart">
+String s = new Object();
+</pre>
+
+  <p>will stop the code in its tracks,
+because <code>Object</code> is not a subtype of <code>String</code>.
+However</p>
+
+  <pre class="prettyprint lang-dart">
+Object foo() {
+  return &quot;x&quot;;
+}
+String s = foo();
+</pre>
+
+  <p>works just fine,
+because the actual object returned by foo at run time is a <code>String</code>,
+even though the type signature says foo returns an <code>Object</code>.
+When an object is assigned to a variable,
+Dart checks that the runtime type of the object
+is a subtype of the declared (static) type of the variable.</p>
+
+  <p>Essentially, checked mode is like running your program under the debugger
+with watchpoints that run a subtype check on every assignment, return,
+and so on.
+Some more examples:</p>
+
+  <pre class="prettyprint lang-dart">
+&lt;int&gt;[0,1, 1][2] = new Object(); // fails in checked mode
+
+bar(int n) {
+  return n *2;
+}
+...
+bar(3.2); // returns 6.4 in production, but fails in checked mode
+</pre>
+
+  <p>In checked mode , every time an argument is passed to a function,
+the runtime type of the argument is tested to see
+if it is a subtype of the declared type of the formal parameter.
+We can correct this easily:</p>
+
+  <pre class="prettyprint lang-dart">
+bar(num n) {
+  return n *2;
+}
+
+...
+
+bar(3.2); // works fine
+
+int i_bar(num n) {
+  return n *2;
+}
+
+...
+
+i_bar(3.2); // fails in checked mode
+            // because returned value is not an int
+</pre>
+
+  <p>Notice the last line.
+The check happens on returned values,
+even if the result of the function is not assigned to anything.   </p>
+
+  <p>Let’s return to our old friend Frankenstein.</p>
+
+  <pre class="prettyprint lang-dart">
+Object lookup(String key) { /* ... */ } // a lookup method in a heterogenous table
+String s = lookup(&#39;Frankenstein&#39;);
+</pre>
+
+  <p>If we are correct in our assumption that the lookup returns a string,
+checked mode will execute smoothly.
+If we’re wrong, it will catch our mistake for us.
+In production mode, the code will run without complaint.
+Assume the lookup actually returns an object that isn’t a string,
+say an instance of class <code>Frankenstein</code>.
+The variable <code>s</code> will contain that instance.
+In no case will Dart do a magical coercion into a string.
+If it did, that would mean the type annotation
+was modifying the behavior of our program,
+and types would not be optional anymore.</p>
+
+  <p>Of course, if you don’t use types at all,
+checked mode won’t get in your way. </p>
+
+  <pre class="prettyprint lang-dart">
+my_add(s1, s2) {
+  return s1 + s2;
+}
+
+my_add(3, 4); // 7
+my_add(new Point(3, 3), new Point(4, 4)); // Point(7, 7)
+</pre>
+
+  <p>All these checks impose a considerable performance penalty,
+so one cannot usually afford to run them in production.
+The benefit of such checks is that they
+can trap dynamic type errors at their source,
+making it easier to debug problems.
+Most such problems are detected during testing anyway,
+but checked mode helps localize them.</p>
+
+  <h2 id="using-types">Using types</h2>
+
+  <p>How you use types is up to you.
+If you hate types, you need not use them at all.
+You won’t get any type warnings,
+and you can develop in the style you feel comfortable with
+in other dynamic languages.
+You can still benefit from types,
+because the Dart libraries have type signatures
+that tell you what they expect and what they return.
+If you run in checked mode, and pass bad arguments to the library,
+checked mode will detect that at the point where you made the mistake.</p>
+
+  <p>If you love types, you may use them everywhere,
+much like in a statically typed language.
+However, even then you won’t get the same level of static checking.
+Dart’s rules are much less rigid.
+We anticipate providing additional tools
+that might interpret type annotations more strictly
+for those who like that sort of thing.</p>
+
+  <p>We don’t recommend either of these extremes.
+Use types where they make sense.
+The most valuable thing you can do is add types
+to the headers of public members of your libraries.
+Next, do the same for the private ones.
+Even if nobody else has to maintain the code,
+you will find it helpful
+if you leave the code and come back in a few weeks or months.
+In both cases, you don’t necessarily have to
+add types to the bodies of methods or functions.
+Users of the library get value from type signatures,
+even if they are not 100% accurate.</p>
+
+  <p>Within the bodies of functions,
+it may not always pay to annotate declarations.
+Sometimes the code is simple enough that it doesn’t really matter,
+and types might just create clutter.</p>
+
+  <p>Usually, you should design your code
+without letting type considerations influence your design.
+In some cases, there are alternate designs,
+one of which plays better with types than another.
+For example, rather than passing around strings
+denoting function names to be invoked,
+if you can pass a function instead,
+your code will be both more efficient and easier to typecheck.
+Dart discourages gratuitous use of reflection by other means as well.
+However, you should not hesitate to use reflection when it truly makes sense.</p>
+</div>
+
+    	  </div> <!-- End of content from toc.html -->
+        </article>
+	  </div>
+
+	
+	<ul class="pager hidden-print">
+	  <li><a href="/articles/">More articles about Dart <i class="glyphicon glyphicon-chevron-up"></i></a></li>
+	 </ul>
+	 
+
+	</div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+
+
+
+
+</body>
+</html>
+

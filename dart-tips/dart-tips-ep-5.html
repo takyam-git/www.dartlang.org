@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Collections In Dart - Dart Tips, Ep 5 | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Collections In Dart - Dart Tips, Ep 5 | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="//i.ytimg.com/vi/fh1Cztaw9tI/0.jpg">
+  
+  <meta itemprop="description" content="Dart comes with lists, queues, maps, and sets out of the box. Watch this episode to learn how to pick the right collection class for the job. Fun tip: did you know that the Dart language spec doesn't use the word 'array'?">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  <link rel="author" href="/authors/seth-ladd.html">
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+    <div class="container col-md-10 col-md-offset-1 sub-page">
+      <div>
+      <h1 id="collections-in-dart---dart-tips-ep-5">Collections In Dart - Dart Tips, Ep 5</h1>
+
+<iframe class="dart-tips-video" src="//www.youtube.com/embed/fh1Cztaw9tI" frameborder="0" allowfullscreen=""></iframe>
+
+<p><a href="/dart-tips/">Back to all Dart Tips episodes</a>.</p>
+
+<hr />
+
+<h3 id="transcript">Transcript</h3>
+
+<p>Hi! My name is Seth Ladd and welcome to Dart Tips. Fun little fact, the Dart language spec doesn’t mention the word ‘array’. Fret not, my happy Dartisans, Dart has many ways to store and retrieve collections of objects. Out of the box, Dart supports four types of collections with full-featured APIs: lists, maps, queues, and sets. Unordered, ordered, random access, or by a key, you’ll find it in the Dart core libraries. Let’s get started.</p>
+
+<p><img src="imgs/ep-5-hierarchy.png" alt="Dart's collection type hierarchy." /></p>
+
+<p>First, a bit of taxonomy. The root of Dart’s collection classes start at Iterable. An object that implements Iterable exposes read-only access to a group of items. The Collection class extends Iterable, adding the ability to add and remove items. The rubber hits the road with List, Set, and Queue, which implement Collection. You can see that Map doesn’t extend or implement Collection, but it’s an honorary member of the useful collection type classes.</p>
+
+<p>We’ll talk about each collection class in turn, but let’s start at the top: Iterable! Just for illustration, here is an example of generating an iterable series of 5 numbers, zero through four.</p>
+
+<pre class="prettyprint lang-dart">
+var numbers = new Iterable.generate(5, (i) =&gt; i);
+</pre>
+
+<p>Most of the time you’ll iterate through actual collection objects, but it’s cool to know you can generate a pure iterable object.</p>
+
+<p>We’re talking about iterable here, so let’s iterate! Iterable objects play nicely with for-in loops, because they can generate iterators. Here’s an example of a for-in loop using an iterable.</p>
+
+<pre class="prettyprint lang-dart">
+for (var number in numbers) {
+  print(number);
+}
+</pre>
+
+<p>You can think of the for-in code as syntactic sugar for the this code.</p>
+
+<pre class="prettyprint lang-dart">
+for (var iter = numbers.iterator; iter.moveNext();) {
+  var number = iter.current;
+  print(number);
+}
+</pre>
+
+<p>Notice how a new iterator is created, and moveNext is called for every iteration. The current value from the iterator is accessed and printed. I don’t know about you, but I find the for-in version easier to read. Still, it’s nice to know what’s happening under the hood.</p>
+
+<p>An iterable object can do much more than just iterate through its items. Iterable defines very useful methods for filtering, searching, transforming, reducing, and more. Here are a few examples.</p>
+
+<pre class="prettyprint lang-dart">
+numbers.length;
+numbers.any((int i) =&gt; i.isEven);
+numbers.contains(10);
+numbers.where((i) =&gt; i.isOdd).toSet();
+  // 1, 3
+numbers.map((i) =&gt; i * 2).toList();
+  // 0, 2, 4, 6, 8
+</pre>
+
+<p>The last two examples, where and map, illustrate iterable’s lazy application of chaining. For example, in the last example, map returns a new iterable without actually running the mapping operation. This means, the actual doubling operation doesn’t take effect until toList() is called (which actually performs the iteration and stuffs the results in a list).</p>
+
+<p>There are many more methods on Iterable, and I encourage you to check out the docs to learn more. Let’s move on to some collection classes.</p>
+
+<p>While the Iterable interface defines read-only behaviors on a group of items, the Collection class extends Iterable with the ability to add and remove items. List, Set, and Queue are all collections, so let’s start with List.</p>
+
+<p>The list class is an ordered collection of items, with zero-based index retrieval. In other words, if you’re looking for arrays, they are masquerading as lists.</p>
+
+<p>Here is some example code that uses list.</p>
+
+<pre class="prettyprint lang-dart">
+// var fruits = new List();
+var fruits = [&#39;apples&#39;, &#39;oranges&#39;, &#39;bananas&#39;];
+fruits[0]; // apples
+fruits.add(&#39;pears&#39;);
+fruits.length == 4;
+fruits.where((f) =&gt; f.startsWith(&#39;a&#39;)).toList();
+</pre>
+
+<p>Note that you can declare lists in two ways: using the constructor from the List class, or using the square bracket literal. Remember that lists implements Collection which extend Iterable, so a list can be filtered, transformed, and more. You can see here an example of filtering the list for only items that start with the letter a.</p>
+
+<p>It’s important to know that accessing an index that that is out of bounds throws a RangeError. Dart doesn’t keep on trucking, it tells you right away that something is wrong.</p>
+
+<pre class="prettyprint lang-dart">
+var fruits = [&#39;apples&#39;, &#39;oranges&#39;];
+
+// XXX: throws RangeError!
+fruits[3];
+</pre>
+
+<p>Keeping with an ordered theme, let’s now look at Queues. Like list, a queue is an ordered collection. Unlike list, however, a queue is optimized for addition or removal from either end of the collection. The tradeoff is that there is no index access to elements in a queue. Use a queue if you need to efficiently add or remove items from the head or tail of a collection.</p>
+
+<p>A Queue in Dart can be treated like a first-in-first-out or last-in-first-out data structure.</p>
+
+<p>Here is some example code that uses a queue.</p>
+
+<pre class="prettyprint lang-dart">
+// import &#39;dart:collection&#39;;
+
+var workOrders = new Queue();
+workOrders.addFirst(&#39;B23432&#39;);
+workOrders.addFirst(&#39;J78424&#39;);
+var order = workOrders.removeFirst();
+  
+workOrders.addLast(&#39;Z94093&#39;);
+workOrders.removeLast();
+</pre>
+
+<p>Notice the addFirst removeFirst and addLast removeLast methods. A queue is efficient because it doesn’t allocate a new data structure when new items are added or removed from the head or tail.</p>
+
+<p>Sometimes you don’t care about maintaining order, but you do care about ensuring there is one and only one item in a collection. In contrast to lists and queue, which are ordered and allow duplicate items, a Set is unordered and does not allow any duplicate items.</p>
+
+<p>Here is some example code that uses a set.</p>
+
+<pre class="prettyprint lang-dart">
+var emails = new Set();
+emails.add(&#39;bob@example.com&#39;);
+emails.add(&#39;john@example.com&#39;);
+emails.add(&#39;bob@example.com&#39;);
+emails.length == 2;
+var inBoth = emails.intersection(otherEmails);
+</pre>
+
+<p>Notice how the length of the set is 2 even though I called add() three times. Also of note is the intersection method, which returns a new set containing only the items that are found in this set and another collection.</p>
+
+<p>Finally, let’s look at the Map class. Maps, known as dictionaries or hashmaps in other languages, contain key-value pairs. Maps associate keys to objects for easy retrieval. They are great for fast access to arbitrary objects, if you know the key. Keys must be unique, and cannot be null.</p>
+
+<p>Here is some example code that uses Map.</p>
+
+<pre class="prettyprint lang-dart">
+// var accounts = new Map();
+var accounts = {&#39;bob@example.com&#39;: new Account(/* … */),
+                &#39;john@example.com&#39;: new Account(/* … */)};
+
+var account = accounts[&#39;bob@example.com&#39;];
+accounts.containsKey(&#39;alice@example.com&#39;); // false
+
+accounts.putIfAbsent(&#39;sally@example.com&#39;, () =&gt; loadFromDatabase(&#39;sally&#39;));
+</pre>
+
+<p>You can see how maps work great with their literal values. Don’t be fooled, though, maps aren’t like JavaScript objects. In Dart, only objects that implement the Map interface can be treated as a Map.</p>
+
+<p>Of particular note is putIfAbsent, which will call a function and insert its result only if the key does not exist in the map.</p>
+
+<p>Dart ships with four main collection types: lists, queues, sets, and maps as honorable mention. Each has their own trade-offs and optimizations. To help you keep them straight, here is a handy way to look at them.</p>
+
+<p><img src="imgs/ep-5-flowchart.png" alt="Decision matrix for Dart collections" /></p>
+
+<p>If you need key-value pairs, there is one option: Map. If you need to contain unique items, Set is your only option. This leaves the two ordered collections: List and Queue. Lists are great for arbitrary access to items anywhere in the collection, but changing their size can be costly. Queues are great if you only operate on the head or tail of the collection, but there’s no efficient way to access a specific element in the middle of the collection.</p>
+
+<p>Lists, Sets, and Queues are Iterable, which means you can filter, transform, search, and chain them. You can find these collection classes and more in the dart core libraries, which are bundled in every Dart SDK and editor release. There’s a lot more functionality to these classes, we barely scratched the surface. I encourage you to dig into the API docs to learn more.</p>
+
+<p>Thanks for watching, my name is Seth Ladd, and as we say here on Dart Tips, stay sharp!</p>
+
+<hr />
+
+<p><img src="imgs/marakana-logo.png" alt="Marakana Logo" /></p>
+
+<p>Our thanks go out to <a href="http://www.marakana.com">Marakana</a> for producing this
+video series.</p>
+
+<p><a href="/dart-tips/">Back to all Dart Tips episodes</a>.</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+
+
+
+
+</body>
+</html>
+

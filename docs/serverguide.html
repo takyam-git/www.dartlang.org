@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Command-Line Apps | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Command-Line Apps | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="Documentation, references, and more about server-side programming.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+    <div class="container col-md-10 col-md-offset-1 sub-page">
+      <div class="has-permalinks">
+      <h1 id="command-line-apps">Command-Line Apps</h1>
+
+<p>You can use Dart for any kind of command-line app from scripts to servers.</p>
+
+<ol class="toc" id="markdown-toc">
+  <li><a href="#show-me-the-code">Show me the code</a>    <ol>
+      <li><a href="#best-place-to-start">Best place to start</a></li>
+      <li><a href="#basic-command-line-apps">Basic command-line apps</a></li>
+    </ol>
+  </li>
+  <li><a href="#read-all-about-it">Read all about it</a>    <ol>
+      <li><a href="#prerequisites-dartasync-library">Prerequisites (dart:async library)</a></li>
+      <li><a href="#the-basics">The Basics</a></li>
+      <li><a href="#servers-1">Servers</a></li>
+      <li><a href="#shell-scripting">Shell scripting</a></li>
+      <li><a href="#packages">Packages</a></li>
+      <li><a href="#reference-docs">Reference docs</a></li>
+    </ol>
+  </li>
+</ol>
+
+<h2 id="show-me-the-code">Show me the code</h2>
+
+<p>If you prefer to plow through code, start with the following examples.
+These samples progress from simple to complex
+and illustrate a variety of APIs specific to command-line apps and servers.</p>
+
+<hr />
+
+<div class="row">
+<div class="col-md-5">
+
+    <h3 id="best-place-to-start">Best place to start</h3>
+
+    <ul>
+      <li><a href="/dart-by-example/#dart-io-and-command-line-apps">Dart by Example</a></li>
+    </ul>
+
+  </div>
+<div class="col-md-7">
+
+    <h4 class="no_toc" id="top-10">Top 10</h4>
+
+    <ol>
+      <li>Using files, directories, and symlinks</li>
+      <li>Reading and writing files</li>
+      <li>Listing contents of directories</li>
+      <li>Using streams</li>
+      <li>Making HTTP requests</li>
+      <li>Getting the response</li>
+      <li>Handling errors</li>
+      <li>Serving index.html</li>
+      <li>Adding custom headers</li>
+      <li>Implementing an HTTP server</li>
+      <li>…and more…</li>
+    </ol>
+
+  </div>
+</div>
+
+<hr />
+
+<div class="row">
+<div class="col-md-5">
+
+    <h3 id="basic-command-line-apps">Basic command-line apps</h3>
+
+    <ul>
+      <li><a href="https://github.com/dart-lang/sample-dcat/blob/master/README.md">dcat</a></li>
+      <li><a href="https://github.com/dart-lang/sample-dgrep/blob/master/README.md">dgrep</a></li>
+    </ul>
+  </div>
+<div class="col-md-7">
+
+    <h4 class="no_toc" id="apis">APIs</h4>
+
+    <ul>
+      <li>Parsing command-line arguments</li>
+      <li>Reading a file</li>
+      <li>Converting data</li>
+      <li>Using stdin, stdout, and stderr</li>
+      <li>Listing a directory recursively</li>
+      <li>Testing and getting information about paths</li>
+    </ul>
+  </div>
+</div>
+
+<hr />
+
+<div class="row">
+<div class="col-md-5">
+
+    <h4 class="no_toc" id="servers">Servers</h4>
+
+    <ul>
+      <li><a href="https://github.com/dart-lang/sample-dartiverse-search">dartiverse_search</a></li>
+      <li><a href="https://github.com/dart-lang/dart-tutorials-samples/blob/master/httpserver/bin/hello_world_server.dart">hello_world_server</a></li>
+      <li><a href="https://github.com/dart-lang/dart-tutorials-samples/blob/master/httpserver/bin/basic_writer_server.dart">basic_writer_server</a></li>
+      <li><a href="https://github.com/dart-lang/dart-tutorials-samples/blob/master/httpserver/bin/static_file_server.dart">static_file_server</a></li>
+      <li><a href="https://github.com/dart-lang/dart-tutorials-samples/tree/master/slambook">slambookserver</a></li>
+    </ul>
+
+  </div>
+<div class="col-md-7">
+
+    <h4 class="no_toc" id="apis-1">APIs</h4>
+
+    <ul>
+      <li>Using the HttpServer class</li>
+      <li>Handling GET, POST, and OPTIONS requests</li>
+      <li>Using CORS headers</li>
+      <li>Using WebSockets</li>
+      <li>Getting responses</li>
+      <li>Routing requests</li>
+      <li>Handling errors</li>
+    </ul>
+
+  </div>
+</div>
+
+<hr />
+
+<h2 id="read-all-about-it">Read all about it</h2>
+
+<p>Follow these links in order to gain a full understanding
+of how to write different kinds of command-line apps in Dart using
+various Dart libraries and packages.</p>
+
+<h3 id="prerequisites-dartasync-library">Prerequisites (dart:async library)</h3>
+
+<ul>
+  <li><a href="/docs/tutorials/futures/">Use Future-Based APIs</a>
+<img src="/docs/tutorials/images/target.png" height="16" width="16" /></li>
+  <li><a href="/docs/tutorials/streams/">Use Streams for Data</a>
+<img src="/docs/tutorials/images/target.png" height="16" width="16" /></li>
+</ul>
+
+<h3 id="the-basics">The Basics</h3>
+
+<ul>
+  <li>
+    <p><a href="/articles/io/">An Introduction to the dart:io Library</a></p>
+  </li>
+  <li>
+    <p><a href="/docs/tutorials/cmdline/">Write a Command-Line App</a>
+<img src="/docs/tutorials/images/target.png" height="16" width="16" /></p>
+  </li>
+</ul>
+
+<h3 id="servers-1">Servers</h3>
+
+<ul>
+  <li><a href="/docs/tutorials/httpserver/">Write HTTP Clients &amp; Servers</a> (a tutorial about using dart:io and http_server to write HTTP apps)</li>
+  <li><a href="/docs/tutorials/forms/">Get Input from a Form</a>
+<img src="/docs/tutorials/images/target.png" height="16" width="16" />
+(contains an HTTP server/client pair)</li>
+  <li><a href="/docs/dart-up-and-running/ch05.html">Walkthrough: Dartiverse Search</a>
+(HTTP server, Web Sockets, logging, and routing)</li>
+</ul>
+
+<h3 id="shell-scripting">Shell scripting</h3>
+
+<p>Kevin Moore created a five-part video series on shell scripting with Dart.</p>
+
+<ul>
+  <li>Part 1: <a href="http://www.youtube.com/watch?v=Rh_kaQUXXX4">Basics of creating and running a Dart command</a></li>
+  <li>Part 2: <a href="http://www.youtube.com/watch?v=PK7gEocFfII">Passing args to your command</a></li>
+  <li>Part 3: <a href="http://www.youtube.com/watch?v=zOB8_9pHBik">Smarter arguments with ArgParser</a></li>
+  <li>Part 4: <a href="http://www.youtube.com/watch?v=meAicYl4HHI">Advanced ArgParser and Logging</a></li>
+  <li>Part 5: <a href="http://www.youtube.com/watch?v=18gvMuyfuuY">Implementing shell completion using the Bag of Tricks</a></li>
+</ul>
+
+<p>Read more about
+<a href="http://news.dartlang.org/2013/02/dart-in-shell-video-tutorials-now.html">shell scripting with Dart</a>.</p>
+
+<h3 id="packages">Packages</h3>
+
+<ul>
+  <li>
+    <p><a href="https://pub.dartlang.org/packages/http_server">http_server</a>—
+ Virtual directory, virtual host, and static file serving. (Dart team)</p>
+  </li>
+  <li>
+    <p><a href="http://pub.dartlang.org/packages/route">route</a>—
+ URL routing for the server (and the client). (Dart team)</p>
+  </li>
+  <li>
+    <p><a href="http://pub.dartlang.org/packages/args">args</a>—
+ Handle command-line arguments. (Dart team)</p>
+  </li>
+  <li>
+    <p><a href="http://pub.dartlang.org/packages/http">http</a>—
+ Connect to HTTP resources. (Dart team)</p>
+  </li>
+</ul>
+
+<p>Find more packages useful for server-side and command-line apps
+at <a href="http://pub.dartlang.org">pub.dartlang.org</a>.</p>
+
+<h3 id="reference-docs">Reference docs</h3>
+
+<ul>
+  <li><a href="https://api.dartlang.org/dart_io.html">dart:io</a>—
+ Includes support for UDP, TCP, HTTP client and server,
+ files, directories, web sockets, processes, server sockets, and more.</li>
+  <li><a href="https://api.dartlang.org/args.html">args package</a>—
+ Help with handling command-line arguments.</li>
+  <li><a href="https://api.dartlang.org/dart_async.html">dart:async</a>—
+  Asynchronous programming with Futures, Streams.</li>
+  <li><a href="https://api.dartlang.org/dart_convert.html">dart:convert</a>—
+  Converters for data types such as JSON and UTF-8.</li>
+</ul>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+
+
+
+
+</body>
+</html>
+

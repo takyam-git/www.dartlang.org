@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>A Client-Server Example | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="A Client-Server Example | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="Learn to write a client and a server together">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+    <div class="container col-md-10 col-md-offset-1 sub-page">
+      <div>
+      <div>
+<ol class="breadcrumb">
+
+  <li><a href="/server/">
+  Dart on the Server</a></li>
+
+  <li><a href="/server/google-cloud-platform/">
+  Google Cloud Platform</a></li>
+
+  <li><a href="/server/google-cloud-platform/app-engine/">
+  App Engine</a></li>
+
+
+  <li class="active">Client-Server Example</li>
+</ol>
+</div>
+
+<h1 id="a-client-server-example">A Client-Server Example</h1>
+
+<p>The HelloWorld sample showed you how to create, run, and test
+the simplest Dart app on an App Engine development server
+on your local machine.
+This page shows you how to create, run and test
+a client/server application.
+Later you’ll learn how to deploy it to the cloud.</p>
+
+<p>The client is implemented in HTML and Dart and
+runs in a browser.
+The server is written solely in Dart and runs
+in the App Engine Dart runtime.
+As with the HelloWorld example,
+the server code is in the <code>bin</code> directory.
+The client code is in the <code>web</code> directory.</p>
+
+<p>The application allows the user to add items to a list.
+When the user types in an item, the client sends an
+HTTP request to the server, which responds.
+The server stores each item in Cloud Datastore so that when the
+user revisits the application, the item is still there.
+The client and server use JSON-formatted data
+to pass the list items back and forth. </p>
+
+<h3 class="no_toc" id="contents">Contents</h3>
+
+<ol class="toc" id="markdown-toc">
+  <li><a href="#get-the-clientserver-code-and-run-it-locally">Get the client/server code and run it locally</a></li>
+  <li><a href="#the-source-files">The source files</a></li>
+  <li><a href="#code-flow-between-the-client-and-server">Code flow between the client and server</a></li>
+  <li><a href="#how-the-app-is-served">How the app is served</a></li>
+  <li><a href="#what-next">What next?</a></li>
+</ol>
+
+<h2 id="get-the-clientserver-code-and-run-it-locally">Get the client/server code and run it locally</h2>
+
+<ol>
+  <li>
+    <p>Get the
+  <a href="https://github.com/dart-lang/appengine_samples">appengine_samples</a>
+  from <a href="https://github.com/">GitHub</a>.
+  Inside this repo is a <code>clientserver</code> directory.</p>
+  </li>
+
+  <li>
+    <p>Within the <code>clientserver</code> directory,
+  run <code>pub get</code> to pull the necessary libraries
+  into the client/server project.
+  This project has dependencies on appengine, gcloud, memcache,
+  along with a few others.</p>
+    <pre>
+$ cd clientserver 
+$ pub get
+</pre>
+  </li>
+
+  <li>
+
+    <p>In one terminal window, run <code>pub serve</code> as follows:</p>
+
+    <pre>
+$ pub serve web --hostname 192.168.59.3 --port 7777
+</pre>
+
+    <p>Any non-trivial HTML client written in Dart requires a
+transformation/compilation step to run.
+This step runs all the transformers the project is using.
+One of these transformers is the Dart to JavaScript compilation.</p>
+
+    <p>The <code>pub serve</code> command starts up a server
+for your Dart web app.
+The pub server is an HTTP server that serves up your client’s assets.
+The <code>pub serve</code> command automatically includes a Dart-to-JavaScript transformer
+that compiles your Dart code to JavaScript.
+With this, you can change some Dart code,
+refresh your client, and immediately see the changes.</p>
+
+    <p>For App Engine managed VM apps, <code>pub serve</code> needs to listen on
+an adapter shared by all docker containers.
+In most cases, this will be located at IP 192.168.59.3.
+If this address fails, use <code>ifconfig</code> (Mac and Linux) or
+<code>ipconfig</code> (Windows) to determine which IP should be used.
+The ifconfig output typically lists the adapter as <code>vboxnet1</code>.
+The ipconfig output has the heading <code>VirtualBox Host-Only Ethernet Adapter</code>.
+For more information, see
+<a href="https://github.com/boot2docker/boot2docker-cli#configuration">boot2docker configuration</a>.</p>
+  </li>
+
+  <li>
+    <p>Add the <code>DART_PUB_SERVE</code> environment variable to the app.yaml
+file:</p>
+
+    <pre>
+env_variables:
+  DART_PUB_SERVE:  'http://192.168.59.3:7777'
+</pre>
+  </li>
+
+  <li>
+    <p>Now run the client/server app. 
+In a different terminal window, run <code>gcloud</code> like this:</p>
+
+    <pre>
+$ gcloud preview app run app.yaml
+</pre>
+
+    <li>
+      <p>Navigate to <code>http://localhost:8080/</code>.
+Enter some items in the list.
+You should see something like this:</p>
+
+      <p><img src="images/clientserverview.png" style="display:block;margin: 0 auto;" /></p>
+    </li>
+
+    <h2 id="the-source-files">The source files</h2>
+
+    <p>These are the source files for both the client and the
+server applications that you got when you downloaded the appengine_samples.</p>
+
+    <dl>
+      <dt>
+<a href="https://github.com/dart-lang/appengine_samples/blob/master/clientserver/app.yaml">app.yaml</a>
+</dt>
+      <dd>
+        <p>Configures certain aspects of the application,
+such the app ID, the latest version identifier,
+and URL mappings to request handlers.
+This file lives at the top of a Dart project.</p>
+      </dd>
+      <dt>
+<a href="https://github.com/dart-lang/appengine_samples/blob/master/clientserver/pubspec.yaml">pubspec.yaml</a>
+</dt>
+      <dd>
+        <p>Specifies package dependencies for a Dart program.
+This file is required by all Dart projects
+and lives at the top of a Dart project.</p>
+      </dd>
+      <dt>
+<a href="https://github.com/dart-lang/appengine_samples/blob/master/clientserver/bin/server.dart">bin/server.dart</a>
+</dt>
+      <dd>
+        <p>Implements the Dart HTTP server.
+Receives and handles HTTP requests from the client
+program via the App Engine managed VM.
+This server stores and retrieves entities from
+the App Engine datastore.</p>
+      </dd>
+      <dt>
+<a href="https://github.com/dart-lang/appengine_samples/blob/master/clientserver/web/index.html">web/index.html</a>
+</dt>
+      <dd>
+        <p>Provides the user interface for the client.
+This file includes a script, <code>packages/browser/dart.js</code>, that
+handles compatibility with non-Dart browsers.</p>
+      </dd>
+      <dt>
+<a href="https://github.com/dart-lang/appengine_samples/blob/master/clientserver/web/index.dart">web/index.dart</a>
+</dt>
+      <dd>
+        <p>Implements the Dart HTTP client.
+The objects that are stored in the cloud datastore
+are implemented by the <code>Item</code> class,
+which is defined in the <code>web/model.dart</code> file.</p>
+      </dd>
+      <dt>
+<a href="https://github.com/dart-lang/appengine_samples/blob/master/clientserver/web/model.dart">web/model.dart</a>
+</dt>
+      <dd>
+        <p>Provides a gcloud model for a Dart type,
+<code>Item</code>, so that objects of that
+type can be stored in the Cloud Datastore.</p>
+      </dd>
+    </dl>
+
+    <h2 id="code-flow-between-the-client-and-server">Code flow between the client and server</h2>
+
+    <p>The flow of the client/server app is as follows:</p>
+
+    <ol>
+  <li>
+        <p>The <code>main</code> method spins up an App Engine instance,
+  passing in the <code>requestHandler</code> callback function.</p>
+      </li>
+
+  <li>
+        <p>The key methods in the server are <code>requestHandler</code>, which triages
+  the requests, and <code>handleItems</code>, which gets items from and sends items
+  to the datastore.</p>
+      </li>
+
+  <li>
+        <p>When an HTTP request comes in, the Dart runtime on App Engine invokes
+  <code>requestHandler</code>, passing in an <code>HttpRequest</code> instance.</p>
+      </li>
+
+  <li>
+        <p>Depending on the HTTP request sent by the client,
+  the handler either serves the main page displaying any items already in the list,
+  adds an item to the list,
+  clears the list,
+  or displays the items in JSON format.</p>
+      </li>
+
+  <li>
+        <p>In the client, typing in the text field and clicking the button generates
+  a <code>POST</code> request with the URI path <code>/items</code>.
+  The handler adds the item to the list saving it to
+  Cloud Datastore using the <code>context.services.db.commit</code> method.
+  The server then sends the response back to the client in
+  JSON format so the client can update the UI.</p>
+      </li>
+
+  <li>
+        <p>When the client starts up, it does a <code>GET</code> request with
+  the URI path <code>/items</code>. The server looks up the items in the
+  datastore and passes them in JSON format back to the client.</p>
+      </li>
+
+  <li>
+        <p>Using <code>localhost:8080/clean</code> clears the list, removing all items
+  from the datastore.</p>
+      </li>
+
+  <li>
+        <p>Using <code>localhost:8080/items</code> displays the list in JSON format.</p>
+      </li>
+
+</ol>
+
+    <h2 id="how-the-app-is-served">How the app is served</h2>
+
+    <p>As mentioned above, the pub server (run using <code>pub serve</code>) is required for your Dart app.
+The pub server is an HTTP server on localhost that serves
+up your client’s assets such as images and styles.
+In addition to serving static assets, the pub server also produces them
+by running transformers.
+A transformer converts input assets
+(such as Dart files) into output assets (such as JavaScript and HTML).
+These output assets aren’t in the file system;
+they exist only in the pub server.
+The pub server automatically includes a <code>dart2js</code> transformer that compiles
+Dart code to JavaScript. With this, you can change some Dart code,
+refresh the browser, and immediately see the changes.</p>
+
+    <p>The App Engine development server uses <code>pub serve</code> to get assets
+for your Dart App Engine app.</p>
+
+    <p><img src="images/deployment.png" style="display:block;margin: 0 auto;" alt="Interaction of various tools and systems during deployment" /></p>
+
+    <p>Run <code>pub build web</code> manually before deploying, like this:</p>
+
+    <pre>
+$ pub build web
+$ gcloud preview app deploy app.yaml
+</pre>
+
+    <p>This generates all required resources into a directory as static files,
+which can then be deployed to a server.
+Note that the <code>deploy</code> command can take awhile.</p>
+
+    <aside class="alert alert-info">
+      <p><strong>Note:</strong>
+If you are using custom datastore indices, you also need to specify index.yaml:</p>
+      <pre>
+$ gcloud preview app deploy app.yaml index.yaml
+</pre>
+    </aside>
+
+    <h2 id="what-next">What next?</h2>
+
+    <ul>
+      <li>
+        <p>If you are interested in how the code works, check out
+<a href="client-code.html">The Client Code Explained</a>
+and
+<a href="server-code.html">The Server Code Explained</a>.</p>
+      </li>
+      <li>
+        <p>Or, go straight to
+<a href="../deploy.html">Deploy a Dart Application on App Engine</a>.</p>
+      </li>
+    </ul>
+  </li></ol>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+<link href="../styles.css" rel="stylesheet" type="text/css">
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Classes: Constructors - Dart Tips, Ep 11 | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Classes: Constructors - Dart Tips, Ep 11 | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="//i.ytimg.com/vi/k2R_HwZzogQ/0.jpg">
+  
+  <meta itemprop="description" content="Dart offers many types of constructors, including an implementation of the factory pattern. Learn more about constructors, field initialization, named constructors, and factory constructors in Dart.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  <link rel="author" href="/authors/seth-ladd.html">
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+    <div class="container col-md-10 col-md-offset-1 sub-page">
+      <div>
+      <h1 id="classes-constructors---dart-tips-ep-11">Classes: Constructors - Dart Tips, Ep 11</h1>
+
+<iframe class="dart-tips-video" src="//www.youtube.com/embed/k2R_HwZzogQ" frameborder="0" allowfullscreen=""></iframe>
+
+<p><a href="/dart-tips/">Back to all Dart Tips episodes</a>.</p>
+
+<hr />
+
+<h3 id="transcript">Transcript</h3>
+
+<p>Hi, my name is Seth Ladd, and welcome to this episode of Dart Tips! Today we
+talk about Constructors. Fun fact! You can build a constructor in Dart that
+controls which object instance is returned. There’s lots of cool features with
+constructors in Dart, so let’s get started!</p>
+
+<p>Constructors are responsible for building and returning an instance of a
+class. Let’s start by looking at the constructors everyone is familiar with:
+what we call generative constructors. Here is an example:</p>
+
+<pre class="prettyprint lang-dart">
+class FluffyBunny {
+  String name;
+  num fluffiness;
+
+  FluffyBunny(String name, num fluffiness) {
+    this.name = name;
+    this.fluffiness;
+  }
+}
+</pre>
+
+<p>Not a lot of surprises here. The name of the constructor matches the name of the
+class. But whoa, that’s a lot of repetition! The word name is repeated three
+times in the constructor alone! Surely, we can do better! And indeed we can.</p>
+
+<p>Check this out:</p>
+
+<pre class="prettyprint lang-dart">
+class FluffyBunny {
+  String name;
+  num fluffiness;
+
+  FluffyBunny(this.name, this.fluffiness);
+}
+</pre>
+
+<p>If the constructor argument’s name is the same as a field, you can prepend the
+argument with this dot. This is just syntactic sugar for the longer form
+<code>this.name = name</code> and <code>this.fluffiness = fluffiness</code>. Less typing is always a
+good thing.</p>
+
+<p>Use the new keyword to create a new instance of a class. Here is an example of
+calling a constructor with arguments.</p>
+
+<pre class="prettyprint lang-dart">
+var floppy = new FluffyBunny(&#39;floppy&#39;, 0.72);
+</pre>
+
+<p>A new instance of FluffyBunny is created, with both name and fluffiness set. Of
+course, the last parameter, 0.72, isn’t exactly obvious.  Luckily, constructors
+can use optional parameters just like functions and method. Here is an example:</p>
+
+<pre class="prettyprint lang-dart">
+class FluffyBunny {
+  String name;
+  num fluffiness;
+
+  FluffyBunny(this.name, {this.fluffiness});
+}
+
+var floppy = new FluffyBunny(&#39;floppy&#39;, fluffiness: 0.72);
+</pre>
+
+<p>Now it’s a bit easier to read and understand that last parameter.</p>
+
+<p>If your class does not explicitly define a constructor, a default constructor is
+provided for you. Here’s an example of a Point class with two fields and no
+explicit constructor.</p>
+
+<pre class="prettyprint lang-dart">
+class Point {
+  num x;
+  num y;
+  
+  // A default, no-arg constructor
+  // is provided for you if
+  // no other constructor is defined.
+  // Point() : super();
+}
+
+var point = new Point();
+</pre>
+
+<p>The default constructor has zero arguments and invokes the no-argument
+constructor of its superclass.</p>
+
+<p>I now want to show you one of my favorite features of Dart: named constructors.
+First, some background. In traditional statically typed languages, you can
+overload methods by the types of parameters passed to those methods. Because
+Dart is optionally typed, you can’t overload methods based on type. Which isn’t
+a big deal, because you can just create differently named methods.
+Traditionally, though, you were stuck with a single name for the constructor
+(the name of the class often had to match the name of the constructor) and thus
+you wouldn’t have been able to create multiple constructors. The designers of
+the Dart language realized this and introduced named constructors as a way to
+allow you to define multiple different constructors for a class.</p>
+
+<p>Here is an example of named constructors at work:</p>
+
+<pre class="prettyprint lang-dart">
+class FluffyBunny {
+  FluffyBunny.fromXml(String xml) {
+    // …
+  }
+
+  FluffyBunny.fromJson(String json) {
+    // ...
+  }
+}
+
+var xml = &quot;&lt;bunny&gt;&lt;name&gt;floppy&lt;/name&gt;&lt;/bunny&gt;&quot;;
+var json = &#39;{&quot;bunny&quot;:{&quot;name&quot;:&quot;peter&quot;}}&#39;;
+
+var floppy = new FluffyBunny.fromXml(xml);
+var peter = new FluffyBunny.fromJson(json);
+</pre>
+
+<p>Notice how the new keyword is still used. I really like named constructors
+because they provide an easy to read call site and they clearly state their
+intention. In this case, both constructors take a string, and it’s obvious how
+those strings will be used.</p>
+
+<p>One nice feature of the Dart language is that all final fields are fully
+initialized before the this handle is available. In other words, final fields
+must be set before the constructor body is run. To calculate and set the value
+of final fields, you can use an initializer list. Here is an example:</p>
+
+<pre class="prettyprint lang-dart">
+import &#39;dart:math&#39;;
+
+class Point {
+  final num x;
+  final num y;
+  final num distanceFromOrigin;
+  
+  Point(x, y)
+      : x = x,
+        y = y,
+        distanceFromOrigin = sqrt(pow(x, 2) + pow(y, 2));
+
+}
+</pre>
+
+<p>The initializers after the colon are the initializer list. The this handle is
+not available in the initializer list, because at this point the object is not
+yet fully created.</p>
+
+<p>Here, Point is immutable because all fields are final. Setting x and y is
+straightforward. The distanceFromOrigin field must be calculated, but it is
+final, so we can’t calculate and set it in the constructor body.</p>
+
+<p>Because this isn’t available in the initializer list, you can’t call instance
+methods in the initializer list. However, top-level functions (like square root,
+show here) and static methods are OK to use.</p>
+
+<p>Speaking of initializer lists, we can now talk about calling superclass
+constructors. As you see here, you can place the call to the superclass’s
+constructor in the initializer list.</p>
+
+<pre class="prettyprint lang-dart">
+class Bunny {
+  String name;
+  
+  Bunny(this.name);
+}
+
+class FluffyBunny extends Bunny {
+  num fluffiness;
+  
+  FluffyBunny(String name, this.fluffiness) : super(name);
+}
+</pre>
+
+<p>It’s important to understand that all field initializers are run before
+constructor bodies are run. This means that the constructor body of the
+superclass isn’t run until all fields from both the subclass and superclass are
+initialized. We recommend you place the call to the super constructor at the end
+of the initializer list to make the order more clear.</p>
+
+<p>If you don’t explicitly call a superconstructor, a constructor will call the
+default, no-arg constructor of its superclass.</p>
+
+<pre class="prettyprint lang-dart">
+class Bunny {
+  Bunny() {
+    print(&#39;in bunny&#39;);
+  }
+}
+
+class FluffyBunny extends Bunny {
+  FluffyBunny() {
+    print(&#39;in fluffy&#39;);
+  }
+}
+
+main() {
+  var floppy = new FluffyBunny();
+
+  // in bunny
+  // in fluffy
+}
+</pre>
+
+<p>In this case, when you create a new FluffyBunny, you’ll see “in bunny” and then
+“in fluffy”. If the superclass does not have a default no-arg constructor, you
+will need to explicitly call a constructor from the superclass.</p>
+
+<p>We’ve so far seen many examples of what we call generative constructors. These
+traditional constructors create a new instance of the surrounding class and
+return it. While familiar, generative constructors are a bit limiting. Modular
+and composable software applications require more flexible ways to build and
+return objects, and entire suites of design patterns have popped up to
+compensate for traditional constructor shortcomings.</p>
+
+<p>One popular pattern is the Factory Pattern, with examples in many frameworks or
+toolkits. However, without native language support for the factory pattern, most
+implementations have to implement it with combinations of static methods and or
+utility classes. While this works, it exposes the pattern to the consumer of the
+code. Luckily, the designers of Dart added the factory pattern right into the
+language. With Dart’s factory constructors, you can natively use the factory
+pattern and make it appear like a regular constructor.</p>
+
+<p>One great use case for factory constructors is to return objects from a cache.
+Here’s the code:</p>
+
+<pre class="prettyprint lang-dart">
+class Symbol {
+  final String name;
+  static Map&lt;String, Symbol&gt; _cache = new Map&lt;String, Symbol&gt;();
+
+  factory Symbol(String name) {
+    if (_cache.containsKey(name)) {
+      return _cache[name];
+    } else {
+      final symbol = new Symbol._internal(name);
+      _cache[name] = symbol;
+      return symbol;
+    }
+  }
+
+  Symbol._internal(this.name);
+}
+</pre>
+
+<p>Notice how the constructor is declared as a factory constructor. Inside the
+constructor body, the cache is checked and if the symbol exists, it is returned.
+Else, a new symbol is created, added to the cache, and then returned.</p>
+
+<p>Using this class is easy, because there’s no special syntax to use a factory
+constructor. Get an instance with ‘new’:</p>
+
+<pre class="prettyprint lang-dart">
+main() {
+  var x = new Symbol(&#39;X&#39;);
+  var alsoX = new Symbol(&#39;X&#39;);
+
+  print(identical(x, alsoX));  // true
+}
+</pre>
+
+<p>Both <code>x</code> and <code>alsoX</code> point to the same object, so they are identical.</p>
+
+<p>Because the user of the class doesn’t know the constructor is really a factory,
+the original author of the code is free to refactor regular constructors into
+factory constructors without forcing clients to change their code. In other
+words, start with a generative constructor and if you later change to a factory
+constructor, no one needs to know.</p>
+
+<p>Here’s another cool fact about factory constructors: they can even return
+instances that are subclasses of the surrounding class. What other constructors
+can control what type of object is returned? I think this is very cool.</p>
+
+<p>So remember kids, while Dart might look like your friendly, neighborhood
+structured language, it has productive features like terse field initialization,
+named constructors, and factory constructors.</p>
+
+<p>Thanks for watching, my name is Seth Ladd, and as we say here on Dart Tips, stay
+sharp!</p>
+
+<hr />
+
+<p><img src="imgs/marakana-logo.png" alt="Marakana Logo" /></p>
+
+<p>Our thanks go out to <a href="http://www.marakana.com">Marakana</a> for producing this
+video series.</p>
+
+<p><a href="/dart-tips/">Back to all Dart Tips episodes</a>.</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+
+
+
+
+</body>
+</html>
+

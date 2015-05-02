@@ -1,0 +1,2062 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Beware the Nest o' Pirates: Write a Server App | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Beware the Nest o' Pirates: Write a Server App | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="Learn how you can easily write a RESTful server using Dart.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+    <div class="container col-md-12 col-md-offset-0 sub-page">
+      <div class="has-permalinks">
+      <h1 id="beware-the-nest-o-pirates-write-a-server-app">Beware the Nest o’ Pirates: Write a Server App</h1>
+
+<p>Learn how to create a RESTful web server using the
+Dart language and libraries, featuring the
+<a href="https://github.com/dart-lang/rpc">RPC package</a>.
+In this code lab, you create a server with API methods exposed as
+GET, POST, and DELETE requests.  Once the server’s API is complete,
+you use it to generate the corresponding API for a Dart client app.
+Finally, you extend the server using the HTTP server library
+to serve the Dart client directly.</p>
+
+<p>This code lab assumes that you are comfortable reading Dart code.
+If you’d like a more thorough introduction to the Dart language, see
+the <a href="/codelabs/darrrt/">client code lab</a> or the
+<a href="/docs/dart-up-and-running/ch02.html">language tour</a>.</p>
+
+<p><strong>This app lets you store a list of pirates to a Dart server. Try it!</strong></p>
+
+<iframe class="running-app-frame" style="width:900px;height:410px;" src="https://pirates-nest.appspot.com/piratebadge.html">
+</iframe>
+
+<hr />
+
+<div class="piratemap" style="min-height:325px">
+
+  <h2 id="map">Map</h2>
+
+  <ul>
+    <li><a href="#set-up">Step 0: Set up</a></li>
+    <li><a href="#step-one">Step 1: View the server code</a></li>
+    <li><a href="#step-two">Step 2: Annotate the server API</a></li>
+    <li><a href="#step-three">Step 3: Launch the server</a></li>
+    <li><a href="#step-four">Step 4: Extend the server API</a></li>
+    <li><a href="#step-five">Step 5: Generate the client API</a></li>
+    <li><a href="#step-six">Step 6: Connect the client to the server</a></li>
+    <li><a href="#step-seven">Step 7: Serve the client from the server</a></li>
+    <li><a href="#whatnext">What next?</a></li>
+    <li><a href="#summary">Summary</a></li>
+  </ul>
+
+</div>
+
+<hr />
+
+<h2 id="set-up">Step 0: Set up</h2>
+
+<p>In this step, you download Dart and get the sample code.</p>
+
+<h3 id="i-classfa-fa-anchor-i-get-dart"><i class="fa fa-anchor"> </i> Get Dart.</h3>
+
+<div class="trydart-step-details">
+  <p>If you haven’t already done so,
+<a href="/downloads/">download the Dart SDK</a>.
+Unzip the archive, which creates a directory called <code>dart-sdk</code>.</p>
+
+  <p>The Dart SDK download includes several Dart
+tools that you’ll need, incuding <code>dart</code>, <code>pub</code>, and <code>dartanalyzer</code>.
+If <code>dart</code> is not recognized at the command line,
+add <code>&lt;path-to-the-SDK&gt;/dart-sdk/bin</code> to your path.</p>
+
+  <aside class="alert alert-info">
+    <p><strong>Note:</strong>
+This code lab works with any IDE or editor, but the instructions
+assume that you’re using the command line.</p>
+  </aside>
+
+</div>
+
+<h3 id="i-classfa-fa-anchor-i-get-dartium"><i class="fa fa-anchor"> </i> Get Dartium.</h3>
+
+<p>You need a way to test the client app.
+You have two options. You can:</p>
+
+<ul>
+  <li>Compile the app to JavaScript and open the page in any browser.</li>
+  <li>Open the app in Dartium.</li>
+</ul>
+
+<p>If you prefer the latter option, and you don’t have Dartium already,
+<a href="https://www.dartlang.org/downloads/archive/">download Dartium</a>.
+Note that the executable is called Chromium on your file system.</p>
+
+<h3 id="i-classfa-fa-anchor-i-get-the-sample-code"><i class="fa fa-anchor"> </i> Get the sample code.</h3>
+
+<div class="trydart-step-details">
+  <p>Download the sample code from the
+<a href="https://github.com/dart-lang/one-hour-codelab/tree/server2">one-hour-codelab GitHub repo</a>
+using one of the following options:</p>
+
+  <ul>
+<li>
+      <p>Download the zip file, 
+  <a href="https://github.com/dart-lang/one-hour-codelab/archive/master.zip">one-hour-codelab-master.zip</a>.
+  Unzip the ZIP file, which creates a directory called
+  <code>one-hour-codelab-master</code>.</p>
+    </li>
+
+<li>
+      <p>Clone the repo. For example, from the command line:</p>
+
+      <pre class="prettyprint lang-sh">
+git clone https://github.com/dart-lang/one-hour-codelab.git
+</pre>
+
+      <p>This creates a directory named <code>one-hour-codelab</code>.</p>
+    </li>
+</ul>
+
+</div>
+
+<h3 id="i-classfa-fa-anchor-i-look-at-the-one-hour-codelab-sample"><i class="fa fa-anchor"> </i> Look at the one-hour-codelab sample.</h3>
+
+<div class="trydart-step-details">
+  <p>The <code>server</code> directory contains the following files and directories:</p>
+
+  <dl>
+    <dt><code>1-starter</code></dt>
+    <dd>Basic server (does not run)</dd>
+    <dt><code>2-simple</code></dt>
+    <dd>Supports a few simple methods using GET requests</dd>
+    <dt><code>3-*</code></dt>
+    <dd>Intentionally omitted as Step 3 does not require additional code</dd>
+    <dt><code>4-extended</code></dt>
+    <dd>Adds more advanced methods including support for POST, and DELETE requests</dd>
+    <dt><code>5-generated</code></dt>
+    <dd>Includes the generated client API</dd>
+    <dt><code>6-client</code></dt>
+    <dd>Includes the PirateBadge client app,
+modified to use the server for storing and retrieving pirate names</dd>
+    <dt><code>7-serve</code></dt>
+    <dd>Includes the final version of the server, 
+modified to serve the client app</dd>
+    <dt><code>working-dir</code></dt>
+    <dd>A work area that initially contains directories and files from <code>1-starter</code></dd>
+  </dl>
+
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+  </div> <div class="col-md-5">
+
+    <p>  </p>
+
+  </div> </div>
+
+<h3 id="i-classfa-fa-anchor-i-get-the-curl-utility"><i class="fa fa-anchor"> </i> Get the curl utility.</h3>
+
+<p>You need a way to test the server.
+You can do some of the testing in a browser,
+but Step 4 requires a tool, such as curl, that lets you construct
+POST and DELETE requests.</p>
+
+<p><em>curl</em> is a tool used for transferring data to or from a server using
+a supported protocol, such as HTTP, FTP, or IMAP.
+(Other tools, such as wget, perform the same function, but
+this code lab uses curl.)
+curl is already installed on most Macs and many Linux distributions.</p>
+
+<p>If you don’t have curl, go to the
+<a href="http://curl.haxx.se/download.html">curl download</a> page, 
+scroll down until you find the right version for your OS,
+and then download and install it.
+On Linux, you might be able to get curl by running:</p>
+
+<pre class="prettyprint lang-bash">
+apt-get install curl
+</pre>
+
+<h2 id="step-one">Step 1: View the server code</h2>
+
+<p>In this step, you open the source files for the server and familiarize
+yourself with the code. Note that this version of the server doesn’t run.
+You’ll fix the code in <a href="#step-two">Step 2</a>.</p>
+
+<div class="trydart-note">
+  <p><strong>Note:</strong>
+Throughout this code lab, edit the files in <code>working-dir</code>.
+You can use the files in the numbered directories to compare to your code
+or to recover if you get off track.</p>
+</div>
+
+<div class="trydart-step-details">
+  <p>Initially, the <code>working-dir</code> files and directories are identical to
+those in <code>1-starter</code>:</p>
+
+  <p><img src="images/server-directory-structure.png" alt="The 1-starter directory structure" /></p>
+
+  <dl>
+    <dt><code>messages.dart</code></dt>
+    <dd>Specifies the message format used between client and server.</dd>
+    <dt><code>piratesapi.dart</code></dt>
+    <dd>Specifies the methods that the server makes remotely available.</dd>
+    <dt><code>piratesnest.dart</code> </dt>
+    <dd>Contains a <code>main()</code> function, which implements the main server entrypoint.</dd>
+    <dt><code>utils.dart</code></dt>
+    <dd>Contains utility methods for generating and validating pirate names.</dd>
+  </dl>
+
+</div>
+
+<h3 id="i-classfa-fa-anchor-i-walk-through-the-code"><i class="fa fa-anchor"> </i> Walk through the code.</h3>
+
+<div class="trydart-step-details">
+  <p>Get familiar with the server code.</p>
+
+  <aside class="alert alert-info">
+    <p><strong>Tip:</strong>
+If you see only 1 column in this code lab, widen your window to see the
+explanation next to the code.</p>
+  </aside>
+</div>
+
+<div class="trydart-step-details">
+  <h4 id="libserverpiratesapidart">lib/server/piratesapi.dart</h4>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+    <div class="trydart-step-details">
+      <pre class="prettyprint lang-dart">
+library pirate.server;
+
+import &#39;package:rpc/api.dart&#39;;
+
+import &#39;../common/messages.dart&#39;;
+import &#39;../common/utils.dart&#39;;
+
+// This class defines the interface that the server provides.
+class PiratesApi {
+  final Map&lt;String, Pirate&gt; <code class="nocode highlight">_pirateCrew</code> = {};
+  final PirateShanghaier <code class="nocode highlight">_shanghaier</code> =
+      new PirateShanghaier();
+
+  PiratesApi() {
+    var captain = new Pirate.fromString(&#39;Lars the Captain&#39;);
+    _pirateCrew[captain.toString()] = captain;
+  }
+
+  // Returns a list of the pirate crew.
+  List&lt;Pirate&gt; <code class="nocode highlight">listPirates()</code> {
+    return _pirateCrew.values.toList();
+  }
+
+  // Generates (shanghais) and returns a new pirate.
+  // Does not add the new pirate to the crew.
+  Pirate <code class="nocode highlight">shanghaiAPirate()</code> {
+    var pirate = _shanghaier.shanghaiAPirate();
+    if (pirate == null) {
+      throw new InternalServerError(&#39;Ran out of pirates!&#39;);
+    }
+    return pirate;
+  }
+}
+</pre>
+    </div>
+    <div class="trydart-filename">lib/server/piratesapi.dart</div>
+
+  </div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> Key information </strong></p>
+
+    <ul>
+      <li>
+        <p>The server maintains a list (stored as a Map) of pirates, <code>_pirateCrew</code>,
+which constitutes the “nest of pirates.” This list initially contains
+only “Lars the Captain”.</p>
+      </li>
+      <li>
+        <p>The server creates <code>_shanghaier</code>, an instance of PirateShanghaier,
+which handles the generation of pirate names.
+ Generating a pirate name is referred to as “shanghaiing a pirate”.</p>
+      </li>
+      <li>
+        <p>The PiratesApi class defines two methods:
+<code>listPirates()</code> returns the <code>_pirateCrew</code> as a list;
+<code>shanghaiAPirate()</code> returns a new Pirate object with a valid pirate name
+ (example: Anne the Brave).</p>
+      </li>
+    </ul>
+
+    <p>  </p>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+  <h4 id="binpiratesnestdart">bin/piratesnest.dart</h4>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+      <pre class="prettyprint lang-dart">
+library piratesnest;
+
+import &#39;dart:io&#39;;
+
+import &#39;package:logging/logging.dart&#39;;
+import &#39;package:rpc/rpc.dart&#39;;
+
+import &#39;package:server_code_lab/server/piratesapi.dart&#39;;
+
+<code class="nocode highlight">final ApiServer _apiServer = new ApiServer(prettyPrint: true);</code>
+
+<code class="nocode highlight">main()</code> async {
+  // Add a bit of logging...
+  <code class="nocode highlight">Logger.root..level = Level.INFO</code>
+             <code class="nocode highlight">..onRecord.listen(print);</code>
+
+  // Set up a server serving the pirate API.
+  <code class="nocode highlight">_apiServer.addApi(new PiratesApi());</code>
+  <code class="nocode highlight">HttpServer server =</code>
+      <code class="nocode highlight">await HttpServer.bind(InternetAddress.ANY_IP_V4, 8088);</code>
+  <code class="nocode highlight">server.listen(_apiServer.httpRequestHandler);</code>
+  <code class="nocode highlight">print(&#39;Server listening on http://${server.address.host}:&#39;</code>
+        <code class="nocode highlight">&#39;${server.port}&#39;);</code>
+}
+</pre>
+    </div>
+<div class="trydart-filename">bin/piratesnest.dart</div>
+
+</div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> Key information </strong></p>
+
+    <ul>
+      <li>
+        <p>The RPC package requires you to create an <code>ApiServer</code> instance for
+routing the HTTP requests to your methods.</p>
+      </li>
+      <li>
+        <p>This file contains the entrypoint for the server—the <code>main()</code>
+function. Running this file starts up the server.</p>
+      </li>
+      <li>
+        <p>After creating an instance of HttpServer and binding it to port 8088,
+the server listens to that port using the API specified in the PiratesApi
+class.</p>
+      </li>
+      <li>
+        <p>The logging code generates print statements for each
+message that the server handles.</p>
+      </li>
+    </ul>
+
+  </div> </div>
+
+<div class="trydart-step-details">
+  <h4 id="libcommonutilsdart">lib/common/utils.dart</h4>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+    <div class="trydart-step-details">
+      <pre class="prettyprint lang-dart">
+library pirate.utils;
+
+import &#39;dart:math&#39; show Random;
+
+import &#39;messages.dart&#39;;
+
+// Proper pirate names.
+const List&lt;String&gt; <code class="nocode highlight">pirateNames</code> = const [
+  &quot;Anne&quot;, &quot;Bette&quot;, &quot;Cate&quot;, &quot;Dawn&quot;, &quot;Elise&quot;, &quot;Faye&quot;, &quot;Ginger&quot;,
+  &quot;Harriot&quot;, &quot;Izzy&quot;, &quot;Jane&quot;, &quot;Kaye&quot;, &quot;Liz&quot;, &quot;Maria&quot;, &quot;Nell&quot;,
+  &quot;Olive&quot;, &quot;Pat&quot;, &quot;Queenie&quot;, &quot;Rae&quot;, &quot;Sal&quot;, &quot;Tam&quot;, &quot;Uma&quot;,
+  &quot;Violet&quot;, &quot;Wilma&quot;, &quot;Xana&quot;, &quot;Yvonne&quot;, &quot;Zelda&quot;, &quot;Abe&quot;,
+  &quot;Billy&quot;, &quot;Caleb&quot;, &quot;Davie&quot;, &quot;Eb&quot;, &quot;Frank&quot;, &quot;Gabe&quot;, &quot;House&quot;,
+  &quot;Icarus&quot;, &quot;Jack&quot;, &quot;Kurt&quot;, &quot;Larry&quot;, &quot;Mike&quot;, &quot;Nolan&quot;,
+  &quot;Oliver&quot;, &quot;Pat&quot;, &quot;Quib&quot;, &quot;Roy&quot;, &quot;Sal&quot;, &quot;Tom&quot;, &quot;Ube&quot;,
+  &quot;Val&quot;, &quot;Walt&quot;, &quot;Xavier&quot;, &quot;Yvan&quot;, &quot;Zeb&quot;
+];
+
+// Proper pirate appellations.
+const List&lt;String&gt; <code class="nocode highlight">pirateAppellations</code> = const [
+  &quot;Awesome&quot;, &quot;Captain&quot;, &quot;Even&quot;, &quot;Fighter&quot;, &quot;Great&quot;,
+  &quot;Hearty&quot;, &quot;Jackal&quot;, &quot;King&quot;, &quot;Lord&quot;, &quot;Mighty&quot;,
+  &quot;Noble&quot;, &quot;Old&quot;, &quot;Powerful&quot;, &quot;Quick&quot;, &quot;Red&quot;,
+  &quot;Stalwart&quot;, &quot;Tank&quot;, &quot;Ultimate&quot;, &quot;Vicious&quot;,
+  &quot;Wily&quot;, &quot;aXe&quot;, &quot;Young&quot;, &quot;Brave&quot;, &quot;Eager&quot;,
+  &quot;Kind&quot;, &quot;Sandy&quot;, &quot;Xeric&quot;, &quot;Yellow&quot;, &quot;Zesty&quot;
+];
+
+// Clearly invalid pirate appellations.
+const List&lt;String&gt; <code class="nocode highlight">_forbiddenAppellations</code> = const [
+  &#39;&#39;, &#39;sweet&#39;, &#39;handsome&#39;, &#39;beautiful&#39;, &#39;weak&#39;, &#39;wuss&#39;,
+  &#39;chicken&#39;, &#39;fearful&#39;
+];
+
+// Helper method for validating whether the given pirate is truly a pirate!
+bool <code class="nocode highlight">truePirate(Pirate pirate)</code> =&gt; pirate.name != null &amp;&amp;
+    pirate.name.trim().isNotEmpty &amp;&amp;
+    pirate.appellation != null &amp;&amp;
+    !_forbiddenAppellations
+        .contains(pirate.appellation.toLowerCase());
+
+// Shared class for shanghaiing (generating) pirates.
+class PirateShanghaier {
+  static final Random indexGen = new Random();
+
+  Pirate <code class="nocode highlight">shanghaiAPirate({String name, String appellation})</code> {
+    var pirate = new Pirate();
+    pirate.name = name != null
+        ? name
+        : pirateNames[indexGen.nextInt(pirateNames.length)];
+    pirate.appellation = appellation != null
+        ? appellation
+        : pirateAppellations[
+        indexGen.nextInt(pirateAppellations.length)];
+    return truePirate(pirate) ? pirate : null;
+  }
+}
+</pre>
+    </div>
+    <div class="trydart-filename">lib/common/utils.dart</div>
+
+  </div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> Key information </strong></p>
+
+    <ul>
+      <li>
+        <p>Servers and other command-line apps generally rely on the dart:io library.
+Client apps generally rely on the dart:html library.
+<code>utils.dart</code> doesn’t rely on dart:io or dart:html and can be used by both
+the server and the client, so it lives in <code>lib/common/</code>.</p>
+      </li>
+      <li>
+        <p>The <code>pirateNames</code> list contains first names (like “Anne” and “Mike”);
+<code>pirateAppellations</code> contains labels (like “Old” and “Mighty”).
+These are used to generate valid pirate names (“Anne the Mighty”).</p>
+      </li>
+      <li>
+        <p>Thanks to the <code>truePirate()</code> function, the server rejects any pirate name
+that uses one of the <code>_forbiddenAppellations</code>;
+for example “Markus the Wuss” is not allowed.</p>
+      </li>
+    </ul>
+
+    <p>  </p>
+  </div> </div>
+
+<p>  </p>
+
+<div class="trydart-step-details">
+  <h4 id="libcommonmessagesdart">lib/common/messages.dart</h4>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+      <pre class="prettyprint lang-dart">
+library pirate.messages;
+
+// This class is used to send data back and forth between the
+// client and server. It is automatically serialized and
+// deserialized by the RPC package.
+<code class="nocode highlight">class Pirate</code> {
+  String name;
+  String appellation;
+
+  // A message class must have a default constructor taking no
+  // arguments.
+  <code class="nocode highlight">Pirate()</code>;
+
+  // It is fine to have other named constructors.
+  <code class="nocode highlight">Pirate.fromString(String pirateName)</code> {
+    var parts = pirateName.split(&#39; the &#39;);
+    name = parts[0];
+    appellation = parts[1];
+  }
+
+  String toString() =&gt; name.isEmpty ? &#39;&#39; : &#39;$name the $appellation&#39;;
+}
+</pre>
+    </div>
+<div class="trydart-filename">lib/common/messages.dart</div>
+
+</div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> Key information </strong></p>
+
+    <ul>
+      <li>
+        <p><code>messages.dart</code> specifies the message format used between client and server.
+Both apps share the code, which is possible because it does not rely
+on dart:io or dart:html.</p>
+      </li>
+      <li>
+        <p>Besides defining properties, the Pirate class can convert Pirate objects
+to and from their string components.</p>
+      </li>
+    </ul>
+
+  </div> </div>
+
+<h2 id="step-two">Step 2: Annotate the server API</h2>
+
+<p>In this step, you add annotations to the server’s API so the RPC library
+understands which methods are to be exposed as remotely available.</p>
+
+<h3 id="i-classfa-fa-anchor-i-run-pub-get"><i class="fa fa-anchor"> </i> Run pub get.</h3>
+
+<div class="row"> <div class="col-md-7">
+
+    <div class="trydart-step-details">
+
+      <p>The pub package manager makes sure that you have all the packages that
+the app needs.</p>
+
+      <pre class="prettyprint lang-lang">
+pub get
+</pre>
+    </div>
+  </div> <div class="col-md-5">
+
+  </div></div>
+
+<h3 id="i-classfa-fa-anchor-i-edit-libserverpiratesapidart"><i class="fa fa-anchor"> </i> Edit lib/server/piratesapi.dart.</h3>
+
+<div class="row"> <div class="col-md-7">
+
+    <div class="trydart-step-details">
+
+      <p>Add an <code>@ApiClass</code> annotation to the <code>PiratesApi</code> class.
+Add <code>@ApiMethod</code> annotations to the <code>listPirates()</code> and
+<code>shanghaiAPirate()</code> methods.</p>
+
+      <pre class="prettyprint lang-dart">
+library pirate.server;
+
+import &#39;package:rpc/api.dart&#39;;
+
+import &#39;../common/messages.dart&#39;;
+import &#39;../common/utils.dart&#39;;
+
+// This class defines the interface that the server provides.
+<code class="nocode highlight">@ApiClass(version: &#39;v1&#39;)</code>
+class PiratesApi {
+  final Map&lt;String, Pirate&gt; _pirateCrew = {};
+  final PirateShanghaier _shanghaier = new PirateShanghaier();
+
+  PiratesApi() {
+    var captain = new Pirate.fromString(&#39;Lars the Captain&#39;);
+    _pirateCrew[captain.toString()] = captain;
+  }
+
+  // Returns a list of the pirate crew.
+  <code class="nocode highlight">@ApiMethod(path: &#39;pirates&#39;)</code>
+  List&lt;Pirate&gt; listPirates() {
+    return _pirateCrew.values.toList();
+  }
+
+  // Generates (shanghais) and returns a new pirate.
+  // Does not add the new pirate to the crew.
+  <code class="nocode highlight">@ApiMethod(path: &#39;shanghai&#39;)</code>
+  Pirate shanghaiAPirate() {
+    var pirate = _shanghaier.shanghaiAPirate();
+    if (pirate == null) {
+      throw new InternalServerError(&#39;Ran out of pirates!&#39;);
+    }
+    return pirate;
+  }
+}
+</pre>
+    </div>
+    <div class="trydart-filename">lib/server/piratesapi.dart</div>
+
+  </div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> Key information </strong></p>
+
+    <ul>
+      <li>
+        <p>The <a href="https://github.com/dart-lang/rpc">RPC</a> package allows
+you to create RESTful server-side Dart APIs.</p>
+      </li>
+      <li>
+        <p>Identify the top-level API class with the <code>ApiClass</code> annotation
+to expose this class as a public API. A version number is required.</p>
+      </li>
+      <li>
+        <p>Identify remotely accessible methods with the <code>ApiMethod</code> annotation.
+Unless otherwise specified with the optional <code>method</code> parameter,
+all methods are assumed to send GET requests.</p>
+      </li>
+      <li>
+        <p>The required <code>path</code> parameter in the <code>ApiMethod</code> annotation specifies
+how to invoke the method via an HTTP request, as you will see in
+<a href="#step-three">Step 3</a>.</p>
+      </li>
+    </ul>
+
+    <p>  </p>
+
+  </div> <div class="col-md-5">
+
+    <p>  </p>
+
+  </div> </div>
+
+<h2 id="step-three">Step 3: Launch the server</h2>
+
+<p>In this step, you start up the server and make an HTTP request to
+verify that it’s running.</p>
+
+<h3 id="i-classfa-fa-anchor-i-check-the-code"><i class="fa fa-anchor"> </i> Check the code.</h3>
+
+<div class="row"> <div class="col-md-7">
+
+    <div class="trydart-step-details">
+
+      <p>Use <code>dartanalyzer</code> to check the code for errors
+(unless you’re using a tool, such as Dart Editor or WebStorm
+that automatically analyzes code).
+To run <a href="/tools/analyzer/">dartanalyzer</a> from the command line,
+do the following from the <code>working-dir</code> directory:</p>
+
+      <pre class="prettyprint lang-lang">
+dartanalyzer lib/server/piratesapi.dart
+</pre>
+
+      <p>You should see <code>No issues found.</code> If the code has problems, you
+can fix it or use the code from <code>2-simple</code>.</p>
+
+    </div>
+  </div> <div class="col-md-5">
+
+  </div></div>
+
+<h3 id="i-classfa-fa-anchor-i-start-up-the-server"><i class="fa fa-anchor"> </i> Start up the server.</h3>
+
+<div class="row"> <div class="col-md-7">
+
+    <div class="trydart-step-details">
+
+      <p>Use the <code>dart</code> command to launch the server:</p>
+
+      <pre class="prettyprint lang-lang">
+dart bin/piratesnest.dart
+</pre>
+
+      <p>You should see the following output:</p>
+
+      <pre class="prettyprint lang-bash">
+[INFO] rpc: Adding /piratesApi/v1 to set of valid APIs.
+Server listening on http://0.0.0.0:8088
+</pre>
+    </div>
+  </div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> Key information </strong></p>
+
+    <ul>
+<li>
+        <p>The <code>INFO</code> message is displayed by the logging code.</p>
+      </li>
+
+<li>
+        <p>When you start up the server, 
+  you might see a dialog asking, ‘Do you want the application “dart”
+  to accept incoming network connections?’ This dialog,
+  from the computer’s firewall, is asking if you want to be able to
+  connect to the Dart server from a different computer. Since you
+  are using localhost, you can “Deny” the request and it will still work.</p>
+      </li>
+
+<li>
+        <p>If you are running the server from an IDE,
+  you might also see:</p>
+
+        <pre class="prettyprint lang-bash">
+Observatory listening on http://127.0.0.1:53264
+</pre>
+
+        <p>Observatory is Dart’s profiling tool—you can ignore this message.</p>
+      </li>
+</ul>
+
+  </div></div>
+
+<h3 id="i-classfa-fa-anchor-i-test-the-server"><i class="fa fa-anchor"> </i> Test the server.</h3>
+
+<div class="row"> <div class="col-md-7">
+
+    <div class="trydart-step-details">
+
+      <p>You can test the server in a browser, or by using the curl utility.</p>
+
+      <aside class="alert alert-info">
+        <p><strong>Note:</strong>
+Open a new shell to run any curl commands. Logging messages
+appear in the shell where you launched the server.</p>
+      </aside>
+
+      <p>To make an HTTP request to the server, first construct a URL. For example:</p>
+
+      <p><img src="images/url.png" width="75%" alt="a sample HTTP request" /></p>
+
+      <p>The server listens on <code>localhost:8088</code>, as specified in the
+<code>main()</code> method. The class name, version,
+and method name are specified in the ApiClass.</p>
+
+      <p>You can test the server either in a browser, or by using curl.</p>
+
+      <p>For example, to request the list of pirates from the server,
+do one of the following:</p>
+
+      <ul>
+<li>
+          <p>Navigate to
+  <a href="http://localhost:8088/piratesApi/v1/pirates">http://localhost:8088/piratesApi/v1/pirates</a>
+  in a browser.</p>
+        </li>
+
+<li>
+          <p>Type the following at the command line:</p>
+
+          <pre class="prettyprint lang-bash">
+curl http://localhost:8088/piratesApi/v1/pirates 
+</pre>
+        </li>
+</ul>
+
+      <p>Initially, the crew contains only the captain:</p>
+
+      <pre class="prettyprint lang-bash">
+[
+ {
+  &quot;name&quot;: &quot;Lars&quot;,
+  &quot;appellation&quot;: &quot;Captain&quot;
+ }
+]
+</pre>
+
+      <p>The window running the server displays logging messages for
+this GET command.</p>
+
+    </div>
+  </div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> Key information </strong></p>
+
+    <ul>
+<li>
+        <p>Don’t be alarmed if you see the following warning
+when messaging the server from the browser:</p>
+
+        <pre class="prettyprint lang-bash">
+[WARNING] rpc: 
+Response
+  Status Code: 400
+  ...
+  RPC Error with status: 400 and message: Invalid request, missing API name
+  and/or version: http://localhost:8088/favicon.ico.
+</pre>
+      </li>
+</ul>
+
+  </div></div>
+
+<h2 id="step-four">Step 4: Extend the server API</h2>
+
+<p>In this step, you extend the server API to support POST 
+and DELETE requests so that you can store and delete pirate names
+in the list of pirates.</p>
+
+<h3 id="i-classfa-fa-anchor-i-edit-libserverpiratesapidart-1"><i class="fa fa-anchor"> </i> Edit lib/server/piratesapi.dart.</h3>
+
+<div class="trydart-step-details">
+
+  <p>To support adding a pirate,
+add a <code>hirePirate()</code> method to the PiratesApi class.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+    <div class="trydart-step-details">
+
+      <pre class="prettyprint lang-dart">
+// This class defines the interface that the server provides.
+@ApiClass(version: &#39;v1&#39;)
+class PiratesApi {
+  ...
+  <code class="nocode highlight">@ApiMethod(method: &#39;POST&#39;, path: &#39;pirate&#39;)</code>
+  <code class="nocode highlight">Pirate hirePirate(Pirate newPirate) {</code>
+    <code class="nocode highlight">// Make sure this is a real pirate...</code>
+    <code class="nocode highlight">if (!truePirate(newPirate)) {</code>
+      <code class="nocode highlight">throw new BadRequestError(</code>
+          <code class="nocode highlight">&#39;$newPirate cannot be a pirate. \&#39;Tis not a pirate name!&#39;);</code>
+    <code class="nocode highlight">}</code>
+    <code class="nocode highlight">var pirateName = newPirate.toString();</code>
+    <code class="nocode highlight">if (_pirateCrew.containsKey(pirateName)) {</code>
+      <code class="nocode highlight">throw new BadRequestError(</code>
+          <code class="nocode highlight">&#39;$newPirate is already part of your crew!&#39;);</code>
+    <code class="nocode highlight">}</code>
+
+    <code class="nocode highlight">// Add the pirate to the crew.</code>
+    <code class="nocode highlight">_pirateCrew[pirateName] = newPirate;</code>
+    <code class="nocode highlight">return newPirate;</code>
+  <code class="nocode highlight">}</code>
+  ...
+}
+</pre>
+    </div>
+    <div class="trydart-filename">lib/server/piratesapi.dart</div>
+
+  </div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> Key Information </strong></p>
+
+    <ul>
+      <li>
+        <p>Annotating the method with <code>ApiMethod</code> exposes it as available remotely.</p>
+      </li>
+      <li>
+        <p>The optional <code>method</code> parameter identifies the request type:
+<code>hirePirate</code> is a POST request.</p>
+      </li>
+      <li>
+        <p>The required <code>path</code> parameter specifies how to access this method
+from an HTTP request.</p>
+      </li>
+      <li>
+        <p>For POST requests, the RPC package requires that the method take a message
+class as a parameter. A message class must have a public constructor and
+public fields. Our message class, Pirate, is defined in <code>messages.dart</code>.</p>
+      </li>
+      <li>
+        <p>If the pirate is successfully added to the crew, the server returns the
+Pirate object as a response message.</p>
+      </li>
+      <li>
+        <p>The POST request’s body (which is in JSON) is automatically deserialized
+into a Pirate object, and the returned Pirate object is
+automatically serialized into the response body as JSON.</p>
+      </li>
+    </ul>
+
+  </div></div>
+
+<div class="trydart-step-details">
+
+  <p></p>
+  <p>To support deleting a pirate, 
+add a <code>firePirate()</code> method to the PiratesApi class.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+// This class defines the interface that the server provides.
+@ApiClass(version: &#39;v1&#39;)
+class PiratesApi {
+  ...
+  <code class="nocode highlight">@ApiMethod(</code>
+      <code class="nocode highlight">method: &#39;DELETE&#39;, path: &#39;pirate/{name}/the/{appellation}&#39;)</code>
+  <code class="nocode highlight">Pirate firePirate(String name, String appellation) {</code>
+    <code class="nocode highlight">var pirate = new Pirate()</code>
+      <code class="nocode highlight">..name = Uri.decodeComponent(name)</code>
+      <code class="nocode highlight">..appellation = Uri.decodeComponent(appellation);</code>
+    <code class="nocode highlight">var pirateName = pirate.toString();</code>
+    <code class="nocode highlight">if (!_pirateCrew.containsKey(pirateName)) {</code>
+      <code class="nocode highlight">throw new NotFoundError(&#39;Could not find pirate \&#39;$pirate\&#39;!&#39; +</code>
+          <code class="nocode highlight">&#39;Maybe they\&#39;ve abandoned ship!&#39;);</code>
+    <code class="nocode highlight">}</code>
+    <code class="nocode highlight">return _pirateCrew.remove(pirateName);</code>
+  <code class="nocode highlight">}</code>
+  ...
+}
+</pre>
+</div>
+<div class="trydart-filename">lib/server/piratesapi.dart</div>
+
+</div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> Key Information </strong></p>
+
+    <ul>
+      <li>
+        <p>Annotating the method with <code>ApiMethod</code> exposes it as available remotely.</p>
+      </li>
+      <li>
+        <p>The optional <code>method</code> parameter identifies <code>firePirate</code> as a DELETE request.</p>
+      </li>
+      <li>
+        <p>The required path parameter, set here to ‘<code>pirate/{name}/the/{appellation}</code>’,
+specifies how to access this method from an HTTP request.
+<code>name</code> and <code>appellation</code> are path parameters that are parsed by the
+RPC package and passed to the method as String values.</p>
+      </li>
+    </ul>
+
+  </div></div>
+
+<h3 id="i-classfa-fa-anchor-i-check-the-code-1"><i class="fa fa-anchor"> </i> Check the code.</h3>
+
+<div class="row"> <div class="col-md-7">
+
+    <div class="trydart-step-details">
+
+      <p>Run <code>dartanalyzer</code> on <code>piratesapi.dart</code>. From the top of <code>working-dir</code>:</p>
+
+      <pre class="prettyprint lang-lang">
+dartanalyzer lib/server/piratesapi.dart
+</pre>
+
+      <p>If the analyzer finds issues, you can debug them, or you can
+use the code in <code>4-extended</code>.</p>
+
+    </div>
+
+  </div> <div class="col-md-5">
+
+  </div> </div>
+
+<h3 id="i-classfa-fa-anchor-i-start-up-the-server-1"><i class="fa fa-anchor"> </i> Start up the server.</h3>
+
+<div class="row"> <div class="col-md-7">
+
+    <div class="trydart-step-details">
+
+      <p>Restart the server.</p>
+
+      <pre class="prettyprint lang-lang">
+dart bin/piratesnest.dart
+</pre>
+
+    </div>
+
+  </div> <div class="col-md-5">
+
+  </div> </div>
+
+<h3 id="i-classfa-fa-anchor-i-test-the-new-api"><i class="fa fa-anchor"> </i> Test the new API.</h3>
+
+<div class="row"> <div class="col-md-7">
+
+    <div class="trydart-step-details">
+
+      <p>Verify the new API for adding and deleting pirates.
+This step requires curl.</p>
+
+      <p>Constructing a curl command for a POST or DELETE request is
+a little different than for a GET request.
+If you recall, we annotated the <code>hirePirate</code> method like this:</p>
+
+      <pre class="prettyprint lang-dart">
+@ApiMethod(method: &#39;POST&#39;, path: &#39;<code class="nocode highlight">pirate</code>&#39;)
+</pre>
+
+      <p>To access the <code>hirePirate</code> method, use <code>pirate</code> as the last bit of the URL.
+You can pass data in curl using the <code>-d</code> parameter, so the following command
+adds “Shams the Destroyer” to the list of pirates:</p>
+
+      <p>On Mac and Linux:</p>
+
+      <pre class="prettyprint lang-bash">
+curl -d &#39;{&quot;name&quot;:&quot;Shams&quot;, &quot;appellation&quot;:&quot;Destroyer&quot;}&#39; http://localhost:8088/piratesApi/v1/pirate
+</pre>
+
+      <p>On Windows:</p>
+
+      <pre class="prettyprint lang-bash">
+curl -d &quot;{\&quot;name\&quot;:\&quot;Shams\&quot;,\&quot;appellation\&quot;:\&quot;Destroyer\&quot;}&quot; http://localhost:8088/piratesApi/v1/pirate
+</pre>
+
+      <p>The <code>firePirate</code> method was annotated like this:</p>
+
+      <pre class="prettyprint lang-dart">
+@ApiMethod(method: &#39;DELETE&#39;, path: &#39;<code class="nocode highlight">pirate/{name}/the/{appellation}</code>&#39;)
+</pre>
+
+      <p>The following command deletes “Shams the Destroyer”:</p>
+
+      <pre class="prettyprint lang-bash">
+curl -X DELETE http://localhost:8088/piratesApi/v1/pirate/Shams/the/Destroyer
+</pre>
+
+      <p>Play with the server by adding and deleting pirates.
+You might try the following:</p>
+
+      <ul>
+        <li>Add the same pirate twice.</li>
+        <li>Delete the same pirate twice.</li>
+        <li>Add a pirate with a <em>forbidden</em> appellation (as defined in <code>utils.dart</code>),
+such as “Brad the Beautiful” or “Horatio the Wuss”.</li>
+      </ul>
+
+    </div>
+
+  </div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> Key information </strong></p>
+
+    <ul>
+      <li>
+        <p>The DELETE request (<code>firePirate</code>) demonstrates how to specify parameters
+directly in the HTTP request. The POST request (<code>hirePirate</code>) demonstrates
+how to use a message class for passing values.
+Either approach is valid depending on your needs:</p>
+
+        <ul>
+          <li>
+            <p>Only path and query parameters can be specified in the URL directly.</p>
+          </li>
+          <li>
+            <p>The message class enables using more advanced data structures.</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+  </div> </div>
+
+<h2 id="step-five">Step 5: Generate the client API</h2>
+
+<p>In the previous step, you added POST and DELETE methods to the
+PiratesApi class.
+In this step, you use the generator from the RPC package to
+create a PiratesApi class that can be used by a client app.
+After you have completed this step, a new <code>lib/client/</code>
+directory contains the generated API.</p>
+
+<p><img src="images/generated-clientapi-directory-structure.png" alt="The 5-generated directory structure" /></p>
+
+<h3 id="i-classfa-fa-anchor-i-create-the-client-api-using-the-rpc-generator"><i class="fa fa-anchor"> </i> Create the client API using the RPC generator.</h3>
+
+<div class="row"> <div class="col-md-7">
+
+    <div class="trydart-step-details">
+
+      <p>From within the <code>working-dir</code> directory run the following commands:</p>
+
+      <pre class="prettyprint lang-lang">
+pub global activate rpc
+pub global run rpc:generate client -i lib/server/piratesapi.dart -o lib/client
+</pre>
+
+      <p>You should see the following output:</p>
+
+      <pre class="prettyprint lang-bash">
+[SUCCESS] piratesapi v1 @ lib/client
+</pre>
+
+    </div>
+
+  </div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> Key information </strong></p>
+
+    <ul>
+      <li>
+        <p>The RPC generator creates a <code>lib/client/<em>name</em>.dart</code> file,
+where <em>name</em> is based on the name of the server API class. For example,
+if PiratesApi were defined in a file named <code>lib/server/ahoy.dart</code>,
+the client filename would still be <code>lib/client/piratesapi.dart</code>.</p>
+      </li>
+      <li>
+        <p>This file allows you to connect your client app to the server, as you will
+see in <a href="#step-six">Step 6</a>.</p>
+      </li>
+      <li>
+        <p>If you are using Dart Editor, you can update the file listing
+by right-clicking the package name and choosing
+<strong>Refresh</strong> from the menu that pops up.</p>
+      </li>
+    </ul>
+
+  </div> </div>
+
+<h3 id="i-classfa-fa-anchor-i-view-the-generated-restful-api"><i class="fa fa-anchor"> </i> View the generated RESTful API.</h3>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+
+      <p>You can view the full listing of the generated file in the
+<code>lib/client/</code> directory, but let’s look an overview of the code:</p>
+
+      <pre class="prettyprint lang-dart">
+library server_code_lab.piratesApi.client;
+...
+
+<code class="nocode highlight">class PiratesApi</code> {
+
+  final commons.ApiRequester _requester;
+
+  <code class="nocode highlight">PiratesApi(http.Client client, {core.String rootUrl: &quot;http://localhost:8080/&quot;, core.String servicePath: &quot;piratesApi/v1/&quot;}) :</code>
+    ...
+
+  async.Future&lt;Pirate&gt; <code class="nocode highlight">firePirate(core.String name,</code>
+                                  <code class="nocode highlight">core.String appellation)</code> {
+    ...
+  }
+
+  async.Future&lt;Pirate&gt; <code class="nocode highlight">hirePirate(Pirate request)</code> {
+    ...
+  }
+
+  async.Future&lt;core.List&lt;Pirate&gt;&gt; <code class="nocode highlight">listPirates()</code> {
+    ...
+  }
+
+  async.Future&lt;Pirate&gt; <code class="nocode highlight">shanghaiAPirate()</code> {
+    ...
+  }
+}
+
+class PirateFactory {
+  static Pirate fromJson(core.Map _json) {
+    ...
+  }
+
+  static core.Map toJson(Pirate message) {
+    ...
+  }
+}
+</pre>
+    </div>
+<div class="trydart-filename">lib/client/piratesapi.dart</div>
+
+</div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> Key information </strong></p>
+
+    <ul>
+      <li>
+        <p>For each method marked with <code>ApiMethod</code> in <code>server/piratesapi.dart</code>,
+the RPC generator creates a corresponding method in <code>client/piratesapi.dart</code>.</p>
+      </li>
+      <li>
+        <p>The RPC generator assumes that the server is messaging on
+<code>http://localhost:8080/</code>.  Our server uses port 8088,
+so the client app must override the default URL when instantiating
+this class, as you will see in the next step.</p>
+      </li>
+      <li>
+        <p>These generated methods return Futures, indicating that they
+return before their work is complete. In the next step you’ll see
+how to write code that uses these asynchronous methods.</p>
+      </li>
+    </ul>
+
+    <p>  </p>
+
+  </div></div>
+
+<h2 id="step-six">Step 6: Connect the client to the server</h2>
+
+<p>This step shows how to call the server from
+a Dart client using the generated client API.</p>
+
+<p>To save time, we’ve modified the Pirate example from the
+<a href="/codelabs/darrrt/">client code lab</a> with additional UI
+for creating and maintaining a nest of pirates. 
+We’ve also updated the UI to use
+<a href="http://www.google.com/design/spec/material-design/introduction.html#introduction-goals">material design</a>,
+as shown in the following screen shot:</p>
+
+<p><img src="images/piratebadgeUI.png" alt="The PirateBadge UI" style="border:1px solid #021a40" /></p>
+
+<h3 id="i-classfa-fa-anchor-i-get-the-client-app"><i class="fa fa-anchor"> </i> Get the client app.</h3>
+
+<div class="row"> <div class="col-md-7">
+
+    <div class="trydart-step-details">
+
+      <p><strong>Copy the <code>web</code> directory from <code>6-client</code> to your package.</strong></p>
+
+      <p>After you have copied the <code>web</code> directory to your working directory,
+the package should look like this:</p>
+
+      <p><img src="images/client-server-directory-structure.png" alt="The 6-starter directory structure" /></p>
+
+      <p>The bolded files implement the client app, PirateBadge.</p>
+
+      <dl>
+        <dt><code>piratebadge.css</code></dt>
+        <dd>The styling for the browser page.</dd>
+        <dt><code>piratebadge.dart</code></dt>
+        <dd>The Dart code specifying the app’s behavior.</dd>
+        <dt><code>piratebadge.html</code></dt>
+        <dd>The browser page for displaying the PirateBadge app.</dd>
+      </dl>
+
+    </div>
+
+  </div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> Key information </strong></p>
+
+    <ul>
+      <li>If you are using Dart Editor, you can update the file listing
+by right-clicking the package name and choosing
+<strong>Refresh</strong> from the menu that pops up.</li>
+    </ul>
+
+  </div> <div class="col-md-5">
+
+  </div> </div>
+
+<h3 id="i-classfa-fa-anchor-i-view-the-code"><i class="fa fa-anchor"> </i> View the code.</h3>
+
+<div class="trydart-step-details">
+
+  <p>You can view the full listing of the client code in the
+<code>web/</code> directory, but let’s look at an overview of piratebadge.dart:</p>
+
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+    <div class="trydart-step-details">
+      <pre class="prettyprint lang-dart">
+...
+
+import &#39;package:http/browser_client.dart&#39;;
+import &#39;package:server_code_lab/client/piratesapi.dart&#39;;
+import &#39;package:server_code_lab/common/messages.dart&#39;;
+import &#39;package:server_code_lab/common/utils.dart&#39;;
+
+...
+
+// By default the generated client code uses
+// &#39;http://localhost:8080/&#39;. Since our server is running on
+// port 8088 we override the default url when instantiating
+// the generated PiratesApi class.
+<code class="nocode highlight">final String _serverUrl = &#39;localhost:8088/&#39;;</code>
+final BrowserClient _client = new BrowserClient();
+<code class="nocode highlight">PiratesApi _api;</code>
+<code class="nocode highlight">PirateShanghaier _shanghaier;</code>
+
+Future main() async {
+  // We need to determine if the client is using http or https
+  // and use the same protocol for the client stub requests
+  // (the protocol includes the &#39;:&#39;).
+  var protocol = window.location.protocol;
+  <code class="nocode highlight">_api = new PiratesApi(_client, rootUrl: &#39;$protocol//$_serverUrl&#39;);</code>
+  _shanghaier = new PirateShanghaier();
+
+  ...
+}
+
+Future refreshList() async {
+  <code class="nocode highlight">List&lt;Pirate&gt; pirates = await _api.listPirates();</code>
+  ...
+}
+
+void updateBadge(Event e) {
+  String inputName = (e.target as InputElement).value.trim();
+  <code class="nocode highlight">var pirate = _shanghaier.shanghaiAPirate(name: inputName);</code>
+  ...
+}
+
+Future storeBadge(Event e) async {
+  var pirateName = badgeNameElement.text;
+  if (pirateName == null || pirateName.isEmpty) return null;
+  var pirate = new Pirate.fromString(pirateName);
+  try {
+    <code class="nocode highlight">await _api.hirePirate(pirate);</code>
+  } catch (error) {
+    ...
+  }
+  ...
+}
+
+...
+
+Future removeBadge(Event e) async {
+  ...
+  var option = pirateList.options.elementAt(idx);
+  var pirate = new Pirate.fromString(option.label);
+  try {
+    <code class="nocode highlight">await _api.firePirate(pirate.name, pirate.appellation);</code>
+  } catch (error) {
+    ...
+  }
+  ...
+}
+
+Future removeAllBadges(Event e) async {
+  for (var option in pirateList.options) {
+    var pirate = new Pirate.fromString(option.label);
+    try {
+      <code class="nocode highlight">await _api.firePirate(pirate.name, pirate.appellation);</code>
+    } catch (error) {
+      // ignoring errors.
+    }
+  }
+  ...
+}
+
+void generateBadge(Event e) {
+  var pirate = _shanghaier.shanghaiAPirate();
+  setBadgeName(pirate);
+}
+
+...
+
+void <code class="nocode highlight">addRippleEffect(MouseEvent e)</code> {
+  ...
+}
+</pre>
+    </div>
+    <div class="trydart-filename">web/piratebadge.dart</div>
+
+  </div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> Key information </strong></p>
+
+    <ul>
+      <li>
+        <p>The generated server API assumes that the server uses <code>localhost:8080</code>,
+but our server is actually serving on port 8088, so the client has to set
+it explicitly.</p>
+      </li>
+      <li>
+        <p>The client creates <code>_api</code>, an instance of the client-side PiratesApi class.</p>
+      </li>
+      <li>
+        <p>The client calls the server through the <code>_api</code> instance, using
+the API generated in <a href="#step-five">Step 5</a>.
+For example, the client fetches the current pirate crew asynchronously by
+calling <code>_api.listPirates()</code>.</p>
+      </li>
+      <li>
+        <p>The client’s UI uses
+<a href="http://www.google.com/design/spec/material-design/introduction.html#introduction-goals">material design</a>.
+The material design visuals are mostly implemented in <code>piratebadge.css</code>.
+When clicked,
+a material design button animates—a wave ripples outward from the
+point of contact. The <code>addRippleEffect</code> method,
+implemented in Dart code, provides this effect.</p>
+      </li>
+    </ul>
+
+    <p>  </p>
+
+  </div> </div>
+
+<h3 id="i-classfa-fa-anchor-i-run-the-code"><i class="fa fa-anchor"> </i> Run the code.</h3>
+
+<div class="row"> <div class="col-md-7">
+
+    <div class="trydart-step-details">
+
+      <p>Before launching the client, run <code>pub get</code> and launch the server.</p>
+
+      <pre class="prettyprint lang-lang">
+pub get
+dart bin/piratesnest.dart
+</pre>
+
+      <p>You have a few options for launching the client.</p>
+
+      <ul>
+<li>
+          <p>Launch the client using Dartium.</p>
+
+          <p>Start up Dartium (remember that it’s called Chromium on your file system).
+Use <strong>File &gt; Open File…</strong> and select <code>piratebadge.html</code> from the <code>web</code>
+directory of your package.</p>
+        </li>
+
+<li>
+          <p>Launch the client using your IDE.
+Right-click <code>web/piratebadge.html</code> and choose the <code>Run in Dartium</code> option
+(or equivalent) from the menu.</p>
+        </li>
+
+<li>
+          <p>Run <code>pub build</code> and launch the generated version in any browser.
+The following opens the app in your default browser on a Mac.</p>
+
+          <pre class="prettyprint lang-lang">
+pub build
+open build/web/piratebadge.html
+</pre>
+        </li>
+</ul>
+
+    </div>
+
+  </div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> Key information </strong></p>
+
+    <ul>
+      <li>
+        <p>Running <code>pub build</code> prints the following:</p>
+
+        <p>“WARNING: dart:mirrors support in dart2js is
+experimental, and not recommended.
+This implementation of mirrors is
+incomplete, and often greatly increases
+the size of the generated JavaScript code.”</p>
+
+        <p>You can ignore this warning. The HTTP library uses mirrors to instantiate
+platform-specific classes on the VM and, in this case,
+does not cause code bloat.</p>
+      </li>
+      <li>
+        <p>When running the client app, you might see these logging statements:</p>
+
+        <p>Refused to set unsafe header “user-agent”<br />
+Refused to set unsafe header “content-length”</p>
+
+        <p>These messages are caused by the generated code trying to set these
+header fields. You can ignore these messages.</p>
+      </li>
+      <li>
+        <p>If Dartium’s status indicator spins indefinitely, don’t worry.
+The PirateBadge app might well be loaded and running.</p>
+      </li>
+    </ul>
+
+  </div></div>
+
+<h2 id="step-seven">Step 7: Serve the client from the server</h2>
+
+<p>In this step, you modify the server so that it serves the client
+in the browser—you no longer have to explicitly launch the
+client app.</p>
+
+<h3 id="i-classfa-fa-anchor-i-edit-pubspecyaml-and-run-pub-get"><i class="fa fa-anchor"> </i> Edit pubspec.yaml, and run pub get.</h3>
+
+<div class="row"> <div class="col-md-7">
+
+    <div class="trydart-step-details">
+
+      <p>Add the <code>http_server</code> dependency to the <code>pubspec.yaml</code> file, which
+is directly under <code>working-dir</code>.</p>
+
+      <pre class="prettyprint lang-yaml">
+name: server_code_lab
+version: 0.1.0
+author: Dart Team &lt;misc@dartlang.org&gt;
+description: Code-lab server sample.
+environment:
+  sdk: &#39;&gt;=1.9.0 &lt;2.0.0&#39;
+dependencies:
+  _discoveryapis_commons: ^0.1.0
+  browser: ^0.10.0+2
+  crypto: ^0.9.0
+  http: ^0.11.1
+  <code class="nocode highlight">http_server: ^0.9.5+1</code>
+  logging_handlers: ^0.8.0
+  rpc: ^0.3.0
+</pre>
+      <div class="trydart-filename">pubspec.yaml</div>
+
+      <p>&nbsp;</p>
+      <p>Update the dependencies:</p>
+
+      <pre class="prettyprint lang-lang">
+pub get
+</pre>
+
+    </div>
+
+  </div> <div class="col-md-5">
+
+    <ul>
+      <li>If you aren’t familiar with caret syntax for pubspec files, see
+<a href="/tools/pub/dependencies.html#caret-syntax">Caret syntax</a>, a
+section in <a href="/tools/pub/dependencies.html">Pub Dependencies</a>.</li>
+    </ul>
+
+  </div></div>
+
+<h3 id="i-classfa-fa-anchor-i-edit-binpiratesnestdart"><i class="fa fa-anchor"> </i> Edit bin/piratesnest.dart.</h3>
+
+<div class="row"> <div class="col-md-7">
+
+    <div class="trydart-step-details">
+
+      <p>Import the <code>dart:async</code> and <code>http_server</code> packages.</p>
+
+      <pre class="prettyprint lang-dart">
+<code class="nocode highlight">import &#39;dart:async&#39;;</code>
+import &#39;dart:io&#39;;
+
+<code class="nocode highlight">import &#39;package:http_server/http_server.dart&#39;;</code>
+import &#39;package:logging/logging.dart&#39;;
+import &#39;package:rpc/rpc.dart&#39;;
+</pre>
+    </div>
+    <div class="trydart-filename">bin/piratesnest.dart</div>
+
+  </div> <div class="col-md-5">
+
+    <p><i class="fa fa-key key-header"> </i> <strong> Key information </strong></p>
+
+    <ul>
+      <li>The <code>http_server</code> package is used to serve the client app.</li>
+    </ul>
+
+  </div></div>
+
+<div class="trydart-step-details">
+
+  <p></p>
+  <p>Add the following code to create a virtual directory for serving the
+client from the <code>build/web</code> directory.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+final ApiServer _apiServer = new ApiServer(prettyPrint: true);
+
+<code class="nocode highlight">final String _buildPath =</code>
+    <code class="nocode highlight">Platform.script.resolve(&#39;../build/web/&#39;).toFilePath();</code>
+<code class="nocode highlight">final VirtualDirectory _clientDir = </code>
+    <code class="nocode highlight">new VirtualDirectory(_buildPath);</code>
+</pre>
+</div>
+<div class="trydart-filename">bin/piratesnest.dart</div>
+
+</div> <div class="col-md-5">
+
+    <!-- * xxx abc -->
+
+  </div></div>
+
+<div class="trydart-step-details">
+
+  <p></p>
+  <p>Add a request handler that examines the request and vectors it to
+the right place.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+<code class="nocode highlight">Future requestHandler(HttpRequest request) async {</code>
+  <code class="nocode highlight">if (request.uri.path.startsWith(&#39;/piratesApi&#39;)) {</code>
+    <code class="nocode highlight">// Handle the API request.</code>
+    <code class="nocode highlight">var apiResponse;</code>
+    <code class="nocode highlight">try {</code>
+      <code class="nocode highlight">var apiRequest = new HttpApiRequest.fromHttpRequest(request);</code>
+      <code class="nocode highlight">apiResponse =</code>
+          <code class="nocode highlight">await _apiServer.handleHttpApiRequest(apiRequest);</code>
+    <code class="nocode highlight">} catch (error, stack) {</code>
+      <code class="nocode highlight">var exception =</code>
+          <code class="nocode highlight">error is Error ? new Exception(error.toString()) : error;</code>
+      <code class="nocode highlight">apiResponse = new HttpApiResponse.error(</code>
+          <code class="nocode highlight">HttpStatus.INTERNAL_SERVER_ERROR, exception.toString(),</code>
+          <code class="nocode highlight">exception, stack);</code>
+    <code class="nocode highlight">}</code>
+    <code class="nocode highlight">return sendApiResponse(apiResponse, request.response);</code>
+  <code class="nocode highlight">} else if (request.uri.path == &#39;/&#39;) {</code>
+    <code class="nocode highlight">// Redirect to the piratebadge.html file. This will initiate</code>
+    <code class="nocode highlight">// loading the client application.</code>
+    <code class="nocode highlight">request.response.redirect(Uri.parse(&#39;/piratebadge.html&#39;));</code>
+  <code class="nocode highlight">} else {</code>
+    <code class="nocode highlight">// Serve the requested file (path) from the virtual directory,</code>
+    <code class="nocode highlight">// minus the preceeding &#39;/&#39;. This will fail with a 404 Not Found</code>
+    <code class="nocode highlight">// if the request is not for a valid file.</code>
+    <code class="nocode highlight">var fileUri = new Uri.file(_buildPath)</code>
+        <code class="nocode highlight">.resolve(request.uri.path.substring(1));</code>
+    <code class="nocode highlight">_clientDir.serveFile(new File(fileUri.toFilePath()), request);</code>
+  <code class="nocode highlight">}</code>
+<code class="nocode highlight">}</code>
+</pre>
+</div>
+<div class="trydart-filename">bin/piratesnest.dart</div>
+
+</div> <div class="col-md-5">
+
+    <ul>
+      <li>
+        <p>If the incoming request begins with the <code>/piratesApi</code> string
+(for example, if it’s a curl command) vector that request to ApiServer.</p>
+      </li>
+      <li>
+        <p>If the incoming request doesn’t specify any file,
+serve <code>/piratebadge.html</code> (the default); this loads the client app.</p>
+      </li>
+      <li>
+        <p>Otherwise, serve the requested file. Specifying an invalid file
+results in a 404 error.</p>
+      </li>
+    </ul>
+
+  </div></div>
+
+<div class="trydart-step-details">
+
+  <p></p>
+  <p>Instruct the server to listen on the <code>requestHandler</code> method.</p>
+</div>
+
+<div class="row"> <div class="col-md-7">
+
+<div class="trydart-step-details">
+<pre class="prettyprint lang-dart">
+main() async {
+  // Add a bit of logging...
+  Logger.root..level = Level.INFO
+             ..onRecord.listen(print);
+
+  // Set up a server serving the pirate API.
+  _apiServer.addApi(new PiratesApi());
+  HttpServer server =
+      await HttpServer.bind(InternetAddress.ANY_IP_V4, 8088);
+  server.listen(<code class="nocode highlight">requestHandler</code>);
+  print(&#39;Server listening on http://${server.address.host}:&#39;
+        &#39;${server.port}&#39;);
+
+}
+</pre>
+</div>
+<div class="trydart-filename">bin/piratesnest.dart</div>
+
+</div> <div class="col-md-5">
+
+    <!-- * xxx abc -->
+
+  </div></div>
+
+<h3 id="i-classfa-fa-anchor-i-run-the-code-1"><i class="fa fa-anchor"> </i> Run the code.</h3>
+
+<div class="row"> <div class="col-md-7">
+
+    <div class="trydart-step-details">
+
+      <p>Update the dependencies.</p>
+
+      <pre class="prettyprint lang-lang">
+pub get
+</pre>
+
+      <p>Run the analyzer on the code, if your IDE or editor didn’t already do so.</p>
+
+      <pre class="prettyprint lang-lang">
+dartanalyzer bin/piratesnest.dart
+</pre>
+
+      <p>Build the client app.</p>
+
+      <pre class="prettyprint lang-lang">
+pub build
+</pre>
+
+      <p>Kill any previous instances of the server and relaunch.</p>
+
+      <pre class="prettyprint lang-lang">
+dart bin/piratesnest.dart
+</pre>
+
+      <p>In your browser, navigate to
+<a href="http://localhost:8088/piratebadge.html" target="_blank">http://localhost:8088/piratebadge.html</a>.</p>
+
+      <p>Play with the server by creating a pirate crew.</p>
+
+      <dl>
+        <dt>Can you add the same pirate twice?</dt>
+        <dd>The client’s UI protects you from some of the errors that
+you could trigger when constructing an HTTP request.</dd>
+        <dt>Can you create a pirate name with a custom appellation, such as Magnus the Magnificent?</dt>
+        <dd>The client app doesn’t use the full functionality
+that the server provides—and that’s ok!</dd>
+      </dl>
+
+    </div>
+  </div> <div class="col-md-5">
+
+    <!-- * xxx -->
+
+  </div> </div>
+
+<h2 id="whatnext">What next?</h2>
+
+<p>Now that you’ve played with a Dart server,
+what is next? Here are some suggestions.</p>
+
+<h3 id="i-classfa-fa-anchor-i-deploy-your-application-to-appengine"><i class="fa fa-anchor"> </i> Deploy your application to AppEngine.</h3>
+
+<div class="trydart-step-details">
+
+  <p><a href="https://github.com/dart-lang/one-hour-codelab/tree/appengine-auth/server/8-appengine">Step 8</a>
+of the appengine-auth branch of the one-hour-codelab repo
+modifies the server so that you can deploy it to AppEngine.</p>
+</div>
+
+<h3 id="i-classfa-fa-anchor-i-add-authentication"><i class="fa fa-anchor"> </i> Add authentication.</h3>
+
+<div class="trydart-step-details">
+
+  <p><a href="https://github.com/dart-lang/one-hour-codelab/tree/appengine-auth/server/9-auth">Step 9</a>
+of the appengine-auth branch of the one-hour-codelab repo
+modifies the server to require a Google Account login.</p>
+</div>
+
+<h3 id="i-classfa-fa-anchor-i-make-your-server-api-discoverable"><i class="fa fa-anchor"> </i> Make your server API discoverable.</h3>
+
+<div class="trydart-step-details">
+
+  <p>The RPC package allows you to expose your API in the Discovery document format.
+This means that clients can download the API description in JSON and generate
+client stubs to call the server API using a Discover document generator,
+such as the 
+<a href="https://github.com/dart-lang/discoveryapis_generator">Discovery API generator for Dart</a>.</p>
+
+  <p>You can read more at
+<a href="https://developers.google.com/discovery/">Google APIs Discovery Service</a>.</p>
+</div>
+
+<h3 id="i-classfa-fa-anchor-i-read-the-tutorials"><i class="fa fa-anchor"> </i> Read the tutorials.</h3>
+
+<div class="trydart-step-details">
+  <p>Learn more about Dart from <a href="/docs/tutorials/">The Dart Tutorials</a>.
+In particular,
+the <a href="/docs/tutorials/httpserver/">Write HTTP Clients &amp; Servers</a>
+tutorial has more information on server-side programming.</p>
+</div>
+
+<hr />
+
+<h2 id="summary">Summary</h2>
+
+<p>This code lab introduced you to the RPC package,
+a powerful tool for creating a RESTful server API
+without writing a lot of boilerplate code.</p>
+
+<p>You learned:</p>
+
+<ul>
+  <li>
+    <p>How to specify a server’s API, using the RPC package.</p>
+  </li>
+  <li>
+    <p>How to create the corresponding client API using the RPC generator.</p>
+  </li>
+  <li>
+    <p>How to create libraries that a client and server can share, by writing
+code that depends on neither dart:io nor dart:html.</p>
+  </li>
+  <li>
+    <p>How to use the API generated by the RPC package.</p>
+  </li>
+  <li>
+    <p>How to modify the server to serve the client directly.</p>
+  </li>
+</ul>
+
+<h3 id="i-classfa-fa-anchor-i-feedback"><i class="fa fa-anchor"> </i> Feedback</h3>
+
+<div class="trydart-step-details">
+
+  <p>Please provide feedback to the appropriate repo:</p>
+
+  <ul>
+    <li><a href="https://github.com/dart-lang/www.dartlang.org/issues">www.dartlang.org repo</a></li>
+    <li><a href="https://github.com/dart-lang/one-hour-codelab/issues">one-hour-codelab repo</a></li>
+    <li><a href="https://github.com/dart-lang/rpc/issues">rpc repo</a></li>
+  </ul>
+
+</div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+<link href="/codelabs/darrrt/darrrt.css" rel="stylesheet" type="text/css">
+
+
+
+</body>
+</html>
+

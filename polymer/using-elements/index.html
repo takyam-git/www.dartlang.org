@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Using Elements | Polymer.dart | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Using Elements | Polymer.dart | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="How to use Polymer elements">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+    <div class="container col-md-10 col-md-offset-1 sub-page">
+      <div class="has-permalinks">
+      <div class="col-md-4">
+  <div class="bs-sidebar" data-spy="affix" data-offset-bottom="350" role="complementary">
+
+<ol class="toc nav bs-sidenav" id="markdown-toc">
+  <li><a href="#installing-custom-elements">Installing custom elements</a></li>
+  <li><a href="#using-custom-elements-in-html-code">Using custom elements in HTML code</a>    <ol>
+      <li><a href="#special-case-elements-that-extend-native-html-elements">Special case: Elements that extend native HTML elements</a></li>
+    </ol>
+  </li>
+  <li><a href="#instantiating-custom-elements-in-dart-code">Instantiating custom elements in Dart code</a>    <ol>
+      <li><a href="#special-case-elements-that-extend-native-html-elements-1">Special case: Elements that extend native HTML elements</a></li>
+    </ol>
+  </li>
+  <li><a href="#using-your-own-main-function">Using your own main() function</a></li>
+  <li><a href="#examples-of-using-elements">Examples of using elements</a></li>
+</ol>
+
+  </div>
+</div>
+<div class="col-md-8">
+  <p><!-- Start of content -->
+</p>
+
+  <div>
+    <ol class="breadcrumb">
+
+  <li><a href="/polymer/">
+  Polymer.dart</a></li>
+
+
+  <li class="active">Using Elements</li>
+</ol>
+  </div>
+
+  <h1 id="using-elements">Using Elements</h1>
+
+  <p>To use a Polymer element,
+you first install the element’s package.
+Then your code can import the element and use it.</p>
+
+  <h2 id="installing-custom-elements">Installing custom elements</h2>
+
+  <p>You can use <code>pub</code> to get many polymer.dart custom elements.
+First, edit your app’s <code>pubspec.yaml</code> file.
+Add a dependency for each custom element package
+you want to use:</p>
+
+  <!-- from polymer/get_element/pubspec.yaml -->
+  <pre class="prettyprint lang-yaml">
+name: my_app
+description: An application that uses core and paper elements
+dependencies:
+  polymer: &quot;&gt;=0.15.1 &lt;0.17.0&quot;
+  <code class="nocode highlight">core_elements: &quot;&gt;=0.6.0 &lt;0.7.0&quot;</code>
+  <code class="nocode highlight">paper_elements: &quot;&gt;=0.6.0 &lt;0.7.0&quot;</code>
+transformers:
+- polymer
+</pre>
+
+  <p>Next, run <code>pub get</code>.</p>
+
+  <aside class="alert alert-info">
+    <p><strong>Note:</strong>
+The <a href="http://pub.dartlang.org/packages/core_elements">core_elements package</a>
+provides Dart wrappers around the Polymer project’s
+<a href="http://www.polymer-project.org/docs/elements/core-elements.html">core elements</a>,
+which are general-purpose UI and non-UI elements.
+The <a href="http://pub.dartlang.org/packages/paper_elements">paper_elements package</a>
+wraps the project’s
+<a href="http://www.polymer-project.org/docs/elements/material.html">paper elements</a>—elements that
+adhere to Google’s <em>material design</em> guidelines.
+<strong>The core and paper elements are early access and still changing</strong>.</p>
+  </aside>
+
+  <h2 id="using-custom-elements-in-html-code">Using custom elements in HTML code</h2>
+
+  <p>To put a polymer.dart custom element into a web page,
+the HTML file for the web page needs to:</p>
+
+  <ul>
+    <li><strong>Import the HTML file that defines the custom element.</strong>
+<br />
+For help with import paths, see
+<a href="/polymer/app-directories.html">Imports and Your App’s Directory Structure</a>.</li>
+    <li><strong>Instantiate the element.</strong></li>
+    <li><strong>Initialize Polymer.</strong></li>
+  </ul>
+
+  <aside class="alert alert-info">
+    <p><strong>Note:</strong>
+Before version 0.15.1 of polymer.dart, your page needed to explicitly include
+<code>dart_support.js</code>. That is no longer true.</p>
+  </aside>
+
+  <p>Here’s an example of using a <code>&lt;paper-input&gt;</code> element
+from the paper_elements package:</p>
+
+  <!-- from polymer/get_element/web/index.html -->
+  <pre class="prettyprint lang-html">
+&lt;!-- In an HTML file --&gt;
+&lt;head&gt;
+  ...
+  &lt;link rel=&quot;import&quot; href=&quot;<code class="nocode highlight">packages/paper_elements/paper_input.html</code>&quot;&gt;
+  ...
+&lt;/head&gt;
+&lt;body unresolved&gt;
+  <code class="nocode highlight">&lt;paper-input label=&quot;Type something...&quot;&gt;&lt;/paper-input&gt;</code>
+  ...
+  &lt;script type=&quot;application/dart&quot;&gt;export &#39;package:polymer/init.dart&#39;;&lt;/script&gt;
+&lt;/body&gt;
+</pre>
+
+  <aside class="alert alert-info">
+    <p><strong>Note:</strong>
+The <code>unresolved</code> attribute in the <code>&lt;body&gt;</code> tag
+ensures that no Polymer custom elements display
+before Polymer is ready.</p>
+  </aside>
+
+  <h3 id="special-case-elements-that-extend-native-html-elements">Special case: Elements that extend native HTML elements</h3>
+
+  <p>Some custom elements extend native HTML elements.
+Instead of using a custom tag,
+you instantiate one of these elements by adding an <code>is</code> attribute
+to the native element.
+For example, say the <code>fancy-button</code> element
+extends the HTML <code>&lt;button&gt;</code> element.
+To instantiate a fancy button,
+instead of using <code>&lt;fancy-button&gt;</code>
+you use this code:</p>
+
+  <pre class="prettyprint lang-html">
+&lt;button <code class="nocode highlight">is=&quot;fancy-button&quot;</code>&gt;Click me&lt;/button&gt;
+</pre>
+
+  <h2 id="instantiating-custom-elements-in-dart-code">Instantiating custom elements in Dart code</h2>
+
+  <p>To programmatically create a custom element,
+you can use dart:html’s <code>new Element.tag()</code> constructor.
+For example, the following has the same effect as
+<code>&lt;paper-item&gt;&lt;/paper-item&gt;</code>:</p>
+
+  <pre class="prettyprint lang-dart">
+import &#39;dart:html&#39;;
+...
+PaperItem item = new Element.tag(&#39;paper-item&#39;);
+</pre>
+
+  <p>Some libraries provide no-argument constructors that call
+<code>new Element.tag()</code> for you.
+For example,
+you can instantiate core and paper elements using code like this:</p>
+
+  <pre class="prettyprint lang-dart">
+PaperItem item = new PaperItem();
+</pre>
+
+  <p>Even if you always create a custom element programmatically,
+you still need to register the element type
+by importing it into an HTML file:</p>
+
+  <pre class="prettyprint lang-html">
+&lt;!-- In an HTML file --&gt;
+&lt;link rel=&quot;import&quot; href=&quot;packages/paper_elements/paper_input.html&quot;&gt;
+</pre>
+
+  <h3 id="special-case-elements-that-extend-native-html-elements-1">Special case: Elements that extend native HTML elements</h3>
+
+  <p>When an element extends a native HTML element,
+you must provide two arguments to <code>Element.tag()</code>:
+the HTML element name, and the custom element name.
+For example, the following has the same effect as
+<code>&lt;button is="fancy-button"&gt;&lt;/button&gt;</code>:</p>
+
+  <pre class="prettyprint lang-dart">
+import &#39;dart:html&#39;;
+...
+Element b = new Element.tag(&#39;button&#39;, &#39;fancy-button&#39;);
+</pre>
+
+  <h2 id="using-your-own-main-function">Using your own main() function</h2>
+
+  <p>If you need to provide a <code>main()</code> function, you can.
+However, because an HTML file can refer to only one Dart file,
+your Dart file must replace the <code>init.dart</code> file and
+contain code that initializes Polymer.</p>
+
+  <p>To swap in your Dart file, remove this line:</p>
+
+  <pre class="prettyprint lang-html">
+&lt;script type=&quot;application/dart&quot;&gt;export &#39;package:polymer/init.dart&#39;;&lt;/script&gt;
+</pre>
+
+  <p>Replace it with something like this:</p>
+
+  <pre class="prettyprint lang-html">
+&lt;script type=&quot;application/dart&quot; src=&quot;main.dart&quot;&gt;&lt;/script&gt;
+</pre>
+
+  <p>Initialize Polymer in your Dart file’s <code>main()</code> function,
+using code like this:</p>
+
+  <pre class="prettyprint lang-dart">
+import &#39;package:polymer/polymer.dart&#39;;
+
+main() {
+  initPolymer().run(() {
+    // The rest of the code in the main method.
+  });
+}
+</pre>
+
+  <p>If you need to execute some code once Polymer has been completely initialized,
+use <code>Polymer.onReady</code>, like this:</p>
+
+  <pre class="prettyprint lang-dart">
+import &#39;package:polymer/polymer.dart&#39;;
+
+main() {
+  initPolymer().run(() {
+    // Code that doesn&#39;t need to wait.
+    Polymer.onReady.then((_) {
+      // Code that executes after elements have been upgraded.
+    });
+  });
+}
+</pre>
+
+  <h2 id="examples-of-using-elements">Examples of using elements</h2>
+
+  <p>You can find sample code in the
+<a href="https://github.com/dart-lang/polymer-dart-patterns">polymer-dart-patterns project</a>,
+including examples of
+<a href="https://github.com/dart-lang/polymer-dart-patterns/tree/master/web/core_elements">using core elements</a>.</p>
+
+</div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+
+
+
+
+</body>
+</html>
+

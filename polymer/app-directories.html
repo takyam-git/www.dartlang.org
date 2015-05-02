@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Imports and Your App's Directory Structure | Polymer.dart | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Imports and Your App's Directory Structure | Polymer.dart | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="How your Polymer app or element should arrange and import files.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+    <div class="container col-md-10 col-md-offset-1 sub-page">
+      <div class="has-permalinks">
+      <div class="col-md-4">
+  <div class="bs-sidebar" data-spy="affix" data-offset-bottom="350" role="complementary">
+
+<ol class="toc nav bs-sidenav" id="markdown-toc">
+  <li><a href="#possible-app-structures">Possible app structures</a></li>
+  <li><a href="#importing-assets">Importing assets</a>    <ol>
+      <li><a href="#into-web-from-web">Into web/ from web/</a>        <ol>
+          <li><a href="#into-a-dart-file">Into a Dart file</a></li>
+          <li><a href="#into-a-non-dart-file">Into a non-Dart file</a></li>
+        </ol>
+      </li>
+      <li><a href="#into-web-from-lib">Into web/ from lib/</a>        <ol>
+          <li><a href="#into-a-dart-file-1">Into a Dart file</a></li>
+          <li><a href="#into-an-entry-point">Into an entry point</a></li>
+          <li><a href="#into-a-non-dart-non-entry-point">Into a non-Dart, non-entry point</a></li>
+        </ol>
+      </li>
+      <li><a href="#into-lib-from-lib">Into lib/ from lib/</a>        <ol>
+          <li><a href="#into-a-dart-file-2">Into a Dart file</a></li>
+          <li><a href="#into-a-non-dart-file-1">Into a non-Dart file</a></li>
+        </ol>
+      </li>
+      <li><a href="#from-another-package">From another package</a>        <ol>
+          <li><a href="#into-a-dart-file-3">Into a Dart file</a></li>
+          <li><a href="#into-a-non-dart-file-under-web">Into a non-Dart file under web/</a></li>
+          <li><a href="#into-a-non-dart-file-under-lib">Into a non-Dart file under lib/</a></li>
+        </ol>
+      </li>
+    </ol>
+  </li>
+  <li><a href="#testing-your-imports">Testing your imports</a></li>
+  <li><a href="#the-rules-behind-the-import-syntax">The rules behind the import syntax</a>    <ol>
+      <li><a href="#how-the-directory-structure-changes">How the directory structure changes</a></li>
+      <li><a href="#why-the-rules-exist">Why the rules exist</a></li>
+    </ol>
+  </li>
+</ol>
+
+  </div>
+</div>
+<div class="col-md-8">
+  <p><!-- Start of content -->
+</p>
+
+  <div>
+    <ol class="breadcrumb">
+
+  <li><a href="/polymer/">
+  Polymer.dart</a></li>
+
+
+  <li class="active">Imports and Your App's Directory Structure</li>
+</ol>
+  </div>
+
+  <h1 id="imports-and-your-apps-directory-structure">Imports and Your App’s Directory Structure</h1>
+
+  <p>You have some flexibility about how you structure your polymer.dart app,
+as long as you adhere to
+<a href="/tools/pub/package-layout.html">pub package layout conventions</a>.</p>
+
+  <p>The structure of your app’s directories affects how your app’s code
+imports other code,
+whether from your own app or from a different package.</p>
+
+  <aside class="alert alert-warning">
+    <p><strong>Important:</strong>
+Bad import syntax can make your imports break just when
+you’re ready to deploy your app.
+Use proper import syntax from the beginning!</p>
+  </aside>
+
+  <h2 id="possible-app-structures">Possible app structures</h2>
+
+  <p>As the following figure shows,
+a very simple polymer.dart app might have only a single HTML file
+under <code>web</code>, plus a <code>pubspec.yaml</code> file.</p>
+
+  <p><img src="images/dir-simplest-structure.png" alt="app/pubspec.yaml, app/web/index.html" /></p>
+
+  <aside class="alert alert-warning">
+    <p><strong>Important:</strong>
+Use underscores (<code>_</code>)—not dashes or capitalization—to
+separate words in your app’s directory names and filenames.
+For example, never name your package my-app or myApp.
+Instead, you can name it <code>my_app</code>.</p>
+  </aside>
+
+  <p>By default, each HTML file under <code>web</code> is an <em>entry point</em>—a
+page that the user can navigate to.</p>
+
+  <p><img src="images/dir-entry-points.png" alt="web/index.html, web/settings/user.html, and web/settings/system.html are all entry points" /></p>
+
+  <p>Apps often have additional files under <code>lib</code>.</p>
+
+  <p><img src="images/dir-lib.png" alt="Shows a lib directory with two subdirectories (utils and components), containing various .dart and .html files" /></p>
+
+  <p>Both the <code>web</code> and <code>lib</code> directories can contain HTML, CSS, Dart,
+image, and other files.
+Generally, the assets (such as images)
+that an HTML or Dart files uses
+are near that file in the directory structure.</p>
+
+  <h2 id="importing-assets">Importing assets</h2>
+
+  <p>Dart, HTML, and CSS files often import assets,
+such as other Dart files, HTML files, CSS files, and images.</p>
+
+  <p>The syntax for importing assets depends on the following:</p>
+
+  <ul>
+    <li>Whether the importing file is a Dart file</li>
+    <li>Whether the importing file is an entry point</li>
+    <li>Whether the importing file is under <code>web</code> or under <code>lib</code></li>
+    <li>Whether the imported file is under the same top-level directory
+(<code>web</code> or <code>lib</code>) or in another package</li>
+  </ul>
+
+  <p>Within a package, files under <code>web</code> can import files under
+either <code>web</code> or <code>lib</code>.
+However, files under <code>lib</code> can import only files under <code>lib</code>.
+Both <code>web</code> and <code>lib</code> files can import files from
+other packages.</p>
+
+  <p>The examples in the following sections use
+a package named <code>a</code> that depends on the <code>polymer</code> package
+and a package named <code>b</code>.
+The <code>a</code> and <code>b</code> packages have
+this directory structure:</p>
+
+  <p><img src="images/dir-packages-ab.png" alt="A graphic summarizing the hierarchy; all this information is also in the comments for the following code snippets" /></p>
+
+  <h3 id="into-web-from-web">Into web/ from web/</h3>
+
+  <p>Within <code>web</code>, both Dart and non-Dart files use relative paths when
+importing other files under <code>web</code>.</p>
+
+  <h4 id="into-a-dart-file">Into a Dart file</h4>
+
+  <pre class="prettyprint lang-dart">
+// web/a1.dart imports web/a3/a3.dart
+import &#39;a3/a3.dart&#39;;
+</pre>
+
+  <h4 id="into-a-non-dart-file">Into a non-Dart file</h4>
+
+  <pre class="prettyprint lang-html">
+&lt;!-- web/a1_ep.html imports web/a3/a3.html --&gt;
+&lt;link rel=&quot;import&quot; href=&quot;a3/a3.html&quot;&gt;
+</pre>
+
+  <h3 id="into-web-from-lib">Into web/ from lib/</h3>
+
+  <p>Within <code>web</code>, both Dart and non-Dart files use package paths
+when importing from <code>lib</code>—even
+when those files are in the same package.</p>
+
+  <p>Dart package paths start with
+<code>package:<em>package_name</em>/</code>,
+while non-Dart package paths start with
+<code>[<em>path_to_entry_point</em>/]packages/<em>package_name</em>/</code>.
+For <code><em>package_name</em></code> use the value of the
+<code>name</code> field in <code>pubspec.yaml</code>.</p>
+
+  <aside class="alert alert-warning">
+    <p><strong>Never put <code>lib</code> in an import path.</strong></p>
+  </aside>
+
+  <h4 id="into-a-dart-file-1">Into a Dart file</h4>
+
+  <p>The Dart code is always the same,
+no matter how deeply under <code>web</code> the Dart file is nested.</p>
+
+  <pre class="prettyprint lang-dart">
+// web/a1.dart imports lib/a4.dart
+import &#39;package:a/a4.dart&#39;;
+</pre>
+
+  <h4 id="into-an-entry-point">Into an entry point</h4>
+
+  <p>Entry points import <code>lib</code> files using a path
+that starts with <code>packages/</code>:</p>
+
+  <pre class="prettyprint lang-html">
+&lt;!-- web/a1_ep.html imports lib/a4.html --&gt;
+&lt;link rel=&quot;import&quot; href=&quot;packages/a/a4.html&quot;&gt;
+
+&lt;!-- web/a2/a2_ep.html imports lib/a4.html --&gt;
+&lt;link rel=&quot;import&quot; href=&quot;packages/a/a4.html&quot;&gt;
+</pre>
+
+  <h4 id="into-a-non-dart-non-entry-point">Into a non-Dart, non-entry point</h4>
+
+  <p>Non-entry points must walk out to the entry point that imports them,
+and then use the path (starting with <code>packages/</code>)
+that the entry point would use to import the file.</p>
+
+  <pre class="prettyprint lang-html">
+&lt;!-- web/a3/a3.html
+     (imported by the entry point web/a1_ep.html)
+     imports lib/a5/a5.html --&gt;
+&lt;link rel=&quot;import&quot; href=&quot;../packages/a/a5/a5.html&quot;&gt;
+</pre>
+
+  <aside class="alert alert-info">
+    <p><strong>Note:</strong>
+  If you specify <code>entry_point</code> fields in the
+  <code>polymer</code> transformer section,
+  then every HTML file under <code>web</code> that you <em>don’t</em> specify
+  is a non-entry point.
+  If you don’t specify <code>entry_point</code> at all,
+  then every HTML file under <code>web</code> is an entry point.</p>
+  </aside>
+
+  <h3 id="into-lib-from-lib">Into lib/ from lib/</h3>
+
+  <p>Within <code>lib</code>, both Dart and non-Dart files can use relative paths
+to import assets that are also under <code>lib</code>.
+Dart files can also use <code>package:</code> paths.</p>
+
+  <h4 id="into-a-dart-file-2">Into a Dart file</h4>
+
+  <p>Dart files under <code>lib</code>
+often use <code>package:</code> paths to import assets under <code>lib</code>:</p>
+
+  <pre class="prettyprint lang-dart">
+// lib/a5/a6/a6.dart imports lib/a4.dart
+import &#39;package:a/a4.dart&#39;;
+</pre>
+
+  <p>Relative paths are another option:</p>
+
+  <pre class="prettyprint lang-dart">
+// lib/a5/a5.dart imports lib/a5/a6/a6.dart
+import &#39;a6/a6.dart&#39;;
+</pre>
+
+  <aside class="alert alert-info">
+    <p><strong>Style note:</strong>
+  In Dart files, avoid relative paths that contain <code>../</code>.</p>
+  </aside>
+
+  <h4 id="into-a-non-dart-file-1">Into a non-Dart file</h4>
+
+  <p>Non-Dart files under <code>lib</code> must use relative paths
+to import assets under <code>lib</code>:</p>
+
+  <pre class="prettyprint lang-html">
+&lt;!-- lib/a5/a6/a6.html imports lib/a4.html --&gt;
+&lt;link rel=&quot;import&quot; href=&quot;../../a4.html&quot;&gt;
+</pre>
+
+  <h3 id="from-another-package">From another package</h3>
+
+  <p>Importing files from another package is easy for Dart files,
+and a little more complicated for non-Dart files.</p>
+
+  <p>Within the other package,
+only the files under <code>lib</code> are available for import.
+Just like for paths within your own package,
+<code>lib</code> isn’t part of the import path.</p>
+
+  <h4 id="into-a-dart-file-3">Into a Dart file</h4>
+
+  <p>Dart files import assets from other packages like this:</p>
+
+  <pre class="prettyprint lang-dart">
+// Any .dart file in package a imports lib/b.dart from package b
+import &#39;package:b/b.dart&#39;;
+</pre>
+
+  <p>A common example is importing <code>polymer.dart</code>
+from the <code>polymer</code> package:</p>
+
+  <pre class="prettyprint lang-dart">
+import &#39;package:polymer/polymer.dart&#39;;
+</pre>
+
+  <h4 id="into-a-non-dart-file-under-web">Into a non-Dart file under web/</h4>
+
+  <p>The rules are exactly the same
+as the rules for importing from the same package’s <code>lib</code> directory.</p>
+
+  <p>Entry points use a path
+that starts with <code>packages/</code>:</p>
+
+  <pre class="prettyprint lang-html">
+&lt;!-- web/a1_ep.html imports lib/b.html from package b --&gt;
+&lt;link rel=&quot;import&quot; href=&quot;packages/b/b.html&quot;&gt;
+</pre>
+
+  <p>Non-Dart, non-entry points under <code>web</code> must first walk out
+to the entry point’s directory.</p>
+
+  <pre class="prettyprint lang-html">
+&lt;!-- web/a3/a3.html
+     (imported by the entry point web/a1_ep.html)
+     imports polymer&#39;s polymer.html --&gt;
+&lt;link rel=&quot;import&quot; href=&quot;../packages/polymer/polymer.html&quot;&gt;
+</pre>
+
+  <h4 id="into-a-non-dart-file-under-lib">Into a non-Dart file under lib/</h4>
+
+  <p>Non-Dart files under <code>lib</code> must walk <strong>up</strong>
+to the top of the package <strong>plus one</strong>.
+The extra <code>../</code> is necessary because code in
+<code>lib/<em>path</em></code>
+appears in the importing package as
+<code>packages/<em>package_name</em>/<em>path</em></code>.</p>
+
+  <pre class="prettyprint lang-html">
+&lt;!-- lib/a4.html imports lib/b.html from package b --&gt;
+&lt;link rel=&quot;import&quot; href=&quot;../../packages/b/b.html&quot;&gt;
+
+&lt;!-- lib/a5/a5.html imports lib/b.html from package b --&gt;
+&lt;link rel=&quot;import&quot; href=&quot;../../../packages/b/b.html&quot;&gt;
+
+&lt;!-- lib/a5/a6/a6.html imports polymer&#39;s polymer.html --&gt;
+&lt;link rel=&quot;import&quot; href=&quot;../../../../packages/polymer/polymer.html&quot;&gt;
+</pre>
+
+  <aside class="alert alert-info">
+    <p><strong>Note:</strong>
+  IDEs that don’t use the polymer.dart linter
+  are likely to complain about the extra <code>../</code> in the path.
+  See <a href="/polymer/#generating-warnings">Generating warnings</a>
+  for details on using a <code>build.dart</code> file to set up the linter.</p>
+  </aside>
+
+  <h2 id="testing-your-imports">Testing your imports</h2>
+
+  <p>Bad import syntax sometimes works—at least
+until you deploy your app.
+A good, quick test of your imports
+is whether your untransformed Polymer code works in Dartium.</p>
+
+  <p>To test your import syntax, run your app in Dartium
+using either of these approaches:</p>
+
+  <ul>
+  <li> 
+    <p>
+      Use a file URL in Dartium.
+      Start Dartium from the command line,
+      specifying <code>--allow-file-access-from-files</code>
+      and the file URL for an entry point:
+    </p>
+
+<pre class="prettyprint lang-sh">
+/path/to/dartium/chromium --allow-file-access-from-files file:///path/to/web/path-to-entry-point
+</pre>
+
+    <p>
+      For example, on a Mac:
+    </p>
+
+<pre class="prettyprint lang-sh">
+~/dart/chromium/Chromium.app/Contents/MacOS/Chromium --allow-file-access-from-files file:///Users/me/a/web/index.html
+</pre>
+  </li>
+
+  <li>
+    <p>
+      Use a simple HTTP server.
+      You can run the server in the top directory of your app,
+      and point Dartium to the URL of an entry point.
+      For example:
+    </p>
+
+    <ol>
+      <li> <code>cd &lt;top directory of app&gt;</code> </li>
+      <li> <code>python -m SimpleHTTPServer</code> </li>
+      <li> In Dartium, browse to 
+        <code>http://localhost:<em>port</em>/web/<em>path-to-entry-point</em></code>.
+        <br />
+        Example: http://localhost:8000/web/index.html
+      </li>
+    </ol>
+  </li>
+</ul>
+
+  <h2 id="the-rules-behind-the-import-syntax">The rules behind the import syntax</h2>
+
+  <p>The import syntax is the result of some rules that polymer.dart defines,
+in addition to what pub stipulates:</p>
+
+  <ul>
+    <li>
+      <p>Every entry point has a <code>packages</code> directory,
+which is why its package import paths start with <code>packages/</code>.</p>
+    </li>
+    <li>
+      <p>Non-entry-point files under <code>web</code> use the <code>packages</code> directory
+of the entry point that imports them.</p>
+    </li>
+    <li>
+      <p>Two entry points in different directories
+can’t import the same non-entry-point <code>web</code> file.
+(Instead, you can move the non-entry-point file to <code>lib</code>.)</p>
+    </li>
+  </ul>
+
+  <p>The rules are easier to follow if
+you know how <code>pub get</code> places files. </p>
+
+  <h3 id="how-the-directory-structure-changes">How the directory structure changes</h3>
+
+  <p>Recall the directory structure from before:</p>
+
+  <p><img src="images/dir-packages-ab.png" alt="Directory hierarchy for the a and b packages" /></p>
+
+  <p>When you run <code>pub get</code> at the top of package <code>a</code>,
+a <code>packages</code> directory appears under each directory in <code>web</code>.</p>
+
+  <p><img src="images/dir-packages-ab-after-pub-get.png" alt="Directory hierarchy after pub get; web and a2 have local copies of (or links to) the packages directory; a3 has a more tenuous link to the packages directory" /></p>
+
+  <aside class="alert alert-warning">
+    <p><strong>Important:</strong>
+When you run <code>pub build</code> or <code>pub serve</code>,
+Pub runs the <code>polymer</code> transformer and
+creates <strong>only one <code>packages</code> directory</strong>,
+which might not be next to your entry points.
+The <code>polymer</code> transformer adjusts your imports to use
+the new <code>packages</code> directory location,
+warning you if it finds an invalid import.</p>
+  </aside>
+
+  <p>Note that no <code>lib</code> directory is under the <code>packages</code> directory.
+When you launch <code>web/a1_ep.html</code> in Dartium,
+Dartium loads package imports from <code>web/packages/</code>.
+When you launch <code>web/a2/a2_ep.html</code> in Dartium,
+the package imports come from <code>web/a2/packages/</code>.</p>
+
+  <p>However, when <code>web/a3/a3.html</code> imports <code>lib/a5/a5.html</code>,
+as a non-entry point <code>a3.html</code> must
+walk up to the <code>packages</code> directory that
+lives next to its entry point (<code>a1_ep.html</code>)
+and then load the file from there:
+<code>../packages/a/a5/a5.html</code>.
+Because pub generates symlinks to the packages directory under <code>a3</code>,
+you might be tempted to write <code>packages/a/a5/a5.html</code>,
+but that’s incorrect.</p>
+
+  <p>When <code>a5/a5.html</code> (originally under <code>lib</code>)
+imports <code>b.html</code>
+(also originally under <code>lib</code>, but in the <code>b</code> package),
+<code>a5.html</code> must first walk out to be just above
+the top-level <code>packages</code> directory.
+It’s under <code>packages/a/a5</code>, so it must walk up 3 directories
+before it can continue the path with <code>packages</code>:
+<code>../../../packages/polymer/polymer.html</code></p>
+
+  <p>Using correct import syntax
+allows the code in <code>lib</code> to be used by your package,
+as well as by code outside your package,
+without changes.</p>
+
+  <h3 id="why-the-rules-exist">Why the rules exist</h3>
+
+  <p>The motivation behind polymer.dart’s import rules is that
+URLs must work under many scenarios at once:</p>
+
+  <ul>
+    <li>
+      <p>URLs must work in Dartium without any code transformation:
+resolving the path in the context of a simple HTTP server,
+or using <code>file:///</code> URLs, should yield a valid path to assets.
+The <code>packages</code> directory is safe to use because
+pub already creates it next to the entry points of your application.</p>
+    </li>
+    <li>
+      <p>URLs must be canonical.
+Multiple URLs reaching the same asset must
+resolve to the same absolute URL,
+whether the URL comes from a Dart file or an HTML file.
+If you use the correct import syntax,
+then the <code>polymer</code> transformer ensures
+that the URLs are canonical.</p>
+
+      <p>For example, say you have an import like this:</p>
+
+      <pre class="prettyprint lang-html">
+&lt;link rel=&quot;import&quot; href=&quot;packages/c/c.html&quot;&gt;
+</pre>
+
+      <p>Also say that <code>c.html</code> has this:</p>
+
+      <pre class="prettyprint lang-html">
+&lt;script type=&quot;application/dart&quot; src=&quot;c.dart&quot;&gt;
+</pre>
+
+      <p>If a Dart file also loads <code>"package:c/c.dart"</code>,
+then a tool needs to make sure that both versions of <code>c.dart</code> are
+loaded from the same URL.
+Otherwise,
+you may see errors at runtime like
+“A is not a subtype of A.”</p>
+
+      <p>When you use the correct import syntax,
+polymer.dart can detect the pattern in
+the HTML-import URL that contains <code>packages/</code>
+and canonicalize the import
+by converting <code>packages/c/c.dart</code> into <code>package:c/c.dart</code> under the hood.</p>
+    </li>
+    <li>
+      <p>URLs must continue to be valid after applications are built.
+Technically a pub transformer could do this automatically.
+However, to make sure that code works also in Dartium
+with a simple HTTP server,
+the <code>polymer</code> transformer doesn’t fix URLs;
+it just detects inconsistencies and
+produces an error message.</p>
+    </li>
+  </ul>
+
+  <p>For more information, see
+<a href="/tools/pub/package-layout.html">Pub Package Layout Conventions</a> and
+<a href="/tools/pub/assets-and-transformers.html">Pub Assets and Transformers</a>.</p>
+
+</div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Dart Code Samples | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Dart Code Samples | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="Sample Dart code for Polymer, HTML5, Angular, and more.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+    <div class="container col-md-10 col-md-offset-1 sub-page">
+      <div>
+      
+<h1 id="dart-code-samples">Dart Code Samples</h1>
+
+<p>Check out many other <a href="/dart-by-example/">Dart code examples</a>.</p>
+
+<div class="row">
+<div class="col-md-4">
+    <div class="bs-sidebar hidden-print" data-spy="affix" data-offset-top="150" data-offset-bottom="350" role="complementary">
+      <ol class="toc nav bs-sidenav" id="markdown-toc">
+      
+        <li><a href="#polymer_dart">polymer.dart</a></li>
+      
+        <li><a href="#using_javascript_from_dart">Using JavaScript from Dart</a></li>
+      
+        <li><a href="#io">Working with the I/O library</a></li>
+      
+        <li><a href="#animation_and_graphics">Animation and graphics</a></li>
+      
+        <li><a href="#html5_persistence">HTML5 persistence</a></li>
+      
+        <li><a href="#other_html5_apis">Other HTML5 APIs</a></li>
+      
+        <li><a href="#touch_events">Touch events</a></li>
+      
+        <li><a href="#web_programming_fundamentals">Web programming fundamentals</a></li>
+      
+      </ol>
+    </div>
+</div>
+
+<div class="col-md-8">
+  <div class="row">
+    
+      <div class="row">
+        <h2 class="has-permalinks" id="polymer_dart">polymer.dart</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-7 group">
+          
+            <div class="row">
+              <h3 class="title">Defining a custom element</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">Install Polymer, define and use a simple custom element.&nbsp;
+                   <a href="/docs/tutorials/polymer-intro">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/dart-lang/dart-tutorials-samples/tree/master/stopwatch">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="stopwatch/">Try it</a>
+                
+              </div>
+            </div>
+
+          
+            <div class="row">
+              <h3 class="title">Searchable List</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">Use data binding to make any list searchable.&nbsp;
+                   <a href="https://github.com/dart-lang/sample-searchable-list/blob/master/README.md">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/dart-lang/sample-searchable-list">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="searchable_list/">Try it</a>
+                
+              </div>
+            </div>
+
+          
+            <div class="row">
+              <h3 class="title">Get input from a form</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">Use data binding to work with form data in Polymer.&nbsp;
+                   <a href="/docs/tutorials/forms">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/dart-lang/dart-tutorials-samples/tree/master/slambook">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="slambook/">Try it</a>
+                
+              </div>
+            </div>
+
+          
+            <div class="row">
+              <h3 class="title">TodoMVC</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">A Polymer implementation of the the canonical todo app.&nbsp;
+                   <a href="https://github.com/dart-lang/sample-todomvc-polymer/blob/master/README.md">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/dart-lang/sample-todomvc-polymer/">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="todomvc/">Try it</a>
+                
+              </div>
+            </div>
+
+          
+            <div class="row">
+              <h3 class="title">Polymer and internationalization</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">Simple demonstration of internationalization and localization with Polymer.&nbsp;
+                   <a href="https://github.com/dart-lang/sample-polymer-intl/blob/master/README.md">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/dart-lang/sample-polymer-intl">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="polymer_intl/">Try it</a>
+                
+              </div>
+            </div>
+
+          
+            <div class="row">
+              <h3 class="title">A task management tool</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">A full Polymer app with multiple custom elements.&nbsp;
+                   <a href="https://github.com/dart-lang/sample-tracker/blob/master/README.md">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/dart-lang/sample-tracker">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="tracker/">Try it</a>
+                
+              </div>
+            </div>
+
+          
+        </div>
+        <div class="col-md-5">
+          <div class="row">
+            <div class="thumbnail">
+              <a href="tracker/">
+                <img class="screenshot" alt="Tracker: A task management tool" src="imgs/tracker.png" />
+              </a>
+              <div class="caption">Tracker: A task management tool</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="row">
+        <h2 class="has-permalinks" id="using_javascript_from_dart">Using JavaScript from Dart</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-7 group">
+          
+            <div class="row">
+              <h3 class="title">Google Maps</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">Using the Google Maps JavaScript API with the dart:js library.&nbsp;
+                   <a href="https://github.com/dart-lang/sample-google-maps/blob/master/README.md">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/dart-lang/sample-google-maps">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="google_maps/">Try it</a>
+                
+              </div>
+            </div>
+
+          
+            <div class="row">
+              <h3 class="title">Using the Google Charts Visualization API</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">Intermediate level app that shows the use of JavaScript and Dart interoperability.&nbsp;
+                   <a href="https://github.com/dart-lang/sample-gauge/blob/master/README.md">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/dart-lang/sample-gauge">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="gauge/">Try it</a>
+                
+              </div>
+            </div>
+
+          
+            <div class="row">
+              <h3 class="title">Fetching data using JSONP</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">Use JSONP to see the GitHub repos for dart-lang.&nbsp;
+                   <a href="https://github.com/dart-lang/sample-jsonp/blob/master/README.md">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/dart-lang/sample-jsonp/">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="jsonp/">Try it</a>
+                
+              </div>
+            </div>
+
+          
+        </div>
+        <div class="col-md-5">
+          <div class="row">
+            <div class="thumbnail">
+              <a href="google_maps/">
+                <img class="screenshot" alt="Using the JavaScript API with dart:js: Google Maps" src="imgs/google_maps.png" />
+              </a>
+              <div class="caption">Using the JavaScript API with dart:js: Google Maps</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="row">
+        <h2 class="has-permalinks" id="io">Working with the I/O library</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-7 group">
+          
+            <div class="row">
+              <h3 class="title">Searching files for content</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">A short app that shows how to work with file and directories asynchronously.&nbsp;
+                   <a href="https://github.com/dart-lang/sample-dgrep/blob/master/README.md">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/dart-lang/sample-dgrep/">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+              </div>
+            </div>
+
+          
+            <div class="row">
+              <h3 class="title">Concatenating files</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">Use streams to read files and process I/O.&nbsp;
+                   <a href="https://github.com/dart-lang/sample-dcat/blob/master/README.md">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/dart-lang/sample-dcat/">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+              </div>
+            </div>
+
+          
+            <div class="row">
+              <h3 class="title">Dartiverse Search: A search app using HttpServer and WebSockets</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">A full app with a server and a client to search for Dart on  StackOverflow and GitHub.&nbsp;
+                   <a href="https://github.com/dart-lang/sample-dartiverse-search/blob/master/readme.txt">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/dart-lang/sample-dartiverse-search/">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+              </div>
+            </div>
+
+          
+        </div>
+        <div class="col-md-5">
+          <div class="row">
+            <div class="thumbnail">
+              <a href="https://code.google.com/p/dart/source/browse/branches/bleeding_edge/dart/samples/dartiverse_search/">
+                <img class="screenshot" alt="Dartiverse Search: A search app using HttpServer and WebSockets" src="imgs/search.png" />
+              </a>
+              <div class="caption">Dartiverse Search: A search app using HttpServer and WebSockets</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="row">
+        <h2 class="has-permalinks" id="animation_and_graphics">Animation and graphics</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-7 group">
+          
+            <div class="row">
+              <h3 class="title">Working with requestAnimationFrame</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">A sample that demonstrates the correct way to use rAF.&nbsp;
+                   <a href="https://github.com/dart-lang/dart-samples/tree/master/html5/web/speed/animations#working-with-requestanimationframe">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/dart-lang/dart-samples/tree/master/html5/web/speed/animations">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="raf/">Try it</a>
+                
+              </div>
+            </div>
+
+          
+            <div class="row">
+              <h3 class="title">2D solar system animation</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">A solar system implementation using Canvas.&nbsp;
+                   <a href="https://github.com/dart-lang/sample-solar/blob/master/README.md">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/dart-lang/sample-solar/">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="solar/">Try it</a>
+                
+              </div>
+            </div>
+
+          
+            <div class="row">
+              <h3 class="title">3D solar system animation</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">A solar system implementation using WebGL.&nbsp;
+                   <a href="https://github.com/dart-lang/dart-samples/tree/master/html5/web/webgl/solar3d#3d-solar-system-simulation">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/dart-lang/dart-samples/tree/master/html5/web/webgl/solar3d">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="solar3d/">Try it</a>
+                
+              </div>
+            </div>
+
+          
+            <div class="row">
+              <h3 class="title">Using image filters with canvas</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">Process pixels, run simple filters, and modify an image using convolution filters.&nbsp;
+                   <a href="https://github.com/dart-lang/dart-samples/tree/master/html5/web/canvas/imagefilters#using-image-filters-with-canvas">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/dart-lang/dart-samples/tree/master/html5/web/canvas/imagefilters">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="imagefilters/">Try it</a>
+                
+              </div>
+            </div>
+
+          
+            <div class="row">
+              <h3 class="title">Shaped masks with StageXL</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">Simple demo showing flowers and the effect when different masks are applied.&nbsp;
+                   <a href="https://github.com/bp74/StageXL_Samples/tree/master/web/mask#mask">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/bp74/StageXL_Samples/tree/master/web/mask">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="http://www.stagexl.org/samples/mask/">Try it</a>
+                
+              </div>
+            </div>
+
+          
+            <div class="row">
+              <h3 class="title">Sprite sheet animations with StageXL</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">Initialize the StageXL Stage, and the RenderLoop. Use the FlipBook class to play sprite sheet animations.&nbsp;
+                   <a href="https://github.com/bp74/StageXL_Samples/tree/master/web/flipbook#flipbook">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/bp74/StageXL_Samples/tree/master/web/flipbook">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="http://www.stagexl.org/samples/flipbook/">Try it</a>
+                
+              </div>
+            </div>
+
+          
+            <div class="row">
+              <h3 class="title">Adobe Flash game ported to HTML5 using StageXL</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">From Flash to HTML5, with similarity between ActionScript and Dart making it easy to convert AS3 files to Dart.&nbsp;
+                   <a href="https://github.com/bp74/StageXL_Samples/tree/master/web/escape#escape">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/bp74/StageXL_Samples/tree/master/web/escape">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="http://www.stagexl.org/samples/escape/">Try it</a>
+                
+              </div>
+            </div>
+
+          
+        </div>
+        <div class="col-md-5">
+          <div class="row">
+            <div class="thumbnail">
+              <a href="http://www.stagexl.org/samples/flipbook/">
+                <img class="screenshot" alt="FlipBook: Sprite sheet animations with StageXL" src="imgs/stagexl.png" />
+              </a>
+              <div class="caption">FlipBook: Sprite sheet animations with StageXL</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="row">
+        <h2 class="has-permalinks" id="html5_persistence">HTML5 persistence</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-7 group">
+          
+            <div class="row">
+              <h3 class="title">LocalStorage 101</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">A dead-simple example that uses LocalStorage.&nbsp;
+                   <a href="https://github.com/dart-lang/dart-samples/tree/master/html5/web/localstorage/basics#localstorage-101">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/dart-lang/dart-samples/tree/master/html5/web/localstorage/basics">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="localstorage/">Try it</a>
+                
+              </div>
+            </div>
+
+          
+            <div class="row">
+              <h3 class="title">Simple todo app using IndexedDB</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">A todo app which persists data using IndexedDB.&nbsp;
+                   <a href="https://github.com/dart-lang/dart-samples/tree/master/html5/web/indexeddb/todo#simple-todo-app-using-indexeddb">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/dart-lang/dart-samples/tree/master/html5/web/indexeddb">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="indexeddb_todo/">Try it</a>
+                
+              </div>
+            </div>
+
+          
+            <div class="row">
+              <h3 class="title">Storing and retrieving data using IndexedDB</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">Create milestones and count down to them. Uses IndexedDB to store the milestones.&nbsp;
+                   <a href="/docs/tutorials/indexeddb/">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/dart-lang/dart-tutorials-samples/tree/master/count_down">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="countdown/">Try it</a>
+                
+              </div>
+            </div>
+
+          
+            <div class="row">
+              <h3 class="title">Exploring the FileSystem APIs</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">Read, write, and navigate to a sandboxed section of your local file system.&nbsp;
+                   <a href="https://github.com/dart-lang/dart-samples/tree/master/html5/web/file/filesystem#exploring-the-filesystem-apis">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/dart-lang/dart-samples/tree/master/html5/web/file/filesystem">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="filesystem/">Try it</a>
+                
+              </div>
+            </div>
+
+          
+            <div class="row">
+              <h3 class="title">A terminal emulator that uses the FileSystem APIs</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">A Unix terminal in the web that manipulates the local file system.&nbsp;
+                   <a href="https://github.com/dart-lang/dart-samples/tree/master/html5/web/file/terminal#a-terminal-emulator-that-uses-the-filesystem-apis">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/dart-lang/dart-samples/tree/master/html5/web/file/terminal">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="terminal/">Try it</a>
+                
+              </div>
+            </div>
+
+          
+        </div>
+        <div class="col-md-5">
+          <div class="row">
+            <div class="thumbnail">
+              <a href="terminal/">
+                <img class="screenshot" alt="Terminal: A terminal emulator that uses FileSystem APIs" src="imgs/terminal.png" />
+              </a>
+              <div class="caption">Terminal: A terminal emulator that uses FileSystem APIs</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="row">
+        <h2 class="has-permalinks" id="other_html5_apis">Other HTML5 APIs</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-7 group">
+          
+            <div class="row">
+              <h3 class="title">WebSockets 101</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">Example that opens a WebSocket connection to an echo server, and sends and receives data.&nbsp;
+                   <a href="https://github.com/dart-lang/dart-samples/tree/master/html5/web/websockets/basics#websockets-101">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/dart-lang/dart-samples/tree/master/html5/web/websockets/basics">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="websockets/">Try it</a>
+                
+              </div>
+            </div>
+
+          
+            <div class="row">
+              <h3 class="title">Basic HTML5 drag and drop</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">A simple demo of HTML5 Drag and Drop to move elements on a page.&nbsp;
+                   <a href="https://github.com/dart-lang/dart-samples/tree/master/html5/web/dnd/basics#basic-drag-and-drop">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/dart-lang/dart-samples/tree/master/html5/web/dnd/basics">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="dnd/">Try it</a>
+                
+              </div>
+            </div>
+
+          
+            <div class="row">
+              <h3 class="title">Using Application Cache</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">Use Application Cache to tell the browser which files it should cache and make available to offline users.&nbsp;
+                   <a href="https://github.com/dart-lang/dart-samples/tree/master/html5/web/appcache/beginner#using-application-cache">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/dart-lang/dart-samples/tree/master/html5/web/appcache/beginner">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="appcache/">Try it</a>
+                
+              </div>
+            </div>
+
+          
+            <div class="row">
+              <h3 class="title">Basic geolocation example</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">Calculate the distance traveled between locations.&nbsp;
+                   <a href="https://github.com/dart-lang/dart-samples/tree/master/html5/web/geolocation/trip_meter#trip-meter-a-basic-geolocaton-example">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/dart-lang/dart-samples/tree/master/html5/web/geolocation/trip_meter">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="geolocation/">Try it</a>
+                
+              </div>
+            </div>
+
+          
+            <div class="row">
+              <h3 class="title">Getting started with Web Audio API</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">Sample that shows processing and synthesizing audio using the Web Audio API.&nbsp;
+                   <a href="https://github.com/dart-lang/dart-samples/tree/master/html5/web/webaudio/intro#getting-started-with-web-audio-api">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/dart-lang/dart-samples/tree/master/html5/web/webaudio/intro">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="webaudio/">Try it</a>
+                
+              </div>
+            </div>
+
+          
+            <div class="row">
+              <h3 class="title">Using the Files API</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">Select a file using a form input, or using drag and drop, and monitor progress while uploading a file.&nbsp;
+                   <a href="https://github.com/dart-lang/dart-samples/tree/master/html5/web/file/dndfiles#using-the-file-api">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/dart-lang/dart-samples/tree/master/html5/web/file/dndfiles">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="dndfiles/">Try it</a>
+                
+              </div>
+            </div>
+
+          
+        </div>
+        <div class="col-md-5">
+          <div class="row">
+            <div class="thumbnail">
+              <a href="dndfiles/">
+                <img class="screenshot" alt="Using the Files API" src="imgs/files.png" />
+              </a>
+              <div class="caption">Using the Files API</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="row">
+        <h2 class="has-permalinks" id="touch_events">Touch events</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-7 group">
+          
+            <div class="row">
+              <h3 class="title">Touch gestures and CSS 3D transforms</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">Sample that uses touch gestures and CSS 3D transforms to spin a palindrome on the page.&nbsp;
+                   <a href="https://github.com/dart-lang/sample-swipe/blob/master/README.md">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/dart-lang/sample-swipe/">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="swipe/">Try it</a>
+                
+              </div>
+            </div>
+
+          
+            <div class="row">
+              <h3 class="title">Multi touch</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">Fingerpainting with multiple touch points.&nbsp;
+                   <a href="https://github.com/dart-lang/sample-multi-touch/blob/master/README.md">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/dart-lang/sample-multi-touch">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="multi_touch/">Try it</a>
+                
+              </div>
+            </div>
+
+          
+        </div>
+        <div class="col-md-5">
+          <div class="row">
+            <div class="thumbnail">
+              <a href="swipe/">
+                <img class="screenshot" alt="Swipe: Touch gestures and CSS 3D transforms" src="imgs/swipe.png" />
+              </a>
+              <div class="caption">Swipe: Touch gestures and CSS 3D transforms</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="row">
+        <h2 class="has-permalinks" id="web_programming_fundamentals">Web programming fundamentals</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-7 group">
+          
+            <div class="row">
+              <h3 class="title">Adding elements to the DOM</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">A todo app using the dart:html library.&nbsp;
+                   <a href="/docs/tutorials/add-elements/">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/dart-lang/dart-tutorials-samples/tree/master/todo">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="todo/">Try it</a>
+                
+              </div>
+            </div>
+
+          
+            <div class="row">
+              <h3 class="title">Moving elements within the DOM tree</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">Build anagrams: a DOM manipulation demo.&nbsp;
+                   <a href="/docs/tutorials/add-elements/#moving-elements">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/dart-lang/dart-tutorials-samples/tree/master/anagram">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="anagram/">Try it</a>
+                
+              </div>
+            </div>
+
+          
+            <div class="row">
+              <h3 class="title">Removing elements from the DOM</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">A todo app with a delete option.&nbsp;
+                   <a href="/docs/tutorials/remove-elements">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="https://github.com/dart-lang/dart-tutorials-samples/tree/master/todo_with_delete">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="todo_with_delete/">Try it</a>
+                
+              </div>
+            </div>
+
+          
+            <div class="row">
+              <h3 class="title">Working with JSON</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">A sample app that shows JSON data obtained from a form.&nbsp;
+                   <a href="/docs/tutorials/fetchdata/#about-json">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="/docs/tutorials/fetchdata/#about-json">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="/docs/tutorials/fetchdata/#about-json">Try it</a>
+                
+              </div>
+            </div>
+
+          
+            <div class="row">
+              <h3 class="title">Fetching data dynamically</h3>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="text-muted">Using HttpRequest to fetch data.&nbsp;
+                   <a href="/docs/tutorials/fetchdata/#about-uris">More</a>
+                </p>
+              </div>
+              <div class="col-md-3">
+                <a href="/docs/tutorials/fetchdata/#about-uris">Source</a>
+              </div>
+              <div class="col-md-3">
+                
+                  <a href="/docs/tutorials/fetchdata/#about-uris">Try it</a>
+                
+              </div>
+            </div>
+
+          
+        </div>
+        <div class="col-md-5">
+          <div class="row">
+            <div class="thumbnail">
+              <a href="anagram/">
+                <img class="screenshot" alt="Anagrams: Moving elements within the DOM tree" src="imgs/anagrams.png" />
+              </a>
+              <div class="caption">Anagrams: Moving elements within the DOM tree</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </div>
+</div>
+</div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+<link href="/samples/samples.css" rel="stylesheet" type="text/css">
+
+
+
+</body>
+</html>
+

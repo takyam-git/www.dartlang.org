@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Dart Language Asynchrony Support: Phase 1 | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Dart Language Asynchrony Support: Phase 1 | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="Async and await, two language features that support asynchronous programming, are now available in Dart.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  <link rel="author" href="/authors/gilad-bracha.html">
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+  	<div class="container sub-page">
+      <div class="row">
+        <article class="has-permalinks"><div class="col-md-4">
+  <div class="bs-sidebar" data-spy="affix" data-offset-bottom="350" role="complementary">
+
+<ol class="toc nav bs-sidenav" id="markdown-toc">
+  <li><a href="#async-functions">Async functions</a></li>
+  <li><a href="#await-expressions">Await expressions</a></li>
+  <li><a href="#async-functions-the-fine-print">Async functions: the fine print</a></li>
+  <li><a href="#putting-it-all-together">Putting it all together</a></li>
+  <li><a href="#more-information">More information</a></li>
+</ol>
+
+  </div>
+</div>
+<div class="col-md-8">
+  <p><!-- Start of content -->
+</p>
+
+  <div>
+    <ol class="breadcrumb">
+
+  <li><a href="/articles/">
+  Articles</a></li>
+
+
+  <li class="active">Dart Language Asynchrony Support: Phase 1</li>
+</ol>
+  </div>
+
+  <h1 id="dart-language-asynchrony-support-phase-1">Dart Language Asynchrony Support: Phase 1</h1>
+
+  <p><em>Written by Gilad Bracha <br />
+October 2014</em></p>
+
+  <p>New language features to support asynchronous programming are coming to Dart.
+These features are coming online gradually. In this article, we’ll discuss
+the most basic additions: <code>await</code> expressions and <code>async</code> methods.
+These are the most commonly used features related to asynchrony.</p>
+
+  <aside class="alert alert-info">
+    <p><strong>Note:</strong>
+This article assumes that you are already familiar with asynchronous
+programming in Dart.</p>
+  </aside>
+
+  <h2 id="async-functions">Async functions</h2>
+
+  <p>An <strong>async</strong> function is a function whose body is marked with an <strong>async</strong>
+modifier.</p>
+
+  <pre class="prettyprint lang-dart">
+foo() <code class="nocode highlight">async</code> =&gt; 42;
+</pre>
+
+  <p>When you call an <strong>async</strong> function, it immediately returns a Future;
+the body of the function is scheduled for execution later.
+When the body has executed, the Future that was returned by the call
+is completed with the result–regardless of whether the body
+ran successfully, or raised an exception. In the trivial example
+provided, calling <code>foo()</code> results in a Future.
+The Future eventually completes with the number 42.</p>
+
+  <p>You could have written a similar function without the async modifier:</p>
+
+  <pre class="prettyprint lang-dart">
+foo() =&gt; new Future(() =&gt; 42);
+</pre>
+
+  <p>The modifier saves you some boilerplate, but the real point is that it
+allows you to use <strong>await</strong> expressions inside the function, as we’ll
+see shortly. Later, we’ll return to <strong>async</strong> functions to understand them
+more fully.</p>
+
+  <h2 id="await-expressions">Await expressions</h2>
+
+  <p>Await expressions let you write asynchronous code almost as if it were
+synchronous. Suppose you have a variable <code>myFile</code> that refers to a
+file. (For details on files, see the
+<a href="https://api.dartlang.org/apidocs/channels/stable/dartdoc-viewer/dart-io.File">File</a>
+class in
+<a href="https://api.dartlang.org/apidocs/channels/stable/dartdoc-viewer/dart-io"><code>dart:io</code></a>.)
+You decide to copy it to a new location <code>newPath</code>, declared as</p>
+
+  <pre class="prettyprint lang-dart">
+String newPath = &#39;/some/where/out/there&#39;;
+</pre>
+
+  <p>You’d expect the following to be true:</p>
+
+  <pre class="prettyprint lang-dart">
+myFile.copy(newPath).path == newPath;
+</pre>
+
+  <p>Unfortunately, that won’t work. Since Dart’s I/O API is asynchronous,
+the copy operation returns a <a href="https://api.dartlang.org/apidocs/channels/stable/dartdoc-viewer/dart-async.Future">Future</a>,
+and you can’t call <code>path</code> on that. You must schedule a callback on the
+Future returned from <code>copy()</code>, and that callback performs the
+comparison with its incoming parameter <code>f</code>:</p>
+
+  <pre class="prettyprint lang-dart">
+myFile.copy(newPath).then((f) =&gt; f.path == newPath);
+</pre>
+
+  <p>This is a tad tedious, but gets much worse the more involved your code is.
+What you really want to do is to wait until the asynchronous file copy
+operations completes, get the result, and resume execution.
+An <code>await</code> expression lets you do exactly that:</p>
+
+  <pre class="prettyprint lang-dart">
+(<code class="nocode highlight">await</code> myFile.copy(newPath)).path == newPath;
+</pre>
+
+  <p>When the <strong>await</strong> expression runs, <code>myFile.copy()</code> is invoked, yielding
+a Future. Execution then suspends, waiting for the Future to complete.
+After the Future has completed to a file, execution resumes.
+The value of the <strong>await</strong> expression is the completion of the
+Future–the file we were waiting for. Now we can extract its path
+and compare it to <code>newPath</code>.</p>
+
+  <p>In general, an <strong>await</strong> expression has the form:</p>
+
+  <pre>
+<b>await</b> <i>e</i>
+</pre>
+
+  <p>where <em>e</em> is a unary expression. Typically, <em>e</em> is an asynchronous
+computation and is expected to evaluate to a Future. The <strong>await</strong>
+expressions evaluates <em>e</em>, and then suspends the currently running
+function until the result is ready–that is, until the
+Future has completed. The result of the <strong>await</strong> expression is
+the completion of the Future.</p>
+
+  <aside class="alert alert-info">
+    <p><strong>Note:</strong>
+After suspension, execution resumes in a later cycle of the event loop.
+For a description of the Dart event loop, see
+<a href="https://www.dartlang.org/articles/event-loop/">The Event Loop and Dart</a>.</p>
+  </aside>
+
+  <p>If the Future completed with an error rather than with a value,
+the <strong>await</strong> expression throws that same error when execution resumes,
+which greatly simplifies the handling of exceptions in asynchronous code.</p>
+
+  <p>What if <em>e</em> does not evaluate to a Future? Well, <strong>await</strong> waits anyway
+(technically, it wraps the result in a Future and waits for it to
+complete in the event loop cycle). This is one of the differences
+between Dart and similar features in other languages. In Dart, <strong>await</strong>
+always awaits. This makes the behavior more predictable. In particular,
+if you have a loop with an unconditional <strong>await</strong> inside, you can
+always be sure that you will suspend on each iteration.</p>
+
+  <p>What if <em>e</em> itself throws an exception?
+(Note that this is not the same as evaluating
+to a Future that completes with an error.) The thrown exception is
+wrapped in a Future and execution suspends. When we resume, the
+exception is thrown. Again, suspension is predictable.</p>
+
+  <p>One last but crucial point: you can only use an <strong>await</strong> expression
+inside an <strong>async</strong> function. If you try and use <strong>await</strong> in an ordinary
+function, you’ll get a compilation error. If you were to suspend an ordinary
+function, it wouldn’t be synchronous anymore.</p>
+
+  <h2 id="async-functions-the-fine-print">Async functions: the fine print</h2>
+
+  <p>Now that we understand how <strong>await</strong> expressions work, let’s revisit
+<strong>async</strong> functions so we’re clear on some important details.</p>
+
+  <p>First, notice that the modifier goes between the function signature and
+its body. We could also have written <code>foo()</code> as</p>
+
+  <pre class="prettyprint lang-dart">
+foo() <code class="nocode highlight">async</code> { return 42; }
+</pre>
+
+  <p>In short, the modifier comes before the =&gt; or the curly brace that opens
+the function body.</p>
+
+  <p>The modifier is not part of the signature; it is just an implementation
+detail of the function. From the caller’s perspective, invoking an
+<strong>async</strong> function is no different from invoking a traditional one.</p>
+
+  <p>The <strong>async</strong> modifier has no effect on the declared return type of the
+function either, for the same reason. However, it does change what type 
+of object is actually returned. Notice that the return statement returns
+an integer, but the function has already returned a Future to its caller!
+Inside an <strong>async</strong> function, the return statement operates differently
+than within a regular function. In an <strong>async</strong> function <strong>return</strong>
+completes the Future that the function returned to the caller when it
+was invoked. The Future gets completed with the value of the expression
+being returned.</p>
+
+  <p>Likewise if you throw (or rethrow) an exception inside an <strong>async</strong> function,
+the object being thrown is used to complete the Future with an error.</p>
+
+  <p>If the expression being returned has type <code>T</code>, the function should have
+return type <code>Future&lt;T&gt;</code> (or a supertype thereof). Otherwise, a static
+warning is issued. Our examples don’t declare a return type, so
+they have return type <strong>dynamic</strong>–therefore no warning is given.</p>
+
+  <p>If the expression inside the return statement is a <code>Future&lt;T&gt;</code>, the 
+function return type should remain as <code>Future&lt;T&gt;</code> not 
+<code>Future&lt;Future&lt;T&gt;&gt;</code>. There is not much you can do with a Future that
+has completed to another Future except wait some more, so layers of
+Futures are eliminated by the async library. The type discipline is
+designed to recognize that fact.</p>
+
+  <p>Finally, notice that an <strong>async</strong> function in Dart is always
+asynchronous. This is unlike <strong>async</strong> functions in other languages,
+where the function may, in some cases, be completely synchronous.
+In Dart, you know that <em>every</em> part of an async function is
+executing after the call that invoked it has returned to the caller.</p>
+
+  <h2 id="putting-it-all-together">Putting it all together</h2>
+
+  <p>Here is an example that incorporates what we’ve learned so far.
+Suppose we are running a simple animation which updates the display
+on every frame.</p>
+
+  <p>Without using <strong>async</strong> and <strong>await</strong>, the code might look something like
+this:</p>
+
+  <pre class="prettyprint lang-dart">
+import &quot;dart:html&quot;
+
+main() {
+  var context = querySelector(&quot;canvas&quot;).context2D;
+  var running = true;    // Set false to stop.
+
+  tick(time) {
+    context.clearRect(0, 0, 500, 500);
+    context.fillRect(time % 450, 20, 50, 50);
+
+    if (running) window.animationFrame.then(tick);
+  }
+
+  window.animationFrame.then(tick);
+}
+</pre>
+
+  <p>It’s not too complicated, but not totally simple either. We produce a frame;
+when the frame is done, we expect to invoke a callback function, <code>tick()</code>,
+that produces the next frame (if the animation hasn’t been stopped)
+and passes itself as the callback recursively, perpetuating the process.
+The function <code>tick()</code> represents the continuation of the computation, and we
+all know how intuitive and easy continuations are.</p>
+
+  <p>Using our new language features, we can write the following instead:</p>
+
+  <pre class="prettyprint lang-dart">
+import &quot;dart:html&quot;;
+
+main() async {
+  var context = querySelector(&quot;canvas&quot;).context2D;
+  var running = true;    // Set false to stop game.
+
+  while (running) {
+    var time = await window.animationFrame;
+    context.clearRect(0, 0, 500, 500);
+    context.fillRect(time % 450, 20, 50, 50);
+  }
+}
+</pre>
+
+  <p>Here the code is self explanatory. While the animation is running, we
+compute a frame. The choice is yours; pick whichever version you find
+easier to understand.</p>
+
+  <h2 id="more-information">More information</h2>
+
+  <p>For information on more advanced asynchrony topics, such as <strong>async*</strong>,
+<strong>sync*</strong>, <strong>yield</strong>, and <strong>yield*</strong>, see
+<a href="/articles/beyond-async">Dart Language Asynchrony Support: Phase 2</a>.</p>
+</div>
+
+    	  </div> <!-- End of content from toc.html -->
+        </article>
+	  </div>
+
+	
+	<ul class="pager hidden-print">
+	  <li><a href="/articles/">More articles about Dart <i class="glyphicon glyphicon-chevron-up"></i></a></li>
+	 </ul>
+	 
+
+	</div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+
+
+
+
+</body>
+</html>
+

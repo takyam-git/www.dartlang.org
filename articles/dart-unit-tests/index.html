@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Unit Testing with Dart | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Unit Testing with Dart | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="Using Dart's unit test library for synchronous and asynchronous tests.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  <link rel="author" href="/authors/graham-wheeler.html">
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+  	<div class="container sub-page">
+      <div class="row">
+        <article class="has-permalinks"><div class="col-md-4">
+  <div class="bs-sidebar" data-spy="affix" data-offset-bottom="350" role="complementary">
+
+<ol class="toc nav bs-sidenav" id="markdown-toc">
+  <li><a href="#differences-from-the-earlier-library">Differences from the earlier library</a></li>
+  <li><a href="#a-simple-unit-test-example">A simple unit test example</a></li>
+  <li><a href="#basic-synchronous-tests">Basic synchronous tests</a></li>
+  <li><a href="#grouping-tests">Grouping tests</a></li>
+  <li><a href="#setup-and-teardown">Setup and teardown</a></li>
+  <li><a href="#running-a-limited-set-of-tests">Running a limited set of tests</a></li>
+  <li><a href="#asynchronous-tests">Asynchronous tests</a></li>
+  <li><a href="#matchers">Matchers</a>    <ol>
+      <li><a href="#creating-custom-matchers">Creating custom matchers</a></li>
+    </ol>
+  </li>
+  <li><a href="#configuring-the-test-environment">Configuring the test environment</a></li>
+  <li><a href="#using-expect-in-other-contexts">Using expect() in other contexts</a></li>
+</ol>
+
+  </div>
+</div>
+<div class="col-md-8">
+  <p><!-- Start of content -->
+</p>
+
+  <div>
+    <ol class="breadcrumb">
+
+  <li><a href="/articles/">
+  Articles</a></li>
+
+
+  <li class="active">Unit Testing with Dart</li>
+</ol>
+  </div>
+
+  <h1 id="unit-testing-with-dart">Unit Testing with Dart</h1>
+
+  <p><em>Written by Graham Wheeler <br />
+June 2012 (updated July 2013)</em></p>
+
+  <p>Dart includes a unit test library that is easy to use, adaptable, and
+supports both synchronous and asynchronous tests.
+This article describes
+how to write and run tests, and how testing fits into the overall Dart
+ecosystem.</p>
+
+  <p>For more information, see the
+<a href="http://www.dartdocs.org/documentation/unittest/latest">unit test library API documentation</a>.</p>
+
+  <h2 id="differences-from-the-earlier-library">Differences from the earlier library</h2>
+
+  <p>The unit test library is not new, but has undergone some changes.
+If you
+have been using the library or the Expect class in dart:core, here are the
+main changes to bear in mind:</p>
+
+  <ul>
+    <li><code>setUp</code> and <code>tearDown</code> functions are now chained in nested groups</li>
+    <li>the format of test failure messages has changed to have ‘Expected’ and ‘Actual’ lines,
+with an optional ‘Which’ line containing additional info;
+this latter line corresponds to the old ‘But’ line that was not previously optional</li>
+  </ul>
+
+  <h2 id="a-simple-unit-test-example">A simple unit test example</h2>
+
+  <p>For those who want to jump right to it, let’s start with an example.
+Let’s say we are writing a quicksort algorithm in Dart and want to test it.
+Open the Dart editor, create a new application “quicksort”,
+and edit the “pubspec.yaml” file to import the unittest package:</p>
+
+  <pre class="prettyprint lang-yaml">
+name: quicksort
+version: 0.0.1
+author: First Last &lt;email@example.com&gt;
+description: A quicksort implementation
+dev_dependencies:
+  unittest: &#39;&gt;=0.10.0 &lt;0.12.0&#39;
+</pre>
+
+  <p>Run <code>pub get</code> either on the command line or in your editor to install the
+unittest package. Once the package is installed, change the “quicksort.dart”
+file to look as follows:</p>
+
+  <pre class="prettyprint lang-dart">
+import &#39;package:unittest/unittest.dart&#39;;
+
+// NOTE: This code purposely has errors to illustrate unittest further below.
+
+int _partition(List array, int left, int right, int pivotIndex) {
+  var pivotValue = array[pivotIndex];
+  array[pivotIndex] = array[right];
+  array[right] = pivotValue;
+  var storeIndex = left;
+  for (var i = left; i &lt; right; i++) {
+    if (array[i] &lt; pivotValue) {
+      var tmp = array[i];
+      array[i] = array[storeIndex];
+      array[storeIndex] = tmp;
+    }
+  }
+  var tmp = array[storeIndex];
+  array[storeIndex] = array[right];
+  array[right] = tmp;
+  return storeIndex;
+}
+
+void _quickSort(List array, int left, int right) {
+  if (left &lt; right) {
+    int pivotIndex = left + ((right-left) / 2);
+    pivotIndex = _partition(array, left, right, pivotIndex);
+    _quickSort(array, left, pivotIndex-1);
+    _quickSort(array, pivotIndex+1, right);
+  }
+}
+
+List quickSort(List array) {
+  _quickSort(array, 0, array.length-1);
+  return array;
+}
+
+void main() {
+  test(&#39;QuickSort&#39;, () =&gt;
+    expect(quickSort([5, 4, 3, 2, 1]),
+      orderedEquals([1, 2, 3, 4, 5]))
+  );
+}
+</pre>
+
+  <p>There are a couple of problems with this code
+that we will use unit tests to discover.
+To begin, we have just one test in <code>main()</code>,
+which asserts that a 5-element array is
+properly sorted after calling <code>quickSort</code>.
+Note how the test is written:
+we wrap it in a call to <code>test()</code> with this form:</p>
+
+  <pre class="prettyprint lang-dart">
+test(String testName, functionToTest);
+</pre>
+
+  <p>Within the function we are testing, we write assertions, using <code>expect()</code>:</p>
+
+  <pre class="prettyprint lang-dart">
+expect(actualValue, expectedValueMatcher);
+</pre>
+
+  <p><code>expect()</code> is modelled on third-generation assert libraries like
+<a href="http://code.google.com/p/hamcrest/">Hamcrest</a>.
+It also borrows some ideas
+from Ladislav Thon’s early Dart matcher library, darmatch.</p>
+
+  <p>The second argument to expect is what we call a “matcher”.
+It can be a scalar value, or a special matcher function,
+of which the library provides many;
+in our case we are using <code>orderedEquals()</code>,
+which matches against an Iterable object in index order.</p>
+
+  <p>When we run this application in checked mode,
+we see output similar to this:</p>
+
+  <pre class="prettyprint lang-none">
+unittest-suite-wait-for-done
+ERROR: QuickSort
+  Test failed: Caught type &#39;double&#39; is not a subtype of type &#39;int&#39; of &#39;pivotIndex&#39;.
+  quicksort.dart 24:27  _quickSort
+  quicksort.dart 32:13  quickSort
+  quicksort.dart 38:21  main.&lt;fn&gt;
+  dart:async             _createTimer.&lt;fn&gt;
+
+0 PASSED, 0 FAILED, 1 ERRORS
+</pre>
+
+  <p>Following this is a line:</p>
+
+  <pre class="prettyprint lang-none">
+Uncaught Error: Exception: Some tests failed.
+</pre>
+
+  <p>followed by a stack trace.
+We can ignore this for now;
+the default behavior of the unittest library is
+to throw an exception at the end if any tests did not succeed,
+and the stack trace relates to that.</p>
+
+  <p>The ‘unittest-suite-wait-for-done’ line is used by the library
+to communicate with test harnesses that host it
+and can be ignored for now.</p>
+
+  <p>Notice that the test wasn’t reported as failing;
+it was reported as having an error.
+The unittest library distinguishes between
+a test that is ‘well-behaved’ but fails its expectations
+and those that throw due to unexpected runtime errors.
+Our quicksort currently is of the second type.</p>
+
+  <p>The problem here was this line:</p>
+
+  <pre class="prettyprint lang-dart">
+int pivotIndex = left + ((right-left) / 2);
+</pre>
+
+  <p>The right hand side is a double, which we can’t assign to int.
+We can fix this by changing the line to this:</p>
+
+  <pre class="prettyprint lang-dart">
+int pivotIndex = left + ((right-left) ~/ 2);
+</pre>
+
+  <p>Running the test again, we see:</p>
+
+  <pre class="prettyprint lang-none">
+FAIL: QuickSort
+  Expected: equals [1, 2, 3, 4, 5] ordered
+    Actual: [3, 5, 2, 4, 1]
+     Which: was &lt;3&gt; instead of &lt;1&gt; at location [0]
+</pre>
+
+  <p>(We are omitting the initial line, stack dump,
+and summary details here for brevity).</p>
+
+  <p>This tells us that we have a bug (in this case a failed expectation),
+but doesn’t help us find it.
+We need to dig deeper.</p>
+
+  <p>The partition part of quicksort is given a pivot index
+(which in turn maps to a pivot value),
+and is meant to move all values less than
+the pivot value to the left of the pivot,
+and all values greater to the right of the pivot,
+and then return the final position of the pivot value.
+So if we passed [3, 2, 1] and pivot index 1 (i.e. pivot value 2),
+after partitioning we should have [1, 2, 3]
+and the returned pivot index should still be 1.
+Let’s test that, by adding a second test.
+Change <code>main()</code> by adding the highlighted code below:</p>
+
+  <pre class="prettyprint lang-dart">
+void main() {
+  test(&#39;QuickSort&#39;, () =&gt;
+    expect(quickSort([5, 4, 3, 2, 1]),
+      orderedEquals([1, 2, 3, 4, 5]))
+  );
+<code class="nocode highlight">  test(&#39;Partition&#39;, () {
+    List array = [3, 2, 1];
+    int index = _partition(array, 0, array.length-1, 1);
+    expect(index, equals(1));
+    expect(array, orderedEquals([1, 2, 3]));
+  });</code>
+}
+</pre>
+
+  <p>If we run this again, we still see the first test fail, but now we also see:</p>
+
+  <pre class="prettyprint lang-none">
+FAIL: Partition
+  Expected: &lt;1&gt;
+    Actual: &lt;0&gt;
+</pre>
+
+  <p>So there is a problem with <code>_partition</code>.
+We did not get to the second <code>expect()</code>; the first one failed.
+If we look carefully at the code,
+we can see that <code>_partition</code> returns the final value of <code>storeIndex</code>,
+which is initialized to the value of <code>left</code>.
+Look more carefully,
+and we can see that <code>storeIndex</code>
+doesn’t have its value changed after initialization -
+which explains why we got a returned index of 0 after passing in 0 for left.
+Clearly we missed something here.
+The hazards of writing algorithms from memory! Off to Wikipedia…</p>
+
+  <p>A bit of research shows the problem.
+The loop in <code>_partition</code> is meant to increment <code>storeIndex</code>:</p>
+
+  <pre class="prettyprint lang-dart">
+for (var i = left; i &lt; right; i++) {
+  if (array[i] &lt; pivotValue) {
+    var tmp = array[i];
+    array[i] = array[storeIndex];
+    array[storeIndex++] = tmp;
+  }
+}
+</pre>
+
+  <p>After making that change and running the app again, we see happiness:</p>
+
+  <pre class="prettyprint lang-none">
+PASS: QuickSort
+PASS: Partition
+
+All 2 tests passed.
+</pre>
+
+  <p>We can easily run this from the command line using the
+<a href="/tools/dart-vm/">standalone Dart virtual machine</a>.
+If you want to test the exit code from the standalone VM, add this import:</p>
+
+  <pre class="prettyprint lang-dart">
+import &#39;package:unittest/vm_config.dart&#39;;
+</pre>
+
+  <p>and add a line in <code>main()</code> before the tests:</p>
+
+  <pre class="prettyprint lang-dart">
+useVMConfiguration();
+</pre>
+
+  <p>This will result in a zero exit code if all tests pass
+or a 1 exit code upon test failure.
+See <a href="#configuring-the-test-environment">Configuring the test environment</a>
+later for more details.
+You can run the test with the command:</p>
+
+  <pre class="prettyprint lang-none">
+dart Quicksort.dart
+</pre>
+
+  <p>If you prefer the Dart editor environment
+and want to run your tests in the browser, add this import:</p>
+
+  <pre class="prettyprint lang-dart">
+import &#39;package:unittest/html_config.dart&#39;;
+</pre>
+
+  <p>and add a line before the tests:</p>
+
+  <pre class="prettyprint lang-dart">
+useHtmlConfiguration();
+</pre>
+
+  <aside class="alert alert-warning">
+    <p><strong>Important:</strong>
+Import and use <strong>only one configuration.</strong>
+If you import multiple configuration files,
+your tests won’t run.</p>
+  </aside>
+
+  <p>Test results will be displayed in the Dartium window,
+and exit codes are shown in the editor’s Debugger tab.</p>
+
+  <p>The rest of this article dives deeper into the unit test library.</p>
+
+  <h2 id="basic-synchronous-tests">Basic synchronous tests</h2>
+
+  <p>Tests are created using the top level function <code>test()</code>.
+This function takes a name for the test and a function to execute.
+Typically the calls to <code>test()</code> would be in a <code>main()</code> function
+or in a function called from <code>main()</code>.
+In contrast to some libraries
+where reflection is used to determine unit test functions,
+in <code>unittest</code> they must be explicitly created by calling <code>test()</code>.</p>
+
+  <p>Here is a trivial example to illustrate the syntax of <code>test()</code>:</p>
+
+  <pre class="prettyprint lang-dart">
+import &#39;package:unittest/unittest.dart&#39;;
+main() {
+ test(&#39;An empty test&#39;, () {
+   // a test with expectations and matchers
+ });
+}
+</pre>
+
+  <p>This test doesn’t do anything useful and will always pass.
+Note that test functions take no arguments and might not return any value;
+if a value is returned it is ignored unless it is a Future;
+more on that later.</p>
+
+  <p>Of course, a real test will have some content
+in the body of the test function,
+and that body will usually be making assertions
+about the state of the system under test.
+To express such assertions we use <code>expect()</code>.
+<code>expect()</code> is typically called with two arguments:
+an actual value and a “matcher”
+that tests if the value satisfies some constraint.
+For example:</p>
+
+  <pre class="prettyprint lang-dart">
+test(&#39;Addition test&#39;, () {
+  expect(2 + 2, equals(5));
+});
+</pre>
+
+  <p>If the matcher fails then a <code>TestFailure</code> object is thrown,
+which will be caught and handled by the unit test framework as a test failure.
+Later we will see how this behavior of <code>expect()</code> can be customized
+to use it in other contexts.</p>
+
+  <p>If you want to simply pass a predicate to <code>expect()</code>,
+you can use the <code>isTrue</code> matcher, as in:</p>
+
+  <pre class="prettyprint lang-dart">
+test(&#39;Addition test&#39;, () {
+  expect(2 + 2 == 5, isTrue);
+});
+</pre>
+
+  <p>However, if you use matchers with more granularity,
+<code>expect()</code> generates a useful descriptive message upon failure,
+which is passed as an argument to the TestFailure constructor.
+When using a predicate form like the above,
+<code>expect()</code> has no useful information to do this with.
+So in the second case, the description will simply be:</p>
+
+  <pre class="prettyprint lang-none">
+Expected: true
+  Actual: &lt;false&gt;
+</pre>
+
+  <p>while in the first case it is the more descriptive:</p>
+
+  <pre class="prettyprint lang-none">
+Expected: &lt;5&gt;
+  Actual: &lt;4&gt;
+</pre>
+
+  <p>It is possible to pass an additional string argument to <code>expect()</code>
+(using either form) which will be appended to the output,
+and doing so is strongly encouraged
+if using the predicate form to improve the resulting output.
+The additional argument is a named argument called <code>reason</code>.
+For example:</p>
+
+  <pre class="prettyprint lang-dart">
+test(&#39;Addition test&#39;, () =&gt; expect(2 + 2 == 5, isTrue, reason:&#39;Two twos are not five&#39;));
+</pre>
+
+  <p>which results in:</p>
+
+  <pre class="prettyprint lang-none">
+Expected: true
+  Actual: &lt;false&gt;
+Two twos are not five
+</pre>
+
+  <p>There are circumstances when the simple predicate form is sufficient.
+For example, if you have code that should be unreachable, then you can use:</p>
+
+  <pre class="prettyprint lang-dart">
+expect(false, isTrue, reason:&#39;Unreachable&#39;);
+</pre>
+
+  <p>Another case might be where you have a complex predicate
+that would be too tedious to write using composite matchers,
+or where the predicate is implemented by a function,
+and where a simpler text description is useful.
+For example:</p>
+
+  <pre class="prettyprint lang-dart">
+expect(isPrime(x), isTrue, reason:&#39;${x} is not prime&#39;);
+</pre>
+
+  <p>There are a large set of possible matchers that can be used with <code>expect()</code>,
+and it is possible to create custom ones.
+In fact, matchers can be composed to create more complex matchers.
+Matchers will be discussed in more detail later in this article.</p>
+
+  <p>Note that <code>test()</code> calls cannot be nested;
+each call to <code>test()</code> defines one and only one test.</p>
+
+  <p><code>expect</code> can take two other optional named arguments:
+<code>failureHandler</code> and <code>verbose</code>.
+The latter is a boolean flag that if set
+can result in more verbose error messages in some cases
+(for example, some container matchers will output the full contents
+of the actual container if a mismatch occurs and <code>verbose</code> is set).
+The <code>failureHandler</code> argument will be discussed later
+in the section on custom failure handlers.</p>
+
+  <h2 id="grouping-tests">Grouping tests</h2>
+
+  <p>It can be helpful to group similar tests together,
+which can be done with <code>group()</code>.
+The <code>group()</code> function has a similar form to <code>test()</code>,
+taking a name and a function as arguments,
+with the function containing the tests in the group.
+For example:</p>
+
+  <pre class="prettyprint lang-dart">
+group(&#39;My test group&#39;, () {
+  test(&#39;Test 1&#39;, () =&gt; expect(0, equals(1)));
+  test(&#39;Test 2&#39;, () =&gt; expect(1, equals(0)));
+});
+</pre>
+
+  <p>Test names have their group names prepended;
+in this case, the first test has the name ‘My test group Test 1’
+and the second test has the name ‘My test group Test 2’.
+Test groups can be nested (with multiple group names prepended).
+The default separator used
+to concatenate group names and test names is a space,
+but you can change this by
+setting the <code>groupSep</code> top-level String variable in unittest.</p>
+
+  <p>Groups are not themselves tests,
+and so should not include assertions or calls to expect()
+outside of the contained tests.</p>
+
+  <h2 id="setup-and-teardown">Setup and teardown</h2>
+
+  <p>Inside a group body, or at the top level in <code>main()</code>,
+you can call setUp() and/or tearDown() with function arguments.
+The function passed as an argument to setUp() will be called before each test,
+and that passed to tearDown() will be called after each test.</p>
+
+  <p>Usually you would set these up at the start of the group:</p>
+
+  <pre class="prettyprint lang-dart">
+group(&#39;foo&#39;, () {
+  setUp(() {/*...*/});
+  tearDown(() {/*...*/});
+  test(description, () {/*...*/});
+  /*...*/
+});
+</pre>
+
+  <p>However you can interlace them differently;
+each test function will use the most recently set values.</p>
+
+  <p>Whenever a new group is started, these functions are reset.
+This applies for nested groups too.
+Nested groups inherit these functions
+but can augment them by in turn calling <code>setUp()</code> or <code>tearDown()</code>;
+parent setUp functions will be called before child ones,
+and parent tearDown functions will be called after child ones.
+The code below shows examples of nested setUp/tearDown functions and
+how by calling setUp more than once
+the setUp function used by a test can be altered:</p>
+
+  <pre class="prettyprint lang-dart">
+group(&#39;outer&#39;, () {
+  test(&#39;outer test 1&#39;, () =&gt; print(&#39;outer test 1&#39;));
+  setUp(() =&gt; print(&#39;outer setup 1&#39;));
+  tearDown(() =&gt; print(&#39;outer teardown 1&#39;));
+  test(&#39;outer test 2&#39;, () =&gt; print(&#39;outer test 2&#39;));
+  setUp(() =&gt; print(&#39;outer setup 2&#39;));
+  tearDown(() =&gt; print(&#39;outer teardown 2&#39;));
+  test(&#39;outer test 3&#39;, () =&gt; print(&#39;outer test 3&#39;));
+  group(&#39;inner&#39;, () {
+    test(&#39;inner test 1&#39;, () =&gt; print(&#39;inner test 1&#39;));
+    setUp(() =&gt; print(&#39;inner setup 1&#39;));
+    tearDown(() =&gt; print(&#39;inner teardown&#39;));
+    test(&#39;inner test 2&#39;, () =&gt; print(&#39;inner test 2&#39;));
+    setUp(() =&gt; print(&#39;inner setup 2&#39;));
+    test(&#39;inner test 3&#39;, () =&gt; print(&#39;inner test 3&#39;));
+    setUp(() =&gt; print(&#39;inner setup 3&#39;));
+  });
+});
+</pre>
+
+  <p>The output is:</p>
+
+  <pre class="prettyprint lang-none">
+outer test 1
+outer setup 1, outer test 2, outer teardown 1
+outer setup 2, outer test 3, outer teardown 2
+outer setup 2, inner test 1, outer teardown 2
+outer setup 2, inner setup 1, inner test 2, inner teardown, outer teardown 2
+outer setup 2, inner setup 2, inner test 3, inner teardown, outer teardown 2
+</pre>
+
+  <p>In the output above,
+all lines relating to a single test have been coalesced for brevity.</p>
+
+  <p>If your setUp/tearDown functions need to perform asynchronous operations,
+you can do that by having them return a Future.
+Execution of tests will be paused until the Future is complete.
+If a setUp or tearDown fails, that will be considered a test error.
+Note that if a setUp or test function fails,
+any corresponding tearDown function will still be called.
+Tests that have failed setUp or tearDown functions
+will report an ERROR rather than a FAIL.</p>
+
+  <h2 id="running-a-limited-set-of-tests">Running a limited set of tests</h2>
+
+  <p>The Dart unittest library provides a mechanism
+to quickly run just one unit test.
+This is useful if you have a failing test
+that you want to explore in the debugger,
+and you want to remove the distraction of other tests.
+To isolate a test,
+change the name of the call for that test from <code>test()</code> to <code>solo_test()</code>.
+If there is one <code>solo_test()</code> call
+then only that test will be run
+(if you mistakenly have more than one <code>solo_test()</code>
+then an exception will be thrown).
+Similarly, you can rename a call to <code>group()</code> to <code>solo_group()</code>
+to isolate execution to just that single group.
+To exclude tests, you can rename calls to <code>test()</code> or <code>group()</code>
+to <code>skip_test()</code> or <code>skip_group()</code>, respectively.</p>
+
+  <p>Another way of reducing the set of tests which are run
+is to call the <code>filterTests</code> function.
+This function can take a <code>RegExp</code> argument,
+or a <code>String</code> argument that is used to create a <code>RegExp</code>,
+which in turn is matched against each test description;
+only those tests that match will be run.</p>
+
+  <p>A third way of limiting the tests is
+to set or clear the <code>enabled</code> flag on a test case.
+Each call to <code>test()</code> creates a new TestCase object
+in the top-level <code>testCases</code> list.</p>
+
+  <h2 id="asynchronous-tests">Asynchronous tests</h2>
+
+  <p>So far all of the tests shown have been synchronous;
+that is, the test function body runs to completion
+and when it returns the test is done.
+To test asynchronous code,
+we need a way to tell the test framework
+that it should not consider a test complete until some condition has been met;
+typically this would be either the completion of a Future
+or one or more callbacks being called a certain number of times.</p>
+
+  <p>Say we have this code in our application:</p>
+
+  <pre class="prettyprint lang-dart">
+new Timer(new Duration(milliseconds:100), checkProgress);
+</pre>
+
+  <p>Also say that we want to test whether Timer calls the <code>checkProgress</code> function.
+The following test would pass, but it wouldn’t do what we want:</p>
+
+  <pre class="prettyprint lang-dart">
+// BAD TEST
+test(&#39;Timer test&#39;, () {
+  new Timer(new Duration(milliseconds:100), checkProgress);
+});
+</pre>
+
+  <p>The test has no assertion or other check to tell that <code>checkProgress</code> was ever
+called.  We need the test to understand that it is testing asynchronous code,
+and either succeed if the callback is called or fail if the callback is never
+called before some timeout.  The <code>expectAsync</code> function gives us exactly this
+behavior:</p>
+
+  <pre class="prettyprint lang-dart">
+test(&#39;Window timeout test&#39;, () {
+  new Timer(new Duration(milliseconds:100), expectAsync(checkProgress));
+});
+</pre>
+
+  <p>When this test starts to run, it calls <code>new Timer</code> and passes a closure,
+created by <code>expectAsync</code>, as the event handler.
+This closure will in turn call <code>checkProgress()</code>.
+If <code>checkProgress()</code> throws an exception,
+the closure catches it and marks the test as failed.
+The test is not considered complete until either
+the closure is executed or the test framework times out and fails the test.
+Note that the timing out of the test is not something
+that is handled by the unittest library itself at this time;
+it is normally implemented by test harnesses
+that manage the execution of tests.</p>
+
+  <p><code>expectAsync()</code> can take an additional named <code>count</code> argument
+to specify how many times the callback must be called
+before the test is considered complete.
+For example:</p>
+
+  <pre class="prettyprint lang-dart">
+test(&#39;Double callback&#39;, () {
+  var callback = expectAsync(foo, count: 2);
+  new Timer(new Duration(milliseconds:100), callback);
+  new Timer(new Duration(milliseconds:100), callback);
+});
+</pre>
+
+  <p>We might have a callback that’s called an undetermined number of times, where
+only a test can tell us when it’s the last time.
+For these cases we can use <code>expectAsyncUntil()</code>.
+This function takes a second predicate function argument
+that should return false if more callbacks are expected
+or true if all callbacks are done and the test can is considered complete.</p>
+
+  <p>Both functions can take a named <code>id</code> String argument that will be used in error
+messages to identify the callback.  This is particularly useful for anonymous
+closures or in minified code; for named functions or methods the framework will
+use the function or method name as the default <code>id</code>.</p>
+
+  <p>You can also make a test asynchronous by returning a Future.
+The test will only be considered complete after the Future is complete.
+You can combine returning a Future with calls to <code>expectAsync</code>, if necessary.</p>
+
+  <p>Learn more about the aynchronous unit test functions from the
+<a href="http://www.dartdocs.org/documentation/unittest/latest">unittest documentation</a>.</p>
+
+  <h2 id="matchers">Matchers</h2>
+
+  <p>So far we have only looked at the <code>equals(v)</code> matcher.
+The Dart unittest library contains a large set of predefined matchers,
+which we will look at briefly now.
+The Dart SDK documentation contains details for each matcher.
+Note that a number of matchers can in turn take matchers as their arguments;
+in these cases simple values can be used too,
+and they will automatically be wrapped in <code>equals(v)</code> matchers.
+For example:</p>
+
+  <pre class="prettyprint lang-dart">
+expect(foo, hasLength(6));
+</pre>
+
+  <p>is turned into:</p>
+
+  <pre class="prettyprint lang-dart">
+expect(foo, hasLength(equals(6));
+</pre>
+
+  <p>The following simple matchers take no arguments,
+and have mostly self-evident meanings:</p>
+
+  <pre class="prettyprint lang-dart">
+// General matchers
+anything
+isEmpty
+isTrue
+isFalse
+isNull
+isNotNull
+isList
+isMap
+
+// Numeric matchers
+isZero
+isNonZero
+isPositive
+isNonPositive
+isNegative
+isNonNegative
+isNaN
+isNotNaN
+</pre>
+
+  <p>Be careful with <code>isTrue</code> and <code>isFalse</code>.
+These test for equality with the corresponding Boolean values.
+That means these would both fail:</p>
+
+  <pre class="prettyprint lang-dart">
+expect(10, isTrue)
+expect(10, isFalse)
+</pre>
+
+  <p>To test if something is not true, use:</p>
+
+  <pre class="prettyprint lang-dart">
+isNot(isTrue)
+</pre>
+
+  <p><code>isEmpty</code> works with Strings, Maps or Collections.</p>
+
+  <p>To test equality or identity, respectively, we have these matchers:</p>
+
+  <pre class="prettyprint lang-dart">
+equals(expected)
+same(expected)
+</pre>
+
+  <p>For numeric inequality, we have:</p>
+
+  <pre class="prettyprint lang-dart">
+greaterThan(v)
+greaterThanOrEqualTo(v)
+lessThan(v)
+lessThanOrEqualTo(v)
+closeTo(value, delta)
+inInclusiveRange(low, high) // low &lt;= actual &lt;= high
+inExclusiveRange(low, high) // low &lt; actual &lt; high
+inOpenClosedRange(low, high) // low &lt; actual &lt;= high
+inClosedOpenRange(low, high) // low &lt;= actual &lt; high
+</pre>
+
+  <p>For string matching, we have:</p>
+
+  <pre class="prettyprint lang-dart">
+equalsIgnoringCase(v)
+equalsIgnoringWhitespace(v)
+startsWith(prefix)
+endsWith(suffix)
+stringContainsInOrder(List&lt;String&gt; substrings)
+matches(regexp)
+</pre>
+
+  <p><code>equalsIgnoringWhitespace(v)</code> normalizes whitespace runs to single spaces
+first and trims off leading and trailing whitespace.</p>
+
+  <p>For objects that have a length property, we have this matcher:</p>
+
+  <pre class="prettyprint lang-dart">
+hasLength(m)
+</pre>
+
+  <p>m here can be a value or a matcher;
+e.g <code>hasLength(6)</code> or <code>hasLength(greaterThan(5))</code>.</p>
+
+  <p>For testing whether functions throw exceptions, we have:</p>
+
+  <pre class="prettyprint lang-dart">
+throws
+throwsA(m)
+returnsNormally
+</pre>
+
+  <p><code>throwsA</code> takes a matcher argument which will be matched against the exception;
+an example is shown in the next paragraph.
+<code>returnsNormally</code> will swallow any thrown exception
+and throw a <code>TestFailure</code> instead
+with details of the inner exception including the stack trace.</p>
+
+  <p>For type checking, we have:</p>
+
+  <pre class="prettyprint lang-dart">
+new isInstanceOf&lt;T&gt;()
+</pre>
+
+  <p>For example:</p>
+
+  <pre class="prettyprint lang-dart">
+test(&#39;Exception type&#39;, () {
+    expect(()=&gt; throw &#39;X&#39;,
+    throwsA(new isInstanceOf&lt;String&gt;()));
+});
+</pre>
+
+  <p>Note that the error messages produced by isInstanceOf
+will not include the name of the type T,
+so it is a good idea to include a reason in the call to <code>expect()</code>.
+If you match against a particular type more than once,
+you may want to create a custom matcher for it, as follows:</p>
+
+  <pre class="prettyprint lang-dart">
+class _IsFoo extends TypeMatcher {
+  const _IsFoo() : super(&#39;Foo&#39;);
+  bool matches(item, Map matchState) =&gt; item is Foo;
+}
+const isFoo = const _IsFoo();
+
+expect(x, isFoo);
+</pre>
+
+  <p>Custom matchers will be discussed in more detail later.</p>
+
+  <p>As the usual case is to throw an exception,
+there are predefined matchers for a number of the core exception types and for functions that may throw them:</p>
+
+  <pre class="prettyprint lang-dart">
+isException
+throwsException
+isFormatException
+throwsFormatException
+isArgumentError
+throwsArgumentError
+isRangeError
+throwsRangeError
+isNoSuchMethodError
+throwsNoSuchMethodError
+isNullThrownError
+throwsNullThrownError
+isUnimplementedError
+throwsUnimplementedError
+isStateError
+throwsStateError
+isUnsupportedError
+throwsUnsupportedError
+</pre>
+
+  <p>So for example we can write:</p>
+
+  <pre class="prettyprint lang-dart">
+test(&#39;Range Error&#39;, () {
+    expect(()=&gt; throw new RangeError(&quot;out of range&quot;),
+        throwsRangeError);
+});
+
+</pre>
+
+  <p>For matching the inner content of compound objects,
+we have a number of matchers, starting with the ubiquitous <code>equals()</code>:</p>
+
+  <pre class="prettyprint lang-dart">
+equals(object, [depth])
+</pre>
+
+  <p>This works with scalars, Maps, and iterables
+(which should match in order).
+The depth parameter is to deal with cyclic structures;
+after [depth] comparisons the match will fail if it has not already terminated.
+The default depth is 100.</p>
+
+  <p>Here is an example, taken from the JSON parse tests:</p>
+
+  <pre class="prettyprint lang-dart">
+expect(JSON.decode(&#39;{&quot;x&quot;: {&quot;a&quot;:3, &quot;b&quot;: -4.5}, &quot;y&quot;:[{}], &#39;
+               &#39;&quot;z&quot;:&quot;hi&quot;,&quot;w&quot;:{&quot;c&quot;:null,&quot;d&quot;:true}, &quot;v&quot;:null}&#39;),
+  equals({&quot;x&quot;: {&quot;a&quot;:3, &quot;b&quot;: -4.5}, &quot;y&quot;:[{}],
+               &quot;z&quot;:&quot;hi&quot;,&quot;w&quot;:{&quot;c&quot;:null,&quot;d&quot;:true}, &quot;v&quot;:null}));
+</pre>
+
+  <p>For testing just a subpart of an object, we can use:</p>
+
+  <pre class="prettyprint lang-dart">
+contains(m)
+</pre>
+
+  <p>This works with Strings (matches substrings),
+Maps (matches if the Map has that key),
+or Collections (matches if some element in the collection is a match).
+In the latter case m can be a matcher, e.g.:</p>
+
+  <pre class="prettyprint lang-dart">
+expect([1, 2, 3, 4], contains(isNonZero));
+</pre>
+
+  <p>The converse matcher to <code>contains()</code> is <code>isIn()</code>.</p>
+
+  <pre class="prettyprint lang-dart">
+everyElement(m)
+someElement(m)
+</pre>
+
+  <p>These work on collections.
+m can be a value or a matcher.
+E.g.:</p>
+
+  <pre class="prettyprint lang-dart">
+expect(foo, someElement(greaterThan(10)));
+</pre>
+
+  <p>For any Iterable:</p>
+
+  <pre class="prettyprint lang-dart">
+orderedEquals(Iterable expected)
+unorderedEquals(Iterable expected)
+</pre>
+
+  <p>Note that <code>unorderedEquals</code> is O(n^2)
+and should be used with care on larger objects.</p>
+
+  <p>For Maps:</p>
+
+  <pre class="prettyprint lang-dart">
+containsValue(v)
+containsPair(key, valueOrMatcher)
+</pre>
+
+  <p>There are some operators for combining or inverting matchers:</p>
+
+  <pre class="prettyprint lang-dart">
+isNot(matcher)
+allOf(List&lt;Matcher&gt; matchers)
+anyOf(List&lt;Matcher&gt; matchers)
+</pre>
+
+  <p>The <code>allOf()</code> and <code>anyOf()</code> represent AND/OR operations.
+They can take a list of matchers or several individual matcher or scalar arguments (limited to 7 in the latter case).</p>
+
+  <p>Finally, there is a <code>predicate</code> matcher,
+which allows you to use arbitrary functions:</p>
+
+  <pre class="prettyprint lang-dart">
+predicate(fn, reason)
+</pre>
+
+  <p>For example, an alternative way to create a type matcher is:</p>
+
+  <pre class="prettyprint lang-dart">
+var isString = predicate((e) =&gt; e is String, &#39;is a String&#39;);
+
+expect(() =&gt; throw &#39;X&#39;, throwsA(isString));
+</pre>
+
+  <h3 id="creating-custom-matchers">Creating custom matchers</h3>
+
+  <p>Should the set of matchers provided by default be insufficient,
+it is possible to create your own.
+A matcher implements or extends the <code>Matcher</code> class:</p>
+
+  <pre class="prettyprint lang-dart">
+abstract class Matcher {
+  /// This does the matching of the actual vs expected values.
+  bool matches(item, Map matchState);
+  /// This builds a textual description of the matcher.
+  Description describe(Description description);
+  /// This builds a textual description of a specific mismatch.
+  Description describeMismatch(item, Description mismatchDescription,
+      MatchState matchState, bool verbose) =&gt; mismatchDescription;
+}
+</pre>
+
+  <p>Here is an example of a custom matcher
+that matches string prefixes while ignoring whitespace runs:</p>
+
+  <pre class="prettyprint lang-dart">
+class PrefixMatcher extends Matcher {
+  final String _prefix;
+  PrefixMatcher(prefix) : this._prefix = collapseWhitespace(prefix);
+  bool matches(item, Map matchState) {
+    return item is String &amp;&amp;
+        collapseWhitespace(item).startsWith(_prefix);
+  }
+  Description describe(Description description) =&gt;
+    description.add(&#39;a string starting with &#39;).
+        addDescriptionOf(collapseWhitespace(_prefix)).
+        add(&#39; ignoring whitespace&#39;);
+}
+</pre>
+
+  <p>There are three important parts to this:</p>
+
+  <ul>
+    <li>the constructor, which needs to take in any expected value information
+or a matcher that is used to test the expected value</li>
+    <li>the <code>matches(item, Map matchState)</code> method, which matches an actual value
+and returns true if the match is good and false otherwise</li>
+    <li>the <code>describe()</code> method, which generates a textual description of the matcher</li>
+  </ul>
+
+  <p>Recall a typical error message from <code>expect()</code> looks like:</p>
+
+  <pre class="prettyprint lang-dart">
+Expected: &lt;matcher description&gt;
+  Actual: &lt;value&gt;
+   Which: &lt;mismatch description&gt;
+</pre>
+
+  <p>The <code>describe()</code> method of the matcher is used
+to build the “Expected:” part of the error message,
+while the “Which:” part is generated by the <code>describeMismatch()</code> method,
+for which Matcher has a default implementation that produces no “Which:” part.</p>
+
+  <p>Both <code>describe()</code> and <code>describeMismatch()</code> use the Description class,
+which has the following useful methods:</p>
+
+  <ul>
+    <li><code>add(text)</code>, which appends the text to the description</li>
+    <li><code>addDescriptionOf(value)</code>, which describes a value,
+possibly recursively calling <code>describe()</code> if the value is a matcher</li>
+    <li><code>addAll(start, separator, end, list)</code>, which appends the contents of list
+(an <code>Iterable</code>),
+formatting it with the provided start, end, and separator characters</li>
+  </ul>
+
+  <p>The matchState Map can be used to pass match failure information
+that is costly to compute back from <code>matches</code> to <code>describeMismatch</code>.
+In most cases it is not needed.
+Take a look at the library source to see some examples of how it is used;
+for example see <code>everyElement</code>.</p>
+
+  <p>In many cases you can quickly make a new Matcher by creating a derived class of
+<code>CustomMatcher</code>.
+This class lets you provide
+a feature name and description, a Matcher, and a function
+to get the value of the feature from some object,
+and will have instances that can match that feature against the Matcher.
+This is best illustrated by example.
+Say we have a class <code>Widget</code>, where each <code>Widget</code> has a <code>price</code>,
+and we want to make assertions about widget prices.
+We can create a custom matcher for widget prices as follows:</p>
+
+  <pre class="prettyprint lang-dart">
+class _Price extends CustomMatcher {
+  _Price(matcher) : super(&#39;Widget with price that is&#39;, &#39;price&#39;, matcher);
+  featureValueOf(actual) =&gt; actual.price;
+}
+Matcher price(m) =&gt; new _Price(wrapMatcher(m));
+</pre>
+
+  <p><code>wrapMatcher</code> is a function that will
+return the value it is passed if it is a <code>Matcher</code>,
+or create an <code>equals()</code> <code>Matcher</code> from that value otherwise.</p>
+
+  <p>You could then use this like in the following examples:</p>
+
+  <pre class="prettyprint lang-dart">
+expect(widget, price(greaterThan(0)));
+
+var isFree = price(0);
+expect(special, isFree);
+</pre>
+
+  <p>Other simple ways of making custom matchers are by using
+the TypeMatcher class as described earlier for type matchers,
+or the predicate function.
+For example, if we had a Rectangle class
+that had <code>length</code>, <code>width</code> and <code>area</code> properties,
+and wanted to be able to assert that the area was computed correctly,
+we could use:</p>
+
+  <pre class="prettyprint lang-dart">
+var hasCorrectArea = predicate((rect) =&gt; rect.area == rect.length * rect.width,
+    &quot;has correct area&quot;);
+
+expect(myRect, hasCorrectArea);
+</pre>
+
+  <h2 id="configuring-the-test-environment">Configuring the test environment</h2>
+
+  <p>Depending on whether you are running tests from the command line,
+within the editor, or from a browser,
+you may want to change how the output is generated
+(print versus HTML markup, for example).
+To do this you need to configure the test environment,
+which you do by setting <code>unittestConfiguration</code> to
+an appropriate instance of a <code>Configuration</code> class.
+A Configuration has several functions
+that get called at different times during the test process:</p>
+
+  <ul>
+    <li><code>onInit()</code> is called when the test framework is initialized,
+before any tests are added</li>
+    <li><code>onStart()</code> is called before the first test is run</li>
+    <li><code>onTestResult(TestCase)</code> is called upon completion of each test</li>
+    <li><code>onDone(passed, failed, errors, List&lt;TestCase&gt; results, String uncaughtError)</code>
+is called when all tests are done;
+in the default configuration this prints the test summary</li>
+  </ul>
+
+  <p>You don’t need to create your own <code>Configuration</code> classes;
+the library has several built-in which should be adequate for most purposes.
+These are:</p>
+
+  <ul>
+    <li>the default <code>Configuration</code>,
+which prints test results to standard output</li>
+    <li><code>VMConfiguration</code>,
+which exits the process with a return value of 1 upon failure;
+useful in particular for driving tests from other programs or scripts
+where the return code of the process is useful to detect success or failure;
+call <code>useVMConfiguration()</code> to use this, and import <code>vm_config.dart</code></li>
+    <li><code>CompactVMConfiguration</code>,
+which generates a compact 1-line progress bar. Useful for running unittest
+from the command line and displaying a cleaner output than the default
+configuration. Call <code>useCompactVMConfiguration()</code> to use this and import
+<code>compact_vm_config.dart</code></li>
+    <li><code>HtmlConfiguration</code>,
+which puts test results in an HTML table
+and sets the browser document body to be this table;
+call <code>useHtmlConfiguration()</code> to use this, and import <code>html_config.dart</code></li>
+    <li><code>HtmlEnhancedConfiguration</code>,
+which is similar to <code>HtmlConfiguration</code>
+but provides a richer layout;
+call <code>useHtmlEnhancedConfiguration()</code> to use this,
+and import <code>html_enhanced_config.dart</code></li>
+  </ul>
+
+  <p>For running tests in a continuous integration environment,
+the default or VM configurations are most useful.</p>
+
+  <p>The base configuration class has some flags
+that can be modified before the first call to <code>test()</code> to modify its behavior:</p>
+
+  <ul>
+    <li><code>autoStart</code> controls whether tests should be started automatically
+(default true).
+If this is set to false no tests will be run until you call <code>runtests()</code>.</li>
+    <li><code>throwOnTestFailures</code> controls whether an exception is
+thrown at the end of all the tests if any tests did not succeed
+(default true).</li>
+    <li><code>stopTestOnExpectFailure</code> controls whether an expectation failure
+will cause a test to be terminated and the next test to be run
+(default true).
+If set to false,
+the test will keep running after an expectation failure
+(any other exception will still stop the test).
+The expectation failure messages are buffered
+and all output at the end of the test.</li>
+  </ul>
+
+  <h2 id="using-expect-in-other-contexts">Using expect() in other contexts</h2>
+
+  <p>While <code>expect()</code> has been used here in the context of unit tests,
+it is possible to use it in other contexts as a general assertion mechanism.
+The default behavior is to throw a <code>TestFailure</code> object upon failure
+with the failure reason as the message property,
+but that can be customized.
+In fact, expect has its own unit tests that do just this.</p>
+
+  <p>There are two functions that can be used to customize the behavior of expect:</p>
+
+  <ul>
+    <li><code>configureExpectFailureHandler</code> is used to change the object
+that handles <code>expect()</code> failures.
+The default object simply throws TestFailures.
+It may be desirable to do something different;
+for example to log the error and swallow the exception instead.</li>
+    <li><code>configureExpectFormatter</code> is used to change the function
+that <code>expect()</code> uses to format error messages.
+It is rare that this would need to change
+and it will not be considered further here;
+see the SDK documentation for details.</li>
+  </ul>
+
+  <p>The easiest way to customize the error handler is
+to create a class that inherits from <code>DefaultFailureHandler</code>
+and overrides this method:</p>
+
+  <pre class="prettyprint lang-dart">
+void fail(String reason) {
+  throw new TestFailure(reason);
+}
+</pre>
+
+  <p>For example, this failure handler just keeps a count of the number of failures:</p>
+
+  <pre class="prettyprint lang-dart">
+class MyFailureHandler extends DefaultFailureHandler {
+  int errorCount;
+  MyFailureHandler() {
+    errorCount = 0;
+    // set this to be the expect() failure handler
+    configureExpectFailureHandler(this);
+  }
+  void fail(String reason) {
+    ++errorCount;
+  }
+}
+</pre>
+
+  <p>Apart from the default failure handler,
+a reference to a failure handler can be explictly passed to an <code>expect()</code> call
+using the <code>failureHandler</code> named argument.</p>
+</div>
+
+    	  </div> <!-- End of content from toc.html -->
+        </article>
+	  </div>
+
+	
+	<ul class="pager hidden-print">
+	  <li><a href="/articles/">More articles about Dart <i class="glyphicon glyphicon-chevron-up"></i></a></li>
+	 </ul>
+	 
+
+	</div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Idiomatic Dart | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Idiomatic Dart | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="Learn how to write code that looks and feels like Dart.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  <link rel="author" href="/authors/bob-nystrom.html">
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+  	<div class="container sub-page">
+      <div class="row">
+        <article class="has-permalinks"><div class="col-md-4">
+  <div class="bs-sidebar" data-spy="affix" data-offset-bottom="350" role="complementary">
+
+<ol class="toc nav bs-sidenav" id="markdown-toc">
+  <li><a href="#constructors">Constructors</a>    <ol>
+      <li><a href="#automatic-field-initialization">Automatic field initialization</a></li>
+      <li><a href="#named-constructors">Named constructors</a></li>
+      <li><a href="#factory-constructors">Factory constructors</a></li>
+    </ol>
+  </li>
+  <li><a href="#functions">Functions</a>    <ol>
+      <li><a href="#one-line-methods">One-line methods</a></li>
+      <li><a href="#function-types-and-aliases">Function types and aliases</a></li>
+    </ol>
+  </li>
+  <li><a href="#type-annotations">Type annotations</a></li>
+  <li><a href="#fields-getters-and-setters">Fields, getters, and setters</a></li>
+  <li><a href="#top-level-definitions">Top-level definitions</a></li>
+  <li><a href="#dependency-injection">Dependency injection</a></li>
+  <li><a href="#strings-and-interpolation">Strings and interpolation</a></li>
+  <li><a href="#operators">Operators</a></li>
+  <li><a href="#equality">Equality</a></li>
+  <li><a href="#numbers">Numbers</a></li>
+  <li><a href="#futures">Futures</a></li>
+  <li><a href="#comments">Comments</a></li>
+</ol>
+
+  </div>
+</div>
+<div class="col-md-8">
+  <p><!-- Start of content -->
+</p>
+
+  <div>
+    <ol class="breadcrumb">
+
+  <li><a href="/articles/">
+  Articles</a></li>
+
+
+  <li class="active">Idiomatic Dart</li>
+</ol>
+  </div>
+
+  <h1 id="idiomatic-dart">Idiomatic Dart</h1>
+
+  <p><em>Written by Bob Nystrom<br />
+October 2011
+(updated March 2013)</em></p>
+
+  <p>Dart was designed to look and feel familiar if you’re coming from other
+languages, in particular Java and JavaScript. If you try hard enough, you can
+use Dart just like it was one of those languages. If you try <em>really</em> hard, you
+may even be able to turn it into Fortran, but you’ll be missing out on what’s
+unique and fun about Dart.</p>
+
+  <p>This article will help teach you to write code that’s uniquely suited for Dart.
+Since the language is still evolving, many of the idioms here are changing too.
+There are places in the language where we still aren’t sure what the best
+practice is yet. (Maybe you can help us.) But here are some pointers that will
+hopefully kick your brain out of Java or JavaScript mode, and into Dart.</p>
+
+  <aside class="alert alert-info">
+    <p><strong>Note</strong>:
+  This article is not intended to teach you the basics of programming with Dart.
+  If you are new to Dart, we recommend that you first explore the
+  <a href="/docs/dart-up-and-running/">Language Tour</a>.</p>
+  </aside>
+
+  <h2 id="constructors">Constructors</h2>
+
+  <p>We’ll start this article the way every object starts its life: with
+constructors. Every object will be constructed at some point, and defining
+constructors is an important part of making a usable class. Dart has a few
+interesting ideas here.</p>
+
+  <h3 id="automatic-field-initialization">Automatic field initialization</h3>
+
+  <p>First up is getting rid of some tedium. Many constructors simply take their
+arguments and assign them to fields, like:</p>
+
+  <pre class="prettyprint lang-dart">
+class Point {
+  num x, y;
+  Point(num x, num y) {
+    this.x = x;
+    this.y = y;
+  }
+}
+</pre>
+
+  <p>So we’ve got to type <code>x</code> <em>four</em> times here just to initialize a field. Lame. We
+can do better:</p>
+
+  <pre class="prettyprint lang-dart">
+class Point {
+  num x, y;
+  Point(this.x, this.y);
+}
+</pre>
+
+  <p>If an argument has <code>this.</code> before it in a constructor argument list, the field
+with that name will automatically be initialized with that argument’s value.
+This example shows another little feature too: if a constructor body is
+completely empty, you can just use a semicolon (<code>;</code>) instead of <code>{}</code>.</p>
+
+  <h3 id="named-constructors">Named constructors</h3>
+
+  <p>Like most dynamically-typed languages, Dart doesn’t support overloading. With
+methods, this isn’t much of a limitation because you can always use a different
+name, but constructors aren’t so lucky. To alleviate that, Dart lets you define
+<em>named constructors</em>:</p>
+
+  <pre class="prettyprint lang-dart">
+import &#39;dart:math&#39;;
+
+class Point {
+  num x, y;
+  Point(this.x, this.y);
+  Point.zero() : x = 0, y = 0;
+  Point.polar(num theta, num radius) {
+    x = cos(theta) * radius;
+    y = sin(theta) * radius;
+  }
+}
+</pre>
+
+  <p>Here our Point class has three constructors, a normal one and two named ones.
+You can use them like so:</p>
+
+  <pre class="prettyprint lang-dart">
+import &#39;dart:math&#39;;
+
+main() {
+  var a = new Point(1, 2);
+  var b = new Point.zero();
+  var c = new Point.polar(PI, 4.0);
+}
+</pre>
+
+  <p>Note that we’re still using <code>new</code> here when we invoke the named constructor. It
+isn’t just a static method.</p>
+
+  <h3 id="factory-constructors">Factory constructors</h3>
+
+  <p>There are a couple of design patterns floating around related to <em>factories.</em>
+They come into play when you need an instance of some class, but you want to be
+a little more flexible than just hard-coding a call to a constructor for some
+concrete type. Maybe you want to return a previously cached instance if you have
+one, or maybe you want to return an object of a different type.</p>
+
+  <p>Dart supports that without requiring you to change what it looks like when you
+create the object. Instead, you can define a <em>factory constructor</em>. When you
+<em>call</em> it, it looks like a regular constructor. But the implementation is free
+to do anything it wants. For example:</p>
+
+  <pre class="prettyprint lang-dart">
+class Symbol {
+  final String name;
+  static Map&lt;String, Symbol&gt; _cache;
+
+  factory Symbol(String name) {
+    if (_cache == null) {
+      _cache = {};
+    }
+
+    if (_cache.containsKey(name)) {
+      return _cache[name];
+    } else {
+      final symbol = new Symbol._internal(name);
+      _cache[name] = symbol;
+      return symbol;
+    }
+  }
+
+  Symbol._internal(this.name);
+}
+</pre>
+
+  <p>Here we have a class that defines symbols. A symbol is like a string but we
+guarantee that there will only be one symbol with a given name in existence at
+any point in time. This lets you safely compare two symbols for equality just by
+testing that they’re the same object.</p>
+
+  <p>The default (unnamed) constructor here is prefixed with <code>factory</code>. That tells
+Dart that this is a factory constructor. When it’s invoked, it will <em>not</em> create
+a new object. (There is no <code>this</code> inside a factory constructor.) Instead, you
+are expected to create an instance and explicitly return it. Here, we look for a
+previously cached symbol with the given name and reuse it if we found it.</p>
+
+  <p>What’s cool is that the <em>caller</em> never sees this. They just do:</p>
+
+  <pre class="prettyprint lang-dart">
+var a = new Symbol(&#39;something&#39;);
+var b = new Symbol(&#39;something&#39;);
+
+assert(identical(a, b)); // true!
+</pre>
+
+  <p>The second call to <code>new</code> will return the previously cached object. This is nice
+because it means that if we don’t need a factory constructor at first, but later
+realize we do, we won’t have to change all of our existing code that’s calling
+<code>new</code> to instead call some static method.</p>
+
+  <h2 id="functions">Functions</h2>
+
+  <p>Like most modern languages, Dart features first-class functions with full
+closures and a lightweight syntax. Functions are objects just like any other,
+and you shouldn’t hesitate to use them freely.</p>
+
+  <p>Dart has three notations for creating functions:</p>
+
+  <ul>
+    <li>named functions</li>
+    <li>anonymous functions with statement bodies</li>
+    <li>expression bodies, also known as <em>arrow functions</em></li>
+  </ul>
+
+  <p>The named form looks like this:</p>
+
+  <pre class="prettyprint lang-dart">
+bool isShouting(String message) {
+  return (message.toUpperCase() == message);
+}
+</pre>
+
+  <p>The above example looks similar to functions or methods
+found in C or Java. You can call functions in the usual way:</p>
+
+  <pre class="prettyprint lang-dart">
+print(isShouting(&quot;I&#39;M JUST VERY EXCITED&quot;)); // true
+</pre>
+
+  <p>In Dart, functions are objects, so you can pass them as arguments:</p>
+
+  <pre class="prettyprint lang-dart">
+var messages = [&#39;hello&#39;, &#39;DART IS FUN&#39;];
+var shouts = messages.where(isShouting).toList();
+
+print(shouts); // [&#39;DART IS FUN&#39;]
+</pre>
+
+  <p>If you don’t need to give a name to a function, there is an anonymous form, too.
+It looks like a named function, but without a name or return type.
+Here is an example:</p>
+
+  <pre class="prettyprint lang-dart">
+var shouts2 = messages.where((m) {
+  return (m.toUpperCase() == m);
+}).toList();
+</pre>
+
+  <p>Finally, if you need a really lightweight function that just evaluates
+and returns a single expression, there’s <code>=&gt;</code>:</p>
+
+  <pre class="prettyprint lang-dart">
+var shouts3 = messages.where((m) =&gt; m.toUpperCase() == m).toList();
+</pre>
+
+  <p>A parenthesized argument list followed by <code>=&gt;</code> and a single expression
+creates a function that takes those arguments, and returns the result of the
+expression.</p>
+
+  <p>In practice, we find ourselves preferring arrow functions whenever possible
+since they’re terse but still easy to spot thanks to <code>=&gt;</code>. We use anonymous
+functions frequently for event handlers and callbacks.</p>
+
+  <p>Read more about
+<a href="/docs/dart-up-and-running/ch02.html#functions">functions in Dart</a>.</p>
+
+  <h3 id="one-line-methods">One-line methods</h3>
+
+  <p>Dart has one more trick up its sleeve that is one of my favorite features of the
+language: you can also use <code>=&gt;</code> for defining members. Sure, you <em>could</em> do
+this:</p>
+
+  <pre class="prettyprint lang-dart">
+class Rectangle {
+  num width, height;
+
+  bool contains(num x, num y) {
+    return (x &lt; width) &amp;&amp; (y &lt; height);
+  }
+
+  num area() {
+    return width * height;
+  }
+}
+</pre>
+
+  <p>But why do that when you can just do:</p>
+
+  <pre class="prettyprint lang-dart">
+class Rectangle {
+  num width, height;
+  bool contains(num x, num y) =&gt; (x &lt; width) &amp;&amp; (y &lt; height);
+  num area() =&gt; width * height;
+}
+</pre>
+
+  <p>We find arrow functions are great for defining simple getters and other one-
+liner methods that calculate or access some property of an object.</p>
+
+  <h3 id="function-types-and-aliases">Function types and aliases</h3>
+
+  <p>As a reminder, Dart allows you to pass a function as an argument to another
+function. Here is an example:</p>
+
+  <pre class="prettyprint lang-dart">
+List&lt;num&gt; filterNumbers(List&lt;num&gt; numbers, bool filter(num x)) {
+  return numbers.where(filter).toList();
+}
+</pre>
+
+  <p>While the above code works, it would be nice to extract extra type information
+about <code>filter</code>. As it is written, you can’t ask what kind of function
+filter is. That is, you can’t say <code>if (filter is bool filter(num x))</code>.
+Also, the syntax is a bit noisy in the signature for <code>filterNumbers</code>.</p>
+
+  <p>To help clean up function signatures, and to provide a bit more type
+information about functions, you can use a <em>typedef</em>.
+A typedef essentially provides an alias for a function signature.</p>
+
+  <pre class="prettyprint lang-dart">
+typedef bool Filter(num x);
+
+List&lt;num&gt; filterNumbers(List&lt;num&gt; numbers, Filter filter) {
+  return numbers.where(filter).toList();
+}
+</pre>
+
+  <p>Now you can easily ask <code>if (filter is Filter)</code>.</p>
+
+  <p>Whenever you create a field that’s set to a function value, use a typedef to
+specify that function’s signature. The following example is from Dart’s Web UI
+library:</p>
+
+  <pre class="prettyprint lang-dart">
+/// Function to set up the contents of a conditional template.
+typedef void ConditionalBodySetup(ConditionalTemplate template);
+
+/// A template conditional like `&lt;template instantiate=&quot;if test&quot;&gt;` or
+/// `&lt;td template instantiate=&quot;if test&quot;&gt;`.
+class ConditionalTemplate extends PlaceholderTemplate {
+  bool isVisible = false;
+  final ConditionalBodySetup bodySetup;
+
+  ConditionalTemplate(Node reference, exp, this.bodySetup)
+      : super(reference, exp);
+
+  ...
+</pre>
+
+  <h2 id="type-annotations">Type annotations</h2>
+
+  <p>Why do this:</p>
+
+  <pre class="prettyprint lang-javascript">
+// JavaScript w/ Closure compiler
+
+/// @param {String} name
+/// @return {String}
+makeGreeting = function(name) {
+  // @type {String}
+  var greeting = &#39;hello &#39; + name;
+  return greeting;
+}
+</pre>
+
+  <p>When you can do this:</p>
+
+  <pre class="prettyprint lang-dart">
+// Dart
+
+String MakeGreeting(String name) {
+  String greeting = &#39;hello $name&#39;;
+  return greeting;
+}
+</pre>
+
+  <p>Dart is an optionally typed language, which means developers don’t need
+to fight ceremonial type checkers just to get their code to run. Use type
+annotations as “inline documentation” to help your fellow developers and
+tools.</p>
+
+  <p>Generally speaking, <strong>use type annotations on the “surface area” of your code</strong>.
+If another developer is going to see the interface, use type annotations.
+Your friends will thank you.</p>
+
+  <p>Inside of methods, the rules are a bit more flexible. Use type annotations
+when you want to, but feel free to use <code>var</code> if your team’s style guide
+permits it. A good editor or analyzer should perform useful type inference
+even if var is used.</p>
+
+  <p>It’s perfectly fine to omit a type annotation if you need to express something
+the type system can’t naturally express. For example, if your method takes
+an integer or a Duration, you can simply use <code>var</code>.</p>
+
+  <pre class="prettyprint lang-dart">
+/// This method used to only take an [int] but now it takes a [Duration] or
+/// [int]. Use of [int] is deprecated, please use [Duration].
+calculateTimePeriod(var duration) {
+  if (duration is int) {
+    // ...
+  } else if (duration is Duration) {
+    // ...
+  } else {
+    throw new ArgumentError(&#39;duration must be an int or Duration&#39;);
+  }
+}
+</pre>
+
+  <p>This is a common practice used while an API is evolving. Once the evolution is
+complete, you can add a specific type annotation.</p>
+
+  <p>Learn more about <a href="/articles/optional-types/">Dart’s optional static typing</a>.</p>
+
+  <h2 id="fields-getters-and-setters">Fields, getters, and setters</h2>
+
+  <p>Speaking of properties, Dart uses your standard <code>object.someProperty</code> syntax for
+working with them. That’s how most languages work when <code>someProperty</code> is an
+actual field on the class, but Dart also allows you to define methods that look
+like property access but execute whatever code you want. As in other languages,
+these are called <em>getters</em> and <em>setters</em>. Here’s an example:</p>
+
+  <pre class="prettyprint lang-dart">
+class Rectangle {
+  num left, top, width, height;
+
+  Rectangle(this.left, this.top, this.width, this.height);
+
+  num get right             =&gt; left + width;
+      set right(num value)  =&gt; left = value - width;
+  num get bottom            =&gt; top + height;
+      set bottom(num value) =&gt; top = value - height;
+}
+</pre>
+
+  <p>Here we have a Rectangle class with four actual fields, <code>left</code>, <code>top</code>, <code>width</code>,
+and <code>height</code>. It also has getters and setters to define two more logical
+properties: <code>right</code> and <code>bottom</code>. If you’re using the class, there is no visible
+difference between a “real” field and getters and setters:</p>
+
+  <pre class="prettyprint lang-dart">
+var rect = new Rectangle(3, 4, 20, 15);
+print(rect.left);
+print(rect.bottom);
+rect.top = 6;
+rect.right = 12;
+</pre>
+
+  <p>This blurring the line between fields and getters/setters is fundamental to the
+language. The clearest way to think of it is that fields <em>are</em> just getters and
+setters with default implementations. This means that you can do fun stuff like
+override an inherited getter with a field and vice versa. If an interface
+defines a getter, you can implement it by simply having a field with the same
+name and type. If the field is mutable (not <code>final</code>) it can implement a setter
+that an interface requires.</p>
+
+  <p>In practice, what this means is that you don’t have to insulate your fields by
+defensively hiding them behind boilerplate getters and setters like you would in
+Java or C#. If you have some exposed property, feel free to make it a public
+field. If you don’t want it to be modified, just make it <code>final</code>.</p>
+
+  <p>Later, if you need to do some validation or other work, you can always replace
+that field with a getter and setter. If we wanted our Rectangle class to make
+sure it always has a non-negative size, we could change it to:</p>
+
+  <pre class="prettyprint lang-dart">
+class Rectangle {
+  num left, top;
+  num _width, _height;
+
+  Rectangle(this.left, this.top, this._width, this._height);
+
+  num get width =&gt; _width;
+  set width(num value) {
+    if (value &lt; 0) throw &#39;Width cannot be negative.&#39;;
+    _width = value;
+  }
+
+  num get height =&gt; _height;
+  set height(num value) {
+    if (value &lt; 0) throw &#39;Height cannot be negative.&#39;;
+    _height = value;
+  }
+
+  num get right             =&gt; left + width;
+      set right(num value)  =&gt; left = value - width;
+  num get bottom            =&gt; top + height;
+      set bottom(num value) =&gt; top = value - height;
+
+}
+</pre>
+
+  <p>And now we’ve modified the class to do some validation without having to touch
+any of the existing code that was already using it.</p>
+
+  <h2 id="top-level-definitions">Top-level definitions</h2>
+
+  <p>Dart is a “pure” object-oriented language in that everything you can place in a
+variable is a real object (no mutant “primitives”) and every object is an
+instance of some class. It’s not a <em>dogmatic</em> OOP language though. You aren’t
+required to place everything you define inside some class. Instead, you are free
+to define functions, variables, and even getters and setters at the top level if
+you want.</p>
+
+  <pre class="prettyprint lang-dart">
+import &#39;dart:math&#39;;
+
+num abs(num value) =&gt; value &lt; 0 ? -value : value;
+
+final TWO_PI = PI * 2.0;
+
+int get today {
+  final date = new DateTime.now();
+  return date.day;
+}
+
+main() {
+  print(today);
+}
+</pre>
+
+  <p>Even in languages that don’t require you to place everything inside a class or
+object, like JavaScript, it’s still common to do so as a form of namespacing:
+top-level definitions with the same name could inadvertently collide. To address
+that, Dart has a library system that allows you to import definitions from other
+libraries with a prefix applied to disambiguate it. That means you shouldn’t
+<em>need</em> to defensively squirrel your definitions inside classes.</p>
+
+  <p>The most common example of a top-level function is <code>main()</code>. If you work with
+the DOM, the familiar <code>document</code> and <code>window</code> “variables” are actually top-level
+getters in Dart. The project used to have a Math class, but we moved all
+functionality from that class to top-level methods inside the dart:math library.</p>
+
+  <h2 id="dependency-injection">Dependency injection</h2>
+
+  <p>You can combine ideas from typedefs, functions, and constructors to build a
+simple <em>dependency injection</em> system. Consider this example:</p>
+
+  <pre class="prettyprint lang-dart">
+typedef Connection ConnectionFactory();
+
+Connection _newDBConnection() =&gt; new DatabaseConnection();
+
+class Person {
+  String id;
+  String name;
+  ConnectionFactory connectionFactory;
+
+  Person({this.connectionFactory: _newDBConnection});
+
+  Future save() {
+    var conn = connectionFactory();
+    return conn.query(&#39;UPDATE PERSONS SET name = ? WHERE id = ?&#39;, [name, id]);
+  }
+}
+</pre>
+
+  <p>The above sample shows off a bunch of cool features from Dart:</p>
+
+  <dl>
+    <dt>Typedefs</dt>
+    <dd>Used to create an alias for a function that returns a new database
+connection.</dd>
+    <dt>Optional named parameters</dt>
+    <dd>Used to set a default database connection factory,
+or use a user-supplied factory function.</dd>
+    <dt>Top-level functions</dt>
+    <dd>Used to define the default database connection factory method.</dd>
+  </dl>
+
+  <h2 id="strings-and-interpolation">Strings and interpolation</h2>
+
+  <p>Dart has a few kinds of string literals. You can use single or double quotes,
+and you can use triple-quoted multiline strings:</p>
+
+  <pre class="prettyprint lang-dart">
+var s1 = &#39;I am a &quot;string&quot;&#39;
+&quot;I&#39;m one too&quot;;
+
+var s2 = &#39;&#39;&#39;I&#39;m
+on multiple lines
+&#39;&#39;&#39;;
+
+var s3 = &quot;&quot;&quot;
+As
+am
+I
+&quot;&quot;&quot;;
+</pre>
+
+  <p>While there is a plus (+) operator on String, it’s often cleaner and faster to
+use <em>string interpolation</em>:</p>
+
+  <pre class="prettyprint lang-dart">
+var name = &#39;Fred&#39;;
+var salutation = &#39;Hi&#39;;
+var greeting = &#39;$salutation, $name&#39;;
+</pre>
+
+  <p>A dollar sign (<code>$</code>) in a string literal followed by a variable will expand to
+that variable’s value. (If the variable isn’t a string, it calls <code>toString()</code> on
+it.) You can also interpolate expressions by placing them inside curly braces:</p>
+
+  <pre class="prettyprint lang-dart">
+import &#39;dart:math&#39;;
+main() {
+  var r = 2;
+  print(&#39;The area of a circle with radius $r is ${PI * r * r}&#39;);
+}
+</pre>
+
+  <h2 id="operators">Operators</h2>
+
+  <p>Dart shares the same operators and precedences that you’re familiar with from C,
+Java, etc. They will do what you expect. Under the hood, though, they are a
+little special. In Dart, an expression using an operator like <code>1 + 2</code> is really
+just syntactic sugar for calling a method. The previous example looks more like
+<code>1.+(2)</code> to the language.</p>
+
+  <p>This means that you can also override (most) operators for your own types. For
+example, here’s a <code>Vector</code> class:</p>
+
+  <pre class="prettyprint lang-dart">
+class Vector {
+  num x, y;
+  Vector(this.x, this.y);
+  operator +(Vector other) =&gt; new Vector(x + other.x, y + other.y);
+}
+</pre>
+
+  <p>With that, we can add vectors using familiar syntax:</p>
+
+  <pre class="prettyprint lang-dart">
+var position = new Vector(3, 4);
+var velocity = new Vector(1, 2);
+var newPosition = position + velocity;
+</pre>
+
+  <p>That being said, please don’t go crazy with this. We’re giving you the keys to
+the car and trusting that you won’t turn around and drive it through the living
+room.</p>
+
+  <p>In practice, if the type you’re defining often uses operators in the “real
+world” (on a blackboard?) then it might be a good candidate for overridden
+operators: things like complex numbers, vectors, matrices, etc. Otherwise,
+probably not. Types with custom operators should generally be immutable too.</p>
+
+  <p>Note that because operator calls are really just method calls, they have an
+inherent asymmetry. The method is always looked up on the left-hand argument. So
+when you do <code>a + b</code>, it’s the type of <code>a</code> that gets to decide what that means.</p>
+
+  <h2 id="equality">Equality</h2>
+
+  <p>Dart has two equality operators,
+<code>==</code> and <code>!=</code>,
+which work a little differently from the JavaScript equality operators.
+Unlike JavaScript, Dart has no <code>===</code> operator.
+Instead, it has a top-level function called <code>identical()</code>.</p>
+
+  <p>Use <code>==</code> and <code>!=</code> for testing equivalence. They are what you’ll need 99% of the
+time. Unlike in JavaScript, they don’t do any implicit conversions, so they
+will behave like you’d expect. Don’t be afraid to use them. Unlike <em>Java</em>,
+they work for any type that has an equivalence relation defined. No more
+<code>someString.equals("something")</code>.</p>
+
+  <p>You can implement <code>==</code> for your own types if that makes sense for them. You don’t
+have to implement <code>!=</code>: Dart will automatically infer that from your definition
+of <code>==</code>. If you do implement <code>==</code> be sure to also implement
+<a href="http://api.dartlang.org/dart_core/Object.html#hashCode">hashCode</a>.</p>
+
+  <p>The <code>identical()</code> function is for testing whether two objects are the <em>exact
+same object in memory</em>. In practice, you will rarely need to use it. The Object
+class definition of <code>==</code> returns <code>identical(this, other)</code>, so the only time
+you’ll need to call <code>identical()</code> is if you overload <code>==</code> or specifically want
+to sidestep an overloaded <code>==</code> operator.</p>
+
+  <h2 id="numbers">Numbers</h2>
+
+  <p>Dart has a <code>num</code> class and two subclasses: <code>int</code> and <code>double</code>. Integers are of
+arbitrary size in the VM, and double are 64-bit doubles as defined by IEEE 754
+standard.</p>
+
+  <p>In typical Dart code, we find that we want two kinds of numbers:</p>
+
+  <ol>
+    <li>Only integers with no floating points. For instance, using ints for list
+indices.</li>
+    <li>Any number, including floating points.</li>
+  </ol>
+
+  <p>Using <code>int</code> handles the first set, and using <code>num</code> handles the second set. It’s
+very rare that we want a number that <em>must</em> have a floating point and
+<em>cannot</em> be an integer, which is what double expresses.</p>
+
+  <p>Idiomatic Dart numbers are annotated with either <code>int</code> or <code>num</code>,
+rarely <code>double</code>.</p>
+
+  <h2 id="futures">Futures</h2>
+
+  <p>A Future is a promise for a value to be returned, well, in the future.</p>
+
+  <p>Methods that work with a Future should always return the Future. This helps
+consumers of the method to properly handle errors that might occur. It also
+lets consumers know when the operation is complete.</p>
+
+  <pre class="prettyprint lang-dart">
+Future doLengthyComputation() {
+  return lengthyComp().then((value) =&gt; print(value))
+                      .catchError((e) =&gt; print(e));
+}
+</pre>
+
+  <p>Always chain the <code>catchError()</code> call off of the call to
+<code>then()</code>, otherwise you will lose exceptions thrown from within <code>then()</code>.</p>
+
+  <p>Here is an example of what <strong>not to do</strong>:</p>
+
+  <pre class="prettyprint lang-dart">
+// WARNING: This code contains an anti-pattern.
+Future doLengthyComputation() {
+  Future future = lengthyComp();
+  future.then((value) =&gt; print(value));
+
+  // BAD! You&#39;ll only get errors from future, not from then().
+  // BAD! Your caller never sees any errors that occur.
+  future.catchError((e) =&gt; print(e));
+  return future;
+}
+</pre>
+
+  <p>If you want to run a function “in the future”, it’s tempting to use
+<code>Timer.run</code>. Unless you know what you’re doing, <strong>don’t.</strong>
+Unfortunately, exceptions thrown
+from within run’s callback are more-or-less uncatchable.</p>
+
+  <p>Luckily, Future has a constructor that can help. Use
+<code>Future.delayed</code> to run a function in a future event loop tick
+without losing exceptions that might be thrown.</p>
+
+  <pre class="prettyprint lang-dart">
+Future doLengthyComputation() {
+  return new Future.delayed(const Duration(seconds: 0),
+      () =&gt; doTheThingThatMightFail());
+}
+</pre>
+
+  <h2 id="comments">Comments</h2>
+
+  <p>Dart supports structured comments that can be parsed by tools. However, Dart
+eschews ceremonial API docs for more fluid and natural comments.</p>
+
+  <p>Compare and contrast Java and Dart comment styles:</p>
+
+  <div class="row">
+    <div class="col-md-6">
+      <pre class="prettyprint lang-java">
+/**
+ * Returns a Llama object that can then be petted. 
+ * The age argument must specify an non-zero integer. The amount
+ * argument is the amount of {@link Money} paid for the llama.
+ * &lt;p&gt;
+ * This method throws {@link NoMoreLlamasException} is thrown
+ * if there are no more llamas to purchase.
+ * {@link IllegalArgumentException} is
+ * thrown if age is less than zero.
+ *
+ * @param  age  a non-zero age
+ * @param  amount the amount of money paid for the llama
+ * @throws NoMoreLlamasException if there are no more llamas available
+ * @throws IllegalArgumentException if age is less than zero
+ * @return      the llama
+ * @see         Farmer
+ */
+ public Llama buyLlama(Age age, Money amount) {
+   // ...
+ }
+</pre>
+    </div>
+    <div class="col-md-6">
+      <pre class="prettyprint lang-dart">
+/// Returns a Llama that can be petted.
+/// An [ArgumentError] is thrown if age is less than zero, and
+/// [NoMoreLlamasError] is thrown if they are all out of llamas.
+Llama buyLlama(int age, Money amount) {
+  // ...
+}
+</pre>
+    </div>
+  </div>
+
+  <p>Less is more with Dart doc comments. No need to repeat yourself over and over,
+just say what you need to say inline in the comments.  Also,
+no need to embed HTML tags in your doc comments; Dart’s dartdocgen tool can
+understand a subset of markdown.</p>
+
+  <pre class="prettyprint lang-dart">
+/// ## Examples
+///
+/// Getting the _value_:
+///
+///     Future&lt;int&gt; future = getFutureFromSomewhere();
+///     future.then((value) {
+///       print(&quot;I received the number $value&quot;);
+///     });
+/// ...
+</pre>
+
+  <p>Learn more about <a href="/articles/doc-comment-guidelines/">Dart’s comment styles</a>.</p>
+</div>
+
+    	  </div> <!-- End of content from toc.html -->
+        </article>
+	  </div>
+
+	
+	<ul class="pager hidden-print">
+	  <li><a href="/articles/">More articles about Dart <i class="glyphicon glyphicon-chevron-up"></i></a></li>
+	 </ul>
+	 
+
+	</div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+
+
+
+
+</body>
+</html>
+

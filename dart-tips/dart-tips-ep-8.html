@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Control Flow Statements - Dart Tips, Ep 8 | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Control Flow Statements - Dart Tips, Ep 8 | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="//i.ytimg.com/vi/XdqZdsdzD2A/0.jpg">
+  
+  <meta itemprop="description" content="Take back control and learn more about Dart's control flow statements. All the greatest hits are here: if, while, for, and switch. Plus, this video shows you a helpful tweak that should make web developers quite happy.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  <link rel="author" href="/authors/seth-ladd.html">
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+    <div class="container col-md-10 col-md-offset-1 sub-page">
+      <div>
+      <h1 id="control-flow-statements---dart-tips-ep-8">Control Flow Statements - Dart Tips, Ep 8</h1>
+
+<iframe class="dart-tips-video" src="//www.youtube.com/embed/XdqZdsdzD2A" frameborder="0" allowfullscreen=""></iframe>
+
+<p><a href="/dart-tips/">Back to all Dart Tips episodes</a>.</p>
+
+<hr />
+
+<h3 id="transcript">Transcript</h3>
+
+<p>Hi, my name is Seth Ladd, and welcome to this episode of Dart Tips. Today, we take back control and look at Dart’s control flow statements. All the greatest hits are here: if, while, for, and switch. Plus, I’ll show you a helpful tweak that should make web developers quite happy. Join us right now, on Dart Tips.</p>
+
+<p>First up, if and else. No big surprises here. The conditional if statement can be followed by zero or more else-if statements, and can end with an <em>else</em> statement. Here is an example:</p>
+
+<pre class="prettyprint lang-dart">
+if (isRaining()) {
+  you.bringRainCoat();
+} else if (isSnowing()) {
+  you.wearJacket();
+} else {
+  car.putTopDown();
+}
+</pre>
+
+<p>However, I do want to point out that the condition must resolve to a boolean. In Dart, only the boolean value <em>true</em> is true; all other values are treated as false. Consider this example:</p>
+
+<pre class="prettyprint lang-dart">
+String name = &#39;&#39;;
+
+if (name) {
+  // will never be reached
+} else {
+  // a string is not a bool, so it is false
+}
+</pre>
+
+<p>Here, the variable <em>name</em> is a string. Of course, a string is not a bool, and therefore the <em>else</em> block is run.</p>
+
+<p>Here is the correct way to write this code. You must be more explicit, but the advantage is that the rules for truthy and falsely values are very simple to remember.</p>
+
+<pre class="prettyprint lang-dart">
+// instead
+if (name != null &amp;&amp; !name.isEmpty) {
+  congrats(name);
+} else {
+  tryAgain();
+}
+</pre>
+
+<p>For very simple conditions, you can write an if statement on one line of code. Here is an example:</p>
+
+<pre class="prettyprint lang-dart">
+recurse(List items) {
+  if (items == null || items.isEmpty) return;
+  // …
+}
+</pre>
+
+<p>You might use this pattern at the beginning of a function, when you need to check a simple condition and bail out early. Most of the time, Dart style prefers multi-line if statements with explicit curly braces.</p>
+
+<p>For looping, pun definitely intended, Dart has for-loops. Like if statements, for loops look quite familiar. Here is an example:</p>
+
+<pre class="prettyprint lang-dart">
+var message = new StringBuffer(&quot;Dart is fun&quot;);
+for (var i = 0; i &lt; 5; i++) {
+  message.add(&#39;!&#39;);
+}
+</pre>
+
+<p>Let’s consider a more complex example. Here, callbacks are created inside of a for-loop, each closing around the loop variable i. After the loop, each callback is run, printing out its number.</p>
+
+<pre class="prettyprint lang-dart">
+var callbacks = [];
+for (var i = 0; i &lt; 2; i++) {
+  callbacks.add(() =&gt; print(i));
+}
+callbacks.forEach((c) =&gt; c());
+</pre>
+
+<p>The question is, what will print out? Or, a better question is, what would you expect to print out? Unlike traditional web programming languages, Dart will print 0 and then 1. Why is this?</p>
+
+<pre class="prettyprint lang-dart">
+callbacks.forEach((c) =&gt; c());
+  // 0, 1
+</pre>
+
+<p>Inside a for-loop, each iteration gets its own variable. This prevents common errors when using closures inside of loops.</p>
+
+<p>If you want to iterate over a collection, or any iterable, and you don’t care about the loop variable, you can use the for-in style loop.</p>
+
+<p>Here is an example of a for-in loop.</p>
+
+<pre class="prettyprint lang-dart">
+var fruits = [&#39;apples&#39;, &#39;pears&#39;, &#39;oranges&#39;];
+for (var fruit in fruits) {
+  print(fruit);
+}
+</pre>
+
+<p>The for-in loop is just syntactic sugar for the longer iterator form:</p>
+
+<pre class="prettyprint lang-dart">
+var fruits = [&#39;apples&#39;, &#39;pears&#39;, &#39;oranges&#39;];
+
+var iterator = fruits.iterator;
+while (iterator.moveNext()) {
+  var fruit = iterator.current;
+  print(fruit);
+}
+</pre>
+
+<p>Either form works, but I’m partial to for-in as it’s shorter. And shorter means less code. And less code means less chance for me to get it wrong.</p>
+
+<p>When you want to loop while a condition is true, you can use the while and do-while loops. Unlike the for-loop, which counts up or down or moves through a collection, the while and do-while lists more simply run a block of code until a condition is false. Here is an example:</p>
+
+<p>The while loop evaluates the condition before the loop, and repeats the loop as long as the condition is true.</p>
+
+<pre class="prettyprint lang-dart">
+while(peopleAreClapping()) {
+  playSongs();
+}
+</pre>
+
+<p>The while loop is a good choice if you want to check a condition before entering the loop for the first time.</p>
+
+<p>The do-while loop, however, evaluates the condition <em>after</em> the loop. This means the loop block is run at least one time.</p>
+
+<pre class="prettyprint lang-dart">
+do {
+  processRequest();
+} while(stillRunning());
+</pre>
+
+<p>You can control a loop’s execution with break and continue. Use <em>break</em> to stop looping. Here is an example:</p>
+
+<pre class="prettyprint lang-dart">
+while (true) {
+  if (shutDownRequested()) break;
+  processIncomingRequests();
+}
+</pre>
+
+<p>If shutDownRequested returns true, the program breaks out of the loop.</p>
+
+<p>You can use <em>continue</em> to skip to the next loop iteration. Here is an example:</p>
+
+<pre class="prettyprint lang-dart">
+for (var i = 0; i &lt; bigNumber; i++) {
+  if (i.isEven)
+    continue;
+  
+  reticulateSplines(i);
+  oddIsTheNewBlack(i);
+  cleanUp(i);
+}
+</pre>
+
+<p>You can usually use if and else statements instead of continue, but sometimes it’s a bit easier on the eyes to use continue. This example wants to work with only odd numbers, so the even numbers are skipped. I’d consider continue a “sometimes” statement, used sparingly.</p>
+
+<p>Finally, in order to help with efforts to port old code over to Dart, there is the switch statement. While the syntax looks familiar, there are numerous caveats.</p>
+
+<pre class="prettyprint lang-dart">
+var command = &#39;OPEN&#39;;
+
+switch (command) {
+  case &#39;CLOSED&#39;:
+    executeClosed();
+    break;
+  case &#39;OPEN&#39;:
+    executeOpen();
+    break;
+  case &#39;APPROVED&#39;:
+    executeApproved();
+    break;
+  default:
+    executeUnknown();
+}
+</pre>
+
+<p>You can only compare integer, string, or compile-time constants. The compared objects must be instances of the same class (and not of any of its subtypes), and the class must not override ==.</p>
+
+<p>One surprising aspect of switch in Dart is that non-empty case clauses must end with break, or less commonly, continue, throw, or return. That is, non-empty case clauses cannot fall through. You must explicitly end a non-empty case clause, usually with a break. You will get a static warning if you omit break, continue, throw, or return, and the code will error at that location at runtime.</p>
+
+<pre class="prettyprint lang-dart">
+var command = &#39;OPEN&#39;;
+switch (command) {
+  case &#39;OPEN&#39;:
+    executeOpen();
+    // ERROR: Missing break causes an exception to be thrown!!
+
+  case &#39;CLOSED&#39;:
+    executeClosed();
+    break;
+}
+</pre>
+
+<p>I keep saying “non-empty” case clauses, why is that? It turns out that Dart supports empty case clauses, which do fall through. Here is an example:</p>
+
+<pre class="prettyprint lang-dart">
+var command = &#39;CLOSED&#39;;
+switch (command) {
+  case &#39;CLOSED&#39;:     // Empty case falls through.
+  case &#39;LOCKED&#39;:
+    // Runs for both CLOSED and LOCKED.
+    denyEntry();
+    break;
+}
+</pre>
+
+<p>The denyEntry() method runs for both CLOSED and LOCKED. The CLOSED case clause is empty, and thus does not require a break.</p>
+
+<p>As with many other switch statements, you can end a switch statement with a <em>default</em> clause. Here is an example:</p>
+
+<pre class="prettyprint lang-dart">
+var command = &#39;OPEN&#39;;
+switch (command) {
+  case &#39;CLOSED&#39;:
+    executeClosed();
+    break;
+  case &#39;PENDING&#39;:
+    executePending();
+    break;
+  default:
+    executeUnknown();
+}
+</pre>
+
+<p>If no case clause matches, the default clause will run.</p>
+
+<p>I hope you enjoyed this tour of Dart’s control flow statements. Thanks for watching. I’m Seth Ladd, and as we say here on Dart Tips, stay sharp.</p>
+
+<hr />
+
+<p><img src="imgs/marakana-logo.png" alt="Marakana Logo" /></p>
+
+<p>Our thanks go out to <a href="http://www.marakana.com">Marakana</a> for producing this
+video series.</p>
+
+<p><a href="/dart-tips/">Back to all Dart Tips episodes</a>.</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+
+
+
+
+</body>
+</html>
+

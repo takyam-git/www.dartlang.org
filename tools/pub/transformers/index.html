@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Writing a Pub Transformer | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Writing a Pub Transformer | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="How to write a Pub transformer that processes a single input asset.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+    <div class="container col-md-10 col-md-offset-1 sub-page">
+      <div>
+      <div class="col-md-4">
+  <div class="bs-sidebar" data-spy="affix" data-offset-bottom="350" role="complementary">
+
+<ol class="toc nav bs-sidenav" id="markdown-toc">
+  <li><a href="#implementing-transformer">Implementing a transformer</a>    <ol>
+      <li><a href="#choose">Choose a file name and location</a></li>
+      <li><a href="#get-barback">Get barback</a></li>
+      <li><a href="#extend-transformer">Extend <code>Transformer</code></a></li>
+      <li><a href="#define-asPlugin">Define <code>asPlugin</code></a></li>
+      <li><a href="#claim-input-assets">Claim input assets</a></li>
+      <li><a href="#process-input-assets">Process input assets</a></li>
+      <li><a href="#produce-output-assets">Produce output assets</a></li>
+    </ol>
+  </li>
+  <li><a href="#configuring-pubspec">Configuring pubspec</a>    <ol>
+      <li><a href="#add-transformer">Add the transformer</a></li>
+      <li><a href="#depend-on-barback">Depend on barback</a></li>
+    </ol>
+  </li>
+  <li><a href="#running-transformer">Running the transformer</a></li>
+  <li><a href="#more-info">More information</a></li>
+</ol>
+
+  </div>
+</div>
+<div class="col-md-8">
+  <p><!-- Start of content -->
+</p>
+
+  <div>
+    <ol class="breadcrumb">
+
+  <li><a href="/tools/">
+  Dart Tools</a></li>
+
+  <li><a href="/tools/pub/">
+  Pub</a></li>
+
+
+  <li class="active">Writing a Pub Transformer</li>
+</ol>
+  </div>
+
+  <h1 id="writing-a-pub-transformer">Writing a Pub Transformer</h1>
+
+  <p>Every time you prepare a Dart app for testing or deployment, 
+you are using transformers behind the scenes. The <a href="/tools/pub/"><code>pub</code></a>
+tool uses the <a href="/tools/dart2js/"><code>dart2js</code></a> compiler to “transform”
+(compile) Dart files to JavaScript.</p>
+
+  <p>While you are <em>using</em> at least one transformer every time you run a
+Dart app, you may never need to <em>write</em> a transformer, in which case
+you can stop reading now.</p>
+
+  <p>Before reading further, read
+<a href="/tools/pub/assets-and-transformers.html">Pub Assets and Transformers</a>
+to familiarize yourself with assets, transformers, and how they
+relate to each other.</p>
+
+  <p>You can write different kinds of transformers depending on the
+type of work you need to perform. A basic Pub transformer processes
+a single input asset. If you need to process multiple inputs with no single
+primary input–you want to combine several images into one image, 
+for example–you can write an <em>aggregate</em> transformer.
+For more information, see
+<a href="aggregate.html">Writing an Aggregate Tranformer</a>.</p>
+
+  <p>This page uses two examples, SimpleTransformer and
+MarkdownConverter, which you can find through
+<a href="examples/">Examples of Transformer Code</a>.</p>
+
+  <h2 id="implementing-transformer">Implementing a transformer</h2>
+
+  <p>A transformer is a Dart class that extends the Transformer class
+from the <a href="http://pub.dartlang.org/packages/barback">barback</a> package.
+Barback, developed by the Dart team and available at pub.dartlang.org,
+provides a system for building assets.</p>
+
+  <h3 id="choose">Choose a file name and location</h3>
+
+  <p>A transformer’s code goes into one of the following locations:</p>
+
+  <ul>
+    <li>
+      <p>For a package that only implements a transformer, you can put
+the code into <code>&lt;package&gt;.dart</code> in the <code>lib</code> directory.
+This is what you want in most situations.</p>
+    </li>
+    <li>
+      <p>For a larger project where you want the transformer’s code to be in a
+library under <code>lib/src</code>, you can put the transformer code into
+<code>lib/src/</code> and add the export statement for the library to
+<code>lib/&lt;package&gt;.dart</code>.</p>
+    </li>
+    <li>
+      <p>If the transformer can’t coexist with the main package code,
+you can put the code into a file named <code>transformer.dart</code>. For
+example, let’s say your client app depends on <code>dart:html</code> but the
+transformer depends on <code>dart:io</code> because it makes an HTTP request.
+In this case, put the code into <code>transformer.dart</code>, under
+<code>lib</code> or <code>lib/src</code>, depending on your package.</p>
+    </li>
+    <li>
+      <p>You can also put your transformer code into another file,
+such as <code>lib/stuff/myfile.dart</code>.</p>
+    </li>
+  </ul>
+
+  <p>The transformer’s file name and location affect how you set
+up the pubspec.  See <a href="#add-transformer">Add the transformer</a>
+for more details.</p>
+
+  <h3 id="get-barback">Get barback</h3>
+
+  <p>In your transformer’s main Dart file, import the barback package:</p>
+
+  <pre class="prettyprint lang-dart">
+import &#39;package:barback/barback.dart&#39;;
+</pre>
+
+  <p>In your package’s <code>pubspec.yaml</code> file, add a dependency
+on the barback package:</p>
+
+  <pre class="prettyprint lang-yaml">
+dependencies:
+  barback: any
+</pre>
+
+  <h3 id="extend-transformer">Extend <code>Transformer</code></h3>
+
+  <p>In the file with your transformer subclass,
+extend the <code>Transformer</code> class from the barback package:</p>
+
+  <pre class="prettyprint lang-dart">
+class MyTransformer extends Transformer { ... }
+</pre>
+
+  <h3 id="define-asPlugin">Define <code>asPlugin</code></h3>
+
+  <p>The <code>asPlugin</code> constructor can be empty, but it must be present,
+and it must be named <code>asPlugin</code>.
+Its presence is how pub determines that you want this class
+to be publicly available as a loadable transformer plugin.</p>
+
+  <pre class="prettyprint lang-dart">
+MyTransformer.asPlugin();
+</pre>
+
+  <p>You can also define a single-argument <code>asPlugin(BarbackSettings)</code> constructor
+that you can use to pass information to the transformer.</p>
+
+  <p>For example, say you want a transformer to execute when your app is deployed,
+but not during the development process, when you are debugging.
+You can achieve this by using the <code>mode</code> option.
+The <code>mode</code> value defaults to “debug” for <code>pub serve</code> and “release”
+for <code>pub build</code>, but the value can be configured to use any string
+for either command.</p>
+
+  <p>The following code shows how this might look:</p>
+
+  <pre class="prettyprint lang-dart">
+class InsertCopyright extends Transformer {
+  final BarbackSettings _settings;
+
+  InsertCopyright.asPlugin(this._settings);
+
+  Future apply(Transform transform) {
+    // Skip the transform in debug mode.
+    if (_settings.mode.name == &#39;debug&#39;) return;
+
+    // Apply the transform.
+    // ...
+  }
+}
+</pre>
+
+  <p>For more information on the mode option, see 
+<a href="/tools/pub/cmd/pub-serve.html#options">pub serve</a> and
+<a href="/tools/pub/cmd/pub-build.html#options">pub build</a>.</p>
+
+  <h3 id="claim-input-assets">Claim input assets</h3>
+
+  <p>A transformer can limit which assets that it processes. It can
+do this in one of two ways:</p>
+
+  <ul>
+    <li>Implement <code>allowedExtensions</code> to return a
+space-separated list of file extensions. The following
+code, from <a href="examples/">markdown_converter</a>,
+limits input assets to those
+files with one of three Markdown file extensions:</li>
+  </ul>
+
+  <div class="step-details">
+    <pre class="prettyprint lang-dart">
+String get allowedExtensions =&gt; &quot;.md .markdown .mdown&quot;;
+</pre>
+  </div>
+
+  <ul>
+    <li>Override <code>isPrimary()</code>. The following code
+limits input assets to those from a top-level directory
+named <code>sources</code>:</li>
+  </ul>
+
+  <div class="step-details">
+    <pre class="prettyprint lang-dart">
+Future&lt;bool&gt; isPrimary(AssetId id) {
+  return new Future.value(id.path.startsWith(&#39;sources/&#39;);
+}
+</pre>
+  </div>
+
+  <p>Note that defining <code>allowedExtensions</code> is shorthand for defining an
+<code>isPrimary</code> method that only checks the extension of the asset ID’s path.
+If you need to perform any other checks, you must explicitly define
+<code>isPrimary()</code>.</p>
+
+  <p>If you don’t override either <code>allowedExtensions</code> or <code>isPrimary()</code>,
+then the transformer gets the opportunity to process all assets.</p>
+
+  <h3 id="process-input-assets">Process input assets</h3>
+
+  <p>To process assets, implement the <code>apply()</code> method.
+In this method, you read each asset from the passed-in transform,
+manipulate it, and write out the new asset.</p>
+
+  <aside class="alert alert-warning">
+    <p><strong>Note:</strong>
+Read assets <em>only</em> from the transform. Do not read assets directly
+from the file system, as that will cause problems if your
+transformer is used in a series of transformers.</p>
+  </aside>
+
+  <aside class="alert alert-info">
+    <p><strong>Specifying where to put assets:</strong>
+A transformer accepts one or more assets and outputs zero or more assets.
+(A linter or a filter might not produce an output asset.)</p>
+
+    <p>An Asset is identified by an AssetId. The Asset class provides
+several constructors that you can use to create an output asset:</p>
+
+    <ul>
+      <li>fromBytes(AssetId, List)</li>
+      <li>fromFile(AssetId, File)</li>
+      <li>fromPath(AssetId, String)</li>
+      <li>fromStream(AssetId, Stream)</li>
+      <li>fromString(AssetId, String)</li>
+    </ul>
+  </aside>
+
+  <p>The following example, from SimpleTransformer, inserts a
+copyright string at the beginning of the input asset:</p>
+
+  <pre class="prettyprint lang-dart">
+String copyright =
+  &quot;Copyright (c) 2014, the Example project authors.\n&quot;;
+
+Future apply(Transform transform) async {
+  var content = await transform.primaryInput.readAsString();
+  var id = transform.primaryInput.id;
+  var newContent = copyright + content;
+  transform.addOutput(new Asset.fromString(id, newContent));
+}
+</pre>
+
+  <h3 id="produce-output-assets">Produce output assets</h3>
+
+  <p>To write data to an output asset, use Transformer’s
+<code>addOutput()</code> method.</p>
+
+  <p>The previous example writes data to a new output asset like this:</p>
+
+  <pre class="prettyprint lang-dart">
+var id = transform.primaryInput.id;
+...
+transform.addOutput(new Asset.fromString(id, newContent));
+</pre>
+
+  <p>That code creates a new asset with the same name and file extension as
+the input asset. For example, if the input asset is <code>test.txt</code>, the output
+asset is <code>test.txt</code>. </p>
+
+  <p>You can create an output with any name or file extension. The only
+restriction is that the output asset must end up in the same package
+as the primary input.</p>
+
+  <p>You can construct an AssetId directly:</p>
+
+  <pre class="prettyprint lang-dart">
+new AssetId(&quot;package&quot;, &quot;some/path.ext&quot;);
+</pre>
+
+  <p>To create an output with a different file extension than the input,
+or with a new file extension, use one of the following AssetId methods:</p>
+
+  <ul>
+    <li><code>changeExtension()</code></li>
+    <li><code>addExtension()</code></li>
+  </ul>
+
+  <p>The MarkdownConverter example converts Markdown to HTML and replaces the
+original file extension with <code>.html</code>, as follows:</p>
+
+  <pre class="prettyprint lang-dart">
+var id = transform.primaryInput.id.changeExtension(&quot;.html&quot;);
+
+String newContent = ...;
+transform.addOutput(new Asset.fromString(id, newContent));
+</pre>
+
+  <h2 id="configuring-pubspec">Configuring pubspec</h2>
+
+  <p>Add the transformer and the barback dependency
+to the <code>pubspec.yaml</code> file.</p>
+
+  <h3 id="add-transformer">Add the transformer</h3>
+
+  <p>To apply a transformer to the assets in your package,
+list it in your pubspec.
+If your transformer is implemented in <code>lib/&lt;package&gt;.dart</code> or
+<code>lib/transformer.dart</code>, add the following to your pubspec:</p>
+
+  <pre class="prettyprint lang-yaml">
+transformers:
+- &lt;pkgname&gt;
+</pre>
+
+  <p>SimpleTransformer’s package name (as specified in the pubspec)
+is <code>simple_transformer</code>, so here’s the pubspec entry that
+specifies running SimpleTransformer’s transformer:</p>
+
+  <pre class="prettyprint lang-yaml">
+transformers:
+- simple_transformer
+</pre>
+
+  <p>If you put your transformer class into a file other than
+<code>&lt;package&gt;.dart</code> or <code>transformer.dart</code>—for example,
+<code>lib/stuff/insert_copyright.dart</code>—you add it to the
+pubspec file like this:</p>
+
+  <pre class="prettyprint lang-yaml">
+transformers:
+- simple_transformer/stuff/insert_copyright
+</pre>
+
+  <h3 id="depend-on-barback">Depend on barback</h3>
+
+  <p>You also need to add barback as a dependency in your package’s
+pubspec, as described in <a href="#get-barback">get barback</a>.</p>
+
+  <h2 id="running-transformer">Running the transformer</h2>
+
+  <p>Assets can be in any directory in the package. However, if you want an
+asset to be publicly available to another package,
+it must be in the <code>lib</code> directory.
+You can organize the assets underneath <code>lib</code>
+using any structure that you want. See
+<a href="/tools/pub/assets-and-transformers.html#where-to-put-assets">Where to put assets</a>
+and
+<a href="/tools/pub/assets-and-transformers.html#how-to-refer-to-assets">How to refer to assets</a>
+for specifics.</p>
+
+  <p>The <code>pub build</code>, <code>pub serve</code>, and <code>pub run</code> commands automatically run
+transformers. For more information, see
+<a href="/tools/pub/assets-and-transformers.html#how-transformers-work">How transformers work</a>.</p>
+
+  <h2 id="more-info">More information</h2>
+
+  <ul>
+    <li>
+      <dl>
+        <dt><a href="aggregate.html">Writing an Aggregate Transformer</a></dt>
+        <dd>How to write a transformer that combines multiple input assets
+into a single output.</dd>
+      </dl>
+    </li>
+    <li>
+      <dl>
+        <dt><a href="lazy-transformer.html">Writing a Lazy Transformer</a></dt>
+        <dd>How to write a transformer that processes lazily, in the background.</dd>
+      </dl>
+    </li>
+    <li>
+      <dl>
+        <dt><a href="examples/">Examples of Transformer Code</a></dt>
+        <dd>Examples to get you started.</dd>
+      </dl>
+    </li>
+    <li>
+      <dl>
+        <dt><a href="https://api.dartlang.org/apidocs/channels/stable/dartdoc-viewer/barback">barback library</a></dt>
+        <dd>API docs for the barback package.</dd>
+      </dl>
+    </li>
+    <li>
+      <dl>
+        <dt><a href="https://docs.google.com/a/google.com/document/d/1juHkCRg-1YH6LvwhGPHgF2ihX-UQtR1fv-8aknO7t_4/edit?pli=1#">Barback - Can We Build It? Yes, We Can!</a></dt>
+        <dd>A description of the barback asset system, written by a
+member of the Dart engineering team. </dd>
+      </dl>
+    </li>
+  </ul>
+
+</div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+<link href="transformers.css" rel="stylesheet" type="text/css">
+
+
+
+</body>
+</html>
+

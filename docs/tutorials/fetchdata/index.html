@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Fetch Data Dynamically | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Fetch Data Dynamically | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="Use HttpRequest to fetch data from a file or a server.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+    <div class="container col-md-12 col-md-offset-0 sub-page">
+      <div class="has-permalinks">
+      
+<!-- NAVI LINKS -->
+<div id="tutorial-navigation-links-top" class="row">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-3">
+        <a href="/docs/tutorials/"><img src="/docs/tutorials/images/tute-home.png" width="36" /></a>
+      </div>
+      <div class="col-md-3">
+        <a href="/docs/tutorials/streams/"><i class="glyphicon glyphicon-chevron-left"> </i> Use Streams for Data</a>
+      </div>
+      <div class="col-md-3">
+      </div>
+      <div class="col-md-3">
+        <a href="/docs/tutorials/forms/" class="pull-right">Get Input from a Form <i class="glyphicon glyphicon-chevron-right"> </i> </a>
+      </div>
+    </div> 
+    <hr />
+  </div> 
+</div>
+
+<!-- PAGE -->
+<div class="row">
+
+  <!-- LEFT SIDE BAR -->
+  <div class="col-md-3">
+
+    <div id="tutorial-side">
+      <div id="whats-the-point">
+        <h4 id="page-highlights">What's the point?</h4>
+        
+<ul>
+  <li>Data on the web is often formatted in JSON.</li>
+  <li>JSON is text based and human readable.</li>
+  <li>The dart:convert library provides support for JSON.</li>
+  <li>Use HttpRequest to dynamically load data.</li>
+</ul>
+
+
+      </div> <!-- whats-the-point -->
+
+      <div id="code-links">
+        <h4 id="examples">Examples</h4>
+
+        
+<p> This tutorial features these examples:</p>
+<ul>
+  <li>its_all_about_you</li>
+  <li>portmanteaux_simple</li>
+  <li>portmanteaux</li>
+</ul>
+
+<p>
+Don't have the source code?
+<a href="https://github.com/dart-lang/dart-tutorials-samples/archive/master.zip">
+  Download it.
+</a>
+
+</p>
+
+
+        <a href="https://drone.io/github.com/dart-lang/dart-tutorials-samples/latest">
+           <img src="https://drone.io/github.com/dart-lang/dart-tutorials-samples/status.png" alt="Build Status" style="margin-top:10px;max-width:100%;" />
+        </a>
+      </div> <!-- end code-links -->
+
+      <div id="tutorial-toc">
+        <a href="https://github.com/dart-lang/dartlang.org/issues" target="_blank">
+        <i class="glyphicon glyphicon-comment"> </i>
+        Send feedback
+        </a>
+      </div> <!-- tutorial-toc -->
+      
+    </div> <!-- tutorial-side -->
+
+  </div> <!-- end div col-md-3 -->
+
+  <!-- CONTENT-->
+  <article class="col-md-9 tutorial-content">
+
+    
+<div class="tute-target-title">
+<h1>Fetch Data Dynamically</h1>
+<h3>Get data from a file or server.</h3>
+</div>
+
+<p>Web applications often use
+<a href="http://www.json.org/" target="_blank">JSON</a> (JavaScript Object Notation)
+to pass data between clients and servers.
+Data can be <em>serialized</em> into a JSON string,
+which is then passed between a client and server,
+and revived as an object at its destination.
+This tutorial shows you how to use functions in the
+<a href="https://api.dartlang.org/dart_convert.html" target="_blank">dart:convert</a>
+library to produce and consume JSON data.
+Because JSON data is typically loaded dynamically,
+this tutorial also shows how a web app
+can use an HTTP request to get data from an HTTP server.
+For web apps,
+HTTP requests are served by the browser in which the app is running,
+and thus are subject to the browser’s security restrictions.</p>
+
+<ul>
+  <li><a href="#about-json">About JSON</a></li>
+  <li><a href="#serializing-data-into-json">Serializing data into JSON</a></li>
+  <li><a href="#parsing-json-data">Parsing JSON data</a></li>
+  <li><a href="#about-uris">About URIs and HTTP requests</a></li>
+  <li><a href="#using-getString-function">Using the getString() function to load a file</a></li>
+  <li><a href="#making-a-get-request">Using an HttpRequest object to load a file</a></li>
+  <li><a href="#other-resources">Other resources</a></li>
+  <li><a href="#what-next">What next?</a></li>
+</ul>
+
+<h2 id="about-json">About JSON</h2>
+
+<p>The JSON data format is easy for humans
+to write and read because it is lightweight and text based.
+With JSON, various data types
+and simple data structures such as lists and maps
+can be serialized and represented by strings.</p>
+
+<p><strong>Try it!</strong>
+The app running below, <code>its_all_about_you</code>,
+displays the JSON string for data of various types.
+Change the values of the input elements
+and check out the JSON format for each data type.</p>
+
+<iframe class="running-app-frame" style="height:500px;width:700px;" src="examples/its_all_about_you/web/index.html">
+</iframe>
+
+<aside class="alert">
+<strong>Version Note:</strong> The its_all_about_you app
+is compatible with
+<a href="https://pub.dartlang.org/packages/polymer#versions">polymer.dart 0.15.1</a>.
+</aside>
+
+<p>The dart:convert library contains two convenient functions
+for working with JSON strings:</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>dart:convert function</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://api.dartlang.org/dart_convert.html" target="_blank">JSON.decode()</a></td>
+      <td>Builds Dart objects from a string containing JSON data.</td>
+    </tr>
+    <tr>
+      <td><a href="https://api.dartlang.org/dart_convert.html" target="_blank">JSON.encode()</a></td>
+      <td>Serializes a Dart object into a JSON string.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>To use these functions,
+you need to import dart:convert into your Dart code:</p>
+
+<pre class="prettyprint lang-dart">
+import &#39;dart:convert&#39;;
+</pre>
+
+<p>The JSON.encode() and JSON.decode() functions can handle these Dart types automatically:</p>
+<ul>
+<li> num</li>
+<li> String</li>
+<li> bool</li>
+<li> null</li>
+<li> List</li>
+<li> Map</li>
+</ul>
+
+<h2 id="serializing-data-into-json">Serializing data into JSON</h2>
+
+<p>Use the JSON.encode() function to serialize an object that supports JSON.
+Here’s the function, <code>showJson</code>, from the its_all_about_you example that
+converts all of the data to JSON strings.</p>
+
+<p><img class="scale-img-max" src="images/stringify.png" alt="Use JSON.encode() to convert objects into JSON" /></p>
+
+<p>Below is the JSON string that results from the code
+using the original values from the its_all_about_you app.</p>
+
+<p><img class="scale-img-max" src="images/jsonstring.png" alt="The JSON string for the its_all_about_you app" /></p>
+
+<p>Boolean and numeric values
+appear as they would if they were literal values in code,
+without quotes or other delineating marks.
+A boolean value is either <code>true</code> or <code>false</code>.
+A null object is represented with <code>null</code>.</p>
+
+<p>Strings are contained within double quotes.
+A list is delineated with square brackets;
+its items are comma-separated.
+The list in this example contains strings.
+A map is delineated with curly brackets;
+it contains comma-separated key/value pairs,
+where the key appears first, followed by a colon,
+followed by the value.
+In this example,
+the keys in the map are strings.
+The values in the map vary in type but they are all JSON-parsable.</p>
+
+<h2 id="parsing-json-data">Parsing JSON data</h2>
+
+<p>Use the JSON.decode() function from the dart:convert library to
+create Dart objects from a JSON string.
+The its_all_about_you example initially populates the values in the form
+from this JSON string:</p>
+
+<pre class="prettyprint lang-dart">
+String jsonDataAsString = &#39;&#39;&#39;
+{ &quot;favoriteNumber&quot;:44,
+  &quot;valueOfPi&quot;:3.141592,
+  &quot;chocolate&quot;:true,
+  &quot;horrorScope&quot;:&quot;virgo&quot;,
+  &quot;favoriteThings&quot;:[&quot;raindrops&quot;,
+                    &quot;whiskers&quot;,
+                    &quot;mittens&quot;]
+}
+&#39;&#39;&#39;;
+
+Map jsonData = JSON.decode(jsonDataAsString);
+</pre>
+
+<p>This code calls the JSON.decode() function with a properly formatted JSON string.
+<strong>Note that Dart strings can use either single or double quotes to denote strings.
+JSON requires double quotes.</strong></p>
+
+<p>In this example, the full JSON string is hard coded into the Dart code,
+but it could be created by the form itself
+or read from a static file or received from a server.
+An example later on this page shows how to dynamically fetch
+JSON data from a file that is co-located with the code for the app.</p>
+
+<p>The JSON.decode() function reads the string and
+builds Dart objects from it.
+In this example, 
+the JSON.decode() function creates a Map object based on
+the information in the JSON string.
+The Map contains objects of various types
+including an integer, a double, a boolean value, a regular string,
+and a list.
+All of the keys in the map are strings.</p>
+
+<h2 id="about-uris">About URIs and HTTP requests</h2>
+
+<p>To make an HTTP GET request from within a web app,
+you need to provide a URI (Uniform Resource Identifier) for the resource.
+A URI (Uniform Resource Identifier) is a character string
+that uniquely names a resource.
+A URL (Uniform Resource Locator) is a specific kind of URI
+that also provides the location of a resource.
+URLs for resources on the World Wide Web
+contain three pieces of information:</p>
+
+<ul>
+  <li>The protocol used for communication</li>
+  <li>The hostname of the server</li>
+  <li>The path to the resource</li>
+</ul>
+
+<p>For example, the URL for this page breaks down as follows:</p>
+
+<p><img class="scale-img-max" src="images/uri-details.png" alt="The tutorial URL" /></p>
+
+<p>This URL specifies the HTTP protocol.
+At its most basic,
+when you enter an HTTP address into a web browser,
+the browser sends an HTTP GET request to a web server,
+and the web server sends an HTTP response that contains the
+contents of the page (or an error message).</p>
+
+<p><img class="scale-img-max" src="images/client-server.png" alt="Basic HTTP communication between client and server" /></p>
+
+<p>Most HTTP requests in a web browser are simple GET requests
+asking for the contents of a page.
+However, the HTTP protocol allows for other types of requests,
+such as POST for sending data from the client.</p>
+
+<p>A Dart web app running inside of a browser can make HTTP requests.
+These HTTP requests are handled by the browser in which the app is running.
+Even though the browser itself can make HTTP requests anywhere on the web,
+a Dart web app running inside the browser can make only <em>limited</em>
+HTTP requests because of security restrictions.
+Practically speaking,
+because of these limitations,
+HTTP requests from web apps are useful only for
+retrieving information in files specific to
+and co-located with the app.</p>
+
+<aside class="alert">
+  <p><strong>A note about security:</strong>
+Browsers place tight security restrictions on HTTP requests
+made by embedded apps.
+Specifically, any resources requested by a web app
+must be served from the same origin.
+That is, the resources must be from the same protocol, host, and port
+as the app itself.
+This means that your web app cannot request
+just any resource from the web with HTTP requests through the browser,
+even if that request is seemingly harmless (like a GET.)</p>
+
+  <p>Some servers do allow cross-origin requests
+through a mechanism called
+CORS (Cross-origin resource sharing),
+which uses headers in an HTTP request
+to ask for and receive permission.
+CORS is server-specific and not yet widely used.</p>
+</aside>
+
+<p>The SDK provides these useful classes for
+formulating URIs and making HTTP requests:</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Dart code</th>
+      <th>Library</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://api.dartlang.org/dart_core/Uri.html" target="_blank">Uri</a></td>
+      <td>(core library)</td>
+      <td>An object representing a URI.</td>
+    </tr>
+    <tr>
+      <td><a href="https://api.dartlang.org/dart_html/HttpRequest.html" target="_blank">HttpRequest</a></td>
+      <td>dart:html</td>
+      <td>Client-side HTTP request object. For use in web apps.</td>
+    </tr>
+    <tr>
+      <td><a href="https://api.dartlang.org/dart_io/HttpRequest.html" target="_blank">HttpRequest</a></td>
+      <td>dart:io</td>
+      <td>Server-side HTTP request object. Does not work in web apps.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="using-getString-function">Using the getString() function to load a file</h2>
+
+<p>One useful HTTP request your web app <em>can</em> make is a GET request
+for a data file served from the same origin as the app.
+The example below,
+<code>portmanteaux_simple</code>, includes a data file
+called <code>portmanteaux_simple.json</code> that contains a JSON-formatted list of words.
+When you click the button,
+the app makes a GET request of the server
+and loads the file.</p>
+
+<p><strong>Try it!</strong> Click the button.</p>
+
+<iframe class="running-app-frame" style="height:400px;width:300px;" src="examples/portmanteaux_simple/portmanteaux_simple.html">
+</iframe>
+
+<p>This program uses a convenience method,
+<code>getString()</code>,
+provided by the HttpRequest class
+to request the file from the server.</p>
+
+<p><img class="scale-img-max" src="images/getstringfunction.png" alt="Use the getString() function to make a request" /></p>
+
+<p>The getString() method uses a Future object to handle the request.
+A Future is a way to perform potentially time-consuming operations,
+such as HTTP requests, asynchronously.
+If you haven’t encountered Futures yet,
+you can learn more about them in
+<a href="/docs/tutorials/futures/">Use Future-Based APIs</a>.
+Until then, you can use the code above as an idiom
+and provide your own code for the body of the processString() function
+and your own code to handle the error.</p>
+
+<aside class="alert-info">
+  <p><strong>Note:</strong>
+The examples in this section use the <code>async</code> and <code>await</code> keywords.
+If you are not familiar with these keywords, see
+<a href="/docs/dart-up-and-running/ch02.html#asynchrony">Asynchrony support</a>
+in the <a href="/docs/dart-up-and-running/ch02.html">language tour</a>.</p>
+</aside>
+
+<h3 id="using-a-relative-uri">Using a relative URI</h3>
+
+<p>The URI used for the GET request specifies just the name of
+the portmanteaux_simple.json data file.
+Let’s take a look at how that works.</p>
+
+<p>Open the application directory in Dart Editor,
+select the web/portmanteaux_simple.html file, and run the program.
+Before doing anything else,
+notice the URI for the program in Dartium.</p>
+
+<p><img class="scale-img-max" src="images/uri-dart-program.png" alt="URI for a Dart program running in Dartium" /></p>
+
+<ul>
+  <li>
+    <p>The server designation 127.0.0.1 is the standard
+for referring to <em>this computer</em>—the computer
+on which the program is running.
+(<code>localhost</code> is a human-friendly synonym for 127.0.0.1.)</p>
+  </li>
+
+  <li>
+    <p>3030 is a port number.
+Because a computer can run multiple servers at once,
+to avoid conflicts each server <em>must</em> listen on its own port.
+Port numbers from 0 to 1024 are called well-known ports
+and are reserved for use by system processes
+that provide widely used types of network services.
+Typically HTTP servers listen on port 80.
+On most systems,
+port numbers from 1024 to 49151
+are free to be used by any program.
+Dart Editor listens on port 3030.</p>
+  </li>
+
+  <li>
+    <p>The rest of the URI is the absolute pathname to the HTML file
+that hosts the app.</p>
+  </li>
+</ul>
+
+<p>The HttpRequest object resolves the file name to an absolute URI
+using the URI for the current web page as its basis.</p>
+
+<p><img class="scale-img-max" src="images/relative-uri.png" alt="A relative URI resolves to an absolute URI" /></p>
+
+<p>The GET request in this
+example is successful because the app and the requested resource
+are from the same origin:</p>
+
+<p><img class="scale-img-max" src="images/same-origin.png" alt="The app and the data file have the same origin" /></p>
+
+<h2 id="making-a-get-request">Using an HttpRequest object to load a file</h2>
+
+<p>The getString() method is good for an HTTP GET request that returns 
+a string loaded from the resource.
+For different cases,
+you need to create an HttpRequest object,
+configure its header and other information,
+and use the <code>send()</code> method to make the request.</p>
+
+<p>This section looks at a new
+version of the portmanteaux example,
+called portmanteaux,
+that has been rewritten
+to use an explicitly constructed HttpRequest object.</p>
+
+<h3 id="setting-up-the-httprequest-object">Setting up the HttpRequest object</h3>
+
+<p>The mouse-click handler for the button
+creates an HttpRequest object,
+configures it with a URI and callback function,
+and then sends the request.
+Let’s take a look at the Dart code:</p>
+
+<pre class="prettyprint lang-dart">
+void makeRequest(Event e) {
+  var path = &#39;portmanteaux.json&#39;;
+  var httpRequest = new HttpRequest();
+  httpRequest
+    ..open(&#39;GET&#39;, path)
+    ..onLoadEnd.listen((e) =&gt; requestComplete(httpRequest))
+    ..send(&#39;&#39;);
+}
+</pre>
+
+<p><img class="scale-img-max" src="images/portmanteaux-code.png" alt="Making an HTTP GET request" /></p>
+
+<h3 id="sending-the-request">Sending the request</h3>
+
+<p>The send() method sends the request to the server.</p>
+
+<pre class="prettyprint lang-dart">
+httpRequest.send(&#39;&#39;);
+</pre>
+
+<p>Because the request in this example is a simple GET request,
+the code can send an empty string.
+For other types of requests,
+such as POST requests,
+this string can contain further details or relevant data.
+You can also configure the HttpRequest object
+by setting various header parameters using the setRequestHeader() method.</p>
+
+<h3 id="handling-the-response">Handling the response</h3>
+
+<p>To handle the response from the request,
+you need to set up a callback function
+before calling send().
+Our example sets up a one-line callback function
+for <code>onLoadEnd</code> events
+that in turn calls <code>requestComplete()</code>.
+This callback function is called when the request completes,
+either successfully or unsuccessfully.</p>
+
+<p><img class="scale-img-max" src="images/set-callback.png" alt="Set up a callback function for request completion" /></p>
+
+<p>The callback function for our example,
+requestComplete(),
+checks the status code for the request.
+If the status code is 200,
+the file was found and loaded successfully,
+The contents of the requested file, <code>portmanteaux.json</code>, are
+returned in the <code>responseText</code> property of an HttpRequest object.
+Using the <code>JSON.decode()</code> function from the dart:convert library,
+the code easily converts the JSON-formatted list of words
+to a Dart list of strings,
+creates a new LIElement for each one,
+and adds it to the &lt;ul&gt; element on the page.</p>
+
+<p><img class="scale-img-max" src="images/portmanteaux-callback.png" alt="Getting the response text from an HTTP GET request" /></p>
+
+<h3 id="populating-the-ui-from-json">Populating the UI from JSON</h3>
+
+<p>The data file in the portmanteaux example,
+portmanteaux.json,
+contains a JSON-formatted list of strings.</p>
+
+<pre class="prettyprint lang-dart">
+[
+  &quot;portmanteau&quot;, &quot;fantabulous&quot;, &quot;spork&quot;, &quot;smog&quot;,
+  &quot;spanglish&quot;, &quot;gerrymander&quot;, &quot;turducken&quot;, &quot;stagflation&quot;,
+  &quot;Brangelina&quot;, &quot;freeware&quot;, &quot;oxbridge&quot;, &quot;palimony&quot;,
+  &quot;brunch&quot;, &quot;blog&quot;, &quot;chortle&quot;, &quot;Hassenpfeffer&quot;, &quot;Schnitzelbank&quot;
+]
+</pre>
+
+<p>Upon request, the server reads this data from the file
+and sends it as a single string
+to the client program.
+The client program receives the JSON string
+and uses JSON.decode() 
+to create the String objects specified by the JSON string.</p>
+
+<p><img class="scale-img-max" src="images/json-parse.png" alt="Decode a JSON formatted list of strings" /></p>
+
+<h2 id="other-resources">Other resources</h2>
+
+<p>Check out Chris Buckett’s article,
+<a href="/articles/json-web-service/" target="_blank">Using Dart with JSON Web Services</a>,
+for more information and an example with source code for both
+client and server programs.</p>
+
+<h2 id="what-next">What next?</h2>
+
+<ul>
+  <li>
+    <p>If you skipped the previous tutorial,
+<a href="/docs/tutorials/futures/">Use Future-Based APIs</a>,
+we highly recommend that you go back and learn about Futures
+before going any further.</p>
+  </li>
+  <li>
+    <p>The next tutorial,
+<a href="/docs/tutorials/forms/">Get Input from a Form</a>,
+contains a client/server example that
+shows you how to use a form to get data from the user,
+and using JSON, send that form to a server,
+and handle the server’s response.</p>
+  </li>
+</ul>
+
+
+
+  </article>
+</div>
+
+<!-- NAVI LINKS -->
+<div id="tutorial-navigation-links-bottom" class="row">
+  <div class="col-md-12">
+    <hr />
+    <div class="row">
+      <div class="col-md-3">
+        <a href="/docs/tutorials/"><img src="/docs/tutorials/images/tute-home.png" width="36" /></a>
+      </div>
+      <div class="col-md-3">
+        <a href="/docs/tutorials/streams/"><i class="glyphicon glyphicon-chevron-left"> </i> Use Streams for Data</a>
+      </div>
+      <div class="col-md-3">
+      </div>
+      <div class="col-md-3">
+        <a href="/docs/tutorials/forms/" class="pull-right">Get Input from a Form <i class="glyphicon glyphicon-chevron-right"> </i> </a>
+      </div>
+    </div> 
+  </div> 
+</div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+
+
+
+
+</body>
+</html>
+

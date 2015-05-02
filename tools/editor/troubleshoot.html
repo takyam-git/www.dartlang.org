@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Troubleshooting Dart Editor | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Troubleshooting Dart Editor | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="Installing and running Dart Editor is easy. Except when it isn't.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+    <div class="container col-md-10 col-md-offset-1 sub-page">
+      <div>
+      <div>
+<ol class="breadcrumb">
+
+  <li><a href="/tools/">
+  Dart Tools</a></li>
+
+  <li><a href="/tools/editor/">
+  Dart Editor</a></li>
+
+
+  <li class="active">Troubleshooting</li>
+</ol>
+</div>
+
+
+<h1> Troubleshooting Dart Editor </h1>
+
+<p class="os-choices">
+  Find solutions to
+  <a href="/tools/editor/">Dart Editor</a> problems for
+  <span class="nowrap">
+<input type="radio" name="osChoices" id="windows">
+<label class="os-choice" for="windows">Windows (Vista, 7, or 8)</label>,
+</span>
+
+<span class="nowrap">
+<input type="radio" name="osChoices" id="linux" checked="checked">
+<label class="os-choice" for="linux">Linux</label>,
+</span> or
+
+<span class="nowrap">
+<input type="radio" name="osChoices" id="macos">
+<label class="os-choice" for="macos">Mac</label>.
+</span>
+
+  If we missed something, please
+  <a href="/support/">let us know</a>.
+</p>
+
+<h4> Contents </h4>
+
+<ol class="toc">
+  <li> <a href="#download-dart-editor">Getting your system
+          architecture</a> </li>
+  <li> <a href="#launch-dart-editor">Launching Dart Editor</a> </li>
+  <li> <a href="#dart-editor-crashed">Dart Editor crashed and now I cannot
+          relaunch it</a> </li>
+  <li> <a href="#dartium">Launching Dartium</a> </li>
+  <li> <a href="#increasing-memory">Increasing memory</a> </li>
+  <li> <a href="#eclipse">Using Eclipse</a> </li>
+  <li> <a href="#pub-get-firewall">Running "pub get" behind a firewall</a> </li>
+  <li> <a href="#breakpoints">Breakpoints not triggering</a> </li>
+  <li> <a href="#clear">Clearing all settings</a> </li>
+  <li> <a href="#generating-heap-dumps">Collecting performance
+          diagnostics</a> </li>
+  <li> <a href="#new-features">Using experimental support for new features</a> </li>
+  <div class="windows">
+    <li> <a href="#network-storage-problems">Network storage problems</a> </li>
+  </div>
+  <li> <a href="#bugs">Other known issues</a> </li>
+</ol>
+
+<section>
+
+  <h2><a id="download-dart-editor"></a>
+    Getting your system architecture </h2>
+
+  <div class="linux">
+    <p>
+    If you don't know whether you have 32-bit or 64-bit Linux,
+    use the command <code>uname -a</code>.
+    If <code>64</code> is in the output,
+    you have 64-bit Linux;
+    otherwise, you have 32-bit Linux.
+    </p>
+  </div>
+
+  <div class="macos">
+    <p>
+    Almost all Mac OS X systems have a 64-bit OS,
+    so we recommend using the 64-bit Dart Editor.
+    If you encounter problems,
+    try the <a href="#mac-32bit">32-bit version</a>.
+    </p>
+  </div>
+
+  <div class="windows">
+    <p>
+    If you don't know whether you have 32-bit or 64-bit Windows, see
+    <a href="http://windows.microsoft.com/en-US/windows7/32-bit-and-64-bit-Windows-frequently-asked-questions">Microsoft's support site</a>.
+    </p>
+  </div>
+
+</section>
+
+<section>
+
+  <h2><a id="launch-dart-editor"></a> Launching Dart Editor </h2>
+
+  <div class="windows">
+    <p>
+    Your Java version should have the same bit width as
+    your Dart Editor version.
+    For example, if you're using a 64-bit Dart Editor,
+    then you should use 64-bit Java.
+    Otherwise, you might see a message like this
+    when you try to launch Dart Editor:
+    </p>
+
+<pre class="prettyprint lang-none">
+Failed to load the JNI shared library &quot;C:\Program Files(x86)\Java\jre6\\bin\client\jvm.dll
+</pre>
+
+    <p>
+    To determine which version of Java you are running, do one of the
+    following:
+
+    <ul>
+    <li>Go to <a href="http://www.java.com/verify/">Verify Java
+        Version</a>. (If you have just installed Java,
+        restart the browser before running this check.)</li>
+
+    <li>Go to Start -> Programs and Features.</li>
+    </ul>
+    </p>
+
+  </div>
+
+  <div class="linux" id="linux-32bit">
+    <p>
+    If you're using 64-bit Linux but have 32-bit Java libraries,
+    Dart Editor won't work.
+    </p>
+
+    <p>
+    The fix: Use a 64-bit Java JDK.
+    You can get a 64-bit JDK 7 from
+    <a href="http://www.oracle.com/technetwork/java/javase/downloads/java-se-jdk-7-download-432154.html"
+      target="_blank">Java SE Development Kit 7 Downloads</a>.
+    If you already have a 64-bit JDK but it's not the default,
+    you can specify the Java runtime.
+    </p>
+  </div>
+
+
+  <div class="macos">
+
+    <p>
+    A few things can go wrong when launching Dart Editor on a Mac:
+    </p>
+
+    <ul>
+      <li> <a href="#security-preferences">Unidentified developer</a>
+        </li>
+      <li> <a href="#corruption">"DartEditor.app" is damaged (64-bit only)</a>
+        </li>
+      <li> <a href="#java-install">Java installation failure</a>
+        </li>
+      <li> <a href="#avstartup">Slow startup</a>
+        </li>
+      <li> <a href="#mac-32bit">32-bit Mac</a>
+        </li>
+    </ul>
+
+    <h3><a id="security-preferences"></a> Unidentified developer</h3>
+
+    <p>
+    If you're running Mac OS 10.8 (Mountain Lion),
+    your computer might refuse to start Dart Editor
+    because it's not from the Mac App Store or an identified developer.
+    Until we fix this problem
+    (<a href="http://code.google.com/p/dart/issues/detail?id=5088">bug
+    #5088</a>),
+    you can work around it.
+    </p>
+
+    <p>
+    <img src="images/mac-permission-error.png"
+      alt="Dialog text: DartEditor can't be opened because it is from an unidentified developer."
+      style="border: 1px solid black">
+    </p>
+
+    <p>
+    The easiest workaround:
+    When launching Dart Editor for the first time,
+    don't double-click the Dart Editor icon.
+    Instead, right-click (or Ctl+click) it to bring up a context menu,
+    and choose <b>Open</b>.
+    Then, in the dialog that comes up, click <b>Open</b>.
+    </p>
+
+    <p>
+    An alternative workaround is to change your security settings.
+    Go to <b>System Preferences > Security &amp; Privacy</b>.
+    In the <b>General</b> tab under
+    <b>Allow applications downloaded from:</b>,
+    choose <b>Anywhere</b>.
+    You should now be able to start Dart Editor.
+    Once you've run Dart Editor,
+    you can change the preference back to its previous setting.
+    </p>
+
+    <h3><a id="corruption"></a> "DartEditor.app" is damaged (64-bit only)</h3>
+
+    <p>
+    Sometimes when you try to launch a new, 64-bit build of Dart Editor,
+    Mac OS X incorrectly displays a corruption warning:
+    </p>
+
+    <blockquote>
+    "DartEditor.app" is damaged and can't be opened.
+    You should move it to the Trash.
+    </blockquote>
+
+    <p>
+    The workaround is to download and install the
+    <a href="http://gsdview.appspot.com/dart-archive/channels/stable/release/latest/editor/darteditor-macos-ia32.zip">
+    32-bit version of Dart Editor</a>.
+    </p>
+
+    <h3><a id="java-install"></a> Java installation failure</h3>
+
+    <p>
+    When you try to run Dart Editor but don't have a Java SE 6 runtime,
+    Dart Editor offers to install Java for you.
+    If the installation doesn't work,
+    you can either restart Dart Editor or
+    <a href="http://support.apple.com/kb/DL1572">install Java yourself</a>.
+    </p>
+
+    <h3><a id="avstartup"></a> Slow startup</h3>
+
+    <p>
+    If you use Sophos Anti-Virus,
+    Dart Editor (like most Java applications)
+    starts up 10-15 times slower than normal.
+    </p>
+
+    <p>
+    The fix: Turn off scanning of the app's JAR files.
+    For example:
+    </p>
+
+    <ol>
+      <li> In Sophos Anti-Virus preferences,
+        choose <b>On-access Scanning</b>. </li>
+      <li> If the preferences are locked,
+        click the lock and enter your password. </li>
+      <li> Click <b>Excluded Items</b> and then the <b>+</b> sign. </li>
+      <li> Navigate to the directory that contains <code>DartEditor</code>. </li>
+      <li> Search for files under that directory
+        with names that end in <code>.jar</code>. </li>
+      <li> Select all these <code>.jar</code> files,
+        and click Open. </li>
+    </ol>
+
+    <h3><a id="mac-32bit"></a> 32-bit Mac</h3>
+
+    <p>
+    If you're using one of the increasingly rare 32-bit Macs,
+    you can't launch the 64-bit version of Dart Editor.
+    Instead, you see a warning like this:
+    </p>
+
+    <p>
+    <img src="images/mac-installerror.png"
+      alt="Dialog text: You can't open the application DartEditor.app because it's not supported on this type of Mac."
+      style="border: 1px solid black"
+      width="419" height="161" >
+    </p>
+
+    <p>
+    The fix: Download and install the
+    <a href="http://gsdview.appspot.com/dart-archive/channels/stable/release/latest/editor/darteditor-macos-ia32.zip">
+    32-bit version of Dart Editor</a>.
+    </p>
+
+  </div> <!-- end of mac-only section -->
+
+  <h3><a id="runtime"></a> Specifying the Java runtime</h3>
+
+  <p>
+  If necessary, you can specify the Java runtime that Dart Editor uses.
+  Go to your Dart installation directory and
+  add the following two lines to <code>DartEditor.ini</code>
+  immediately <b>before</b> the existing
+  <code>&#x2011;vmargs</code> line:
+  </p>
+
+<pre class="prettyprint lang-none">
+-vm
+/full/path/to/java
+</pre>
+
+  <div class="windows">
+    <p>
+    <b>Important:</b>
+    On Windows, use double backslashes (<code>\\</code>)
+    as the directory separator:
+    </p>
+
+<pre class="prettyprint lang-none">
+-vm
+c:\\bin\\java_jdk1.7.0\\bin\\javaw.exe
+</pre>
+    </div>
+  </div>
+
+  <p>
+  For example, <code>DartEditor.ini</code> might have:
+  </p>
+
+<pre class="prettyprint lang-none">
+...
+-vm
+/usr/local/buildtools/java/jdk-64/bin/java
+-vmargs
+...
+</pre>
+
+</section>
+
+<section>
+  <h3><a id="increasing-memory"></a> Increasing memory</h3>
+
+  <p>
+  When building larger Dart applications, Dart Editor needs more
+  memory for analysis. If you are not already using 64-bit,
+  switch to a 64-bit Java Virtual Machine (JVM),
+  and to the 64-bit version of Dart Editor.
+  In the DartEditor.ini file, find the <code>-Xmx1000m</code> string
+  and change it to <code>-Xmx2000m</code>, or larger if you have more RAM
+  available.</p>
+
+  <h3><a id="java7-gc-changes"></a> Java 7 garbage collection changes</h3>
+
+  <p>
+  Java 7 sports different garbage collection (GC) behavior than Java 6.
+  If you see large pauses when editing files, and you have addressed
+  the <a href="#increasing-memory">memory issues</a>, edit the
+  DartEditor.ini file, and insert a line <em>after</em>
+  <code>-vmargs</code> that contains the string <code>-Xincgc</code>.</p>
+</section>
+
+<section>
+  <h2><a id="dart-editor-crashed"></a> Dart Editor crashed and now I cannot relaunch it</h2>
+
+  <p>
+  In extremely rare cases, a Dart Editor crash will corrupt the workspace
+  data on disk, preventing Dart Editor from restarting. The workaround is
+  to delete the Dart Editor workspace directory (see
+  <a href="#clear">Clearing all settings</a>) and then
+  Dart Editor will be able to restart.</p>
+
+  <p>
+  That directory contains workspace and preference state information,
+  so if you have changed any Dart Editor preferences, you will need to
+  change those preferences again when you delete that folder and
+  restart Dart Editor.</p>
+
+</section>
+
+<section>
+  <h2><a id="dartium"></a> Launching Dartium</h2>
+
+  <p>
+  By default,
+  when you click Dart Editor's Run button
+  <img src="images/run.png" alt="Run" width="16" height="16"
+  style="vertical-align:top">,
+  your web app runs in Dartium.
+  If you instead see a message that
+  you need to download a new version of Dartium,
+  your software is old.
+  </p>
+
+  <p>
+  The fix: <a href="/tools/editor/#download">Download</a> and install a new version of
+  <b>Dart Editor</b>.
+  You'll get an updated version of Dartium, plus the
+  <a href="http://news.dartlang.org/search/label/editor">latest improvements to Dart Editor</a>.
+  Alternatively, download a new version of
+  <a href="/tools/dartium/">Dartium</a>
+  and substitute it for the copy that's in your
+  Dart installation directory.
+  </p>
+
+  <div class="linux">
+    <p>
+    If you're experiencing the error
+    <code>libudev.so.0: cannot open shared object file: No such file or directory</code>
+    on Dartium startup, the resolution in <a href="http://dartbug.com/12325">issue 12325</a>
+    may be of help. 
+    </p>
+  </div>
+</section>
+
+
+<section>
+  <h2><a id="eclipse"></a> Using Eclipse</h2>
+
+  <p>
+  If Dart Editor and Eclipse
+  share the same <code>workspace</code> directory,
+  they'll save conflicting settings,
+  resulting in warnings and errors from both
+  Dart Editor and Eclipse.
+  </p>
+
+  <p>
+  The fix: Don't use the same workspace for
+  Dart Editor and any other Eclipse-based software.
+  </p>
+</section>
+
+<section>
+  <h2><a id="pub-get-firewall"></a> Running "pub get" behind a proxy</h2>
+
+  <p>
+  When using <code>pub get</code> behind a proxy,
+  you may see <code>http</code> and
+  socket (connection) errors when the command attempts to pull
+  down dependencies from an external website, such as pub.dartlang.org.
+  </p>
+  <p>
+  You can fix this by setting the environment variables
+  <code>http_proxy</code>, <code>https_proxy</code>, and
+  <code>no_proxy</code>. In the following examples,
+  replace <code>9090</code> with the appropriate
+  port for your proxy:
+
+<pre class="prettyprint lang-none">
+http_proxy=http://&amp;lt;yourproxy&amp;gt;.&amp;lt;yourdomain&amp;gt;.com:9090/
+https_proxy=https://&amp;lt;yourproxy&amp;gt;.&amp;lt;yourdomain&amp;gt;.com:9090/
+no_proxy=localhost,127.0.0.1
+</pre>
+
+  If your proxy needs authentication, the setup will look more
+  like the following:
+
+<pre class="prettyprint lang-none">
+http_proxy=http://&amp;lt;username&amp;gt;:&amp;lt;password&amp;gt;@&amp;lt;yourproxy&amp;gt;.&amp;lt;yourdomain&amp;gt;.com:9090/
+https_proxy=https://&amp;lt;username&amp;gt;:&amp;lt;password&amp;gt;@&amp;lt;yourproxy&amp;gt;.&amp;lt;yourdomain&amp;gt;.com:9090/
+</pre>
+
+  <p>
+  To enable Dart Editor to check for updates, add the following to the
+  <code>DartEditor.ini</code> file:</p>
+
+<pre class="prettyprint lang-none">
+-Dhttp.proxyHost=&amp;lt;yourproxy&amp;gt;.&amp;lt;yourdomain&amp;gt;.com
+-Dhttp.proxyPort=9090
+-Dhttps.proxyHost=&amp;lt;yourproxy&amp;gt;.&amp;lt;yourdomain&amp;gt;.com
+-Dhttps.proxyPort=9090
+</pre>
+
+  <p>
+  If you need a user name and password for authentication, add:
+
+<pre class="prettyprint lang-none">
+-Dhttp.proxyUser=&amp;lt;username&amp;gt;
+-Dhttp.proxyPassword=&amp;lt;passwordstring&amp;gt;
+-Dhttps.proxyUser=&amp;lt;username&amp;gt;
+-Dhttps.proxyPassword=&amp;lt;passwordstring&amp;gt;
+</pre>
+</section>
+
+<section>
+  <h2><a id="breakpoints"></a> Breakpoints not triggering</h2>
+
+  <p>
+  If your breakpoints are not being triggered, or you are seeing
+  "Source not found" errors inside of Dart Editor, check to make sure that
+  <a href="https://developers.google.com/web-toolkit/speedtracer/">Speed
+  Tracer</a> and <a href="http://benvanik.github.io/WebGL-Inspector/">WebGL
+  Inspector</a> are turned off.
+  </p>
+</section>
+
+<section>
+  <h2><a id="clear"></a> Clearing all settings</h2>
+
+  <p>
+  Dart Editor settings are in a platform-dependent directory,
+  so you don't lose them when you update Dart Editor.
+  If your settings become corrupted
+  or you want to see the new user experience,
+  delete the settings directory.
+  </p>
+
+  <p>
+    The following table shows where Dart Editor settings are saved.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th> Platform </th> <th> Location of settings </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td> Windows&nbsp;&nbsp;&nbsp; </td>
+        <td> <code><em>&lt;user's home directory&gt;</em>\DartEditor</code> </td>
+      </tr>
+      <tr>
+        <td> Linux </td>
+        <td> <code>$HOME/.dartEditor</code> </td>
+      </tr>
+      <tr>
+        <td> Mac </td>
+        <td> <code>$HOME/Library/Application Support/DartEditor</code> </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2><a id="generating-heap-dumps"></a>
+    Collecting performance diagnostics</h2>
+
+  <p>
+    To aid in debugging Dart Editor performance issues,
+    you can generate a <em>heap dump</em>.
+  <p>
+
+  <p>
+    For Linux or Mac users:
+  </p>
+
+  <p>
+    Use <em>top</em> to get the pid of Dart Editor. Then, run
+    <code>jstack &lt;pid&gt;</code>.
+    If the given process is running on a 64-bit VM, you may need to
+    specify a <code>-J-d64</code> option.
+    Please attach the output
+    to the relevant bug at <a href="http://dartbug.com/">dartbug.com</a>.
+  </p>
+
+  <p>
+    More information on
+    <a href="http://docs.oracle.com/javase/7/docs/technotes/tools/share/jstack.html">jstack</a>
+    is available.
+  </p>
+</section>
+
+<section>
+<h2><a id="new-features"></a>Using experimental support for new features</h2>
+
+<p>
+Dart Editor sometimes adds experimental support for new features,
+requiring you to explicitly request support for the new feature.
+<p>
+To enable support for a new feature, go to <strong>Preferences</strong>,
+and click <strong>Experimental</strong>. Here is a partial list
+of what you might want to do:
+
+
+<dl>
+<dt><strong>Enable Async Support</strong></dt>
+<dd> Support for
+     <a href="/docs/dart-up-and-running/ch02.html#asynchrony">language asynchrony features</a>,
+     including async functions and await expressions.</dd>
+
+<dt><strong>Enable Enum Support</strong></dt>
+<dd>Support for
+    <a href="/docs/dart-up-and-running/ch02.html#enums">Enumerated types</a>.</dd>
+</dl>
+</section>
+
+<div class="windows">
+  <section>
+    <h2><a id="network-storage-problems"></a> Network storage problems</h2>
+
+    <p>
+    Under some circumstances, network storage can prevent Dart Editor
+    form creating new projects (see
+    <a href="https://code.google.com/p/dart/issues/detail?id=9238">issue
+    9238</a>). The workaround is to modify your <tt>DartEditor.ini</tt>
+    file, changing the following entry:
+
+<pre class="prettyprint lang-none">
+$user.home\DartEditor
+</pre>
+
+    To something like the following:
+
+<pre class="prettyprint lang-none">
+C:\DartEditor
+</pre>
+
+  </section>
+</div>
+
+<section>
+  <h2><a id="bugs"></a> Other known issues</h2>
+
+  <div class="linux">
+    <p>
+    Some of the more common problems on Linux include:
+    </p>
+
+    <ul>
+      <li> <a href="https://code.google.com/p/dart/issues/detail?id=10363#c6">Dart Editor crashes</a>
+	  on specific versions of Linux. </li>
+
+      <li> <a href="https://code.google.com/p/dart/issues/detail?id=13819">Dart Editor top-level menu problems</a>
+        on specific versions of Linux. </li>
+    </ul>
+  </div>
+
+  <p>
+  <b><a href="https://code.google.com/p/dart/issues/list?can=2&amp;q=label:Area-Editor&amp;sort=-id">Dart Editor issues</a></b>
+  lists all of the known bugs in Dart Editor.
+  </p>
+
+  <p>
+  Click an issue's star to receive updates about it.
+  You can also file new issues and
+  add comments to existing ones.
+  </p>
+
+</section>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+
+
+
+
+</body>
+</html>
+

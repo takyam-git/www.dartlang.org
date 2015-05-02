@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Mocking with Dart | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Mocking with Dart | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="Using Dart's unit test library for mocking and spying.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  <link rel="author" href="/authors/graham-wheeler.html">
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+  	<div class="container sub-page">
+      <div class="row">
+        <article class="has-permalinks"><div class="col-md-4">
+  <div class="bs-sidebar" data-spy="affix" data-offset-bottom="350" role="complementary">
+
+<ol class="toc nav bs-sidenav" id="markdown-toc">
+  <li><a href="#getting-ready-for-mocking">Getting ready for mocking</a></li>
+  <li><a href="#an-example-of-mocking-with-dart">An example of mocking with Dart</a></li>
+  <li><a href="#the-mocking-api">The mocking API</a>    <ol>
+      <li><a href="#creating-mock-classes">Creating Mock classes</a></li>
+      <li><a href="#specifying-actions">Specifying actions</a></li>
+      <li><a href="#call-matching">Call matching</a></li>
+      <li><a href="#the-activity-logs">The activity logs</a></li>
+      <li><a href="#logentrylist-verification-with-matchers">LogEntryList verification with Matchers</a></li>
+      <li><a href="#shared-logs">Shared logs</a></li>
+    </ol>
+  </li>
+  <li><a href="#temporal-assertions">Temporal assertions</a>    <ol>
+      <li><a href="#the-dispenser">The dispenser</a></li>
+      <li><a href="#the-cashier">The cashier</a></li>
+      <li><a href="#mocking-the-classes">Mocking the classes</a></li>
+      <li><a href="#driving-the-system-under-test">Driving the system under test</a></li>
+      <li><a href="#sample-temporal-assertions">Sample temporal assertions</a></li>
+    </ol>
+  </li>
+  <li><a href="#reducing-logging-for-regression-tests">Reducing logging for regression tests</a></li>
+  <li><a href="#conclusion">Conclusion</a></li>
+</ol>
+
+  </div>
+</div>
+<div class="col-md-8">
+  <p><!-- Start of content -->
+</p>
+
+  <div>
+    <ol class="breadcrumb">
+
+  <li><a href="/articles/">
+  Articles</a></li>
+
+
+  <li class="active">Mocking with Dart</li>
+</ol>
+  </div>
+
+  <h1 id="mocking-with-dart">Mocking with Dart</h1>
+
+  <p><em>Written by Graham Wheeler <br />
+July 2012 
+(updated March 2013)</em></p>
+
+  <p>The Dart unit test library now supports testing with mocks. The 
+mocks provide the ability to:</p>
+
+  <ul>
+    <li>substitute thin proxy objects for the objects that a system under test 
+interacts with and depends on</li>
+    <li>control the behavior of those proxy objects</li>
+    <li>log all of the interactions that occur with those objects</li>
+    <li>perform various kinds of verification on the logs</li>
+    <li>view the logs for auditing or debugging purposes</li>
+  </ul>
+
+  <p>There are some restrictions in the current API that we hope to lift in the 
+future as more language features are implemented. In particular, we can only 
+mock calls to methods that use only positional parameters, and are limited to 10 
+parameters. </p>
+
+  <p>Note that this article assumes you are familiar with the unit test library; in 
+particular with <code>expect()</code> and the <code>Matcher</code>s. If not, you should first read 
+<a href="/articles/dart-unit-tests/">Unit Testing with Dart</a>.</p>
+
+  <h2 id="getting-ready-for-mocking">Getting ready for mocking</h2>
+
+  <p>Most libraries that support mocking allow you to create substitutes for classes 
+that can fake and verify the interactions with that class. Nonetheless, the mock 
+object is typically an object of a different class to the object being mocked 
+(most commonly a subclass). Unless you want to have to modify your code 
+significantly at test time to use mocking, you should build your code to support 
+it upfront. This implies that you need a way to substitute classes. Let’s say we 
+have a class <code>Game</code> that depends on class <code>Player</code>:</p>
+
+  <pre class="prettyprint lang-dart">
+class Game {
+  Player player;
+
+  Game() {
+    player = new Player();
+  }
+}
+</pre>
+
+  <p>Testing this code with a mock of <code>Player</code> is difficult. Instead, you should 
+write your code so that it is possible to substitute a subclass of <code>Player</code> for 
+player without changing the code of class <code>Game</code>. One way to do this is with 
+factory allocators:</p>
+
+  <pre class="prettyprint lang-dart">
+class Game {
+  Player player;
+
+  Game(PlayerFactory playerFactory) {
+    player = playerFactory.CreatePlayer();
+  }
+}
+</pre>
+
+  <p>Another is by passing the <code>Player</code> instance in the constructor:</p>
+
+  <pre class="prettyprint lang-dart">
+class Game {
+  Player player;
+  Game(this.player);
+}
+</pre>
+
+  <p>Whichever approach you use, you should be cognizant that planning for mocking 
+early will save you pain later on.</p>
+
+  <h2 id="an-example-of-mocking-with-dart">An example of mocking with Dart</h2>
+
+  <p>In this example, we are going to test a login controller class. This class makes 
+use of a credential store that stores users names, password information, numbers 
+of failed login attempts, and the ability to lock accounts (we will ignore 
+unlocking for now). The credential store class is shown below (with the bodies 
+of the functions missing as the actual implementation is not relevant here):</p>
+
+  <pre class="prettyprint lang-dart">
+class CredentialStore {
+  bool validate(String user, password) { … }
+  void lockAccount(String user) { … }
+  bool isLocked(String user) { … }
+  int getFailures(String user) { … }
+  void setFailures(String user, int failures) { … }
+}
+</pre>
+
+  <p>The class we are testing is the controller class, part of which looks like this:</p>
+
+  <pre class="prettyprint lang-dart">
+class LoginController {
+  CredentialStore _store;
+
+  // Note that we support injection of the store.
+  LoginController([CredentialStore store = null]) {
+    _store = (store == null) ? new CredentialStore() : store;
+  }
+
+  bool login(String name, String password) {
+    if (!_store.isLocked(name)) {
+      if (_store.validate(name, password)) {
+        _store.setFailures(name, 0);
+        return true;
+      }
+      int failures = _store.getFailures(name) + 1;
+      _store.setFailures(name, failures);
+      if (failures &gt; 3) {
+        _store.lockAccount(name);
+      }
+    }
+    return false;
+  }
+}
+</pre>
+
+  <p>The <code>login()</code> method is responsible for validating a login attempt, locking the 
+account if more than 3 failed consecutive logins have occurred, and clearing the 
+count of failed logins on success.</p>
+
+  <p>We are going to illustrate two types of mocking. First we will substitute a 
+simple mock class for the <code>CredentialStore</code>:</p>
+
+  <pre class="prettyprint lang-dart">
+class MockStore extends Mock implements CredentialStore {}
+</pre>
+
+  <p>As you can see, for the dependency class that we want to mock, the code is very 
+simple - we just declare a new class that extends <code>Mock</code> and implements the 
+class (interface) that we want to mock.</p>
+
+  <p>Next we will make a “spy” class for observing the <code>LoginController</code>. Spies are a 
+special case of mocking where we still want the real object’s behavior, but we 
+want interactions with the object to be audited. Here is the code for the class, 
+which is a bit more involved than the store mock:</p>
+
+  <pre class="prettyprint lang-dart">
+class ControllerSpy extends Mock implements LoginController {
+  LoginController _real;
+
+  ControllerSpy(CredentialStore store) {
+    _real = new LoginController(store);
+    when(callsTo(&#39;login&#39;)).alwaysCall(_real.login);
+  }
+}
+</pre>
+
+  <p>The spy class is a bit more interesting than the store mock: here we wrap an 
+instance of the real class, and in the constructor we add a dispatch rule for 
+the <code>login()</code> method to dispatch the call to the real object:</p>
+
+  <pre class="prettyprint lang-dart">
+when(callsTo(&#39;login&#39;)).alwaysCall(_real.login);
+</pre>
+
+  <p>The benefit we get here is that all calls to mock object methods are logged and 
+can be inspected later, so we get an audit trail.</p>
+
+  <p>Spying should be used with care - typically you will want to add <code>alwaysCall()</code> 
+spy actions for all public methods of the class that you will be exercising, and 
+you want to do this only on classes where these public methods do not call other 
+public methods in the same class that are also being spied upon. If not, be 
+aware that these nested calls will be made from within the real object and so 
+will not go through the spy, and  won’t be audited.</p>
+
+  <p>So now we have our mock classes, what can we do with them? Let’s start by 
+testing a happy path, by adding this <code>main()</code>:</p>
+
+  <pre class="prettyprint lang-dart">
+void main() {
+  // Create the objects.
+  CredentialStore store = new MockStore();
+  LoginController controller = new ControllerSpy(store);
+
+  // Specify the behavior of the mock store.
+  store.when(callsTo(&#39;isLocked&#39;)).thenReturn(false);
+  store.when(callsTo(&#39;validate&#39;)).thenReturn(true);
+
+  // Exercise the login method.
+  controller.login(&#39;me&#39;, &#39;secret&#39;);
+
+  // View the results.
+  print(controller.log);
+  print(store.log);
+}
+</pre>
+
+  <p>We’re not using any assertions yet; we are simply printing the captured audit 
+trail which is kept in the log property of <code>Mock</code> objects. Later we will see how 
+we can make assertions with this trail.</p>
+
+  <p>Notice how we specify behavior for a mock: we call the <code>when()</code> method and pass 
+it the result of a call to <code>callsTo()</code>; the latter creates a <code>CallMatcher</code> which 
+will be applied to method calls to determine the action to take. <code>callsTo()</code> can 
+take multiple positional parameter restrictions too. This means we could, for 
+example, have specified that Alice could log in but Bob could not, as follows:</p>
+
+  <pre class="prettyprint lang-dart">
+store.when(callsTo(&#39;validate&#39;, &#39;Alice&#39;)).thenReturn(true);
+store.when(callsTo(&#39;validate&#39;, &#39;Bob&#39;)).thenReturn(false);
+</pre>
+
+  <p>The parameter matchers need not be literal values; you can use any of the 
+matchers in the unit test library that work with <code>expect()</code>.</p>
+
+  <p>The actions defined above are single-shot; if we called validate twice for Alice 
+we would get an exception on the second call. To specify an endlessly repeating 
+action we can use <code>alwaysReturn()</code> instead of <code>thenReturn()</code>. Alternatively we 
+could specify that Alice logs in successfully once, and then fails forever 
+after, like this:</p>
+
+  <pre class="prettyprint lang-dart">
+store.when(callsTo(&#39;validate&#39;, &#39;Alice&#39;)).
+  thenReturn(true).alwaysReturn(false);
+</pre>
+
+  <p>Notice how we can chain multiple calls; each call to an action function returns 
+the same object so further calls are possible.</p>
+
+  <p>Actions are executed in the order they were defined so we can specify sequences 
+of behavior.  However, it is important to make the <code>callsTo()</code> matchers 
+unambiguous. These are not ordered, so if a method call matches more than one 
+<code>callsTo()</code> behavior the one that is used is unpredictable. For example, the 
+behavior here is unambiguous for Alice:</p>
+
+  <pre class="prettyprint lang-dart">
+store.when(callsTo(&#39;validate&#39;, &#39;Alice&#39;)).thenReturn(true);
+store.when(callsTo(&#39;validate&#39;, &#39;Alice&#39;)).thenReturn(false);
+</pre>
+
+  <p>The above is equivalent to:</p>
+
+  <pre class="prettyprint lang-dart">
+store.when(callsTo(&#39;validate&#39;, &#39;Alice&#39;)).
+  thenReturn(true).thenReturn(false);
+</pre>
+
+  <p>because the arguments to <code>callsTo</code> are the same, and so these ‘actions’ are 
+added to the same ‘behavior’, and actions in a behavior are sequential. However, 
+the sequence below is ambiguous:</p>
+
+  <pre class="prettyprint lang-dart">
+store.when(callsTo(&#39;validate&#39;, &#39;Alice&#39;)).thenReturn(true);
+store.when(callsTo(&#39;validate&#39;)).thenReturn(false);
+</pre>
+
+  <p>because this creates two separate ‘behaviors’ and there is no guaranteed order 
+of match testing of behaviors.</p>
+
+  <p>When we run the full program above and the log is printed, we will see output 
+similar to:</p>
+
+  <pre><code>16:41:34.63&gt;  login('me', 'secret') returned &lt;true&gt;
+16:41:34.63&gt;  isLocked('me') returned &lt;false&gt;
+16:41:34.63&gt;  validate('me', 'secret') returned &lt;true&gt;
+16:41:34.63&gt;  setFailures('me', &lt;0&gt;) returned &lt;null&gt;
+</code></pre>
+
+  <p>Your output should be similar, apart from the timestamps.</p>
+
+  <p>The log member of each <code>Mock</code> object contains a detailed audit trace like the 
+above that we can inspect. There is a way to make objects share a log, which can 
+be useful for seeing how the calls to multiple objects are interleaved; we will 
+see how to do this later.</p>
+
+  <p>The above is certainly useful, but what if we just want to write assertions to 
+automate testing? That can be done easily as well. For example, let’s say we 
+want to assert that there was exactly one call to <code>setFailures()</code> as a result of 
+calling <code>login()</code>. We can use the <code>getLogs()</code> method to extract the subset of 
+matching log entries, and the <code>verify()</code> method to make assertions about the log 
+entries:</p>
+
+  <pre class="prettyprint lang-dart">
+controller.getLogs(callsTo(&#39;setFailures&#39;)).verify(happenedOnce);
+</pre>
+
+  <p>We will now take a more detailed look at the mocking API’s features, and 
+periodically revisit the example above.</p>
+
+  <h2 id="the-mocking-api">The mocking API</h2>
+
+  <h3 id="creating-mock-classes">Creating Mock classes</h3>
+
+  <p>As shown in our example, if you want to create a mock for class T, you need to 
+create a new class:</p>
+
+  <pre class="prettyprint lang-dart">
+class MockT extends Mock implements T {}
+</pre>
+
+  <p>This assumes that you have declared variables or parameters of type T and so 
+MockT must be substitutable for T. If on the other hand you always use untyped 
+variables of parameters, you can simply use an instance of Mock as your mock; 
+you do not need to create a new class.</p>
+
+  <p><code>Mock</code> has the following constructors:</p>
+
+  <pre class="prettyprint lang-dart">
+Mock() 
+Mock.custom({this.name,
+               this.log,
+               throwIfNoBehavior: false,
+               enableLogging: true}) 
+</pre>
+
+  <p>The first is equivalent to <code>Mock.custom()</code>.</p>
+
+  <p>The <code>logging</code> flag controls whether this Mock will log its actions. This
+flag takes effect whether or not <code>log</code> is null. Usually you will want 
+logging enabled so you can verify the behavior of the mock; however if you
+just want the mock to act as a stub for testing some other class and don’t
+want the memory and performance overhead of logging you can set this to 
+false.</p>
+
+  <p>The <code>throwIfNoBehavior</code> flag defined 
+what should happen if you invoke a method on the mock that you have not defined 
+any behavior for. If false (the default), the call will be swallowed and logged. 
+This means you can mock a class with many methods and only define behavior for 
+the subset of methods you are testing. On the other hand, if you are defining 
+behavior for all the public methods of the class, you may want to set this flag 
+to true to catch any that you may have missed.</p>
+
+  <p>The <code>name</code> argument can be used to give the mock a unique name. This isn’t 
+usually necessary unless you are also using the log argument, and passing in a 
+shared log object that the <code>Mock</code> should use. Usually log is omitted or null and 
+the <code>Mock</code> object will get its own activity log, but there may be times when you 
+are using several mocks and you want to see in the log how their behavior is 
+interleaved. In this case you can create a <code>LogEntryList</code> and pass it to several 
+<code>Mock</code>s to share, but you should then give each <code>Mock</code> a unique name to identify 
+its log entries. We will discuss logs in more detail below.</p>
+
+  <p>If you are creating a spy, you will typically want to set up the methods that 
+you want to proxy (using <code>alwaysCall()</code>), and the logical place to do this is in 
+the constructor of the spy object, as we did in our login controller example 
+above.</p>
+
+  <h3 id="specifying-actions">Specifying actions</h3>
+
+  <p>To specify actions, we use the <code>when()</code> method of the mock object, and pass it a 
+<code>CallMatcher</code>. <code>CallMatchers</code> (which are discussed more in the next section) are 
+specialized matchers that are applied against method names and arguments. The 
+<code>CallMatcher</code> will determine which calls the behavior will be applied to. 
+<code>when()</code> returns a <code>Behavior</code> object to which actions can be added.</p>
+
+  <p>The currently supported actions are:</p>
+
+  <ul>
+    <li><code>thenReturn(v, [count=1])</code></li>
+    <li><code>alwaysReturn(v)</code></li>
+    <li><code>thenThrow(v, [count=1])</code></li>
+    <li><code>alwaysThrow(v)</code></li>
+    <li><code>thenCall(v, [count=1])</code></li>
+    <li><code>alwaysCall(v)</code></li>
+  </ul>
+
+  <p>The <code>thenX()</code> action creators are single-shot by default, but can be made n-shot 
+by passing a count parameter; the <code>alwaysX()</code> action creators create endlessly 
+repeating actions (so any actions added to the behavior after an <code>alwaysX()</code> 
+action will never be executed).</p>
+
+  <p><code>thenReturn(v)</code>/<code>alwaysReturn(v)</code> will return the value v upon a matching call; 
+<code>thenThrow(v)</code>/<code>alwaysThrow(v)</code> will do a “throw v” upon a matching call, and 
+<code>thenCall(v)</code>/<code>alwaysCall(v)</code> will call the function v (passing the same 
+parameters as were passed to the mock method - up to ten positional paramaters), 
+and return the value returned from that call.</p>
+
+  <p>A behavior with no remaining actions will throw exceptions if it is matched. 
+Thus you should make sure you define enough responses for the number of matching 
+calls you will make, or have the last (or only) action be an <code>alwaysX()</code> action.</p>
+
+  <p>If a method call is made with no matching behavior, then the result depends on 
+the <code>throwIfNoBehavior</code> flag in the Mock constructor - either the call will 
+result in a thrown <code>Exception</code> or it will be logged and swallowed.</p>
+
+  <h3 id="call-matching">Call matching</h3>
+
+  <p><code>CallMatcher</code>s are used both by <code>Mock.when(m)</code> to get a <code>Behavior</code> (which is 
+then typically used to add actions), and by <code>Mock.getLogs(m)</code> to find matching log 
+entries after exercising the system under test. Typically you would use 
+<code>callsTo()</code> to allocate a <code>CallMatcher</code>, but you could construct them yourself.</p>
+
+  <p>A <code>CallMatcher</code> is different to the <code>Matcher</code>s we use with <code>expect()</code>. It is 
+designed specifically to match a method call, so it matches both on the method 
+name and on the arguments. The constructor (wrapped by <code>callsTo()</code>) takes a 
+method name and a number of parameter matchers. The parameter matchers 
+themselves can be <code>expect()</code>-style <code>Matcher</code>s, for example:</p>
+
+  <pre class="prettyprint lang-dart">
+m.when(callsTo(&#39;sqrt&#39;, isNegative)).
+  alwaysThrow(&#39;No imaginary number support&#39;);
+m.when(callsTo(&#39;sqrt&#39;, isNonNegative)).alwaysCall((x) =&gt; math.sqrt(x));
+</pre>
+
+  <p>You don’t need to provide argument matchers in <code>callsTo()</code> for all arguments of a method, but you do need 
+to provide enough arguments for all matchers when calling the method. So this is allowed:</p>
+
+  <pre class="prettyprint lang-dart">
+m.when(callsTo(&#39;add&#39;)).alwaysReturn(0);
+m.add(1, 2);
+</pre>
+
+  <p>And this is allowed, and will match all calls to ‘add’ where the first argument 
+is 1:</p>
+
+  <pre class="prettyprint lang-dart">
+m.when(callsTo(&#39;add&#39;, 1)).alwaysReturn(0);
+m.add(1, 2);
+m.add(1);
+</pre>
+
+  <p>But this is not allowed and will throw an exception:</p>
+
+  <pre class="prettyprint lang-dart">
+m.when(callsTo(&#39;add&#39;, anything, anything)).alwaysReturn(0);
+m.add(1);
+</pre>
+
+  <p>You can specify <code>CallMatcher</code>s for getters too. You just need to include ‘get ‘ 
+in front of the property name. So for example, if you were mocking a container 
+class with a length property, you could use something like:</p>
+
+  <pre class="prettyprint lang-dart">
+m.when(callsTo(&#39;get length&#39;)).alwaysReturn(0); 
+</pre>
+
+  <p>Finally, you can pass null for the method name argument, and in this case only 
+the arguments will be checked. In particular, these (equivalent) <code>CallMatcher</code>s 
+will match all log entries:</p>
+
+  <ul>
+    <li><code>callsTo()</code></li>
+    <li><code>callsTo(null)</code></li>
+  </ul>
+
+  <h3 id="the-activity-logs">The activity logs</h3>
+
+  <p>One we have created our mocks, defined their behavior, and have injected them 
+into the system under test, we can do our test activities. Afterwards, we want 
+to verify that what happened was what we expected to happen. Unlike some mocking 
+frameworks where you assert up front what behavior you expect, in the Dart 
+library verification happens afterwards. Each mock keeps a detailed log of all 
+the method calls that occurred, including the parameters, the time, and the 
+resulting action. This log can be inspected, or various assertions can be 
+applied to it. In order to do so we need to be able to query the log.</p>
+
+  <p>In the simplest case we may want to look at the whole log. We can do that by 
+accessing the log object we created (for mocks with shared logs) or the 
+<code>Mock.log</code> property (for mocks with their own logs). The logs are stored in 
+<code>LogEntryList</code>s:</p>
+
+  <pre class="prettyprint lang-dart">
+class LogEntryList {
+  final String filter;
+  List&lt;LogEntry&gt; logs;
+  …
+  LogEntryList getMatches([String mockNameFilter,
+                      CallMatcher logFilter,
+                      Matcher actionMatcher,
+                      bool destructive = false]);
+}
+</pre>
+
+  <p>The filter property is only used for <code>LogEntryList</code>s that are returned from 
+<code>getMatchers</code> (which is called from <code>Mock.getLogs()</code>), and contains a 
+human-friendly textual description of the filter.</p>
+
+  <p>Each <code>LogEntry</code> has the form:</p>
+
+  <pre class="prettyprint lang-dart">
+class LogEntry {
+  Date time; // The time of the event.
+  final String mockName; // The mock object name, if any.
+  final String methodName; // The method name.
+  final List args; // The parameters.
+  final Action action; // The behavior that resulted.
+  final value; // The value that was returned (if no throw).
+  …
+}
+</pre>
+
+  <p><code>LogEntry</code>s have a <code>toString()</code> method that will produce a textual 
+representation of the entry. This <code>toString()</code> method will normally format the 
+<code>time</code> timestamp as an absolute time of day (in local time), but if you pass a 
+<code>Date</code> as an argument, e.g.  <code>LogEntry.toString(start)</code>, then the timestamps 
+will be formatted as elapsed seconds from that <code>Date</code>.</p>
+
+  <p>If you want to examine or make assertions on a subset of the logs, you need to 
+filter the logs, which you do by calling <code>LogEntryList.getMatches()</code> or 
+<code>Mock.getLogs</code>:</p>
+
+  <pre class="prettyprint lang-dart">
+class Mock {
+...
+  LogEntryList getLogs([CallMatcher logFilter, Matcher actionMatcher,
+    bool destructive = false]);
+}
+</pre>
+
+  <p>The <code>destructive</code> flag, if set, will cause the removal of the matching log 
+entries from the <code>Mock</code>’s log. This can be useful if you want to query the log 
+for several expected calls and then assert that there were no other interactions 
+with the object.</p>
+
+  <p>The <code>actionMatcher</code> is a special matcher that can be used to filter based on the 
+method action. Action matchers are passed a <code>LogEntry</code> to their <code>matches()</code> 
+method. There are two predefined action matchers available:</p>
+
+  <ul>
+    <li><code>returning(m)</code></li>
+    <li><code>throwing(m)</code></li>
+  </ul>
+
+  <p>m can be a value or another Matcher. Thus the call matcher filters the log by 
+the method calls, while the action matcher filters the log by the method 
+results.</p>
+
+  <h3 id="logentrylist-verification-with-matchers">LogEntryList verification with Matchers</h3>
+
+  <p>Apart from looking at the content of the logs explicitly, we can also perform 
+assertions on them.  We can make use of <code>expect()</code> and our unit test <code>Matcher</code>s, 
+for example. There are several common types of assertions that we would like to 
+make, and the library has custom <code>Matcher</code>s already available for these. There 
+are two groups, one that matches based on results:</p>
+
+  <ul>
+    <li><code>alwaysReturned(value)</code></li>
+    <li><code>sometimeReturned(value)</code></li>
+    <li><code>neverReturned(value)</code></li>
+    <li><code>alwaysThrew(value)</code></li>
+    <li><code>sometimeThrew(value)</code></li>
+    <li><code>neverThrew(value)</code></li>
+  </ul>
+
+  <p><code>value</code> here can be a literal value or yet another <code>Matcher</code>.</p>
+
+  <p>The other group matches based on number of occurrences:</p>
+
+  <ul>
+    <li><code>neverHappened</code></li>
+    <li><code>happenedOnce</code></li>
+    <li><code>happenedAtLeastOnce</code></li>
+    <li><code>happenedAtMostOnce</code></li>
+    <li><code>happenedExactly(num)</code></li>
+    <li><code>happenedAtLeast(num)</code></li>
+    <li><code>happenedAtMost(num)</code></li>
+  </ul>
+
+  <p><code>LogEntryList</code> has a <code>verify()</code> method that takes a <code>Matcher</code> and saves you 
+having to write <code>expect()</code>. This means you can write assertions like the 
+following examples:</p>
+
+  <pre class="prettyprint lang-dart">
+m.getLogs(callsTo(&#39;bar&#39;)).verify(happenedExactly(2)).
+    verify(sometimeReturned(6)).verify(neverReturned(5));
+</pre>
+
+  <p>In English: verify that there were 2 calls to the ‘bar’ method, at least one of 
+which returned 6, and neither of which returned 5.</p>
+
+  <pre class="prettyprint lang-dart">
+m.getLogs(callsTo(&#39;bar&#39;), returning(5)).verify(neverHappened);
+</pre>
+
+  <p>In English: no calls to ‘bar’ ever returned 5, which is equivalent to:</p>
+
+  <pre class="prettyprint lang-dart">
+m.getLogs(callsTo(&#39;bar&#39;)).verify(neverReturned(5));
+</pre>
+
+  <h3 id="shared-logs">Shared logs</h3>
+
+  <p>It is possible for more than one mock object to use a common log. The reason you 
+might want to do this is to verify the expected interleaving of behavior. In 
+order to do this you need to create the log yourself, and then pass it as a 
+named <code>log</code> parameter to <code>Mock.custom</code>. For example:</p>
+
+  <pre class="prettyprint lang-dart">
+var log = new LogEntryList();
+var m1 = new Mock.custom(name:&#39;m1&#39;, log:log);
+var m2 = new Mock.custom(name:&#39;m2&#39;, log:log);
+m1.foo();
+m2.foo();
+m1.bar();
+m2.bar();
+</pre>
+
+  <p>If we printed the result, we would see something like:</p>
+
+  <pre><code>16:42:30.560&gt; m1.foo() returned &lt;null&gt;
+16:42:30.561&gt; m2.foo() returned &lt;null&gt;
+16:42:30.561&gt; m1.bar() returned &lt;null&gt;
+16:42:30.561&gt; m2.bar() returned &lt;null&gt;
+</code></pre>
+
+  <p>To access the shared log for verification, you can still use the 
+<code>Mock.getLogs()</code> and <code>LogEntryList.getMatches()</code> methods. So the following are 
+equivalent, using our example above:</p>
+
+  <pre class="prettyprint lang-dart">
+m1.getLogs(callsTo(&#39;foo&#39;));
+log.getMatches(&#39;m1&#39;, callsTo(&#39;foo&#39;));
+</pre>
+
+  <p>The advantage you get from using this method is that you can name Mocks with a 
+class name and treat them collectively. You can even pass <code>null</code> as the 
+<code>mockName</code> argument to match against the actions for all the mocks that shared 
+the log. Using our example above, this test would pass:</p>
+
+  <pre class="prettyprint lang-dart">
+log.getMatches(null, callsTo(&#39;foo&#39;)).verify(happenedExactly(2));
+</pre>
+
+  <h2 id="temporal-assertions">Temporal assertions</h2>
+
+  <p>So far, you should have learned that:</p>
+
+  <ul>
+    <li>you can create subclasses of <code>Mock</code> that ‘implement’ the interfaces of other classes you want to mock, and you can specify the behavior of these mock objects;</li>
+    <li>the actual behavior in any test run is optionally captured in one or more audit trail logs, which can be used later to make assertions about the behavior of the system.</li>
+  </ul>
+
+  <p>That is, assertions about the behavior of the system over time are made by filtering the execution logs and then verifying some properties of the remaining log messages.</p>
+
+  <p>We will now look at more complex ways of verifying the behavior of a system under test over time, using a more complex example, a vending machine.</p>
+
+  <p>Our vending machine will be made up of two classes - a <code>VendingMachineDispenser</code> responsible for maintaining an inventory of items that it can dispense, and a <code>VendingMachineCashier</code> class that takes coin deposits and item selections, and knows about the price of items.</p>
+
+  <h3 id="the-dispenser">The dispenser</h3>
+
+  <p>The dispenser class is very simple. All the dispenser does is take a command to dispense an item, and return success or failure depending on whether it has inventory, updating the inventory accordingly:</p>
+
+  <pre class="prettyprint lang-dart">
+class VendingMachineDispenser {
+   
+  List&lt;int&gt; inventory;
+   
+  VendingMachineDispenser(int numItems, int level) {
+    restock(numItems, level);
+  }
+   
+  void restock(int numItems, int level) {
+    inventory = new List(numItems);
+    for (var i = 0; i &lt; numItems; i++) {
+      inventory[i] = level;
+    }
+  }
+
+  bool dispenseItem(int itemNumber) {
+    if (itemNumber &gt;= 0 &amp;&amp; itemNumber &lt; inventory.length &amp;&amp;
+        inventory[itemNumber] &gt; 0) {
+      --inventory[itemNumber];
+      return true;
+    }
+    return false;
+  }
+}
+</pre>
+
+  <h3 id="the-cashier">The cashier</h3>
+
+  <p>The cashier will tell the dispenser to dispense a selected item if enough money has been deposited, and will give the user change. Selecting an item can fail if the dispenser has no stock, insufficient money has been inserted, or the cashier cannot issue change. The cashier will accept nickels (5c) and dimes (10c), up to a maximum of 50c, after which further coins will be rejected.</p>
+
+  <pre class="prettyprint lang-dart">
+class VendingMachineCashier {
+   
+  static const int MaxCapacity = 50;
+   
+  VendingMachineDispenser _dispenser;
+  List&lt;int&gt; _prices;
+  int _deposited = 0;
+  int numNickels = 0, numDimes = 0;
+
+  int get deposited =&gt; _deposited;
+
+  VendingMachineCashier(VendingMachineDispenser dispenser,
+      List&lt;int&gt; prices)
+      : _dispenser = dispenser,
+        _prices = prices;
+   
+  String _depositCoin(int amount) {
+    if (amount == 0 || _deposited &gt; (MaxCapacity - amount)) {
+      rejectCoin();
+    } else {
+      _deposited += amount;
+    }
+    return &#39;${_deposited}c&#39;;
+  }
+   
+  String depositNickel() =&gt; _depositCoin(5);   
+  String depositDime() =&gt; _depositCoin(10);
+  String depositOther() =&gt; _depositCoin(0);
+   
+  String selectItem(int itemNumber) {
+    if (_deposited &gt;=  _prices[itemNumber]) {
+      // Make sure we have change.
+      int change = deposited - _prices[itemNumber];
+      if ((change % 10) == 5 &amp;&amp; numNickels == 0) {
+        giveChange(_deposited);
+        _deposited = 0;
+        return &#39;No change&#39;;
+      } else if (_dispenser.dispenseItem(itemNumber)) {
+        giveChange(change);
+        _deposited = 0;
+        return &#39;Insert coin&#39;;
+      } else {
+        giveChange(_deposited);
+        _deposited = 0;
+        return &#39;Item ${itemNumber} out&#39;;
+      }
+    }
+    return &#39;${_deposited}c&#39;;
+  }
+   
+  String cancel() {
+    giveChange(_deposited);
+    _deposited = 0;
+    return &#39;Insert coin&#39;;
+  }
+   
+  void giveChange(int amount) {
+    while (amount &gt;= 10 &amp;&amp; numDimes &gt; 0) {
+      --numDimes;
+      dispenseDime();
+      amount -= 10;
+    }
+    if (amount == 5) {
+      --numNickels;
+      dispenseNickel();
+    }
+  }
+   
+  // Hardware interface; stubs for now.   
+  void rejectCoin() { /* Instruct hardware to reject current coin. */ }
+  void dispenseNickel() { /* Instruct hardware to dispense nickel. */ }
+  void dispenseDime() { /* Instruct hardware to dispense dime. */ }
+}
+</pre>
+
+  <p>The external interface of the cashier consists of the nickel and dime deposit slots, the item select buttons, and the cancel button.  <code>selectItem()</code> is called when an item select button is pressed, and it returns a message that is displayed to the user, which can be ‘Insert coin’ (the initial message which is also displayed after a successful purchase), ‘Item nnn out’ if there is no inventory of an item that has just been selected, ‘No change’ if an item can’t be purchased because the machine cannot issue the correct change, or a total amount currently deposited.</p>
+
+  <h3 id="mocking-the-classes">Mocking the classes</h3>
+
+  <p>In this example we are trying to validate the behavior of this system. We are not using mocks as stubs, but rather as spys (i.e. we are monitoring the behavior of a real class, not substituting for the class). We need a dispenser spy and a cashier spy:</p>
+
+  <pre class="prettyprint lang-dart">
+class DispenserSpy extends Mock implements VendingMachineDispenser {
+  VendingMachineDispenser _real;
+
+  DispenserSpy(LogEntryList log, int numItems, int level)
+      : super.custom(name: &#39;dispenser&#39;, log: log),
+        _real = new VendingMachineDispenser(numItems, level) {
+    when(callsTo(&#39;dispenseItem&#39;)).alwaysCall(_real.dispenseItem);
+  }
+}
+
+class CashierSpy extends Mock implements VendingMachineCashier {
+  VendingMachineCashier _real;
+
+  CashierSpy(LogEntryList log, VendingMachineDispenser d,
+      List&lt;int&gt;  prices)
+      : super.custom(name: &#39;cashier&#39;, log: log),
+        _real = new VendingMachineCashier(d, prices) {
+    when(callsTo(&#39;depositNickel&#39;)).alwaysCall(_real.depositNickel);
+    when(callsTo(&#39;depositDime&#39;)).alwaysCall(_real.depositDime);
+    when(callsTo(&#39;depositOther&#39;)).alwaysCall(_real.depositOther);
+    when(callsTo(&#39;selectItem&#39;)).alwaysCall(_real.selectItem);
+    when(callsTo(&#39;cancel&#39;)).alwaysCall(_real.cancel);
+    when(callsTo(&#39;get deposited&#39;)).alwaysCall(()=&gt;_real.deposited);
+  }
+}
+</pre>
+
+  <h3 id="driving-the-system-under-test">Driving the system under test</h3>
+
+  <p>To generate test logs for verification, we can use random testing (if you are familiar with fuzz testing, this is similar, although the idea is much older). We will simply call the public interface of the system based on the results of a random number generator:</p>
+
+  <pre class="prettyprint lang-dart">
+void main() {
+  var rand = new Random();
+  LogEntryList log = new LogEntryList();
+  List&lt;int&gt; prices = [25, 40, 50 ];
+  var dispenser = new DispenserSpy(log, 3, 5);
+  var cashier = new CashierSpy(log, dispenser, prices);
+  int numEvents = 500;
+  cashier.deposited; // useful for audit trail
+  while (--numEvents &gt;= 0) {
+    var eNum = rand.nextInt(6);
+    switch (eNum) {
+      case 0:
+        cashier.depositNickel();
+        break;
+      case 1:
+        cashier.depositDime();
+        break;
+      case 2:
+        cashier.depositOther();
+        break;
+      default:
+        cashier.selectItem(eNum - 3);
+        break;
+    }
+    cashier.deposited; // useful for audit trail
+  }
+}
+</pre>
+
+  <p>The code is quite straightforward; the main oddities are the calls to cashier.deposited; we do this because it is useful for validation purposes to generate log messages at the start and after each action that have the current amount deposited in the cashier; most of our assertions will be assertions about this value.</p>
+
+  <h3 id="sample-temporal-assertions">Sample temporal assertions</h3>
+
+  <p>Now we want to make some assertions about the behavior of the system. The behavior we are going to verify is the following:</p>
+
+  <ul>
+    <li>when the dispenser successfully dispensed an item, there was enough money in the cashier to pay for it;</li>
+    <li>if the user tried to select an item and no item was dispensed, and this was not due to lack of change or inventory, then this was because there was not enough money;</li>
+    <li>because we are not restocking in the code above after the initial stock, if an item fails to dispense due to lack of stock, any further attempts to dispense the item will also fail;</li>
+    <li>if the user deposits a dime, then the amount in the cashier will go up by 10c provided there was no more than 40c in the cashier; otherwise the amount will be unchanged.</li>
+  </ul>
+
+  <p>We will break these down step by step. In the first case:</p>
+
+  <ul>
+    <li>“when the dispenser successfully dispensed an item” translates to “calls to <code>VendingMachineDispenser.dispenseItem</code> that returned true”;</li>
+    <li>“there was enough money” - we can find the amount of money by getting the closest preceding calls to <code>VendingMachineCashier.deposited</code>;</li>
+    <li>“to pay for it” means the amount of money we retrieved in the last step was at least as great as the item price.</li>
+  </ul>
+
+  <p>We can assert this separately for each item, as follows:</p>
+
+  <pre class="prettyprint lang-dart">
+for (var item = 0; item &lt; 3; item++) {
+  int price = prices[item];
+  // Get all calls to VendingMachineDispenser.dispenseItem that
+  // returned true.
+  LogEntryList dispenses = log.getMatches(&#39;dispenser&#39;,
+                 callsTo(&#39;dispenseItem&#39;, item), returning(isTrue));
+
+  // Find the closest preceding calls to VendingMachineCashier.deposited.
+  LogEntryList lastDeposits = log.preceding(dispenses,
+            mockNameFilter: &#39;cashier&#39;, logFilter: callsTo(&#39;get deposited&#39;));
+
+  // Verify that the value returned was at least as high as item price.
+  lastDeposits.verify(alwaysReturned(greaterThanOrEqualTo(price)));
+}
+</pre>
+
+  <p>For the second example:</p>
+
+  <ul>
+    <li>“if the user tried to select an item” translates to calls to <code>VendingMachineCashier.selectItem</code>;</li>
+    <li>“and no item was dispensed” means we don’t care about cases where <code>selectItem</code> returned ‘Insert coin’;</li>
+    <li>“and this was not due to lack of change or inventory” means that we don’t care about cases where <code>selectItem</code> returned “No change” or “Item nnn out”;</li>
+    <li>“then this was because there was not enough money” means we want to look at the preceding calls to <code>VendingMachineCashier.deposited</code> and assert that the deposited amount was less that the item price.</li>
+  </ul>
+
+  <p>In code:</p>
+
+  <pre class="prettyprint lang-dart">
+for (var item = 0; item &lt; 3; item++) {
+  // Get the calls to selectItem that did not return ‘Insert coin’,
+  // ‘No change’, or ‘Item nnn out’.
+  LogEntryList failedDispenses = log.getMatches(&#39;cashier&#39;,
+      callsTo(&#39;selectItem&#39;, item),
+      returning(
+         isNot(anyOf(&#39;Insert coin&#39;, &#39;No change&#39;, startsWith(&#39;Item&#39;)))));
+  // Get the closest preceding calls to VendingMachineCashier.deposited.
+  LogEntryList lastDeposits = log.preceding(failedDispenses,
+                mockNameFilter: &#39;cashier&#39;, logFilter: callsTo(&#39;get deposited&#39;));
+  // Verify that the value returned was lower than the  item price.
+  lastDeposits.verify(alwaysReturned(lessThan(prices[item])));
+}
+</pre>
+
+  <p>For the third example:</p>
+
+  <ul>
+    <li>“if an item fails to dispense due to lack of stock” means <code>selectItem</code> returned ‘Item nnn out’;</li>
+    <li>“any further attempts to dispense the item” means we want all logs for <code>selectItem</code> that followed the first log for <code>selectItem</code> in the prior step;</li>
+    <li>“will also fail” means that none of the logs returned in the second step will have a return value of ‘Insert coin’.</li>
+  </ul>
+
+  <p>In code:</p>
+
+  <pre class="prettyprint lang-dart">
+for (var item = 0; item &lt; 3; item++) {
+  // We query the logs for selectItem calls twice so save the
+  // CallMatcher for reuse.
+  CallMatcher selectItem = callsTo(&#39;selectItem&#39;, item);
+  // Get the set of log entries where selectItem return no stock.
+  LogEntryList noStockDispenses = log.getMatches(&#39;cashier&#39;,
+      selectItem, returning(&#39;Item $item out&#39;));
+  // Get the set of log messages for selectItem that came
+  // after the first no stock message.
+  LogEntryList laterDispenses = log.fromFirst(noStockDispenses).
+      getMatches(&#39;cashier&#39;, selectItem);
+  // Verify that none of those returned success.
+  laterDispenses.verify(neverReturned(&#39;Insert coin&#39;));
+}
+</pre>
+
+  <p>An alternative way that would also work:</p>
+
+  <pre class="prettyprint lang-dart">
+for (var item = 0; item &lt; 3; item++) {
+  // Get the set of log entries where selectItem return no stock.
+  LogEntryList noStockDispenses = log.getMatches(&#39;cashier&#39;,
+      callsTo(&#39;selectItem&#39;, item), returning(&#39;Item $item out&#39;));
+  // Get the set of log messages for dispenseItem that came
+  // after the first no stock message.
+  LogEntryList laterDispenses = log.fromFirst(noStockDispenses).
+      getMatches(&#39;dispenser&#39;, callsTo(‘dispenseItem’, item));
+  // Verify that none of those returned success.
+  laterDispenses.verify(neverReturned(true));
+}
+</pre>
+
+  <p>For the fourth example, we will use a stepwise validator function. We will get all calls to <code>depositDime</code>, and the closest preceding calls to the <code>deposited</code> getter, and then we will make assertions about each such pair:</p>
+
+  <pre class="prettyprint lang-dart">
+// Get all calls to depositDime.
+LogEntryList dd = log.getMatches(&#39;cashier&#39;, callsTo(&#39;depositDime&#39;));
+// Get the closest preceding calls to get deposited, and include
+// the calls to depositDime in the result.
+LogEntryList pairs = log.preceding(dd, mockNameFilter: &#39;cashier&#39;,
+      logFilter: callsTo(&#39;get deposited&#39;), includeKeys: true);
+// Our validator will operate on each pair, and return 0 upon failure or
+// 2 upon success (so we advance the position by 2 for the next call).
+pairs.stepwiseValidate((l, pos) =&gt;
+    (l[pos+1].value ==
+     &#39;${l[pos].value+(l[pos].value &lt;= 40 ? 10 : 0)}c&#39;) ?
+        2 : 0);
+</pre>
+
+  <h2 id="reducing-logging-for-regression-tests">Reducing logging for regression tests</h2>
+
+  <p>Once you have a system working and a collection of assertions that you want to use for regression testing, you may want to reduce the amount of logging that is done by the mocks. For example, in our assertions we never made any use of <code>depositNickel</code> in the logs. To reduce the memory requirements and improve performance, we can turn off logging for this method.</p>
+
+  <p>Logging is enabled both at the level of <code>Mock</code> objects, and <code>Behavior</code> objects. In each case the <code>logging</code> getter/setter can be used to turn logging on or off. Recall from the earlier that <code>Behavior</code> methods such as <code>alwaysReturn</code> return the <code>Behavior</code> itself, to support chaining of calls. Thus we could have specified the mock behavior for <code>depositNickel</code> and turned off logging for that behavior at the same time with a line such as:</p>
+
+  <pre class="prettyprint lang-dart">
+when(callsTo(&#39;depositNickel&#39;)).
+    alwaysCall(_real.depositNickel).logging = false;
+</pre>
+
+  <p>Note that that logging property applies to the <code>Behavior</code>, not the specific <code>Action</code> in the <code>Behavior</code>, so this is equivalent to:</p>
+
+  <pre class="prettyprint lang-dart">
+when(callsTo(&#39;depositNickel&#39;)).logging = false;
+when(callsTo(‘depositNickel’)).alwaysCall(_real.depositNickel);
+</pre>
+
+  <h2 id="conclusion">Conclusion</h2>
+
+  <p>The Mock support currently available should be a good start. We expect that the library will become richer, more 
+comprehensive, and easier to use as more language features become available. In 
+the meantime, we welcome your <a href="/support/">feedback</a>.</p>
+</div>
+
+    	  </div> <!-- End of content from toc.html -->
+        </article>
+	  </div>
+
+	
+	<ul class="pager hidden-print">
+	  <li><a href="/articles/">More articles about Dart <i class="glyphicon glyphicon-chevron-up"></i></a></li>
+	 </ul>
+	 
+
+	</div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+
+
+
+
+</body>
+</html>
+

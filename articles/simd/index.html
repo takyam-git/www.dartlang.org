@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Using SIMD in Dart | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Using SIMD in Dart | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="Get more out of your CPU: operate on four numbers in parallel, using the Float32x4 class from the dart:typed_data library.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  <link rel="author" href="/authors/john-mccutchan.html">
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+  	<div class="container sub-page">
+      <div class="row">
+        <article class="has-permalinks"><div class="col-md-4">
+  <div class="bs-sidebar" data-spy="affix" data-offset-bottom="350" role="complementary">
+
+<ol class="toc nav bs-sidenav" id="markdown-toc">
+  <li><a href="#performance-gains">Performance gains</a></li>
+  <li><a href="#implementation-status">Implementation status</a></li>
+  <li><a href="#thinking-in-simd">Thinking in SIMD</a>    <ol>
+      <li><a href="#memory-model">Memory model</a></li>
+      <li><a href="#horizontal-operations">Horizontal operations</a></li>
+      <li><a href="#uniform-data">Uniform data</a></li>
+    </ol>
+  </li>
+  <li><a href="#types">Types</a>    <ol>
+      <li><a href="#float32x4">Float32x4</a></li>
+      <li><a href="#int32x4">Int32x4</a></li>
+      <li><a href="#float32x4list">Float32x4List</a></li>
+    </ol>
+  </li>
+  <li><a href="#common-techniques">Common techniques</a>    <ol>
+      <li><a href="#performing-arithmetic">Performing arithmetic</a></li>
+      <li><a href="#reading-the-value-of-individual-lanes">Reading the value of individual lanes</a></li>
+      <li><a href="#writing-the-value-of-individual-lanes">Writing the value of individual lanes</a></li>
+      <li><a href="#shuffling-or-re-ordering">Shuffling or re-ordering</a></li>
+      <li><a href="#branching">Branching</a></li>
+      <li><a href="#masking-lanes">Masking lanes</a></li>
+    </ol>
+  </li>
+  <li><a href="#examples">Examples</a>    <ol>
+      <li><a href="#example-1-average">Example #1: Average</a></li>
+      <li><a href="#example-2-4x4-matrix-multiplication">Example #2: 4x4 matrix multiplication</a></li>
+      <li><a href="#example-3-largest-number">Example #3: Largest number</a></li>
+    </ol>
+  </li>
+  <li><a href="#more-information">More information</a></li>
+</ol>
+
+  </div>
+</div>
+<div class="col-md-8">
+  <p><!-- Start of content -->
+</p>
+
+  <div>
+    <ol class="breadcrumb">
+
+  <li><a href="/articles/">
+  Articles</a></li>
+
+
+  <li class="active">Using SIMD in Dart</li>
+</ol>
+  </div>
+
+  <h1 id="using-simd-in-dart">Using SIMD in Dart</h1>
+
+  <p><em>Written by John McCutchan, August 2013</em></p>
+
+  <p>Programs written in Dart can use new numeric types
+that take advantage of
+<a href="http://en.wikipedia.org/wiki/SIMD">Single Instruction Multiple Data (SIMD)</a>
+instruction sets.
+By using the SIMD numeric type Float32x4,
+programs can operate on four floating-point numbers in parallel,
+providing a <strong>potential speedup of 400%</strong> for
+3D graphics, image processing, audio processing,
+and other numeric computation algorithms.</p>
+
+  <p>This article tells you how to use the SIMD numeric types
+that the <strong>dart:typed_data</strong> library provides—Float32x4 and Int32x4.
+Both types hold four numbers together
+and operate on the four numbers simultaneously.
+<strong>Int32x4</strong> is more limited;
+it’s useful for comparison, branching, and selection.
+<strong>Float32x4</strong> offers the standard set of arithmetic operations and more.</p>
+
+  <h2 id="performance-gains">Performance gains</h2>
+
+  <p>Depending on the algorithms involved,
+SIMD instructions can speed up numeric computation
+150% or more.
+As the figure shows, the greatest speedups tend to occur
+with 4x4 matrix multiplication.</p>
+
+  <p><img src="images/performance_gain.png" alt="graph of speedups" /></p>
+
+  <p>3D graphics applications multiply 4x4
+<a href="https://en.wikipedia.org/wiki/Transformation_matrix">transformation matrices</a>
+many times per frame.
+By using Float32x4 instead of double,
+you can speed up 4x4 matrix multiplication by <strong>over 300%</strong>.
+The following video features a skeletal animation demo in which
+the SIMD version of the animation has
+<strong>almost 400%</strong> the performance of the non-SIMD version.</p>
+
+  <iframe width="560" height="315" src="//www.youtube.com/embed/huawCRlo9H4?start=2996" frameborder="0" allowfullscreen=""></iframe>
+
+  <p>Machine learning algorithms
+(such as automatic speech recognition)
+that use a
+<a href="http://en.wikipedia.org/wiki/Mixture_model">Gauss Mixture Model (GMM)</a> 
+can also benefit from SIMD.
+Using Float32x4 instead of double
+<a href="http://dartogreniyorum.blogspot.com/2013/05/dart-beats-java-in-numerical-computing.html">doubled the speed of one GMM implementation</a>.</p>
+
+  <h2 id="implementation-status">Implementation status</h2>
+
+  <p>As the next table shows,
+although all of your code can <em>use</em>
+dart:typed_data APIs such as Float32x4,
+your code might not be <em>accelerated</em>.
+When the types are not accelerated in the runtime environment,
+the performance is equivalent to or slower than
+the analogous scalar code.</p>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th> </th>
+        <th>IA32/X64</th>
+        <th>ARM</th>
+        <th>JavaScript</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Supported</strong></td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>Yes</td>
+      </tr>
+      <tr>
+        <td><strong>Accelerated</strong></td>
+        <td>Yes</td>
+        <td>If NEON present</td>
+        <td><a href="http://www.slideshare.net/BrendanEich/value-objects">Pending</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 id="thinking-in-simd">Thinking in SIMD</h2>
+
+  <p>Imagine a SIMD value as having four <em>lanes</em> each containing a scalar value.
+The lanes are organized horizontally
+and named <em>x</em>, <em>y</em>, <em>z</em>, and <em>w</em>.
+Note that the <em>w</em> lane is the <em>fourth</em> lane.</p>
+
+  <p><img src="images/float32x4.png" alt="4 bytes of data labeled x, y, z, and w, and containing [1.0, 2.0, 3.0, 4.0]" /></p>
+
+  <p>Operations on SIMD values occur vertically,
+as the following figure shows.
+For example, the result of adding (1.0, 2.0, 3.0, 4.0) and (5.0, 6.0, 7.0, 8.0)
+is (6.0, 8.0, 10.0, 12.0).</p>
+
+  <p><img src="images/float32x4_addition.png" alt="Results of adding 2 float32x4s: [1.0, 2.0, 3.0, 4.0] + [5.0, 6.0, 7.0, 8.0] = [6.0, 8.0, 10.0, 12.0]" /></p>
+
+  <p>Remember that all four of the additions happen in parallel.</p>
+
+  <h3 id="memory-model">Memory model</h3>
+
+  <p>Despite the fact that a Float32x4 is organized as
+four lanes holding distinct floating-point values,
+you should not write programs that
+treat a Float32x4 as a list of floating-point numbers
+that can be read individually.
+Instead, think of a Float32x4 as an immutable object
+with operations that create new immutable Float32x4 objects.</p>
+
+  <h3 id="horizontal-operations">Horizontal operations</h3>
+
+  <p>Horizontal operations read or write the individual lane values
+inside a Float32x4 or Int32x4 value.
+Operating on these values horizontally—for example,
+adding the individual lane values together—is slow; avoid it.
+If you can’t avoid a horizontal operation entirely,
+adjust the code to perform the operation as few times as possible.</p>
+
+  <h3 id="uniform-data">Uniform data</h3>
+
+  <p>Because operations performed on SIMD values affect all four lanes,
+the data you store in a Float32x4 should be uniform—for
+example, the alpha value of four pixels.
+An example of non-uniform data would be the
+red, green, blue, and alpha values of a single pixel.</p>
+
+  <p>Consider an algorithm that alters the alpha channel of an image.
+Each pixel is represented as 4 floating-point values representing the
+red, green, blue, and alpha channels respectively.
+If the Float32x4 holds non-uniform data,
+as in the following diagram,
+then you cannot efficiently alter the alpha channel
+without altering the red, green, and blue channels as well.</p>
+
+  <p><img src="images/non_uniform.png" alt="4 bytes of data labeled r, g, b, and a" />
+<strong>Non-uniform data (bad!)</strong></p>
+
+  <p>Contrast this with a Float32x4 holding uniform data from four pixels,
+as in the following diagram:</p>
+
+  <p><img src="images/uniform.png" alt="4 bytes of data labeled a0, a1, a2, and a3" />
+<strong>Uniform data (good!)</strong></p>
+
+  <p>A single operation can adjust the alpha channel without altering
+the red, green, or blue channels.</p>
+
+  <p>When a Float32x4 stores uniform data,
+you don’t have to treat a lane specially (which is slow).
+Organizing your data to be uniform is often easier said than done,
+but it can reap performance wins.</p>
+
+  <h2 id="types">Types</h2>
+
+  <p>The <a href="http://api.dartlang.org/docs/releases/latest/dart_typed_data.html">dart:typed_data library</a>
+has four types to support SIMD:
+Float32x4, Int32x4, Float32x4List and Int32x4List.</p>
+
+  <h3 id="float32x4">Float32x4</h3>
+
+  <p>Each lane in a Float32x4 holds a single-precision (32-bit) floating-point value.
+Most of the examples in this article use Float32x4.
+For a complete list of methods and constructors,
+see the <a href="http://api.dartlang.org/dart_typed_data/Float32x4.html">Float32x4 API reference</a>.</p>
+
+  <h3 id="int32x4">Int32x4</h3>
+
+  <p>Each lane in a Int32x4 API reference
+holds an unsigned, 32-bit integer value.
+Int32x4 has no support for arithmetic.
+Instead, use it for logical operations
+such as comparison and selection.</p>
+
+  <p>You can get Int32x4 objects by explicitly creating them or,
+as the <a href="#branching">Branching</a> section shows,
+from the return values of Float32x4 methods.
+To create an explicit selection mask,
+you can use the Int32x4.bool() constructor:</p>
+
+  <pre class="prettyprint lang-dart">
+Int32x4.bool(bool x, bool y, bool z, bool w);
+</pre>
+
+  <p>This constructor creates a new Int32x4 instance
+with 0xFFFFFFFF in lanes where the boolean parameter is true
+and 0x0 in lanes where the boolean parameter is false.
+For an example of using this constructor, see the
+<a href="#lane-masking">Lane masking</a> section.</p>
+
+  <p>The <a href="http://api.dartlang.org/dart_typed_data/Int32x4.html">Int32x4 API reference</a>
+has a complete list of methods and constructors.</p>
+
+  <h3 id="float32x4list">Float32x4List</h3>
+
+  <p>When you need a list of Float32x4 objects, use
+<a href="http://api.dartlang.org/dart_typed_data/Float32x4List.html">Float32x4List</a>
+instead of List&lt;Float32x4&gt; whenever possible.
+See the <a href="#examples">Examples</a> section
+for code that uses Float32x4List. 
+For a complete list of methods and constructors, see the
+<a href="http://api.dartlang.org/dart_typed_data/Float32x4List.html">Float32x4List API reference</a>.</p>
+
+  <h2 id="common-techniques">Common techniques</h2>
+
+  <p>This section shows code for some common tasks.</p>
+
+  <h3 id="performing-arithmetic">Performing arithmetic</h3>
+
+  <p>Arithmetic on instances of Float32x4 is no different than
+arithmetic on double or integer numbers in Dart.
+Example:</p>
+
+  <pre class="prettyprint lang-dart">
+var a = new Float32x4(1.0, 2.0, 3.0, 4.0);
+var b = new Float32x4(5.0, 6.0, 7.0, 8.0);
+var sum = a + b;
+</pre>
+
+  <h3 id="reading-the-value-of-individual-lanes">Reading the value of individual lanes</h3>
+
+  <aside class="alert alert-warning">
+    <p><strong>Warning:</strong>
+  Reading individual lanes is <strong>slow</strong>.</p>
+  </aside>
+
+  <p>You can read individual lanes using the getters x, y, z, and w.
+For example:</p>
+
+  <pre class="prettyprint lang-dart">
+double addXY(Float32x4 v) {
+  return v.x + v.y;
+}
+</pre>
+
+  <h3 id="writing-the-value-of-individual-lanes">Writing the value of individual lanes</h3>
+
+  <aside class="alert alert-warning">
+    <p><strong>Warning:</strong>
+  This technique is <strong>slow</strong>.</p>
+  </aside>
+
+  <p>Remember that all instances of Float32x4 and Int32x4 are immutable,
+so you can’t change the value in a given lane.
+However you can construct a new instance
+using the lane values from an existing instance,
+while altering the value in one lane.
+For example:</p>
+
+  <pre class="prettyprint lang-dart">
+Float32x4 v = ...;
+v = v.withX(x); // Change the value in the x lane of v.
+</pre>
+
+  <h3 id="shuffling-or-re-ordering">Shuffling or re-ordering</h3>
+
+  <p>You can shuffle the order of values stored in a Float32x4 instance
+without resorting to code that looks like this:</p>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+Float32x4 v = ...;
+double x = v.x;
+double y = v.y;
+double z = v.z;
+double w = v.w;
+Float32x4 v2 = new Float32x4(w, z, y, x); // Reverse the order of the values.
+</pre>
+  </div>
+
+  <p>Instead, simply use one of the many fields
+that returns a new object with values in the specified order:</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+Float32x4 v2 = v.shuffle(Float32x4.WZYX);  // Reverse the order of the values.
+</pre>
+  </div>
+
+  <p>Not only is the code easier to read,
+but the performance is significantly better, too.</p>
+
+  <h3 id="branching">Branching</h3>
+
+  <p>Take care when writing code that branches.
+Consider the following code snippet:</p>
+
+  <div class="bad">
+    <pre class="prettyprint lang-dart">
+Float32x4 a = ...;
+Float32x4 b = ...;
+Float32x4 c;
+
+if (a &gt; b) {
+  c = a;
+} else {
+  c = b;
+}
+</pre>
+  </div>
+
+  <p>It has a problem:
+What if only some lanes in a are greater than b,
+while the remaining lanes are not?
+Comparisons between two Float32x4 instances cannot be
+reduced down to a single boolean value.
+Because of this,
+Float32x4 does not support the standard comparison operators;
+instead it defines the following methods:</p>
+
+  <pre class="prettyprint lang-dart">
+Int32x4 greaterThan(Float32x4 other);
+Int32x4 greaterThanOrEqual(Float32x4 other);
+Int32x4 lessThan(Float32x4 other);
+Int32x4 lessThanOrEqual(Float32x4 other);
+Int32x4 equal(Float32x4 other);
+Int32x4 notEqual(Float32x4 other);
+</pre>
+
+  <p>Each method returns a Int32x4,
+where the lane values are 0xFFFFFFFF when the comparison is true
+and 0x0 when the comparison is false.
+This Int32x4 is called a selection mask
+and is used to select values from two Float32x4s,
+lane by lane.
+Here is the preceding code snippet rewritten for SIMD:</p>
+
+  <div class="good">
+    <pre class="prettyprint lang-dart">
+Float32x4 a = ...;
+Float32x4 b = ...;
+Int32x4 mask = a.greaterThan(b);  // Create selection mask.
+Float32x4 c = mask.select(a, b);   // Select.
+</pre>
+  </div>
+
+  <p>The select() method is defined in the Int32x4 class as follows:</p>
+
+  <pre class="prettyprint lang-dart">
+Float32x4 select(Float32x4 trueValue, Float32x4 falseValue);
+</pre>
+
+  <p>If the mask has 0xFFFFFFFF in a lane,
+the result has the lane value from <em>trueValue</em>;
+if the mask has 0x0 in a lane,
+the result has the lane value from <em>falseValue</em>.
+The following diagram demonstrates a selection:</p>
+
+  <p><img src="images/select_logic.png" alt="illustration of a Int32x4 selection mask being applied to 2 Float32x4 objects, and the resulting Float32x4 object" /></p>
+
+  <p>In general, programs that branch based on the values in a Float32x4
+execute both the true path and the false path.
+They then merge the results by performing a select operation.</p>
+
+  <h3 id="masking-lanes">Masking lanes</h3>
+
+  <p>Some algorithms compute updated values for some but not all of the lanes.
+Although you can’t operate on a fraction of the lanes of a Float32x4,
+you <em>can</em> create a custom selection mask.
+You can then use that mask to merge the updated lanes
+with the original value.
+For example:</p>
+
+  <pre class="prettyprint lang-dart">
+// v = [2.0, 3.0, 4.0, 5.0]
+Float32x4 v = new Float32x4(2.0, 3.0, 4.0, 5.0);
+
+// mask = [0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x0]
+Int32x4 mask = new Int32x4.bool(true, true, true, false);  
+
+// r = [4.0, 9.0, 16.0, 25.0].
+Float32x4 r = v * v; 
+
+// v = [4.0, 9.0, 16.0, 5.0].
+v = mask.select(r, v);
+</pre>
+
+  <h2 id="examples">Examples</h2>
+
+  <p>This section contains a few algorithms written to take advantage of SIMD.</p>
+
+  <h3 id="example-1-average">Example #1: Average</h3>
+
+  <p>This example computes the average of the individual floats
+stored in a Float32x4List.
+The loop computes a sum for the x, y, z, and w lanes.
+Outside of the loop,
+the four sub-sums are summed together,
+resulting in the true sum of the numbers.</p>
+
+  <pre class="prettyprint lang-dart">
+double computeAverage(Float32x4List list) {
+  Float32x4 sum = new Float32x4.zero();
+  for (int i = 0; i &lt; list.length; i++) {
+    sum += list[i];
+  }
+  // Perform horizontal operations once.
+  double average = sum.x + sum.y + sum.z + sum.w;
+  return average / (list.length*4);
+}
+</pre>
+
+  <h3 id="example-2-4x4-matrix-multiplication">Example #2: 4x4 matrix multiplication</h3>
+
+  <p>This example multiplies two 4x4 matrices, A and B.
+The result of the multiplication is stored into R.</p>
+
+  <pre class="prettyprint lang-dart">
+// R = A * B;
+void multiplyMatrices(Float32x4List A, Float32x4List B, Float32x4List R) {
+    var a0 = A[0];
+    var a1 = A[1];
+    var a2 = A[2];
+    var a3 = A[3];
+
+    var b0 = B[0];
+    R[0] = b0.shuffle(Float32x4.XXXX) * a0 + b0.shuffle(Float32x4.YYYY) * a1 + b0.shuffle(Float32x4.ZZZZ) * a2 + b0.shuffle(Float32x4.WWWW) * a3;
+    var b1 = B[1];
+    R[1] = b1.shuffle(Float32x4.XXXX) * a0 + b1.shuffle(Float32x4.YYYY) * a1 + b1.shuffle(Float32x4.ZZZZ) * a2 + b1.shuffle(Float32x4.WWWW) * a3;
+    var b2 = B[2];
+    R[2] = b2.shuffle(Float32x4.XXXX) * a0 + b2.shuffle(Float32x4.YYYY) * a1 + b2.shuffle(Float32x4.ZZZZ) * a2 + b2.shuffle(Float32x4.WWWW) * a3;
+    var b3 = B[3];
+    R[3] = b3.shuffle(Float32x4.XXXX) * a0 + b3.shuffle(Float32x4.YYYY) * a1 + b3.shuffle(Float32x4.ZZZZ) * a2 + b3.shuffle(Float32x4.WWWW) * a3;
+}
+</pre>
+
+  <h3 id="example-3-largest-number">Example #3: Largest number</h3>
+
+  <p>This example determines the largest floating point number in a Float32x4List.
+First, the loop determines the largest number in each lane.
+Then, outside of the loop,
+the largest of those 4 largest numbers is determined.</p>
+
+  <pre class="prettyprint lang-dart">
+double findLargestNumber(Float32x4List list) {
+  Float32x4 largest = list[0];
+  for (int i = 1; i &lt; list.length; i++) {
+    largest = largest.max(list[i]);
+  }
+  // Perform horizontal operations once.
+  double x = largest.x;
+  double y = largest.y;
+  double z = largest.z;
+  double w = largest.w;
+  double t0 = Math.max(x, y);
+  double t1 = Math.max(z, w);
+  return Math.max(t0, t1);
+}
+</pre>
+
+  <h2 id="more-information">More information</h2>
+
+  <p>For more details, check out these resources:</p>
+
+  <ul>
+    <li>API reference documentation for
+<a href="http://api.dartlang.org/dart_typed_data/Float32x4.html">Float32x4</a>,
+<a href="http://api.dartlang.org/dart_typed_data/Int32x4.html">Int32x4</a>, and
+<a href="http://api.dartlang.org/dart_typed_data/Float32x4List.html">Float32x4List</a></li>
+    <li>Code that uses SIMD:
+      <ul>
+        <li><a href="https://github.com/johnmccutchan/spectre">Google I/O 2013 demo (spectre)</a></li>
+        <li><a href="https://github.com/johnmccutchan/vector_math">vector_math</a>,
+a library for 2D and 3D applications
+that relies on Float32x4 and Float32x4List</li>
+      </ul>
+    </li>
+    <li>My <a href="http://www.youtube.com/watch?v=CKh7UOELpPo">SIMD talk</a> and
+<a href="/slides/2013/02/Bringing-SIMD-to-the-Web-via-Dart.pdf">slides</a>
+from the February 2013
+<a href="http://www.meetup.com/sfhtml5/">SFHTML5 meetup</a></li>
+    <li><a href="/articles/numeric-computation/">Numeric Computation</a>,
+an article about number representations in Dart
+and how they affect performance</li>
+  </ul>
+
+</div>
+
+    	  </div> <!-- End of content from toc.html -->
+        </article>
+	  </div>
+
+	
+	<ul class="pager hidden-print">
+	  <li><a href="/articles/">More articles about Dart <i class="glyphicon glyphicon-chevron-up"></i></a></li>
+	 </ul>
+	 
+
+	</div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+
+
+
+
+</body>
+</html>
+

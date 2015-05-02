@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Guidelines for Doc Comments | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Guidelines for Doc Comments | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="How we write doc comments for the Dart APIs.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  <link rel="author" href="/authors/kathy-walrath.html">
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+  	<div class="container sub-page">
+      <div class="row">
+        <article class="has-permalinks"><div class="col-md-4">
+  <div class="bs-sidebar" data-spy="affix" data-offset-bottom="350" role="complementary">
+
+<ol class="toc nav bs-sidenav" id="markdown-toc">
+  <li><a href="#examples">Examples</a></li>
+  <li><a href="#content">Content</a>    <ol>
+      <li><a href="#first-paragraph-a-one-sentence-description">First paragraph: a “one-sentence” description</a></li>
+      <li><a href="#the-rest-of-the-doc-comment">The rest of the doc comment</a></li>
+    </ol>
+  </li>
+  <li><a href="#markup">Markup</a>    <ol>
+      <li><a href="#links">Links</a></li>
+      <li><a href="#block-styles">Block styles</a></li>
+      <li><a href="#inline-styles">Inline styles</a></li>
+    </ol>
+  </li>
+  <li><a href="#word-choice-punctuation-and-so-on">Word choice, punctuation, and so on</a></li>
+  <li><a href="#resources">Resources</a></li>
+</ol>
+
+  </div>
+</div>
+<div class="col-md-8">
+  <p><!-- Start of content -->
+</p>
+
+  <div>
+    <ol class="breadcrumb">
+
+  <li><a href="/articles/">
+  Articles</a></li>
+
+
+  <li class="active">Guidelines for Doc Comments</li>
+</ol>
+  </div>
+
+  <h1 id="guidelines-for-doc-comments">Guidelines for Doc Comments</h1>
+
+  <p><em>Written by Kathy Walrath<br />
+<time pubdate="" date="2012-11-21">November 2012</time>
+(updated September 2014)
+</em></p>
+
+  <p>This document describes the conventions the Dart team
+has agreed upon for documentation comments.
+If you have suggestions for improving the conventions,
+<a href="http://groups.google.com/a/dartlang.org">let us know</a>.
+To produce documentation from comments,
+use the <a href="/tools/dartdocgen/">dartdocgen tool</a>.</p>
+
+  <p>See also these related articles:</p>
+
+  <ul>
+    <li><a href="/articles/style-guide/">Dart Style Guide</a></li>
+    <li><a href="/articles/api-naming-guide/">API Naming Guide</a></li>
+  </ul>
+
+  <h2 id="examples">Examples</h2>
+
+  <p>Here’s a typical comment for a function or method:</p>
+
+  <!-- BEGIN(min) -->
+  <pre class="prettyprint lang-dart">
+/// Returns the lesser of two numbers.
+///
+/// Returns NaN if either argument is NaN.
+/// The lesser of -0.0 and 0.0 is -0.0.
+/// If the arguments are otherwise equal
+/// (including int and doubles with the same mathematical value)
+/// then it is unspecified which of the two arguments is returned.
+///
+///     return min(100, value);
+num min(num a, num b) {...}
+</pre>
+  <!-- END(min) -->
+
+  <p>And one for a variable or property:</p>
+
+  <!-- BEGIN(PI) -->
+  <pre class="prettyprint lang-dart">
+/// The pi constant.
+const double pi = 3.1415926535897932;
+</pre>
+  <!-- END(PI) -->
+
+  <p>For an example of a library with doc comments, see the <code>path</code> library.
+(<a href="http://www.dartdocs.org/documentation/path/1.3.3/index.html#path/path">generated doc</a>,
+<a href="https://github.com/dart-lang/path/blob/1.3.3/lib/path.dart">source code</a>).</p>
+
+  <aside class="alert alert-info">
+    <p><b>Style note:</b>
+Dart supports two syntaxes for doc comments: <code>///</code> and <code>/**</code>.
+This document follows the
+<a href="/articles/style-guide/#do-use-doc-comments-when-commenting-members-and-types">style guide recommendation</a>
+of using <code>///</code>. Older source code tends to use <code>/**</code>.</p>
+  </aside>
+
+  <h2 id="content">Content</h2>
+
+  <p>The first paragraph of a doc comment is special.
+After that, the content is up to you,
+although we strongly recommend including code samples.</p>
+
+  <h3 id="first-paragraph-a-one-sentence-description">First paragraph: a “one-sentence” description</h3>
+
+  <p>As the examples at the top of this document show,
+the first paragraph of any doc comment
+is a brief, user-oriented description ending with a period.
+It is not a complete sentence.</p>
+
+  <p>The description should help the reader understand
+whether this bit of API might be useful to them,
+compared to similar sounding API.
+Never just repeat the API name;
+try to restate it to give more information
+than the name alone provides.
+Avoid links when possible.</p>
+
+  <h4 class="no_toc" id="functions-and-methods">Functions and methods</h4>
+
+  <p>Function/method descriptions begin with a <strong>third-person verb</strong>.</p>
+
+  <p>Examples:</p>
+
+  <ul>
+    <li><code>Returns true if every element of this collection satisfies the predicate [f]. </code></li>
+    <li><code>Starts the stopwatch.</code></li>
+  </ul>
+
+  <h4 class="no_toc" id="variables-getters-and-setters">Variables, getters, and setters</h4>
+
+  <p>Static/instance variable and getter/setter descriptions are <strong>noun phrases</strong>.</p>
+
+  <p>If there’s both a setter and a getter, comment only the getter.
+That way, it’ll be treated as a variable.
+Don’t include the type, since that’s already in the signature.</p>
+
+  <p>Example:</p>
+
+  <ul>
+    <li><code>The number of days in the current month.</code></li>
+  </ul>
+
+  <h4 class="no_toc" id="classes">Classes</h4>
+
+  <p>Class descriptions are <strong>noun phrases</strong>.</p>
+
+  <p>Examples:</p>
+
+  <ul>
+    <li>
+      <p>Possible description for <a href="http://api.dartlang.org/dart_core/List.html">List</a>: <br /><code>An indexable collection with a length, also known as an array.</code></p>
+    </li>
+    <li>
+      <p>Possible description for <a href="http://api.dartlang.org/dart_core/String.html">String</a>: <br /><code>A basic string, implemented as an immutable sequence of UTF-16 code units.</code></p>
+    </li>
+  </ul>
+
+  <h4 class="no_toc" id="libraries">Libraries</h4>
+
+  <p>Library descriptions are <strong>noun phrases</strong>.</p>
+
+  <p>Examples:</p>
+
+  <ul>
+    <li>
+      <p>Possible description for <a href="http://api.dartlang.org/dart_core.html">dart:core</a>: <br /><code>Core functionality that's automatically imported into every Dart program.</code></p>
+    </li>
+    <li>
+      <p>Possible description for <a href="http://api.dartlang.org/dart_collection.html">dart:collection</a>: <br /><code>Data structures for managing collections of objects.</code></p>
+    </li>
+  </ul>
+
+  <h3 id="the-rest-of-the-doc-comment">The rest of the doc comment</h3>
+
+  <p>Subsequent paragraphs explain return values,
+what arguments you can specify, side effects,
+exceptions that users might want to catch, related APIs, and so on.</p>
+
+  <p>Be sure to provide <strong>code examples</strong> for the most common uses of the API,
+and <strong>links</strong> to documents that provide more information.</p>
+
+  <h2 id="markup">Markup</h2>
+
+  <p>The <a href="/tools/dartdocgen/">dartdocgen</a> tool currently recognizes markdown
+formatting, as well as some dartdocgen-specific markup.</p>
+
+  <p><strong>When in doubt, format less.</strong>
+You’ll be less likely to break the docs,
+and someone else can always add formatting.
+In particular, <strong>don’t use HTML formatting</strong>.
+For details on markdown, see the
+<a href="https://pub.dartlang.org/packages/markdown">markdown package</a>, which the
+dartdocgen tool currently uses to format documentation comments.</p>
+
+  <aside class="alert alert-info">
+    <p><strong>Note:</strong>
+A new version of the documentation generator is being developed.
+For details, see the <a href="https://github.com/dart-lang/dartdoc">dartdoc project</a>.</p>
+  </aside>
+
+  <h3 id="links">Links</h3>
+
+  <p>Normal URI hyperlinks are supported, as well as automatic links to Dart identifiers.</p>
+
+  <h4 class="no_toc" id="identifier">Identifier</h4>
+
+  <p><code>[id]</code> <em>or</em> <code>[id](uri)</code></p>
+
+  <p>Both generate a hyperlink to a Dart identifier. This identifier can be a class,
+method, or property. For example:</p>
+
+  <pre class="prettyprint lang-none">
+Throws a [StateError] if ...
+similar to [anotherMethod], but ...
+</pre>
+
+  <p>If you specify <em>uri</em>, it must be the URI of a dart library <em>L</em>, and <em>id</em> must
+be a name declared in the exported namespace of <em>L</em>.</p>
+
+  <h4 class="no_toc" id="constructor">Constructor</h4>
+
+  <p><code>[new c]</code> <em>or</em> <code>[new c](uri)</code></p>
+
+  <p>Both generate a hyperlink to the constructor for <em>c</em>.</p>
+
+  <p>If you specify <em>uri</em>, it must be the URI of a dart library <em>L</em>, and <em>c</em> must be
+a constructor of a class declared in the exported namespace of <em>L</em>.</p>
+
+  <h4 class="no_toc" id="hyperlink">Hyperlink</h4>
+
+  <p><code>[text](uri)</code> <em>or</em> <code>&lt;uri&gt;</code></p>
+
+  <p>Both generate a hyperlink to <code>uri</code>. The first form uses <em>text</em> as the link
+text. The second form uses <em>uri</em> as the link text.</p>
+
+  <h3 id="block-styles">Block styles</h3>
+
+  <h4 class="no_toc" id="paragraph">Paragraph</h4>
+
+  <p>Use <em>a blank line</em> to denote the end of a paragraph.</p>
+
+  <h4 class="no_toc" id="code-block">Code block</h4>
+
+  <p>Use four blank spaces <em>after the line’s comment characters,</em>
+which means <strong>five spaces</strong> after the * or /
+(since they’re always followed by a space).
+Example:</p>
+
+  <pre class="prettyprint lang-dart">
+/// ...
+/// For example:
+///
+///     Future&amp;lt;int&gt; future = getFutureFromSomewhere();
+///     future.then((value) {
+///       print(&quot;I received the number $value&quot;);
+///     });
+/// ...
+</pre>
+
+  <h4 class="no_toc" id="header">Header</h4>
+
+  <pre class="prettyprint lang-none">
+## header text until newline
+</pre>
+
+  <p>Lower level headers (such as <code>###</code>) also work.</p>
+
+  <h4 class="no_toc" id="bulleted-unordered-list-item">Bulleted (unordered) list item</h4>
+
+  <pre class="prettyprint lang-none">
+* item continues until next list item or blank line
+</pre>
+
+  <p>The line before the first bulleted list item must be blank.</p>
+
+  <h4 class="no_toc" id="numbered-ordered-list-item">Numbered (ordered) list item</h4>
+
+  <pre class="prettyprint lang-none">
+1. item continues until next list item or blank line
+2. next item
+</pre>
+
+  <p>Although items are currently autonumbered,
+they might not always be.
+Use <code>2.</code> for item #2, <code>3.</code> for item #3, and so on.</p>
+
+  <h3 id="inline-styles">Inline styles</h3>
+
+  <h4 class="no_toc" id="code-font">Code font</h4>
+
+  <p><code>`code`</code> <em>(note the backquotes)
+or</em>
+<code>[:code:]</code></p>
+
+  <p>Avoid code font unless it’s (1) a big chunk of code or
+(2) necessary to prevent confusion.</p>
+
+  <h4 class="no_toc" id="italics">Italics</h4>
+
+  <p><code>_single underscore_</code>
+<em>or</em>
+<code>*single asterisk*</code></p>
+
+  <h4 class="no_toc" id="boldface">Boldface</h4>
+
+  <p><code>**double asterisk**</code>
+<em>or</em>
+<code>__double underscore__</code></p>
+
+  <p>Here’s an example of a warning:</p>
+
+  <pre class="prettyprint lang-dart">
+/// ...
+///
+/// **Warning:** This feature is not yet supported in all modern browsers.
+/// See &lt;http://caniuse.com/flexbox&gt; for current status.
+///
+/// ...
+</pre>
+
+  <h2 id="word-choice-punctuation-and-so-on">Word choice, punctuation, and so on</h2>
+
+  <ul>
+    <li>Keep it short, direct, and clear.
+Doc comments are for the API’s users, not its implementers.</li>
+    <li>Avoid abbreviations such as “i.e.” and “e.g.”
+(Many people don’t know what they mean.)
+Just say “that is” and “for example” if necessary.</li>
+    <li>Use single quotes (‘) instead of double quotes (“) in code samples
+unless you have a reason to do the opposite.
+(Just be consistent.)</li>
+    <li>Use “this” instead of “the”
+when referring to an object created from the current class.
+Example:
+Adds an item to this list.</li>
+  </ul>
+
+  <h2 id="resources">Resources</h2>
+
+  <ul>
+    <li><a href="/articles/style-guide/#comments">Comments</a>
+section of the Dart Style Guide</li>
+    <li>dart:math API doc
+(<a href="http://api.dartlang.org/dart_math.html">generated doc</a>,
+<a href="http://code.google.com/p/dart/source/browse/branches/bleeding_edge/dart/sdk/lib/math/math.dart">source code</a>)</li>
+    <li><a href="https://github.com/kwalrath/dart-doc-testing">dart-doc-testing</a> project
+(<a href="http://kwalrath.github.com/dart-doc-testing/comment_test/CommentTester.html">generated doc</a>,
+<a href="https://github.com/kwalrath/dart-doc-testing/blob/master/CommentTest.dart">source code</a>)</li>
+  </ul>
+</div>
+
+    	  </div> <!-- End of content from toc.html -->
+        </article>
+	  </div>
+
+	
+	<ul class="pager hidden-print">
+	  <li><a href="/articles/">More articles about Dart <i class="glyphicon glyphicon-chevron-up"></i></a></li>
+	 </ul>
+	 
+
+	</div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+
+
+
+
+</body>
+</html>
+

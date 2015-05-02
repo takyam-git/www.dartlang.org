@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Pub Dependencies | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Pub Dependencies | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="Add other packages to your app. Specify package locations, version constraints, and more.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+    <div class="container col-md-10 col-md-offset-1 sub-page">
+      <div>
+      <div class="col-md-4">
+  <div class="bs-sidebar" data-spy="affix" data-offset-bottom="350" role="complementary">
+
+<ol class="toc nav bs-sidenav" id="markdown-toc">
+  <li><a href="#dependency-sources">Dependency sources</a>    <ol>
+      <li><a href="#hosted-packages">Hosted packages</a></li>
+      <li><a href="#git-packages">Git packages</a></li>
+      <li><a href="#path-packages">Path packages</a></li>
+    </ol>
+  </li>
+  <li><a href="#version-constraints">Version constraints</a>    <ol>
+      <li><a href="#caret-syntax">Caret syntax</a></li>
+    </ol>
+  </li>
+  <li><a href="#dev-dependencies">Dev dependencies</a></li>
+  <li><a href="#dependency-overrides">Dependency overrides</a></li>
+</ol>
+
+  </div>
+</div>
+<div class="col-md-8">
+  <p><!-- Start of content -->
+</p>
+
+  <div>
+    <ol class="breadcrumb">
+
+  <li><a href="/tools/">
+  Dart Tools</a></li>
+
+  <li><a href="/tools/pub/">
+  Pub</a></li>
+
+
+  <li class="active">Pub Dependencies</li>
+</ol>
+  </div>
+
+  <h1 id="pub-dependencies">Pub Dependencies</h1>
+
+  <p>Dependencies are one of <a href="/tools/pub">pub</a>’s core concepts.
+A dependency is another package
+that your package needs in order to work. Dependencies are specified in your
+<a href="pubspec.html">pubspec</a>. You only list
+<a href="glossary.html#immediate-dependency">immediate dependencies</a>—the
+software that your package uses directly. Pub handles
+<a href="glossary.html#transitive-dependency">transitive dependencies</a> for you.</p>
+
+  <aside class="alert alert-info">
+    <p>To see all the dependencies used by a package, use
+<a href="cmd/pub-deps.html"><code>pub deps</code></a>.</p>
+  </aside>
+
+  <p>For each dependency, you specify the <em>name</em> of the package you depend on. For
+<a href="glossary.html#library-package">library packages</a>, you specify the <em>range of
+versions</em> of that package that you allow. You may also specify the
+<a href="glossary.html#source"><em>source</em></a> which tells pub how the package can be located,
+and any additional <em>description</em> that the source needs to find the package.</p>
+
+  <p>Based on what data you want to provide, you can specify dependencies in two
+ways. The shortest way is to just specify a name:</p>
+
+  <pre class="prettyprint lang-yaml">
+dependencies:
+  transmogrify:
+</pre>
+
+  <p>This creates a dependency on <code>transmogrify</code> that  allows any version, and looks
+it up using the default source, which is pub.dartlang.org. To limit the
+dependency to a range of versions, you can provide a <em>version constraint</em>:</p>
+
+  <pre class="prettyprint lang-yaml">
+dependencies:
+  transmogrify: &#39;&gt;=1.0.0 &lt;2.0.0&#39;
+</pre>
+
+  <p>This creates a dependency on <code>transmogrify</code> using the default source and
+allowing any version from <code>1.0.0</code> to <code>2.0.0</code> (but not including <code>2.0.0</code>). See
+<a href="#version-constraints">Version constraints</a> for details on the version
+constraint syntax.</p>
+
+  <p>If you want to specify a source, the syntax looks a bit different:</p>
+
+  <pre class="prettyprint lang-yaml">
+dependencies:
+  transmogrify:
+    hosted:
+      name: transmogrify
+      url: http://some-package-server.com
+</pre>
+
+  <p>This depends on the <code>transmogrify</code> package using the <code>hosted</code> source.
+Everything under the source key (here, just a map with a <code>url:</code> key) is the
+description that gets passed to the source. Each source has its own description
+format, detailed below.</p>
+
+  <p>You can also provide a version constraint:</p>
+
+  <pre class="prettyprint lang-yaml">
+dependencies:
+  transmogrify:
+    hosted:
+      name: transmogrify
+      url: http://some-package-server.com
+    version: &#39;&gt;=1.0.0 &lt;2.0.0&#39;
+</pre>
+
+  <p>This long form is used when you don’t use the default source or when you have a
+complex description you need to specify. But in most cases, you’ll just use the
+simple “name: version” form.</p>
+
+  <h2 id="dependency-sources">Dependency sources</h2>
+
+  <p>Here are the different sources pub can use to locate packages, and the
+descriptions they allow:</p>
+
+  <h3 id="hosted-packages">Hosted packages</h3>
+
+  <p>A <em>hosted</em> package is one that can be downloaded from pub.dartlang.org
+(or another HTTP server that speaks the same API). Most of your dependencies
+will be of this form, as shown in the following example:</p>
+
+  <pre class="prettyprint lang-yaml">
+dependencies:
+  transmogrify: &#39;&gt;=0.4.0 &lt;1.0.0&#39;
+</pre>
+
+  <p>This specifies that your package depends on a hosted package named
+“transmogrify” and will work with any version from 0.4.0 to 1.0.0 (but not
+1.0.0 itself).</p>
+
+  <p>If you want to use your own package server, you can use a description that
+specifies its URL:</p>
+
+  <pre class="prettyprint lang-yaml">
+dependencies:
+  transmogrify:
+    hosted:
+      name: transmogrify
+      url: http://your-package-server.com
+    version: &#39;&gt;=0.4.0 &lt;1.0.0&#39;
+</pre>
+
+  <h3 id="git-packages">Git packages</h3>
+
+  <p>Sometimes you live on the bleeding edge and you need to use packages that
+haven’t been formally released yet. Maybe your package itself is still in
+development and is using other packages that are being developed at the
+same time. To make that easier, you can depend directly on a package
+stored in a <a href="http://git-scm.com/">Git</a> repository.</p>
+
+  <pre class="prettyprint lang-yaml">
+dependencies:
+  kittens:
+    git: git://github.com/munificent/kittens.git
+</pre>
+
+  <p>The <code>git</code> here says this package is found using Git, and the URL after that is
+the Git URL that can be used to clone the package. Pub assumes that the package
+is in the root of the git repository.</p>
+
+  <p>If you want to depend on a specific commit, branch, or tag, you can also
+provide a <code>ref</code> argument:</p>
+
+  <pre class="prettyprint lang-yaml">
+dependencies:
+  kittens:
+    git:
+      url: git://github.com/munificent/kittens.git
+      ref: some-branch
+</pre>
+
+  <p>The ref can be anything that Git allows to <a href="http://www.kernel.org/pub/software/scm/git/docs/user-manual.html#naming-commits">identify a commit</a>.</p>
+
+  <h3 id="path-packages">Path packages</h3>
+
+  <p>Sometimes you find yourself working on multiple related packages at the same
+time. Maybe you are creating a framework while building an app that uses it.
+In those cases, during development you really want to depend on the “live”
+version of that package on your local file system. That way changes in one
+package are instantly picked up by the one that depends on it.</p>
+
+  <p>To handle that, pub supports <em>path dependencies</em>.</p>
+
+  <pre class="prettyprint lang-yaml">
+dependencies:
+  transmogrify:
+    path: /Users/me/transmogrify
+</pre>
+
+  <p>This says the root directory for <code>transmogrify</code> is <code>/Users/me/transmogrify</code>.
+For this dependency, pub generates a symlink directly to the <code>lib</code> directory
+of the referenced package directory. Any changes you make to the dependent
+package are seen immediately. You don’t need to run pub every time you
+change the dependent package.</p>
+
+  <p>Relative paths are allowed and are considered relative to the directory
+containing your pubspec.</p>
+
+  <p>Path dependencies are useful for local development, but do not work when
+sharing code with the outside world—not everyone can get to
+your file system. Because of this, you cannot upload a package to
+<a href="http://pub.dartlang.org">pub.dartlang.org</a> if it has any path dependencies in its pubspec.</p>
+
+  <p>Instead, the typical workflow is:</p>
+
+  <ol>
+    <li>Edit your pubspec locally to use a path dependency.</li>
+    <li>Work on the main package and the package it depends on.</li>
+    <li>Once they’re both working, publish the dependent package.</li>
+    <li>Change your pubspec to point to the now hosted version of its dependent.</li>
+    <li>Publish your main package too, if you want.</li>
+  </ol>
+
+  <h2 id="version-constraints">Version constraints</h2>
+
+  <p>If your package is an application, you don’t usually need to specify <a href="glossary.html#version-constraint">version
+constraints</a> for your dependencies. You
+typically want to use the latest versions of the dependencies when you first
+create your app. Then you’ll create and check in a
+<a href="glossary.html#lockfile">lockfile</a> that pins your dependencies to those specific
+versions. Specifying version constraints in your pubspec then is usually
+redundant (though you can do it if you want).</p>
+
+  <p>For a <a href="glossary.html#library-package">library package</a> that you want users to
+reuse, though, it is important to specify version constraints. That lets people
+using your package know which versions of its dependencies they can rely on to
+be compatible with your library. Your goal is to allow a range of versions as
+wide as possible to give your users flexibility. But it should be narrow enough
+to exclude versions that you know don’t work or haven’t been tested.</p>
+
+  <p>The Dart community uses <a href="http://semver.org/spec/v2.0.0-rc.1.html">semantic versioning</a><sup id="fnref:semver"><a href="#fn:semver">1</a></sup>, which helps you know which versions should work.
+If you know that your package works fine with <code>1.2.3</code> of some dependency, then
+semantic versioning tells you that it should work (at least) up to <code>2.0.0</code>.</p>
+
+  <p>A version constraint is a series of:</p>
+
+  <dl>
+    <dt><code>any</code></dt>
+    <dd>The string “any” allows any version. This is equivalent to an empty
+  version constraint, but is more explicit.</dd>
+    <dt><code>1.2.3</code></dt>
+    <dd>A concrete version number pins the dependency to only allow that
+  <em>exact</em> version. Avoid using this when you can because it can cause
+  version lock for your users and make it hard for them to use your package
+  along with other packages that also depend on it.</dd>
+    <dt><code>&gt;=1.2.3</code></dt>
+    <dd>Allows the given version or any greater one. You’ll typically use this.</dd>
+    <dt><code>&gt;1.2.3</code></dt>
+    <dd>Allows any version greater than the specified one but <em>not</em> that
+version itself.</dd>
+    <dt><code>&lt;=1.2.3</code></dt>
+    <dd>Allows any version lower than or equal to the specified one. You
+<em>won’t</em> typically use this.</dd>
+    <dt><code>&lt;1.2.3</code></dt>
+    <dd>Allows any version lower than the specified one but <em>not</em> that
+version itself. This is what you’ll usually use because it lets you specify
+the upper version that you know does <em>not</em> work with your package
+(because it’s the first version to introduce some breaking change).</dd>
+  </dl>
+
+  <p>You can specify version parts as you want, and their ranges are intersected
+together. For example, <code>&gt;=1.2.3 &lt;2.0.0</code> allows any version from <code>1.2.3</code> to
+<code>2.0.0</code> excluding <code>2.0.0</code> itself.</p>
+
+  <aside class="alert alert-info">
+    <p>Note that <code>&gt;</code> is also valid YAML syntax so you will want to quote
+the version string (like <code>'&lt;=1.2.3 &gt;2.0.0'</code>) if the version
+constraint starts with that.</p>
+  </aside>
+
+  <h3 id="caret-syntax">Caret syntax</h3>
+
+  <p><em>Caret syntax</em> provides a more compact way of expressing the most common
+sort of version constraint.
+<code>^version</code> means “the range of all versions guaranteed to be backwards
+compatible with the specified version”, and follows pub’s convention for
+<a href="/tools/pub/versioning.html#semantic-versions">semantic versioning</a>.
+For example, <code>^1.2.3</code> is equivalent to <code>'&gt;=1.2.3 &lt;2.0.0'</code>, and
+<code>^0.1.2</code> is equivalent to <code>'&gt;=0.1.2 &lt;0.2.0'</code>.
+The following is an example of caret syntax:</p>
+
+  <pre class="prettyprint lang-yaml">
+dependencies:
+  path: ^1.3.0
+  collection: ^1.1.0
+  string_scanner: ^0.1.2
+</pre>
+
+  <p>Note that caret syntax was added in Dart 1.8.3. Older versions of Dart
+don’t understand it, so you’ll need to include an SDK constraint (using
+traditional syntax) to ensure that older versions of pub will not try
+to process it. For example:</p>
+
+  <pre class="prettyprint lang-yaml">
+environment:
+  sdk: &#39;&gt;=1.8.3 &lt;2.0.0&#39;
+</pre>
+
+  <h2 id="dev-dependencies">Dev dependencies</h2>
+
+  <p>Pub supports two flavors of dependencies: regular dependencies and <em>dev
+dependencies.</em> Dev dependencies differ from regular dependencies in that <em>dev
+dependencies of packages you depend on are ignored</em>. Here’s an example:</p>
+
+  <p>Say the <code>transmogrify</code> package uses the <code>unittest</code> package in its tests and only
+in its tests. If someone just wants to use <code>transmogrify</code>—import its
+libraries—it doesn’t actually need <code>unittest</code>. In this case, it specifies
+<code>unittest</code> as a dev dependency. Its pubspec will have something like:</p>
+
+  <pre class="prettyprint lang-yaml">
+dev_dependencies:
+  unittest: &#39;&gt;=0.5.0 &lt;0.12.0&#39;
+</pre>
+
+  <p>Pub gets every package that your package depends on, and everything <em>those</em>
+packages depend on, transitively. It also gets your package’s dev dependencies,
+but it <em>ignores</em> the dev dependencies of any dependent packages. Pub only gets
+<em>your</em> package’s dev dependencies. So when your package depends on
+<code>transmogrify</code> it will get <code>transmogrify</code> but not <code>unittest</code>.</p>
+
+  <p>The rule for deciding between a regular or dev dependency is simple: If
+the dependency is imported from something in your <code>lib</code> or <code>bin</code> directories,
+it needs to be a regular dependency. If it’s only imported from <code>test</code>,
+<code>example</code>, etc. it can and should be a dev dependency.</p>
+
+  <p>Using dev dependencies makes dependency graphs smaller. That makes <code>pub</code> run
+faster, and makes it easier to find a set of package versions that satisfies all
+constraints.</p>
+
+  <h2 id="dependency-overrides">Dependency overrides</h2>
+
+  <p>You can use <code>dependency_overrides</code> to temporarily override all references
+to a dependency.</p>
+
+  <p>For example, perhaps you are updating a local copy of transmogrify, a
+published library package. Transmogrify is used by other packages in your
+dependency graph, but you don’t want to clone each package locally
+and change each pubspec to test your local copy of transmogrify.</p>
+
+  <p>In this situation, you can override the dependency using
+<code>dependency_overrides</code> to specify the directory holding the local
+copy of the package.</p>
+
+  <p>The pubspec would look something like the following:</p>
+
+  <pre class="prettyprint lang-yaml">
+name: my_app
+dependencies:
+  transmogrify: &#39;&gt;= 1.2.0 &lt;2.0.0&#39;
+dependency_overrides:
+  transmogrify:
+    path: ../transmogrify_patch/
+</pre>
+
+  <p>When you run <code>pub get</code>, the pubspec’s lockfile is updated to reflect the
+new path to your dependency and, whereever transmogrify is used, pub
+uses the local version instead.</p>
+
+  <p>You can also use <code>dependency_overrides</code> to specify a particular
+version of a package:</p>
+
+  <pre class="prettyprint lang-yaml">
+name: my_app
+dependencies:
+  transmogrify: &#39;&gt;= 1.2.0 &lt;2.0.0&#39;
+dependency_overrides:
+  transmogrify: &#39;3.2.1&#39;
+</pre>
+
+  <p><em>Caution:</em> Using a dependency override involves some risk. For example,
+using an override to specify a version outside the range that the
+package claims to support, or using an override to specify
+a local copy of a package that has unexpected behaviors,
+may break your application.</p>
+
+  <hr />
+
+  <aside id="fn:semver" class="footnote">
+
+    <p>[1] Pub follows version <code>2.0.0-rc.1</code> of the semantic versioning spec,
+because that version allows packages to use build identifiers (e.g.
+<code>+12345</code>) to differentiate versions. <a href="#fnref:semver">↩</a></p>
+
+  </aside>
+
+</div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+
+
+
+
+</body>
+</html>
+

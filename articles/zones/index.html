@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Zones | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Zones | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="Manage your asynchronous code: handle uncaught errors, override behavior (such as printing and scheduling tasks), and more.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  <link rel="author" href="/authors/florian-loitsch.html">
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+  	<div class="container sub-page">
+      <div class="row">
+        <article class="has-permalinks"><div class="col-md-4">
+  <div class="bs-sidebar" data-spy="affix" data-offset-bottom="350" role="complementary">
+
+<ol class="toc nav bs-sidenav" id="markdown-toc">
+  <li><a href="#zone-basics">Zone basics</a></li>
+  <li><a href="#handling-asynchronous-errors">Handling asynchronous errors</a>    <ol>
+      <li><a href="#example-errors-cant-cross-into-error-zones">Example: Errors can’t cross into error zones</a></li>
+      <li><a href="#example-errors-cant-leave-error-zones">Example: Errors can’t leave error zones</a></li>
+    </ol>
+  </li>
+  <li><a href="#using-zones-with-streams">Using zones with streams</a>    <ol>
+      <li><a href="#example-using-a-stream-with-runzoned">Example: Using a stream with runZoned()</a></li>
+    </ol>
+  </li>
+  <li><a href="#storing-zone-local-values">Storing zone-local values</a>    <ol>
+      <li><a href="#example-using-a-zone-local-value-for-debug-logs">Example: Using a zone-local value for debug logs</a></li>
+    </ol>
+  </li>
+  <li><a href="#overriding-functionality">Overriding functionality</a>    <ol>
+      <li><a href="#example-overriding-print">Example: Overriding print</a></li>
+      <li><a href="#arguments-to-interceptors-and-delegates">Arguments to interceptors and delegates</a></li>
+      <li><a href="#example-delegating-to-the-parent-zone">Example: Delegating to the parent zone</a></li>
+      <li><a href="#example-executing-code-when-entering-and-leaving-a-zone">Example: Executing code when entering and leaving a zone</a></li>
+      <li><a href="#example-handling-callbacks">Example: Handling callbacks</a></li>
+      <li><a href="#implementing-asynchronous-callbacks">Implementing asynchronous callbacks</a></li>
+    </ol>
+  </li>
+  <li><a href="#summary">Summary</a>    <ol>
+      <li><a href="#more-resources">More resources</a></li>
+      <li><a href="#more-examples">More examples</a></li>
+    </ol>
+  </li>
+</ol>
+
+  </div>
+</div>
+<div class="col-md-8">
+  <p><!-- Start of content -->
+</p>
+
+  <div>
+    <ol class="breadcrumb">
+
+  <li><a href="/articles/">
+  Articles</a></li>
+
+
+  <li class="active">Zones</li>
+</ol>
+  </div>
+
+  <h1 id="zones">Zones</h1>
+  <p class="subtitle">Asynchronous dynamic extents</p>
+
+  <p><em>Written by Florian Loitsch and Kathy Walrath<br />
+March 2014</em></p>
+
+  <p>This article discusses zone-related APIs in the dart:async library,
+with a focus on the top-level <code>runZoned()</code> function.
+Before reading this article,
+you should be familiar with the techniques covered in
+<a href="/articles/futures-and-error-handling/">Futures and Error Handling</a>.</p>
+
+  <p>Currently, the most common use of zones is
+to handle errors raised in asynchronously executed code.
+For example,
+a simple HTTP server
+might use the following code:</p>
+
+  <pre class="prettyprint lang-dart">
+<code class="nocode highlight">runZoned(() {</code>
+  HttpServer.bind(&#39;0.0.0.0&#39;, port).then((server) {
+    server.listen(staticFiles.serveRequest);
+  });
+<code class="nocode highlight">},
+onError: (e, stackTrace) =&gt; print(&#39;Oh noes! $e $stackTrace&#39;));</code>
+</pre>
+
+  <p>Running the HTTP server in a zone
+enables the app to continue running despite uncaught (but non-fatal)
+errors in the server’s asynchronous code.</p>
+
+  <aside class="alert alert-info">
+    <p><strong>API note:</strong>
+  This use case won’t always require zones.
+  We expect that isolates will have an API enabling you to
+  listen for uncaught errors.</p>
+  </aside>
+
+  <p>Zones make the following tasks possible:</p>
+
+  <ul>
+    <li>
+      <p>Protecting your app from exiting due to
+an uncaught exception thrown by asynchronous code,
+as shown in the preceding example.</p>
+    </li>
+    <li>
+      <p>Associating data—known as
+<em>zone-local values</em>—with individual zones.</p>
+    </li>
+    <li>
+      <p>Overriding a limited set of methods,
+such as <code>print()</code> and <code>scheduleTask()</code>,
+within part or all of the code.</p>
+    </li>
+    <li>
+      <p>Performing an operation—such as
+starting or stopping a timer,
+or saving a stack trace—each time that
+code enters or exits a zone.</p>
+    </li>
+  </ul>
+
+  <p>You might have encountered something similar to zones in other languages.
+<em>Domains</em> in Node.js were an inspiration for Dart’s zones.
+Java’s <em>thread-local storage</em>
+also has some similarities.
+Closest of all is Brian Ford’s JavaScript port of Dart zones,
+<a href="https://github.com/btford/zone.js/">zone.js</a>, which he describes in
+<a href="http://www.youtube.com/watch?v=3IqtmUscE_U">this video</a>.</p>
+
+  <h2 id="zone-basics">Zone basics</h2>
+
+  <p>A <em>zone</em> represents the asynchronous dynamic extent of a call.
+It is the computation that is performed as part of a call and, transitively,
+the asynchronous callbacks that have been registered by that code.</p>
+
+  <p>For example,
+in the HTTP server example,
+<code>bind()</code>, <code>then()</code>, and the callback of <code>then()</code>
+all execute in the same zone—the zone
+that was created using <code>runZoned()</code>.</p>
+
+  <p>In the next example,
+the code executes in 3 different zones:
+<span class="zone1">zone #1</span> (the root zone),
+<span class="zone2">zone #2</span>, and
+<span class="zone3">zone #3</span>.</p>
+
+  <!-- ex1.dart -->
+  <!-- Using pre instead of prettify so we can use background colors -->
+  <pre>
+import 'dart:async';
+
+<span class="zone1">main() {
+  foo();
+  var future;
+  runZoned(() {</span>          // Starts a new child zone (zone #2).
+<span class="zone2">    future = new Future(bar).then(baz);
+  </span><span class="zone1">});
+  future.then(qux);
+}</span>
+
+foo() =&gt; <em><span class="zone1">...foo</span><span class="zone3">-body...</span></em>  // Executed twice (once each in two zones).
+bar() =&gt; <em><span class="zone2">...bar-body...</span></em>
+baz(x) =&gt; <span class="zone2">runZoned(() =&gt;</span> <span class="zone3">foo()</span><span class="zone2">);</span> // New child zone (zone #3).
+qux(x) =&gt; <em><span class="zone1">...qux-body...</span></em>
+</pre>
+
+  <p>The following figure shows the code’s execution order,
+as well as which zone the code executes in.</p>
+
+  <p><img src="images/trace.png" alt="illustration of program execution" /></p>
+
+  <p>Each call to <code>runZoned()</code> creates a new zone
+and executes code in that zone.
+When that code schedules a task—such
+as calling baz()—that
+task executes in the zone where it was scheduled.
+For example, the call to qux() (last line of main())
+runs in
+<span class="zone1">zone #1</span> (the root zone)
+even though it’s attached to a future that itself runs in
+<span class="zone2">zone #2</span>.</p>
+
+  <p>Child zones don’t completely replace their parent zone.
+Instead new zones are nested inside their surrounding zone.
+For example,
+<span class="zone2">zone #2</span> contains
+<span class="zone3">zone #3</span>, and
+<span class="zone1">zone #1</span> (the root zone)
+contains both
+<span class="zone2">zone #2</span> and
+<span class="zone3">zone #3</span>.</p>
+
+  <p>All Dart code executes in the root zone.
+Code might execute in other nested child zones as well,
+but at a minimum it always runs in the root zone.</p>
+
+  <h2 id="handling-asynchronous-errors">Handling asynchronous errors</h2>
+
+  <p>One of the most used features of zones is
+their ability to handle uncaught errors
+in asynchronously executing code.
+The concept is similar to a try-catch in synchronous code.</p>
+
+  <p>An <em>uncaught error</em> is often caused by some code using <code>throw</code>
+to raise an exception that is not handled by a <code>catch</code> statement.
+Another way to produce an uncaught error is
+to call <code>new Future.error()</code> or
+a Completer’s <code>completeError()</code> method.</p>
+
+  <p>Use the <code>onError</code> argument to <code>runZoned()</code> to
+install a <em>zoned error handler</em>—an asynchronous error handler
+that’s invoked for every uncaught error in the zone.
+For example:</p>
+
+  <!-- run_zoned1.dart -->
+  <pre class="prettyprint lang-dart">
+runZoned(() {
+  Timer.run(() { throw &#39;Would normally kill the program&#39;; });
+}, onError: (error, stackTrace) {
+  print(&#39;Uncaught error: $error&#39;);
+});
+</pre>
+
+  <p>The preceding code has an asynchronous callback
+(through <code>Timer.run()</code>) that throws an exception.
+Normally this exception would be an unhandled error and reach the top level
+(which, in the standalone Dart executable, would kill the running process).
+However, with the zoned error handler,
+the error is passed to the error handler and doesn’t shut down the program.</p>
+
+  <p>One notable difference between try-catch and zoned error handlers is
+that zones continue to execute after uncaught errors occur.
+If other asynchronous callbacks are scheduled within the zone,
+they still execute.
+As a consequence a zoned error handler might
+be invoked multiple times.</p>
+
+  <p>Also note that an <em>error zone</em>—a zone that has an error handler—might
+handle errors that originate in a child (or other descendant)
+of that zone.
+A simple rule determines where
+errors are handled in a sequence of future transformations
+(using <code>then()</code> or <code>catchError()</code>):</p>
+
+  <blockquote>
+    <p>Errors on Future chains never cross the boundaries of error zones.</p>
+  </blockquote>
+
+  <p>If an error reaches an error zone boundary,
+it is treated as unhandled error at that point.</p>
+
+  <h3 id="example-errors-cant-cross-into-error-zones">Example: Errors can’t cross into error zones</h3>
+
+  <p>In the following example,
+the error raised by the first line
+can’t cross into an error zone.</p>
+
+  <!-- run_zoned2.dart -->
+  <pre class="prettyprint lang-dart">
+var f = new Future.error(499);
+f = f.whenComplete(() { print(&#39;Outside runZoned&#39;); });
+runZoned(() {
+  f = f.whenComplete(() { print(&#39;Inside non-error zone&#39;); });
+});
+runZoned(() {
+  f = f.whenComplete(() { print(&#39;Inside error zone (not called)&#39;); });
+}, onError: print);
+</pre>
+
+  <p>Here’s the output you see if you run the example:</p>
+
+  <pre class="prettyprint lang-xml">
+Outside runZoned
+Inside non-error zone
+Uncaught Error: 499
+Unhandled exception:
+499
+...stack trace...
+</pre>
+
+  <p>If you remove the calls to <code>runZoned()</code> or
+remove the <code>onError</code> argument,
+you see this output:</p>
+
+  <pre class="prettyprint lang-xml">
+Outside runZoned
+Inside non-error zone
+<code class="nocode highlight">Inside error zone (not called)</code>
+Uncaught Error: 499
+Unhandled exception:
+499
+...stack trace...
+</pre>
+
+  <p>Note how removing either the zones or the error zone causes
+the error to propagate further.</p>
+
+  <p>The stack trace appears because the error happens outside an error zone.
+If you add an error zone around the whole code snippet,
+then you can avoid the stack trace.</p>
+
+  <h3 id="example-errors-cant-leave-error-zones">Example: Errors can’t leave error zones</h3>
+
+  <p>As the preceding code shows,
+errors can’t cross into error zones.
+Similarly, errors can’t cross <em>out</em> of error zones.
+Consider this example:</p>
+
+  <!-- run_zoned3.dart -->
+  <pre class="prettyprint lang-dart">
+var completer = new Completer();
+var future = completer.future.then((x) =&gt; x + 1);
+var zoneFuture;
+runZoned(() {
+  zoneFuture = future.then((y) =&gt; throw &#39;Inside zone&#39;);
+}, onError: (error) {
+  print(&#39;Caught: $error&#39;);
+});
+zoneFuture.catchError((e) { print(&#39;Never reached&#39;); });
+completer.complete(499);
+</pre>
+
+  <p>Even though the future chain ends in a <code>catchError()</code>,
+the asynchronous error can’t leave the error zone.
+Instead, the zoned error handler (the one specified in <code>onError</code>)
+handles the error.
+As a result, <em>zoneFuture never completes</em>—neither
+with a value, nor with an error.</p>
+
+  <h2 id="using-zones-with-streams">Using zones with streams</h2>
+
+  <p>The rule for zones and streams
+is simpler than for futures:</p>
+
+  <blockquote>
+    <p>Transformations and other callbacks execute in the zone
+where the stream is listened to.</p>
+  </blockquote>
+
+  <p>This rule follows from the guideline that
+streams should have no side effect until listened to.
+A similar situation in synchronous code is the behavior of Iterables,
+which aren’t evaluated until you ask for values.</p>
+
+  <h3 id="example-using-a-stream-with-runzoned">Example: Using a stream with runZoned()</h3>
+
+  <p>Here is an example of using a stream with <code>runZoned()</code>:</p>
+
+  <!-- stream.dart -->
+  <pre class="prettyprint lang-dart">
+var stream = new File(&#39;stream.dart&#39;).openRead()
+    .map((x) =&gt; throw &#39;Callback throws&#39;);
+
+runZoned(() { stream.listen(print); },
+         onError: (e) { print(&#39;Caught error: $e&#39;); });
+</pre>
+
+  <p>The exception thrown by the callback
+is caught by the error handler of <code>runZoned()</code>.
+Here’s the output:</p>
+
+  <pre class="prettyprint lang-xml">
+Caught error: Callback throws
+</pre>
+
+  <p>As the output shows,
+the callback is associated with the listening zone,
+not with the zone where <code>map()</code> is called.</p>
+
+  <h2 id="storing-zone-local-values">Storing zone-local values</h2>
+
+  <p>If you ever wanted to use a static variable
+but couldn’t because
+multiple concurrently running computations interfered with each other,
+consider using a zone-local value.
+You might add a zone-local value to help with debugging.
+Another use case is dealing with an HTTP request:
+you could have the user ID
+and its authorization token in zone-local values.</p>
+
+  <p>Use the <code>zoneValues</code> argument to <code>runZoned()</code> to
+store values in the newly created zone:</p>
+
+  <!-- value1.dart -->
+  <pre class="prettyprint lang-dart">
+runZoned(() {
+  print(Zone.current[#key]);
+}, zoneValues: { #key: 499 });
+</pre>
+
+  <p>To read zone-local values, use the zone’s index operator and the value’s key:
+<code>[<em>key</em>]</code>.
+Each key must be a
+<a href="https://api.dartlang.org/apidocs/channels/stable/#dart-core.Symbol">Symbol</a>.
+Typically, a key is a symbol literal:
+<code>#<em>identifier</em></code>.</p>
+
+  <aside class="alert alert-info">
+    <p><strong>API note:</strong>
+  Once <a href="https://code.google.com/p/dart/source/detail?r=34248">revision 34248</a>
+  is in a release, keys won’t be limited to symbols.</p>
+  </aside>
+
+  <p>You can’t change the object that a key maps to,
+but you can manipulate the object.
+For example, the following code
+adds an item to a zone-local list:</p>
+
+  <!-- value1_1.dart -->
+  <pre class="prettyprint lang-dart">
+runZoned(() {
+  Zone.current[#key].add(499);
+  print(Zone.current[#key]); // [499]
+}, zoneValues: { #key: [] });
+</pre>
+
+  <p>A zone inherits zone-local values from its parent zone,
+so adding nested zones doesn’t accidentally drop existing values.
+Nested zones can, however, shadow parent values.</p>
+
+  <aside class="alert alert-warning">
+    <p><strong>Important:</strong>
+  Try to use unique objects for keys,
+  so they’re less likely to conflict with other libraries.</p>
+  </aside>
+
+  <h3 id="example-using-a-zone-local-value-for-debug-logs">Example: Using a zone-local value for debug logs</h3>
+
+  <p>Say you have two files, foo.txt and bar.txt,
+and want to print all of their lines.
+The program might look like this:</p>
+
+  <!-- value2.dart -->
+  <pre class="prettyprint lang-dart">
+import &#39;dart:async&#39;;
+import &#39;dart:convert&#39;;
+import &#39;dart:io&#39;;
+
+Future splitLinesStream(stream) {
+  return stream
+      .transform(ASCII.decoder)
+      .transform(const LineSplitter())
+      .toList();
+}
+
+Future splitLines(filename) {
+  return splitLinesStream(new File(filename).openRead());
+}
+main() {
+  Future.forEach([&#39;foo.txt&#39;, &#39;bar.txt&#39;],
+                 (file) =&gt; splitLines(file)
+                     .then((lines) { lines.forEach(print); }));
+}
+</pre>
+
+  <p>This program works,
+but let’s assume that you now want to know
+which file each line comes from,
+and that you can’t just add an filename argument to <code>splitLinesStream()</code>.
+With zone-local values you can add the filename to the returned string
+(new lines are highlighted):</p>
+
+  <!-- value3.dart -->
+  <pre class="prettyprint lang-dart">
+import &#39;dart:async&#39;;
+import &#39;dart:convert&#39;;
+import &#39;dart:io&#39;;
+
+Future splitLinesStream(stream) {
+  return stream
+      .transform(ASCII.decoder)
+      .transform(const LineSplitter())
+<code class="nocode highlight">      .map((line) =&gt; &#39;${Zone.current[#filename]}: $line&#39;)</code>
+      .toList();
+}
+
+Future splitLines(filename) {
+<code class="nocode highlight">  return runZoned(() {</code>
+    return splitLinesStream(new File(filename).openRead());
+<code class="nocode highlight">  }, zoneValues: { #filename: filename });</code>
+}
+
+main() {
+  Future.forEach([&#39;foo.txt&#39;, &#39;bar.txt&#39;],
+                 (file) =&gt; splitLines(file)
+                     .then((lines) { lines.forEach(print); }));
+}
+</pre>
+
+  <p>Note that the new code doesn’t modify the function signatures or
+pass the filename from <code>splitLines()</code> to <code>splitLinesStream()</code>.
+Instead, it uses zone-local values to implement
+a feature similar to a static variable
+that works in asynchronous contexts.</p>
+
+  <h2 id="overriding-functionality">Overriding functionality</h2>
+
+  <p>Use the <code>zoneSpecification</code> argument to <code>runZoned()</code>
+to override functionality that is managed by zones.
+The argument’s value is a
+<a href="https://api.dartlang.org/apidocs/channels/stable/#dart-async.ZoneSpecification">ZoneSpecification</a> object,
+with which you can override any of the following functionality:</p>
+
+  <ul>
+    <li>Forking child zones</li>
+    <li>Registering and running callbacks in the zone</li>
+    <li>Scheduling microtasks and timers</li>
+    <li>Handling uncaught asynchronous errors
+(<code>onError</code> is a shortcut for this)</li>
+    <li>Printing</li>
+  </ul>
+
+  <h3 id="example-overriding-print">Example: Overriding print</h3>
+
+  <p>As a simple example of overriding functionality,
+here is a way to silence all prints inside a zone:</p>
+
+  <!-- specification1.dart -->
+  <pre class="prettyprint lang-dart">
+import &#39;dart:async&#39;;
+
+main() {
+  runZoned(() {
+    print(&#39;Will be ignored&#39;);
+  }, zoneSpecification: new ZoneSpecification(
+    print: (self, parent, zone, message) {
+      // Ignore message.
+    }));
+}
+</pre>
+
+  <p>Inside the forked zone,
+the <code>print()</code> function is overridden by the specified print interceptor,
+which simply discards the message.
+Overriding print is possible because <code>print()</code>
+(like <code>scheduleMicrotask()</code> and the Timer constructors)
+uses the current zone (<code>Zone.current</code>) to do its work.</p>
+
+  <h3 id="arguments-to-interceptors-and-delegates">Arguments to interceptors and delegates</h3>
+
+  <p>As the print example shows,
+an interceptor adds three arguments
+to those defined in the Zone class’s corresponding method.
+For example, Zone’s <code>print()</code> method has one argument:
+<code>print(String line)</code>.
+The interceptor version of <code>print()</code>,
+as defined by ZoneSpecification,
+has four arguments: 
+<code>print(Zone self, ZoneDelegate parent, Zone zone, String line)</code>.</p>
+
+  <p>The three interceptor arguments always appear in the same order,
+before any other arguments.</p>
+
+  <dl>
+    <dt><code>self</code></dt>
+    <dd>The zone that’s handling the callback.</dd>
+    <dt><code>parent</code></dt>
+    <dd>A ZoneDelegate representing the parent zone.
+Use it to forward operations to the parent.</dd>
+    <dt><code>zone</code></dt>
+    <dd>The zone where the operation originated.
+Some operations need to know which zone the operation was invoked on.
+For example, <code>zone.fork(specification)</code> must
+create a new zone as child of <code>zone</code>.
+As another example,
+even when you delegate <code>scheduleMicrotask()</code> to another zone,
+the original <code>zone</code> must be the one that executes the microtask.</dd>
+  </dl>
+
+  <p>When an interceptor delegates a method to the parent,
+the parent (ZoneDelegate) version of the method
+has just one additional argument: 
+<code>zone</code>, the zone where the original call originated from.
+For example,
+the signature of the <code>print()</code> method on a ZoneDelegate is
+<code>print(Zone zone, String line)</code>.</p>
+
+  <p>Here’s an example of the arguments
+for another interceptable method, <code>scheduleMicrotask()</code>:</p>
+
+  <table>
+    <tbody>
+      <tr>
+        <td><strong>Where defined</strong></td>
+        <td><strong>Method signature</strong></td>
+      </tr>
+      <tr>
+        <td>Zone</td>
+        <td><code>void scheduleMicrotask(void f())</code></td>
+      </tr>
+      <tr>
+        <td>ZoneSpecification </td>
+        <td><code>void scheduleMicrotask(Zone self, ZoneDelegate parent, Zone zone, void f())</code></td>
+      </tr>
+      <tr>
+        <td>ZoneDelegate</td>
+        <td><code>void scheduleMicrotask(Zone zone, void f())</code></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 id="example-delegating-to-the-parent-zone">Example: Delegating to the parent zone</h3>
+
+  <p>Here is an example that shows how to delegate to the parent zone:</p>
+
+  <!-- specification2.dart -->
+  <pre class="prettyprint lang-dart">
+import &#39;dart:async&#39;;
+
+main() {
+  runZoned(() {
+    var currentZone = Zone.current;
+    scheduleMicrotask(() {
+      print(identical(currentZone, Zone.current));  // prints true.
+    });
+  }, zoneSpecification: new ZoneSpecification(
+    scheduleMicrotask: (self, parent, zone, task) {
+      print(&#39;scheduleMicrotask has been called inside the zone&#39;);
+      // The origin `zone` needs to be passed to the parent so that
+      // the task can be executed in it.
+      parent.scheduleMicrotask(zone, task);
+    }));
+}
+</pre>
+
+  <h3 id="example-executing-code-when-entering-and-leaving-a-zone">Example: Executing code when entering and leaving a zone</h3>
+
+  <p>Say you want to know how much time some asynchronous code
+spends executing.
+You can do this by putting the code in a zone,
+starting a timer every time the zone is entered,
+and stopping the timer whenever the zone is left.</p>
+
+  <p>Providing <code>run*</code> parameters to the ZoneSpecification
+lets you specify the code that the zone executes.</p>
+
+  <aside class="alert alert-info">
+    <p><strong>API note:</strong>
+  In the future, zones might provide a simpler alternative
+  for the common case of sandwiching zone code:
+  an onEnter/onLeave API.
+  See <a href="https://code.google.com/p/dart/issues/detail?id=17532">issue 17532</a>
+  for details.</p>
+  </aside>
+
+  <p>The <code>run*</code> parameters—<code>run</code>, <code>runUnary</code>, and <code>runBinary</code>—specify
+code to execute every time the zone is asked to execute code.
+These parameters work for zero-argument, one-argument,
+and two-argument callbacks, respectively.
+The <code>run</code> parameter also works for the initial, synchronous code
+that executes just after calling <code>runZoned()</code>.</p>
+
+  <p>Here’s an example of profiling code using <code>run*</code>:</p>
+
+  <!-- profile_run.dart -->
+  <pre class="prettyprint lang-dart">
+final total = new Stopwatch();
+final user = new Stopwatch();
+
+final specification = new ZoneSpecification(
+  run: (self, parent, zone, f) {
+    user.start();
+    try { return parent.run(zone, f); } finally { user.stop(); }
+  },
+  runUnary: (self, parent, zone, f, arg) {
+    user.start();
+    try { return parent.runUnary(zone, f, arg); } finally { user.stop(); }
+  },
+  runBinary: (self, parent, zone, f, arg1, arg2) {
+    user.start();
+    try {
+      return parent.runBinary(zone, f, arg1, arg2);
+    } finally {
+      user.stop();
+    }
+  });
+
+runZoned(() {
+  total.start();
+  // ... Code that runs synchronously...
+  // ... Then code that runs asynchronously ...
+    .then((...) {
+      print(total.elapsedMilliseconds);
+      print(user.elapsedMilliseconds);
+    });
+}, zoneSpecification: specification);
+</pre>
+
+  <p>In this code,
+each <code>run*</code> override just starts the user timer,
+executes the specified function,
+and then stops the user timer.</p>
+
+  <h3 id="example-handling-callbacks">Example: Handling callbacks</h3>
+
+  <p>Provide <code>register*Callback</code> parameters to the ZoneSpecification
+to wrap or change callback code—the code
+that’s executed asynchronously in the zone.
+Like the <code>run*</code> parameters,
+the <code>register*Callback</code> parameters have three forms:
+<code>registerCallback</code> (for callbacks with no arguments),
+<code>registerUnaryCallback</code> (one argument), and
+<code>registerBinaryCallback</code> (two arguments).</p>
+
+  <p>Here’s an example that makes the zone
+save a stack trace
+before the code disappears into an asynchronous context.</p>
+
+  <!-- debug.dart -->
+  <pre class="prettyprint lang-dart">
+import &#39;dart:async&#39;;
+
+get currentStackTrace {
+  try {
+    throw 0;
+  } catch(_, st) {
+    return st;
+  }
+}
+
+var lastStackTrace = null;
+
+bar() =&gt; throw &quot;in bar&quot;;
+foo() =&gt; new Future(bar);
+
+main() {
+  final specification = new ZoneSpecification(
+    registerCallback: (self, parent, zone, f) {
+      var stackTrace = currentStackTrace;
+      return parent.registerCallback(zone, () {
+        lastStackTrace = stackTrace;
+        return f();
+      });
+    },
+    registerUnaryCallback: (self, parent, zone, f) {
+      var stackTrace = currentStackTrace;
+      return parent.registerUnaryCallback(zone, (arg) {
+        lastStackTrace = stackTrace;
+        return f(arg);
+      });
+    },
+    registerBinaryCallback: (self, parent, zone, f) {
+      var stackTrace = currentStackTrace;
+      return parent.registerBinaryCallback(zone, (arg1, arg2) {
+        lastStackTrace = stackTrace;
+        return f(arg1, arg2);
+      });
+    },
+    handleUncaughtError: (self, parent, zone, error, stackTrace) {
+      if (lastStackTrace != null) print(&quot;last stack: $lastStackTrace&quot;);
+      return parent.handleUncaughtError(zone, error, stackTrace);
+    });
+
+  runZoned(() {
+    foo();
+  }, zoneSpecification: specification);
+}
+</pre>
+
+  <p>Go ahead and run the example.
+You’ll see a “last stack” trace (<code>lastStackTrace</code>)
+that includes <code>foo()</code>,
+since <code>foo()</code> was called synchronously.
+The next stack trace (<code>stackTrace</code>)
+is from the asynchronous context,
+which knows about <code>bar()</code> but not <code>foo()</code>.</p>
+
+  <h3 id="implementing-asynchronous-callbacks">Implementing asynchronous callbacks</h3>
+
+  <p>Even if you’re implementing an asynchronous API,
+you might not have to deal with zones at all.
+For example, although you might expect the dart:io library
+to keep track of the current zones,
+it instead relies on the zone handling of dart:async classes
+such as Future and Stream.</p>
+
+  <p>If you do handle zones explicitly,
+then you need to register all asynchronous callbacks
+and ensure that each callback is invoked in the zone
+where it was registered.
+The <code>bind*Callback</code> helper methods of Zone
+make this task easier.
+They’re shortcuts for <code>register*Callback</code> and <code>run*</code>,
+ensuring that each callback is registered and runs in that Zone.</p>
+
+  <p>If you need more control than <code>bind*Callback</code> gives you,
+then you need to use <code>register*Callback</code> and <code>run*</code>.
+You might also want to use the <code>run*Guarded</code> methods of Zone,
+which wrap the call into a try-catch
+and invoke the <code>uncaughtErrorHandler</code>
+if an error occurs.</p>
+
+  <h2 id="summary">Summary</h2>
+
+  <p>Zones are good for protecting your code from
+uncaught exceptions in asynchronous code,
+but they can do much more.
+You can associate data with zones,
+and you can override core functionality such as
+printing and task scheduling.
+Zones enable better debugging and provide hooks
+that you can use for functionality such as profiling.</p>
+
+  <h3 id="more-resources">More resources</h3>
+
+  <dl>
+    <dt><a href="/articles/event-loop/">The Event Loop and Dart</a></dt>
+    <dd>Learn more about scheduling tasks
+using Future, Timer, and <code>scheduleMicrotask()</code>.</dd>
+    <dt>Zone-related API documentation</dt>
+    <dd>Read the docs for
+<a href="https://api.dartlang.org/apidocs/channels/stable/#dart-async@id_runZoned">runZoned()</a>,
+<a href="https://api.dartlang.org/apidocs/channels/stable/#dart-async.Zone">Zone</a>,
+<a href="https://api.dartlang.org/apidocs/channels/stable/#dart-async.ZoneDelegate">ZoneDelegate</a>, and
+<a href="https://api.dartlang.org/apidocs/channels/stable/#dart-async.ZoneSpecification">ZoneSpecification</a>.</dd>
+    <dt>stack_trace</dt>
+    <dd>With the stack_trace library’s
+<a href="https://api.dartlang.org/apidocs/channels/stable/#stack_trace/stack_trace.Chain">Chain class</a>
+you can get better stack traces for asynchronously executed code.
+See the <a href="http://pub.dartlang.org/packages/stack_trace">stack_trace package</a>
+at pub.dartlang.org for more information.</dd>
+  </dl>
+
+  <h3 id="more-examples">More examples</h3>
+
+  <p>Here are some more complex examples of using zones.</p>
+
+  <dl>
+    <dt>The task_interceptor example</dt>
+    <dd>The toy zone in
+<a href="https://github.com/dart-lang/dartlang.org/blob/master/src/tests/site/articles/zones/task_interceptor.dart">task_interceptor.dart</a>
+intercepts <code>scheduleMicrotask</code>, <code>createTimer</code>, and <code>createPeriodicTimer</code>
+to simulate the behavior of the Dart primitives
+without yielding to the event loop.</dd>
+    <dt>The source code for the stack_trace package</dt>
+    <dd>The <a href="http://pub.dartlang.org/packages/stack_trace">stack_trace package</a>
+uses zones to form chains of stack traces
+for debugging asynchronous code.
+Zone features used include error handling, zone-local values, and callbacks.
+You can find the stack_trace source code in the Dart project under
+<a href="https://code.google.com/p/dart/source/browse/branches/bleeding_edge/dart/pkg/stack_trace/lib/#lib%2Fsrc">pkg/stack_trace/lib/src</a>.</dd>
+    <dt>The source code for dart:html and dart:async</dt>
+    <dd>These two SDK libraries implement APIs featuring asynchronous callbacks,
+and thus they deal with zones.
+You can browse or download their source code using the
+<a href="https://code.google.com/p/dart/wiki/GettingTheSource?tm=4">Source tab of the Dart project</a>.</dd>
+  </dl>
+
+  <p><em>Thanks to Anders Johnsen and Lasse Reichstein Nielsen
+for their reviews of this article.</em></p>
+</div>
+
+    	  </div> <!-- End of content from toc.html -->
+        </article>
+	  </div>
+
+	
+	<ul class="pager hidden-print">
+	  <li><a href="/articles/">More articles about Dart <i class="glyphicon glyphicon-chevron-up"></i></a></li>
+	 </ul>
+	 
+
+	</div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+<link href="styles.css" rel="stylesheet" type="text/css">
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Using Dart with JSON Web Services | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Using Dart with JSON Web Services | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="Learn how to consume JSON-based web services with Dart.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  <link rel="author" href="/authors/chris-buckett.html">
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+  	<div class="container sub-page">
+      <div class="row">
+        <article class="has-permalinks"><div class="col-md-4">
+  <div class="bs-sidebar" data-spy="affix" data-offset-bottom="350" role="complementary">
+
+<ol class="toc nav bs-sidenav" id="markdown-toc">
+  <li><a href="#a-json-web-service">A JSON web service</a></li>
+  <li><a href="#connecting-to-the-server">Connecting to the server</a>    <ol>
+      <li><a href="#getting-data-from-the-server">Getting data from the server</a></li>
+      <li><a href="#saving-objects-on-the-server">Saving objects on the server</a></li>
+    </ol>
+  </li>
+  <li><a href="#parsing-json">Parsing JSON</a>    <ol>
+      <li><a href="#introducing-jsonobject">Introducing JsonObject</a></li>
+      <li><a href="#a-note-on-cors-and-httprequest">A note on CORS and HttpRequest</a></li>
+    </ol>
+  </li>
+  <li><a href="#summary">Summary</a></li>
+  <li><a href="#resources">Resources</a>    <ol>
+      <li><a href="#about-the-author">About the author</a></li>
+    </ol>
+  </li>
+</ol>
+
+  </div>
+</div>
+<div class="col-md-8">
+  <p><!-- Start of content -->
+</p>
+
+  <div>
+    <ol class="breadcrumb">
+
+  <li><a href="/articles/">
+  Articles</a></li>
+
+
+  <li class="active">Using Dart with JSON Web Services</li>
+</ol>
+  </div>
+
+  <h1 id="using-dart-with-json-web-services">Using Dart with JSON Web Services</h1>
+
+  <p><em>Written by Chris Buckett<br />
+April 2012 (updated February 2013)</em></p>
+
+  <p>Most client-side Dart apps need a way to communicate with a server, and sending
+JSON via <a href="https://developer.mozilla.org/en/XMLHttpRequest">XMLHttpRequest</a> is
+the preferred way to do this. This article discusses communicating with a
+server using the 
+<a href="http://api.dartlang.org/html/HttpRequest.html">HttpRequest API</a>
+from the <a href="http://api.dartlang.org/html.html">dart:html</a> library and 
+parsing JSON data using the <a href="http://api.dartlang.org/docs/releases/latest/dart_convert.html">dart:convert</a> 
+library. It then goes on to show how to provide dot-notation access to JSON 
+data through the use of JsonObject.</p>
+
+  <h2 id="a-json-web-service">A JSON web service</h2>
+
+  <p>Many modern web apps are powered by RESTful web services that send and receive
+data encoded as JSON. This article features a web service that responds to an
+HTTP GET request to the URL <code>/programming-languages/dart</code> by returning the 
+following JSON string, which contains a string, a list, and a map that 
+represents information about the Dart language:</p>
+
+  <pre class="prettyprint lang-json">
+{
+  &quot;language&quot;: &quot;dart&quot;,                                 // String
+  &quot;targets&quot;: [&quot;dartium&quot;,&quot;javascript&quot;],                // List
+  &quot;website&quot;: {                                        // Map
+    &quot;homepage&quot;: &quot;www.dartlang.org&quot;,
+    &quot;api&quot;: &quot;api.dartlang.org&quot;
+  }
+}
+</pre>
+
+  <p>The same web service accepts data on the same URL with an HTTP POST.  The web
+service interprets a POST as a request to create a new object on the server,
+like an SQL INSERT.  The POSTed JSON data is sent in the HTTP body.</p>
+
+  <aside class="alert alert-info">
+    <p><strong>Note:</strong>
+  The source code for the examples in this article, and a simple dart 
+  web server that responds to these GET and POST requests is 
+  <a href="https://github.com/chrisbu/dartlang_json_webservice_article_code">available on github</a>.<br />
+  Full instructions for use are contained in the 
+  <a href="https://github.com/chrisbu/dartlang_json_webservice_article_code/blob/master/README.md">README file</a>.</p>
+  </aside>
+
+  <h2 id="connecting-to-the-server">Connecting to the server</h2>
+
+  <p>When communicating with a web service, use the <code>HttpRequest</code> 
+API from the dart:html library. HttpRequest is a standard way to 
+programmatically send and receive data to and from web servers.  This is 
+Dart’s equivalent to XMLHttpRequest in JavaScript.</p>
+
+  <h3 id="getting-data-from-the-server">Getting data from the server</h3>
+
+  <p>Get objects from the server using HTTP GET.  HttpRequest provides a named
+constructor called <code>get</code> that takes a URL and a callback function
+that’s invoked when the server responds.</p>
+
+  <pre class="prettyprint lang-dart">
+void loadData() {
+  var url = &quot;http://127.0.0.1:8080/programming-languages&quot;;
+
+  // call the web server asynchronously
+  var request = HttpRequest.getString(url).then(onDataLoaded);
+}
+</pre>
+
+  <p>Then elsewhere in your code, you can define an <code>onDataLoaded</code> 
+callback function and call the <code>loadData()</code> function:</p>
+
+  <pre class="prettyprint lang-dart">
+// print the raw json response text from the server
+void onDataLoaded(String responseText) {
+  var jsonString = responseText;
+  print(jsonString);
+}
+
+main() {
+  loadData();
+}
+</pre>
+
+  <aside class="alert alert-info">
+    <p><strong>Note:</strong>
+  <code>HttpRequest.getString()</code> is a convenience static method that wraps the
+full HttpRequest API.  The full HttpRequest API is still available if you need finer-grained control over the API.</p>
+  </aside>
+
+  <h3 id="saving-objects-on-the-server">Saving objects on the server</h3>
+
+  <p>To create a new object on the server, use the full HttpRequest API with the 
+HTTP POST method.  Use the readyStateChange listener to be notified when the 
+request is complete.  The example below calls an onSuccess function when the 
+request is complete:</p>
+
+  <pre class="prettyprint lang-dart">
+void saveData() {
+  HttpRequest request = new HttpRequest(); // create a new XHR
+  
+  // add an event handler that is called when the request finishes
+  request.onReadyStateChange.listen((_) {
+    if (request.readyState == HttpRequest.DONE &amp;&amp;
+        (request.status == 200 || request.status == 0)) {
+      // data saved OK.
+      print(request.responseText); // output the response from the server
+    }
+  });
+
+  // POST the data to the server
+  var url = &quot;http://127.0.0.1:8080/programming-languages&quot;;
+  request.open(&quot;POST&quot;, url, async: false);
+
+  String jsonData = &#39;{&quot;language&quot;:&quot;dart&quot;}&#39;; // etc...
+  request.send(jsonData); // perform the async POST
+}
+</pre>
+
+  <aside>
+    <div class="alert alert-warning">
+      <p><strong>Warning:</strong>
+If you are trying this out for yourself against a real server, you may receive 
+errors referring to <code>Access-Control-Allow-Origin</code>.  For details and workarounds, see the section
+<a href="#a-note-on-cors-and-httprequest">A note on CORS and HttpRequest</a>. </p>
+    </div>
+  </aside>
+
+  <h2 id="parsing-json">Parsing JSON</h2>
+
+  <p>Now that you have seen how HttpRequest GETs data from the server back to the
+client, and POSTs data from the client to the server, the next step is to make
+use of the JSON data in the client application.</p>
+
+  <p>The <a href="http://api.dartlang.org/docs/releases/latest/dart_convert/JsonCodec.html">dart:convert</a> library provides a JsonCodec class,
+which you can use to convert simple types (map, list, int, num, string) automatically 
+from a and to a JSON string.  The two key static methods are, <code>JSON.encode(object)</code> and <code>JSON.decode(string)</code>.</p>
+
+  <aside class="alert alert-info">
+    <p><strong>Tip:</strong>
+  JSON support was previously included as part of the dart:json library.<br />
+  The equivalent <code>JSON.stringify()</code> function is now <code>JSON.encode()</code>, 
+  and likewise <code>JSON.parse()</code> is now <code>JSON.decode()</code></p>
+  </aside>
+
+  <p>The <code>JSON.decode()</code> static method converts a string containing JSON formatted 
+text into a List of values or a Map of key-value pairs, depending upon the 
+content of the JSON:</p>
+
+  <pre class="prettyprint lang-dart">
+import &#39;dart:convert&#39;;
+
+main() {
+  String listAsJson = &#39;[&quot;Dart&quot;,1.0]&#39;; // input List of data
+  List parsedList = JSON.decode(listAsJson);
+  print(parsedList[0]); // Dart
+  print(parsedList[1]); // 1.0
+
+  String mapAsJson = &#39;{&quot;language&quot;:&quot;dart&quot;}&#39;;  // input Map of data
+  Map parsedMap = JSON.decode(mapAsJson);
+  print(parsedMap[&quot;language&quot;]); // dart
+}
+</pre>
+
+  <p>JSON also works for more complex data structures, such as nested maps inside
+of lists.</p>
+
+  <p>Use <code>JSON.decode()</code> to convert the HttpRequest’s response from raw text to an actual Dart <code>Map</code> object:</p>
+
+  <pre class="prettyprint lang-dart">
+void onDataLoaded(HttpRequest req) {
+  Map data = JSON.decode(req.responseText); // parse response text
+  print(data[&quot;language&quot;]); // dart
+  print(data[&quot;targets&quot;][0]); // dartium
+  print(data[&quot;website&quot;][&quot;homepage&quot;]); // www.dartlang.org
+}
+</pre>
+
+  <p>The <code>encode()</code> static method works the same as <code>decode</code> but in reverse.</p>
+
+  <pre class="prettyprint lang-dart">
+void saveData() {
+
+  // snip setting up HttpRequest
+
+  var mapData = new Map();
+  mapData[&quot;language&quot;] = &quot;dart&quot;;
+  mapData[&quot;targets&quot;] = new List();
+  mapData[&quot;targets&quot;].add(&quot;dartium&quot;);
+
+  String jsonData = JSON.encode(mapData); // convert map to String
+  request.send(jsonData); // perform the async POST
+}
+</pre>
+
+  <p>Using simple Maps with strings as keys has some unfortunate side effects.
+Making a typo in any of the string names will return a null value which could
+then go on to cause a NoSuchMethodError.  Accessing the values from the map
+cannot be validated before run-time.</p>
+
+  <p>One of the benefits of using Dart is support for optional static types. Static
+types help you catch bugs early by allowing tools to detect type mismatches
+before you run your code, and to throw exceptions as soon as a runtime issue
+occurs.  An additional benefit of using static types is that Dart Editor also
+uses this type information to provide auto-complete information—helpful
+when you are using a new library or data structure.</p>
+
+  <p>Ideally, you want to access JSON data in a structured way, taking advantage of
+the tools to help you catch bugs early. The following example feels more like
+natural Dart code:</p>
+
+  <pre class="prettyprint lang-dart">
+var data = // ... initialize data ...
+
+// property access is validated by tools
+print(data.language);
+print(data.targets[0]);
+data.website.forEach((key, value) =&gt; print(&quot;$key=$value&quot;));
+</pre>
+
+  <p>Fortunately, the ability to write code using this “dot notation” is built into
+Dart, through its support of classes. The solution, then, is to combine the
+flexibility of a Map with the structure of a class.</p>
+
+  <h3 id="introducing-jsonobject">Introducing JsonObject</h3>
+
+  <p>This flexibility of JSON and Maps combined with the structure of classes is 
+made possible with JsonObject, which is a third-party open source library.
+JsonObject uses the dart:convert decode() function to extract the JSON data into 
+a map, and then it uses the noSuchMethod feature of Dart classes to provide a 
+way to access values in the parsed map by using dot notation.</p>
+
+  <p>To learn more about JsonObject and download its code, go to the <a href="https://github.com/chrisbu/dartwatch-JsonObject">project on
+GitHub</a>.</p>
+
+  <p>JsonObject uses Dart’s noSuchMethod method support, which enables objects to
+intercept unknown method calls.  For example, if you invoke a getter such as
+data.language, where data is a JsonObject, then behind the scenes
+<code>noSuchMethod("get:language", null)</code> is called.  Likewise, when you try to set
+a value on a JsonObject, <code>noSuchMethod("set:language", ["Dart"])</code> is called.
+JsonObject intercepts the calls to noSuchMethod and accesses the underlying 
+Map.  Data contained within a JsonObject is still Map data, and so the dart:convert encode() and decode() methods still work on JsonObjects.</p>
+
+  <p>Here is an example of using JsonObject instead of a raw Map:</p>
+
+  <pre class="prettyprint lang-dart">
+void onDataLoaded(HttpRequest req) {
+  // decode the JSON response text using JsonObject
+  JsonObject data = new JsonObject.fromJsonString(req.responseText);
+
+  // dot notation property access
+  print(data.language);         // Get a simple value
+  data.language = &quot;Dart&quot;;       // Set a simple value
+  print(data.targets[0]);       // Get a value in a list
+  // iterate the website map
+  data.website.forEach((key, value) =&gt; print(&quot;$key=$value&quot;)); 
+}
+</pre>
+
+  <p>You can also use this in conjunction with your own classes. By extending 
+JsonObject, providing a factory constructor and implementing a suitable 
+interface, you can increase the readability of your code, allow the tools
+to help with type checking, and allow your classes to convert back and forth between a JSON string and JsonObject’s internal map structure.  </p>
+
+  <p>If factory constructors and implementing interfaces sounds like hard work, the following example shows that it really isn’t.</p>
+
+  <pre class="prettyprint lang-dart">
+/// Abstract class defines the interface of our JSON data structure
+abstract class Language {
+  String language;
+  List targets;
+  Map website;
+}
+
+/// Implementation class extends JsonObject, and uses the structure
+/// defined by implementing the Language abstract class. 
+/// JsonObject&#39;s noSuchMethod() function provides the actual underlying
+/// implementation.
+class LanguageImpl extends JsonObject implements Language {
+  LanguageImpl(); 
+  
+  factory LanguageImpl.fromJsonString(string) {
+    return new JsonObject.fromJsonString(string, new LanguageImpl());
+  }
+}
+</pre>
+
+  <p>Elsewhere in your code, you can use this structure to get strong typing of your JSON data. </p>
+
+  <pre class="prettyprint lang-dart">
+void onDataLoaded(HttpRequest req) {
+  // Decode the JSON response text using LanguageImpl
+  // The Language interface provides structure 
+  Language data = new LanguageImpl.fromJsonString(req.responseText);
+
+  // dot notation property access
+  print(data.language);         // Get a simple value
+  data.language = &quot;Dart&quot;;       // Set a simple value
+  print(data.targets[0]);       // Get a value in a list
+  // iterate the website map
+  data.website.forEach((key, value) =&gt; print(&quot;$key=$value&quot;)); 
+}
+</pre>
+
+  <p>JsonObject also allows you to create new, empty objects, without first
+converting from a JSON string, by using the default constructor:</p>
+
+  <pre class="prettyprint lang-dart">
+  var data = new JsonObject();
+  data.language = &quot;Dart&quot;;
+  data.targets = new List();
+  data.targets.add(&quot;Dartium&quot;);
+</pre>
+
+  <p>JsonObject also implements the Map interface, which means that you can use the
+standard map syntax:</p>
+
+  <pre class="prettyprint lang-dart">
+var data = new JsonObject();
+data[&quot;language&quot;] = &quot;Dart&quot;; // standard map syntax
+</pre>
+
+  <p>Because JsonObject implements Map, you can pass a JsonObject into
+JSON.encode(), which converts a Map into JSON for sending the data back to
+the server:</p>
+
+  <pre class="prettyprint lang-dart">
+var data = new JsonObject.fromJsonString(req.responseText);
+
+// later...
+// convert the JsonObject data back to a string
+String json = JSON.encode(data);
+
+// and POST it back to the server
+HttpRequest req = new HttpRequest();
+req.open(&quot;POST&quot;, url);
+req.send(json);
+</pre>
+
+  <p>You can include JsonObject in your project by using the
+<a href="http://pub.dartlang.org">pub</a> package manager.
+Simply specify the following dependency:</p>
+
+  <pre class="prettyprint lang-yaml">
+dependencies:
+  json_object: any
+</pre>
+
+  <p>and import the package using the following import statement:</p>
+
+  <pre class="prettyprint lang-dart">
+import &quot;package:json_object/json_object.dart&quot;;
+</pre>
+
+  <h3 id="a-note-on-cors-and-httprequest">A note on CORS and HttpRequest</h3>
+
+  <p>One caveat: Make sure your app is served from the same origin (domain name,
+port, and application layer protocol) as the web service you are trying to
+access with HttpRequest. Otherwise your app will hit the
+<code>Access-Control-Allow-Origin</code> restriction build into your web
+browser.  This is a security restriction to prevent loading data from a 
+different server than the one serving the client app.</p>
+
+  <p>You can get around this restriction in a couple of ways.  The first is to use
+an emerging technology known as
+<a href="https://developer.mozilla.org/en/http_access_control">Cross-Origin Resource Sharing</a>
+(CORS), which is starting to become implemented by web servers. In <a href="https://github.com/chrisbu/dartlang_json_webservice_article_code">the code 
+that accompanies this article</a>, 
+you can find <a href="https://github.com/chrisbu/dartlang_json_webservice_article_code/blob/master/simpleserver/simpleserver.dart">simpleserver.dart</a> that serves example JSON data for this article.
+This makes use of CORS headers to allow access from a different URL, such as 
+the automatically generated URL of apps launched from the Dart editor.</p>
+
+  <p>The second, older way, that only works for GET requests is to use a workaround 
+called JSONP, which makes use of JavaScript callbacks.<br />
+The Dart - JavaScript interop libraries in the <a href="http://pub.dartlang.org/packages/js">js 
+interop package</a> available on pub
+are suitable for JavaScript callbacks:</p>
+
+  <pre class="prettyprint lang-dart">
+import &#39;dart:html&#39;;
+import &#39;package:js/js.dart&#39; as js;
+
+void main() {
+  js.scoped(() {
+    // create a top-level JavaScript function called myJsonpCallback
+    js.context.myJsonpCallback = new js.Callback.once( (jsonData) {
+      print(jsonData); // js.Proxy object containing the data
+                       // see js interop docs
+    });
+
+    // add a script tag for the api required
+    ScriptElement script = new Element.tag(&quot;script&quot;);
+    // add the callback function name to the URL
+    script.src = &quot;http://example.com/some/api?callback=myJsonpCallback&quot;;
+    document.body.children.add(script); // add the script to the DOM
+  });
+}
+</pre>
+
+  <p>For more detailed information about JS Interop, see
+the <a href="http://dart-lang.github.com/js-interop/docs/js.html">js package docs</a>.</p>
+
+  <h2 id="summary">Summary</h2>
+
+  <p>This article showed how a client-side Dart application communicates with a
+JSON-based web service via HTTP GET and POST.  JSON data is parsed using the
+dart:convert library, which converts JSON strings into maps and lists.  Using
+JsonObject with the JSON data allows you to extend the functionality of the
+dart:convert library by letting you use dot notation to access data fields.</p>
+
+  <h2 id="resources">Resources</h2>
+
+  <ul>
+    <li><a href="https://github.com/chrisbu/dartlang_json_webservice_article_code">Source code examples from this article</a></li>
+    <li><a href="http://api.dartlang.org/docs/releases/latest/dart_convert.html">dart:convert</a></li>
+    <li><a href="http://api.dartlang.org/html/HttpRequest.html">HttpRequest</a></li>
+    <li><a href="https://github.com/chrisbu/dartwatch-JsonObject">JsonObject</a></li>
+    <li><a href="http://blog.sethladd.com/2012/03/jsonp-with-dart.html">Using JSONP with Dart</a></li>
+    <li><a href="http://dart-lang.github.com/js-interop/docs/js.html">Dart JS Interop Library</a></li>
+    <li><a href="https://developer.mozilla.org/en/http_access_control">About access-control restrictions</a></li>
+  </ul>
+
+  <h3 id="about-the-author">About the author</h3>
+
+  <p><img src="chris-buckett.png" width="95" height="115" alt="Chris Buckett head shot" align="left" style="margin-right: 10px" /></p>
+
+  <p>Chris Buckett is a Technical Manager for
+<a href="http://www.entity.co.uk/">Entity Group Ltd</a>, responsible for building and
+delivering enterprise client-server webapps, mostly with GWT, Java and .Net.
+He runs the <a href="http://blog.dartwatch.com/">dartwatch.com blog</a>, and has written
+the writing the book <em>Dart in Action</em>, which is available
+at <a href="http://www.manning.com/buckett">manning.com</a>.</p>
+
+</div>
+
+    	  </div> <!-- End of content from toc.html -->
+        </article>
+	  </div>
+
+	
+	<ul class="pager hidden-print">
+	  <li><a href="/articles/">More articles about Dart <i class="glyphicon glyphicon-chevron-up"></i></a></li>
+	 </ul>
+	 
+
+	</div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+
+
+
+
+</body>
+</html>
+

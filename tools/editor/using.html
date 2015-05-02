@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Tips for Using Dart Editor | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Tips for Using Dart Editor | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="Tips on how to use Dart Editor to create, test, run, and debug your Dart application.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+    <div class="container col-md-10 col-md-offset-1 sub-page">
+      <div>
+      <div class="col-md-4">
+  <div class="bs-sidebar" data-spy="affix" data-offset-bottom="350" role="complementary">
+
+<ol class="toc nav bs-sidenav" id="markdown-toc">
+  <li><a href="#viewing-samples">Viewing samples</a></li>
+  <li><a href="#managing-the-files-view">Managing the Files view</a></li>
+  <li><a href="#creating-apps">Creating apps</a></li>
+  <li><a href="#editing-apps">Editing apps</a></li>
+  <li><a href="#running-apps">Running apps</a></li>
+  <li><a href="#debugging-apps">Debugging apps</a></li>
+  <li><a href="#compiling-to-javascript">Compiling to JavaScript</a></li>
+  <li><a href="#other-features">Other features</a></li>
+</ol>
+
+  </div>
+</div>
+<div class="col-md-8">
+  <p><!-- Start of content -->
+</p>
+
+  <div>
+    <ol class="breadcrumb">
+
+  <li><a href="/tools/">
+  Dart Tools</a></li>
+
+  <li><a href="/tools/editor/">
+  Dart Editor</a></li>
+
+
+  <li class="active">Tips for Using Dart Editor</li>
+</ol>
+  </div>
+
+  <h1 id="tips-for-using-dart-editor">Tips for Using Dart Editor</h1>
+
+  <p>If you are completely new to using Dart Editor,
+first read <a href="/tools/editor/">Dart Editor</a>.</p>
+
+  <p>Read this page for more tips on using Dart Editor, including
+information such as <a href="#specifying-a-browser">specifying a browser</a>
+and <a href="#compiling-to-javascript">compiling to JavaScript</a>.
+If you run into a problem, see
+<a href="troubleshoot.html">Troubleshooting Dart Editor</a>.</p>
+
+  <aside class="alert alert-info">
+    <p><strong>Note:</strong>
+Dart Editor is updated periodically, so it may look different
+from what you see here. </p>
+  </aside>
+
+  <h2 id="viewing-samples">Viewing samples</h2>
+
+  <p>The Welcome page of Dart Editor displays a few samples. To open a
+sample and look at its source code, click the sample’s image.</p>
+
+  <p>If you don’t see the Welcome page, you probably closed it. Get it back
+with <strong>Tools &gt; Welcome Page</strong>.</p>
+
+  <h2 id="managing-the-files-view">Managing the Files view</h2>
+
+  <p>The Files view shows the files that implement the libraries included in
+Dart, installed packages, as well as all the apps that you create or
+open.</p>
+
+  <h3 class="no_toc" id="adding-apps">Adding apps</h3>
+
+  <p>Here’s how to open an app, which makes it appear in your Files view:</p>
+
+  <ol>
+    <li>
+      <p>Go to the <strong>File</strong> menu, and choose <strong>Open Existing Folder…</strong>. Or
+use the keyboard shortcut (<strong>Ctrl+O</strong> or, on Mac, <strong>Cmd+O</strong>).</p>
+    </li>
+    <li>
+      <p>Browse to the directory that contains the app’s files.</p>
+    </li>
+    <li>
+      <p>Click <strong>Open</strong>.</p>
+    </li>
+  </ol>
+
+  <p>The directory and all its files appear in the Files view.</p>
+
+  <h3 class="no_toc" id="removing-apps">Removing apps</h3>
+
+  <p>You can remove an app from the Files view, either with or without
+deleting its files.</p>
+
+  <p>Right-click (or Ctrl+click) the directory and choose <strong>Delete</strong>. If you
+want to delete the app’s files permanently, then in the dialog that
+comes up, choose <strong>Delete project contents on disk</strong>.</p>
+
+  <h2 id="creating-apps">Creating apps</h2>
+
+  <p>It’s easy to create a simple web or command-line app from scratch:</p>
+
+  <ol>
+    <li>
+      <p>Click the New Project button <img src="images/newapp.png" alt="" /> (at the
+upper left of Dart Editor). Alternatively, choose <strong>File &gt; New
+Application</strong> from the Dart Editor menu. A dialog appears.</p>
+    </li>
+    <li>
+      <p>Type in a name for your application—for example, <code>hello_web</code>. If you
+don’t like the default parent directory, type in a new location or
+browse to choose the location.</p>
+    </li>
+    <li>
+      <p>Unless you really don’t want files to be automatically created for
+you, make sure <strong>Generate sample content</strong> is selected.</p>
+    </li>
+    <li>
+      <p>Select the kind of application you’re writing, such as command line,
+web, or web using <a href="/polymer/">Polymer.dart.</a></p>
+    </li>
+    <li>
+      <p>Click <strong>Finish</strong> to create a directory with initial files for the app.</p>
+
+      <p>A default Dart file appears in the Edit view, and its directory
+appears in the Files view. Your Dart Editor window should look
+something like the following screenshot.</p>
+
+      <p><img src="images/hello-web-dot-dart.png" alt="A new app, pre-filled with basic, runnable code" /></p>
+    </li>
+  </ol>
+
+  <h2 id="editing-apps">Editing apps</h2>
+
+  <p>Dart Editor provides the basic editing functionality you’d expect, plus
+features such as Dart code completion, API browsing, support for
+refactoring, and the ability to search multiple files.</p>
+
+  <h3 class="no_toc" id="using-autocomplete">Using autocomplete</h3>
+
+  <p>Autocomplete suggestions look something like the following figure.</p>
+
+  <p><img src="images/autocomplete-suggestions.png" alt="Autocomplete suggestions" /></p>
+
+  <p>Suggestions appear when you either:</p>
+
+  <ul>
+    <li>Type a class or variable name, and then type a period.
+For example, type <code>document.</code> or <code>DateTime.</code> and pause a moment.
+Once the suggestions appear, continue typing to pare down the list.</li>
+    <li>Type <strong>Ctrl+Space</strong>.
+For example, type <code>Dat</code>, then Ctrl+Space to see a list of classes
+that start with “Dat”.</li>
+  </ul>
+
+  <p>When the suggestions come up, you can click, type, or use the arrow keys
+to select the one you want. Press Enter or Return to choose a
+suggestion, or Esc to dismiss the panel.</p>
+
+  <h3 class="no_toc" id="browsing-apis">Browsing APIs</h3>
+
+  <p>With Dart Editor you can easily find where APIs are declared. You can
+also outline the contents of a Dart file.</p>
+
+  <h4 class="no_toc" id="finding-out-more-about-an-api">Finding out more about an API</h4>
+
+  <p>To get more information about an API item—variable, method, type,
+library, and so on—hover the mouse over the item in the Edit view. Dart
+Editor displays a popup that provides more information about that item.</p>
+
+  <p>To go to the declaration of an API item, either within the same .dart
+file or in another file:</p>
+
+  <ol>
+    <li>
+      <p>In the Edit view of a Dart file, click on an API item. Dart Editor
+highlights the item and all other occurrences of the item.</p>
+    </li>
+    <li>
+      <p>Right click.</p>
+    </li>
+    <li>
+      <p>Choose <strong>Open Declaration</strong> in the menu.</p>
+
+      <p>The editor displays the file that declares the item. For example, if
+you open the declaration for querySelector, the file that declares
+the <code>querySelector()</code> function appears.</p>
+    </li>
+  </ol>
+
+  <h4 class="no_toc" id="outlining-a-files-contents">Outlining a file’s contents</h4>
+
+  <p>Press <strong>Alt+O</strong> (<strong>Option+O</strong> on Mac) or right-click and choose
+<strong>Outline File</strong>.</p>
+
+  <p>A panel comes up displaying the classes, methods, and fields declared in
+the current Dart file. For example, the outline for the Sunflower
+sample’s <code>sunflower.dart</code> file looks something like this:</p>
+
+  <p><img src="images/sunflower-outline-panel.png" alt="The Outline panel for the Sunflower sample" /></p>
+
+  <p>You can reduce the size of the list by typing one or more characters.
+For example, if you type <strong>c</strong>, only the <strong>center</strong> and <strong>context</strong>
+variables appear.</p>
+
+  <p>If you choose an item from the list—for example, <strong>centerX</strong>— the editor
+scrolls to its declaration.</p>
+
+  <p>Alternatively, add a more permanent outline view by choosing <strong>Tools &gt;
+Outline</strong>.</p>
+
+  <h3 class="no_toc" id="refactoring">Refactoring</h3>
+
+  <p>To change the name of an item throughout your code, put the cursor
+within (or double-click) the item’s name in the Edit view, and
+right-click and choose <strong>Rename…</strong>.</p>
+
+  <p>You can rename almost anything—local variables, function parameters,
+fields, methods, types, top-level functions, library prefixes, top-level
+compilation units, and more. An example of renaming a top-level
+compilation unit is changing the name of a file that’s sourced by a
+library.</p>
+
+  <h3 class="no_toc" id="searching">Searching</h3>
+
+  <p>The search field at the upper right of the Dart Editor window is an easy
+way to go directly to:</p>
+
+  <ul>
+    <li>Types</li>
+    <li>Files</li>
+    <li>Text inside of files</li>
+  </ul>
+
+  <p>The scope of a text search is every file in your Files view. Results for
+text searches come up in a Search view. Within that view, double-click a
+file to see it in the Edit view. All occurrences of the search string in
+the Edit view are highlighted.</p>
+
+  <h2 id="running-apps">Running apps</h2>
+
+  <p>To run any Dart app, click Dart Editor’s Run button
+<img src="images/run.png" alt="" /> while a file in that app is selected. If you’re
+working on a web app, Dart Editor brings up a browser window that
+displays the app’s HTML page, with the app’s code running inside it.</p>
+
+  <p>When you run a web application using Dart Editor, by default the app
+uses the copy of Dartium that’s included in the Dart Editor download,
+with the Dart code executing directly in the browser. If your launch
+configuration specifies a browser, then Dart Editor uses
+<a href="/tools/dart2js/">dart2js</a> to compile the Dart code to JavaScript
+that executes in the browser.</p>
+
+  <h3 class="no_toc" id="specifying-launch-configurations">Specifying launch configurations</h3>
+
+  <p>Use <strong>Run &gt; Manage Launches</strong> to specify as many launch configurations
+as you like.</p>
+
+  <p>For web apps, you can specify the following:</p>
+
+  <ul>
+    <li>HTML file or URL to open</li>
+    <li>arguments to pass to the browser; for example,
+<code>--allow-file-access-from-files</code></li>
+    <li>checked mode (Dartium only)</li>
+    <li>enable experimental features (Dartium only)</li>
+    <li>whether to show the browser’s stdout and stderr output (Dartium
+only; useful for diagnosing Dartium crashes)</li>
+  </ul>
+
+  <p>For example, a web app might have a launch configuration for Dartium and
+several more configurations corresponding to additional browsers you
+want to test.</p>
+
+  <p>You can specify the following for command-line apps:</p>
+
+  <ul>
+    <li>.dart file to execute</li>
+    <li>working directory</li>
+    <li>arguments to pass to the app</li>
+    <li>checked mode</li>
+  </ul>
+
+  <h3 class="no_toc" id="running-in-production-mode">Running in production mode</h3>
+
+  <p>By default, apps run in checked mode. To run in production mode instead,
+disable checked mode in your app’s launch configuration:</p>
+
+  <ol>
+    <li>
+      <p>Run your app at least once, so that it has a launch configuration.</p>
+    </li>
+    <li>
+      <p>Choose <strong>Run &gt; Manage Launches</strong>, or click the little arrow to the
+right of the Run button <img src="images/run.png" alt="" /> and choose <strong>Manage
+Launches</strong>.</p>
+    </li>
+    <li>
+      <p>In the Manage Launches dialog, find a launch configuration for your
+app. Click it if it isn’t already selected.</p>
+    </li>
+    <li>
+      <p>Unselect <strong>Run in checked mode</strong>.</p>
+
+      <p><img src="images/checked-mode.png" alt="To run in production mode, unselect checked mode" /></p>
+    </li>
+    <li>
+      <p>Click <strong>Apply</strong> to save your change, or <strong>Run</strong> to save it and run
+your app.</p>
+    </li>
+  </ol>
+
+  <p>For details about checked mode and production mode, see
+<a href="/docs/dart-up-and-running/ch02.html#runtime-modes">Runtime Modes</a>, 
+a section in <a href="/docs/dart-up-and-running/">Dart: Up and Running</a>.</p>
+
+  <h3 id="specifying-a-browser" class="no_toc">Specifying a browser for JavaScript launches</h3>
+
+  <p>To specify the browser in which to run the JavaScript version of your
+web apps:</p>
+
+  <ol>
+    <li>
+      <p>Choose <strong>Dart Editor &gt; Preferences</strong>.</p>
+    </li>
+    <li>
+      <p>Click <strong>Run and Debug</strong>.</p>
+    </li>
+    <li>
+      <p>Unless you want to use the default system browser, unselect <strong>Use
+default system browser</strong> and specify the location of the browser you
+want to use. <em>Example:</em> /Applications/Firefox.app</p>
+    </li>
+    <li>
+      <p>Click <strong>OK</strong> to save your changes.</p>
+    </li>
+  </ol>
+
+  <p>Now whenever you run an app as JavaScript, Dart Editor invokes your
+browser of choice.</p>
+
+  <p>Alternatively, you can run your app as JavaScript using the default
+browser setting and then copy and paste the URL into a different
+browser.</p>
+
+  <h2 id="debugging-apps">Debugging apps</h2>
+
+  <p>You can debug both command-line and web apps with Dart Editor. Some
+tips:</p>
+
+  <ul>
+    <li>Set breakpoints by double-clicking in the left margin of the Edit
+view.</li>
+    <li>Use the Debugger view to view your app’s state and control its
+execution. By default, the Debugger view is to the right of the Edit
+view and appears when you first hit a breakpoint
+(see the following figure).</li>
+    <li>To see the value of a variable, mouse over it, look in the Debugger
+view, or use an Expression <img src="images/watchlist_view.gif" alt="" />.</li>
+    <li>To debug web apps, use Dart Editor with Dartium. While you’re
+debugging, Dart Editor takes the place of the Dartium console. For
+example, Dart Editor displays the output of <code>print()</code> statements.</li>
+  </ul>
+
+  <p><img src="images/debug-sunflower.png" alt="Using Dart Editor to debug the Sunflower sample app" /></p>
+
+  <h2 id="compiling-to-javascript">Compiling to JavaScript</h2>
+
+  <p>You might not need to do anything to compile your code to JavaScript.
+When you run an app using a launch configuration that
+<a href="#specifying-a-browser">specifies a browser</a>,
+Dart Editor automatically compiles the app to JavaScript before
+executing it in the browser.</p>
+
+  <p>However, you can also compile Dart code to JavaScript without running
+the app. Just choose <strong>Tools &gt; Pub Build (generates JS)</strong>.
+Another option is to use either <a href="/tools/pub/cmd/pub-build.html"><code>pub build</code></a>
+or <a href="/tools/dart2js/">dart2js</a> from the command line.
+(Pub build first runs any transformers that your app might require
+before calling dart2js.)</p>
+
+  <h2 id="other-features">Other features</h2>
+
+  <p>Dart Editor has many additional features, including customization and
+keyboard alternatives.</p>
+
+  <h3 class="no_toc" id="customizing-dart-editor">Customizing Dart Editor</h3>
+
+  <p>You can customize the editor’s font, margins, key bindings, and more
+using the Preferences dialog. To bring up the dialog, choose <strong>Tools &gt;
+Preferences</strong> (on Mac: <strong>Dart Editor &gt; Preferences</strong>).</p>
+
+  <p>You can also customize which views you see in Dart Editor, as well as
+their size and position. To add views, use the <strong>Tools</strong> menu. To remove
+a view, click its <strong>X</strong>. To move a view, drag its tab to a different
+position, either within or outside of the Dart Editor window. To resize
+a view, drag its edges.</p>
+
+  <h3 class="no_toc" id="keyboard-alternatives">Keyboard alternatives</h3>
+
+  <p>To get a list of all keyboard alternatives, choose <strong>Help &gt; Key
+Assist</strong>.</p>
+
+  <p><img src="images/key-assist.png" alt="Help \&gt; Key Assist" /></p>
+
+</div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+
+
+
+
+</body>
+</html>
+

@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Improving the DOM | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Improving the DOM | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="Learn how Dart's HTML library improves the browser programming experience.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  <link rel="author" href="/authors/bob-nystrom.html">
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+  	<div class="container sub-page">
+      <div class="row">
+        <article class="has-permalinks"><div class="col-md-4">
+  <div class="bs-sidebar" data-spy="affix" data-offset-bottom="350" role="complementary">
+
+<ol class="toc nav bs-sidenav" id="markdown-toc">
+  <li><a href="#simpler-names">Simpler names</a></li>
+  <li><a href="#better-querying">Better querying</a></li>
+  <li><a href="#real-collections">Real collections</a></li>
+  <li><a href="#constructors">Constructors</a></li>
+  <li><a href="#events">Events</a></li>
+  <li><a href="#no-more-vendor-prefixes">No more vendor prefixes</a></li>
+  <li><a href="#future-based-apis">Future-based APIs</a></li>
+  <li><a href="#more-granular-libraries">More granular libraries</a></li>
+  <li><a href="#cross-browser-consistency">Cross-browser consistency in HTML APIs</a></li>
+  <li><a href="#cascades">Cascaded DOM construction</a></li>
+  <li><a href="#know-more">Want to know more?</a></li>
+</ol>
+
+  </div>
+</div>
+<div class="col-md-8">
+  <p><!-- Start of content -->
+</p>
+
+  <div>
+    <ol class="breadcrumb">
+
+  <li><a href="/articles/">
+  Articles</a></li>
+
+
+  <li class="active">Improving the DOM</li>
+</ol>
+  </div>
+
+  <h1 id="improving-the-dom">Improving the DOM</h1>
+
+  <p><em>Written by Bob Nystrom<br />
+October 2011 (updated March 2013)</em></p>
+
+  <p>One of the great opportunities a new language gives you is a chance to also
+define a cleaner set of APIs for users. When it comes to coding in a browser,
+that API is the DOM. The DOM API that JavaScripters suffer is creaking under the
+weight of history and technological ballast such as XML.</p>
+
+  <h2 id="simpler-names">Simpler names</h2>
+
+  <p>The simplest changes were just cleaning up some painful names.
+<code>HTMLElement</code> is just <code>Element</code> and we’ve dropped
+<code>HTML</code> from most of the type names when it makes sense. Instead of
+<code>childNodes</code> and <code>elements</code> we have <code>nodes</code> and
+<code>children</code>. <code>ownerDocument</code> is just <code>document</code>.
+We’ve tried to optimize names so that the things you use the most are the most
+terse.</p>
+
+  <p>When’s the last time you use <code>XMLHttpRequest</code> to actually, you
+know, request XML? We thought so. So we’ve renamed <code>XMLHttpRequest</code>
+to <code>HttpRequest</code>.</p>
+
+  <p>We’ve also made the capitalization of names for DOM types more consistent.
+All names containing acronyms with greater than two letters always use
+camelCase for capitalization, like
+<code>CssStyleSheet</code> (previously known as CSSStyleSheet).</p>
+
+  <h2 id="better-querying">Better querying</h2>
+
+  <p>One area where the DOM has a bunch of baggage is finding elements. Today’s
+DOM has a pile of methods for finding stuff.
+All of this piled up before <a href="http://jquery.com/">jQuery</a> appeared
+on a mountaintop to give us the revelation that <em>Thou Shalt Find Nodes By
+Using CSS Selectors</em>. With the One True Way in hand, we’ve stripped it
+down to just two (!) methods: <code>querySelector()</code> and <code>querySelectorAll()</code>.</p>
+
+  <div class="row">
+    <div class="col-md-6">
+
+      <pre class="prettyprint lang-javascript">
+// Old:
+getElementsById()
+getElementsByTagName()
+getElementsByName()
+getElementsByClassName()
+querySelector()
+querySelectorAll()
+document.links
+document.images
+document.forms
+document.scripts
+formElement.elements
+selectElement.options
+</pre>
+
+    </div>
+
+    <div class="col-md-6">
+
+      <pre class="prettyprint lang-dart">
+// New:
+querySelector()
+querySelectorAll()
+</pre>
+
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+
+      <pre class="prettyprint lang-javascript">
+// Old:
+elem.getElementById(&#39;foo&#39;);
+elem.getElementsByTagName(&#39;div&#39;);
+elem.getElementsByName(&#39;foo&#39;);
+elem.getElementsByClassName(&#39;foo&#39;);
+elem.querySelector(&#39;.foo .bar&#39;);
+elem.querySelectorAll(&#39;.foo .bar&#39;);
+</pre>
+
+    </div>
+    <div class="col-md-6">
+
+      <!--- BEGIN(element_query) -->
+      <pre class="prettyprint lang-dart">
+// New:
+elem.querySelector(&#39;#foo&#39;);
+elem.querySelectorAll(&#39;div&#39;);
+elem.querySelectorAll(&#39;[name=&quot;foo&quot;]&#39;);
+elem.querySelectorAll(&#39;.foo&#39;);
+elem.querySelector(&#39;.foo .bar&#39;);
+elem.querySelectorAll(&#39;.foo .bar&#39;);
+</pre>
+      <!--- END(element_query) -->
+
+    </div>
+  </div>
+
+  <h2 id="real-collections">Real collections</h2>
+
+  <p>In JavaScript, the DOM collection types are different from the built-in
+Array type, which trips users up when methods they use on one aren’t available
+on the other. For Dart, we’ve cleaned that up. Methods like
+<code>children</code>, <code>nodes</code>, and <code>querySelectorAll()</code> return
+<em>actual</em>
+Dart <a href="http://api.dartlang.org/docs/releases/latest/dart_core/List.html">lists</a>,
+<a href="http://api.dartlang.org/docs/releases/latest/dart_core/Map.html">maps</a>,
+and <a href="http://api.dartlang.org/docs/releases/latest/dart_core/Set.html">sets</a>.</p>
+
+  <pre class="prettyprint lang-dart">
+// From dart:html
+List&lt;Element&gt; querySelectorAll(String selector);
+
+// On Element:
+Map&lt;String, String&gt; attributes
+
+List&lt;Element&gt; children
+
+CssClassSet classes // CssClassSet implements Set&lt;String&gt;
+
+Map&lt;String, String&gt; dataset
+
+List&lt;Node&gt; nodes
+</pre>
+
+  <p>Building on top of Dart’s collection types lets us get rid of a bunch of
+special-case methods too. Instead of a bunch of methods on <code>Element</code>
+for working with attributes, we just made <code>attributes</code> a map:</p>
+
+  <div class="row">
+    <div class="col-md-6">
+
+      <pre class="prettyprint lang-javascript">
+// Old:
+elem.hasAttribute(&#39;name&#39;);
+elem.getAttribute(&#39;name&#39;)
+elem.setAttribute(&#39;name&#39;, &#39;value&#39;);
+elem.removeAttribute(&#39;name&#39;);
+</pre>
+
+    </div>
+
+    <div class="col-md-6">
+
+      <!--- BEGIN(element_attributes) -->
+      <pre class="prettyprint lang-dart">
+// New:
+elem.attributes.containsKey(&#39;name&#39;);
+elem.attributes[&#39;name&#39;];
+elem.attributes[&#39;name&#39;] = &#39;value&#39;;
+elem.attributes.remove(&#39;name&#39;);
+</pre>
+      <!--- END(element_attributes) -->
+
+    </div>
+  </div>
+
+  <p>Likewise, by making <code>nodes</code> and <code>children</code>
+full-featured collections, we can get rid of a bunch of methods on
+<code>Element</code> and <code>Node</code>:</p>
+
+  <div class="row">
+    <div class="col-md-6">
+
+      <pre class="prettyprint lang-javascript">
+// Old:
+elem.hasChildNodes();
+elem.firstChild();
+elem.appendChild(child);
+</pre>
+
+    </div>
+
+    <div class="col-md-6">
+
+      <!--- BEGIN(element_nodes) -->
+      <pre class="prettyprint lang-dart">
+// New:
+elem.nodes.isEmpty;
+elem.nodes[0];
+elem.nodes.add(child);
+</pre>
+      <!--- END(element_nodes) -->
+
+    </div>
+  </div>
+
+  <h2 id="constructors">Constructors</h2>
+
+  <p>In order to create new instances of DOM types, in traditional web programming
+you’re forced to go through
+factory methods on the document.</p>
+
+  <p>Dart is a <em>class-based</em> object-oriented language. We have constructors,
+and we like constructors.</p>
+
+  <div class="row">
+    <div class="col-md-6">
+
+      <pre class="prettyprint lang-javascript">
+// Old:
+document.createElement(&#39;div&#39;);
+</pre>
+
+    </div>
+
+    <div class="col-md-6">
+
+      <!--- BEGIN(element_constructors) -->
+      <pre class="prettyprint lang-dart">
+// New:
+new DivElement();
+new ButtonElement();
+new InputElement(); 
+new InputElement(type: &#39;checkbox&#39;);
+new TableElement();
+new StyleElement();
+</pre>
+      <!--- END(element_constructors) -->
+
+    </div>
+  </div>
+
+  <p>Most of the HTML elements have constructors. For example:</p>
+
+  <ul>
+    <li><code>new ButtonElement()</code></li>
+    <li><code>new InputElement()</code> or <code>new InputElement(type: 'checkbox')</code></li>
+    <li><code>new TableElement()</code></li>
+    <li><code>new StyleElement()</code></li>
+    <li>Many more</li>
+  </ul>
+
+  <p>You can even construct an element, and its children,
+from an HTML snippet. Here’s an example:</p>
+
+  <!--- BEGIN(element_table) -->
+  <pre class="prettyprint lang-dart">
+TableElement table = new Element.html(
+    &#39;&lt;table&gt;&lt;tr&gt;&lt;td&gt;Hello &lt;em&gt;Dart!&lt;/em&gt;&lt;/table&gt;&#39;);
+</pre>
+  <!--- END(element_table) -->
+
+  <p>Dart’s <a href="/docs/dart-up-and-running/ch02.html#named-constructors">named constructors</a>
+make it easier to conjure up DOM objects in a
+variety of ways.</p>
+
+  <h2 id="events">Events</h2>
+
+  <p>Events are perhaps the biggest change, and I think the most useful one. We’ve
+cleaned up how event handlers are bound. The DOM has two ways of working with
+events. The old way is that you can bind a single handler by setting one of the
+<code>on___</code> properties on the element directly. (For mysterious reasons, these are
+named <code>allinlowercase</code> unlike the rest of the DOM.)</p>
+
+  <p>The more modern way is by using <code>addEventListener()</code> and
+<code>removeEventListener()</code>. That safely allows multiple listeners
+for the same event, which is great, but it’s painfully verbose. You also
+identify the event type by its string name, which is error-prone and doesn’t
+play nice with the type system.</p>
+
+  <p><strong>We’ve simplified things.</strong> We killed all of the <code>on___</code> properties
+on Element and then used the
+<a href="http://api.dartlang.org/docs/releases/latest/dart_async/Stream.html">Stream API</a>
+for a unified event model. For each of the known
+event types, there is a property on that class: <code>onClick</code>,
+<code>onMouseDown</code>, etc. Each of those properties is a Stream object
+that can register listeners and dispatch events.</p>
+
+  <p>Here’s an example:</p>
+
+  <div class="row">
+    <div class="col-md-6">
+
+      <pre class="prettyprint lang-javascript">
+// Old:
+elem.addEventListener(&#39;click&#39;,
+    (event) =&gt; print(&#39;click!&#39;), false);
+
+elem.removeEventListener(
+    &#39;click&#39;, listener);
+</pre>
+
+    </div>
+    <div class="col-md-6">
+
+      <!--- BEGIN(element_listen) -->
+      <pre class="prettyprint lang-dart">
+// New:
+var subscription = elem.onClick.listen(
+    (event) =&gt; print(&#39;click!&#39;));
+
+subscription.cancel();
+</pre>
+      <!--- END(element_listen) -->
+
+    </div>
+  </div>
+
+  <p>If you know you’re going to handle one-and-only-one event, you can
+use <code>onEvent.first.then()</code>, which converts a Stream into a single event
+that returns a Future.</p>
+
+  <!--- BEGIN(handleMouseDown) -->
+  <pre class="prettyprint lang-dart">
+void handleMouseDown(e) {
+  // Gets the first mouse up event, then automatically unregisters!
+  elem.onMouseUp.first.then((event) =&gt; doCoolStuff());
+}
+</pre>
+  <!--- END(handleMouseDown) -->
+
+  <p>On the off chance that you <em>do</em> want to register a dynamically-named
+event, or work with events generically, we also put a subscript operator on
+<a href="http://api.dartlang.org/docs/releases/latest/dart_html/Events.html">Events</a>:</p>
+
+  <div class="row">
+    <div class="col-md-6">
+
+      <pre class="prettyprint lang-javascript">
+// Old:
+elem.addEventListener(
+    &#39;some&#39; + &#39;name&#39;,
+    (event) =&gt; print(&#39;dynamic!&#39;),
+    false);
+</pre>
+
+    </div>
+    <div class="col-md-6">
+
+      <!--- BEGIN(element_listen_dynamic) -->
+      <pre class="prettyprint lang-dart">
+// New:
+elem.on[&#39;dynamiceventname&#39;].listen(
+    (event) =&gt; print(&#39;dynamic!&#39;));
+</pre>
+      <!--- END(element_listen_dynamic) -->
+
+    </div>
+  </div>
+
+  <p>Usage of the Stream API for events is not limited to Elements.
+For example, Document has <code>onReadyStateChange</code>,
+<code>onSelectionChange</code>, and more.</p>
+
+  <h2 id="no-more-vendor-prefixes">No more vendor prefixes</h2>
+
+  <p>Vendor prefixes have a mildly contentious history on the web. Originally
+a way for browser vendors to experiment with features, over time some
+vendor-prefixed properties became de-facto standards due to wide deployment and
+misinterpretation by developers.</p>
+
+  <p><strong>Dart hides vendor prefixes!</strong> No more explicit cross-browser code to enable
+a feature across implementations. Dart’s HTML library takes care of it for you.</p>
+
+  <p>Here’s one example for <code>getUserMedia</code>:</p>
+
+  <div class="row">
+    <div class="col-md-6">
+
+      <pre class="prettyprint lang-javascript">
+// Traditionally:
+navigator.getMedia = (
+    navigator.getUserMedia ||
+    navigator.webkitGetUserMedia ||
+    navigator.mozGetUserMedia ||
+    navigator.msGetUserMedia);
+</pre>
+
+    </div>
+    <div class="col-md-6">
+
+      <pre class="prettyprint lang-dart">
+// With Dart:
+window.navigator.getUserMedia(
+    audio:true, video: true) ...
+</pre>
+
+    </div>
+  </div>
+
+  <p>Here’s <code>indexedDB</code>:</p>
+
+  <div class="row">
+    <div class="col-md-6">
+
+      <pre class="prettyprint lang-javascript">
+window.indexedDB = window.indexedDB ||
+                   window.mozIndexedDB ||
+                   window.webkitIndexedDB ||
+                   window.msIndexedDB;
+</pre>
+
+    </div>
+    <div class="col-md-6">
+
+      <pre class="prettyprint lang-dart">
+// With Dart:
+window.indexedDB.open(...)
+</pre>
+
+    </div>
+  </div>
+
+  <h2 id="future-based-apis">Future-based APIs</h2>
+
+  <p>Ah, callbacks. Sigh. Traditional web programming was littered with callback
+functions as a way to write asynchronous programs. However, as apps scaled up in
+complexity and number of lines of code, nested (sometimes, deeply nested)
+callback functions created hard-to-read programs and hard-to-follow logic.
+There’s even an entire site called <a href="http://callbackhell.com/">Callback Hell</a>
+with mitigation strategies.</p>
+
+  <p>Dart introduced the Future class for encapsulated, object-oriented asynchronous
+results. A Future represents a value that is computed and returned in the future
+(in a future event loop iteration). With the Future class baked into the
+platform, Dart’s HTML libraries can remove the callbacks and instead return a
+Future.</p>
+
+  <p>Compare and contrast <code>getUserMedia</code>’s traditional interface and
+its new Future-based interface from Dart:</p>
+
+  <div class="row">
+    <div class="col-md-6">
+
+      <pre class="prettyprint lang-javascript">
+// Traditionally:
+navigator.getMedia = (
+    navigator.getUserMedia ||
+    navigator.webkitGetUserMedia ||
+    navigator.mozGetUserMedia ||
+    navigator.msGetUserMedia);
+
+navigator.getMedia(
+
+   // constraints
+   {
+      video: true,
+      audio: true
+   },
+
+   // successCallback
+   function(mediaStream) {
+      var video = document.querySelector(
+          &#39;video&#39;);
+      video.src = window.URL
+          .createObjectURL(mediaStream);
+      video.onloadedmetadata = function(e) {
+         // Do something with video here.
+      };
+   },
+
+   // errorCallback
+   function(err) {
+     console.log(
+         &quot;An error occured: &quot; + err);
+   }
+
+);
+</pre>
+
+    </div>
+    <div class="col-md-6">
+
+      <!--- BEGIN(element_get_user_media) -->
+      <pre class="prettyprint lang-dart">
+// With Dart:
+window.navigator.getUserMedia(audio: true,
+                              video: true)
+  .then((stream) {
+    var video = new VideoElement()
+      ..autoplay = true
+      ..src = Url.createObjectUrl(stream)
+      ..onLoadedMetadata.listen(
+          (e) =&gt; print(e));
+    document.body.append(video);
+  })
+  .catchError(reportIssue);
+</pre>
+      <!--- END(element_get_user_media) -->
+
+    </div>
+  </div>
+
+  <p>Here is IndexedDB, all Future-ized:</p>
+
+  <div class="row">
+    <div class="col-md-6">
+
+      <pre class="prettyprint lang-javascript">
+// Traditionally:
+window.indexedDB = window.indexedDB ||
+                   window.mozIndexedDB ||
+                   window.webkitIndexedDB ||
+                   window.msIndexedDB;
+
+var request = window.indexedDB.open(
+    &quot;MyTestDatabase&quot;);
+request.onerror = function(event) {
+  // Do something with request.errorCode!
+};
+request.onsuccess = function(event) {
+  // Do something with request.result!
+};
+request.onupgradeneeded = function(event) { 
+   // Update object stores and indices .... 
+};
+
+// on success...
+db.transaction(&quot;customers&quot;)
+  .objectStore(&quot;customers&quot;)
+  .get(&quot;444-44-4444&quot;)
+  .onsuccess = function(event) {
+  alert(&quot;Name for SSN 444-44-4444 is &quot; +
+        event.target.result.name);
+};
+</pre>
+
+    </div>
+    <div class="col-md-6">
+
+      <!--- BEGIN(element_indexdb) -->
+      <pre class="prettyprint lang-dart">
+// With Dart:
+window.indexedDB.open(dbName,
+  version: version,
+  onUpgradeNeeded: (e) {
+    Database db = e.target.result;
+    if (!db.objectStoreNames.contains(
+        storeName)) {
+      db.createObjectStore(storeName);
+    }
+  })
+  .then((db) {
+    var txn = db.transaction(
+        &quot;customers&quot;, &quot;readwrite&quot;);
+    var store = txn.objectStore(
+        &quot;customers&quot;);
+    return store.getObject(&quot;444-44-4444&quot;);
+  })
+  .then((obj) =&gt; displayObject(obj))
+  .catchError((e) =&gt; reportError(e));
+</pre>
+      <!--- END(element_indexdb) -->
+
+    </div>
+  </div>
+
+  <p>Futures show up in many more places, especially where callbacks were
+previously used.</p>
+
+  <h2 id="more-granular-libraries">More granular libraries</h2>
+
+  <p>The original DOM libraries all live in the same namespace. This means WebGL and
+SVG have to share names with elements and events. This forced namespacing into
+the class and function names. For example, all class names for SVG were prefixed
+with, you guessed it, “SVG”.</p>
+
+  <p>Dart supports real libraries, so it can take large sections of the DOM
+interface and give it a proper namespace. This makes <code>dart:html</code> more
+lightweight, too.</p>
+
+  <p>We started with <code>dart:svg</code>, which puts all the SVG classes together and removes
+the SVG prefix from the class names. We didn’t stop with SVG. Dedicated DOM
+libraries include:</p>
+
+  <ul>
+    <li><code>dart:indexed_db</code></li>
+    <li><code>dart:web_audio</code></li>
+    <li><code>dart:web_sql</code></li>
+    <li><code>dart:svg</code></li>
+  </ul>
+
+  <p>We anticipate more libraries to be created over time.</p>
+
+  <h2 id="cross-browser-consistency">Cross-browser consistency in HTML APIs</h2>
+
+  <p>When was the last time you had to write browser-specific variations of your
+code so that your website would behave similarly on each browser?
+Probably the last time you wrote code for the web!</p>
+
+  <p>Dart strives to provide consistency in behavior across browsers so that you
+don’t have to worry about these details. While this is still a work in
+progress, you will probably find yourself worrying less about browser
+specifics when using the Dart HTML libraries.</p>
+
+  <p>One such example is the <code>KeyboardEventController</code> class, which
+provides better support for keyboard events on international keyboard
+variants. Another example is <code>requestAnimationFrame()</code>, which
+does the right thing even if the browser hasn’t implemented the function.</p>
+
+  <h2 id="cascades">Cascaded DOM construction</h2>
+
+  <p>Building DOM elements, complete with IDs, classes, event listeners, and more,
+can lead to cumbersome and repetative blocks of code.</p>
+
+  <p>Some libraries, like jQuery, popularized <em>method chaining</em> as a way to
+simplify code. However, the API must be designed for chaining by returning
+<em>this</em> from every method, which is not always appropriate nor possible.</p>
+
+  <p>Luckily, Dart has <em>method cascades</em>, a language feature to help simplify
+builder-type APIs like the DOM.</p>
+
+  <div class="row">
+    <div class="col-md-6">
+
+      <pre class="prettyprint lang-dart">
+// Without cascades:
+var button = new ButtonElement();
+button.id = &#39;register&#39;;
+button.classes.add(&#39;important&#39;);
+button.text = &#39;Click to Register&#39;;
+button.onClick.listen(
+    (e) =&gt; registerAccount());
+</pre>
+
+    </div>
+    <div class="col-md-6">
+
+      <!--- BEGIN(element_cascades) -->
+      <pre class="prettyprint lang-dart">
+// With cascades:
+var button = new ButtonElement()
+  ..id = &#39;register&#39;
+  ..classes.add(&#39;important&#39;)
+  ..text = &#39;Click to Register&#39;
+  ..onClick.listen((e) =&gt; registerAccount());
+</pre>
+      <!--- END(element_cascades) -->
+
+    </div>
+  </div>
+
+  <h2 id="know-more">Want to know more?</h2>
+
+  <p>Check out the
+<a href="http://api.dartlang.org/docs/releases/latest/dart_html.html">dart:html API docs</a>.</p>
+
+  <p>Speaking of browser programming, you might be interested in our
+<a href="/articles/dart-web-components/">Web UI</a>
+libraries that build on Web Components and provide live, two-way data binding.</p>
+</div>
+
+    	  </div> <!-- End of content from toc.html -->
+        </article>
+	  </div>
+
+	
+	<ul class="pager hidden-print">
+	  <li><a href="/articles/">More articles about Dart <i class="glyphicon glyphicon-chevron-up"></i></a></li>
+	 </ul>
+	 
+
+	</div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+
+
+
+
+</body>
+</html>
+

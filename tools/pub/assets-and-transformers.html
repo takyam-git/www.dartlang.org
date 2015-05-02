@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Assets and Transformers | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Assets and Transformers | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="How pub transforms and generates assets and files during development and build time.">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+    <div class="container col-md-10 col-md-offset-1 sub-page">
+      <div>
+      <div class="col-md-4">
+  <div class="bs-sidebar" data-spy="affix" data-offset-bottom="350" role="complementary">
+
+<ol class="toc nav bs-sidenav" id="markdown-toc">
+  <li><a href="#how-transformers-work">How transformers work</a></li>
+  <li><a href="#specifying-transformers">Specifying transformers</a></li>
+  <li><a href="#where-to-put-assets">Where to put assets</a></li>
+  <li><a href="#how-to-refer-to-assets">How to refer to assets</a></li>
+  <li><a href="#exclude-assets">How to control which assets are processed</a>    <ol>
+      <li><a href="#excluding-assets">Excluding assets</a></li>
+      <li><a href="#specified-assets">Processing specific assets</a></li>
+      <li><a href="#glob-syntax">Using glob syntax</a></li>
+    </ol>
+  </li>
+  <li><a href="#configure-assets">How to configure assets</a></li>
+  <li><a href="#writing-transformer">Writing a transformer</a></li>
+</ol>
+
+  </div>
+</div>
+<div class="col-md-8">
+  <p><!-- Start of content -->
+</p>
+
+  <div>
+    <ol class="breadcrumb">
+
+  <li><a href="/tools/">
+  Dart Tools</a></li>
+
+  <li><a href="/tools/pub/">
+  Pub</a></li>
+
+
+  <li class="active">Assets and Transformers</li>
+</ol>
+  </div>
+
+  <h1 id="assets-and-transformers">Assets and Transformers</h1>
+
+  <p>The <a href="cmd/pub-serve.html"><code>pub serve</code></a>, <a href="cmd/pub-build.html"><code>pub build</code></a>
+and <a href="cmd/pub-run.html"><code>pub run</code></a> commands use <a href="glossary.html#transformer">transformers</a>
+to prepare a package’s <a href="glossary.html#asset">assets</a> before serving the app,
+building the app for deployment, or executing the command-line app, 
+as the case may be.</p>
+
+  <p>Use the <code>pubspec.yaml</code> file to specify which transformers your package uses
+and, if necessary, to configure the transformers. (See
+<a href="#specifying-transformers">Specifying transformers</a> for details.) For example:</p>
+
+  <pre class="prettyprint lang-yaml">
+name: myapp
+dependencies:
+  <code class="nocode highlight">polymer: any
+transformers:
+- polymer:</code>
+    <code class="nocode highlight">entry_points:</code>
+    <code class="nocode highlight">- web/index.html</code>
+    <code class="nocode highlight">- web/index2.html</code>
+</pre>
+
+  <p>A package’s assets can be in any directory in the root package.
+However, if you want to make an asset available publicly (to other
+packages, or to multiple directories within your package), it needs
+to be in <code>lib</code>.</p>
+
+  <p>After transformation by <code>pub build</code>, assets are
+available somewhere under build. For example, consider the
+following directory structure:</p>
+
+  <pre class="prettyprint lang-none">
+myapp/
+  example/
+    foo/
+      bar.txt
+</pre>
+
+  <p>When you build this example (<code>pub build example</code>), you end up with 
+<code>build/example/foo/bar.txt</code>.</p>
+
+  <p>Assets generated from files in a package’s <code>lib</code> directory appear
+under a directory named <code>packages/<em>&lt;pkg_name&gt;</em></code>.
+For details, see
+<a href="#where-to-put-assets">Where to put assets</a> and
+<a href="#how-to-refer-to-assets">How to refer to assets</a>.</p>
+
+  <h2 id="how-transformers-work">How transformers work</h2>
+
+  <p>Here are some examples of transformers:</p>
+
+  <ul>
+    <li>The dart2js transformer, which reads in all of the <code>.dart</code> files for a
+program and compiles them to a single <code>.js</code> file.</li>
+    <li>The polymer transformer, which converts HTML and Dart files into
+optimized HTML and Dart files.</li>
+    <li>A linter that reads in files and produces warnings but no actual file.</li>
+  </ul>
+
+  <p>Although you specify which transformers to use, you don’t explicitly say
+which transformers should be applied to which assets. Instead, each
+transformer determines which assets it can apply itself to. For <code>pub serve</code>,
+the transformers run when the dev server starts up and whenever a source
+asset changes. The <code>pub build</code> and <code>pub run</code> commands run the transformers
+once and then exit.</p>
+
+  <p>As the following figure shows, source assets can pass through, untransformed,
+and become generated assets. Or a source asset can be transformed, such as a
+<code>.dart</code> file (along with the <code>.dart</code> files that it refers to) that is
+compiled to <code>.js</code>.</p>
+
+  <p><img src="/tools/images/assets-and-transformers.png" alt="a figure showing source assets and generated assets; the .html, .css, and .png files pass through, untransformed; the .dart file is transformed into a .js file (and, for pub serve only, the .dart file is passed through, as well)" /></p>
+
+  <p>Dart files are a special case. The <code>pub build</code> command doesn’t produce <code>.dart</code>
+files because browsers in the wild don’t support Dart natively. The <code>pub
+serve</code> command, on the other hand, does generate <code>.dart</code> assets, because
+you can use Dartium while you’re developing your app.</p>
+
+  <h2 id="specifying-transformers">Specifying transformers</h2>
+
+  <p>To tell pub to apply a transformer to your package’s assets, specify the
+transformer, as well as the package that contains the transformer, in your
+package’s <code>pubspec.yaml</code> file. In the following pubspec, the highlighted lines
+specify that this package requires the polymer transformer, which is in the
+polymer package (along with the rest of Polymer.dart):</p>
+
+  <pre class="prettyprint lang-yaml">
+name: myapp
+dependencies:
+  <code class="nocode highlight">polymer: any</code>
+<code class="nocode highlight">transformers:
+- polymer:</code>
+    <code class="nocode highlight">entry_points: web/index.html</code>
+</pre>
+
+  <p>The following example configures the <a href="/tools/dart2js/">dart2js</a>
+transformer, which is used by <a href="cmd/pub-serve.html"><code>pub serve</code></a>,
+<a href="cmd/pub-build.html"><code>pub build</code></a>, and <a href="cmd/pub-run.html"><code>pub run</code></a>,
+to analyze the code:</p>
+
+  <pre class="prettyprint lang-yaml">
+transformers:
+- $dart2js:
+  analyzeAll: true
+</pre>
+
+  <p>For more information, see
+<a href="dart2js-transformer.html">Configuring the Built-in dart2js Transformer</a>.</p>
+
+  <p>We expect more transformers to be available in the future. You can specify
+multiple transformers, to run either in parallel (if they’re independent of
+each other) or in separate phases. To specify that transformers run in
+parallel, use [<code><em>transformer_1</em>, ...,
+<em>transformer_n</em></code>]. If order matters, put the transformers on
+separate lines.</p>
+
+  <p>For example, consider three transformers, specified as follows:</p>
+
+  <pre class="prettyprint lang-yaml">
+transformers:
+- [t1, t2]
+- t3
+</pre>
+
+  <p>The <code>t1</code> and <code>t2</code> transformers run first, in parallel. The <code>t3</code> transformer
+runs in a separate phase, after <code>t1</code> and <code>t2</code> are finished, and can see the
+outputs of <code>t1</code> and <code>t2</code>.</p>
+
+  <p>Pub build implicitly appends a transformer that converts your Dart code to
+JavaScript, so your code can run in any modern browser.</p>
+
+  <h2 id="where-to-put-assets">Where to put assets</h2>
+
+  <p>An asset can be in any root-level directory of your package. However,
+assets located under the <code>lib</code> directory have additional visibilty:</p>
+
+  <ul>
+    <li>
+      <p>Assets that other packages depend on need to be in <code>lib</code>.</p>
+    </li>
+    <li>
+      <p>Assets in your package that you want to access from other directories
+within your package need to be in your package’s <code>lib</code> directory.</p>
+    </li>
+    <li>
+      <p>Assets in <code>lib/src</code> are invisible to other packages.</p>
+    </li>
+  </ul>
+
+  <aside class="alert alert-info">
+    <p>In earlier releases, assets were also placed in the top-level
+<code>asset</code> directory. Pub no longer recognizes the <code>asset</code> directory.</p>
+  </aside>
+
+  <p>The following picture shows how you might structure your app’s source assets,
+with your main Dart file under <code>web</code> and additional Dart files under <code>lib</code>.</p>
+
+  <pre class="prettyprint lang-none">
+app/
+  lib/
+    *.dart
+    *.png
+    *.html
+    ...
+  packages/
+    pck/
+      lib/
+        *.dart
+        *.js
+  web/
+    app.dart
+    *.html
+    *.css
+    *.png
+    ...
+</pre>
+
+  <p>After transformation, <code>pub build</code> places generated assets under a directory
+named <code>build</code>. Underneath <code>build</code>, pub creates a directory of the same
+name as the root directory containing the source files. For example,
+for a web app (where the source files are in <code>/web</code>),
+pub creates a <code>build/web</code> directory.</p>
+
+  <aside class="alert alert-info">
+    <p><strong>Note</strong>:
+By default, <code>pub build</code> assumes that you are building a web app.
+If you type <code>pub build</code> (with no arguments) but the package doesn’t
+include a <code>web</code> directory, pub produces an error.</p>
+
+    <p>You can build a command-line app (where the source files are in <code>bin</code>),
+for example, by specifying <code>pub build bin</code>.
+For more information, see <a href="/tools/pub/cmd/pub-build.html">pub build</a>.</p>
+  </aside>
+
+  <p>The following is an example of a build command for a more complex package
+layout:</p>
+
+  <pre class="prettyprint lang-sh">
+$ pub build test example/one example/two
+</pre>
+
+  <p>The resulting build directory looks like:</p>
+
+  <pre class="prettyprint lang-none">
+build/
+  example/
+    one/
+      packages/
+    two/
+      packages/
+  test/
+    packages/
+</pre>
+
+  <p>The dev server simulates this hierarchy without generating files.</p>
+
+  <h2 id="how-to-refer-to-assets">How to refer to assets</h2>
+
+  <p>Here’s how source asset locations correlate to generated asset locations,
+for untransformed files:</p>
+
+  <table border="1" cellpadding="2">
+  <thead>
+    <tr>
+      <th valign="center">Source asset location</th>
+      <th valign="center">Generated asset location<br />
+                          (under <code>build</code>)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> <code>.../<em>&lt;your_pkg&gt;</em>/web/<em>&lt;path&gt;</em></code> </td>
+      <td> <code>/web/<em>&lt;path&gt;</em></code> </td>
+    </tr>
+    <tr>
+      <td><code>.../<em>&lt;your_pkg&gt;</em>/lib/<em>&lt;path&gt;</em></code></td>
+      <td><code>/packages/<em>&lt;pkg_name&gt;</em>/<em>&lt;path&gt;</em></code></td>
+    </tr>
+  </tbody>
+</table>
+  <p></p>
+
+  <p>For example, consider a helloworld app’s HTML file, which is in the
+helloworld directory at <code>web/helloworld.html</code>. Running <code>pub build</code> produces a
+copy at <code>build/web/helloworld.html</code>. In the dev server,
+you can get the HTML file contents by using the URL
+<code>http://localhost:8080/helloworld.html</code>.</p>
+
+  <p>Or, perhaps you are compiling the source for a my_game web app that includes
+a drawing library in the <code>lib/draw</code> directory. 
+If you build the <code>web</code> directory,
+the result is <code>build/web/packages/my_game/draw/...</code>.</p>
+
+  <p>Transformers might change any part of <em>&lt;path&gt;</em>, especially the
+filename, but they can’t change the directory structure above
+<em>&lt;path&gt;</em>.</p>
+
+  <h2 id="exclude-assets">How to control which assets are processed</h2>
+
+  <p>You can use <code>$exclude</code> to tell a transformer <em>not</em> to process one
+or more assets. You can use <code>$include</code> to tell a transformer
+to process <em>only</em> one or more assets. You 
+can use glob syntax to make it easier to include, or exclude,
+a group of assets, including entire directories.</p>
+
+  <h3 id="excluding-assets">Excluding assets</h3>
+
+  <p>If you have an asset that you do not want a transformer to process,
+you can exclude it, by name, in the pubspec. For example, a transformer
+named <code>simple_transformer</code> operates on HTML files,
+but you do not want it to process your <code>lib/README.html</code> file.
+You can exclude it by using the <code>$exclude</code> tag. The following example
+tells pub to run the transformer on everything it would normally
+process <em>except</em> for lib/foo.html:</p>
+
+  <pre class="prettyprint lang-yaml">
+transformers:
+- simple_transformer:
+    $exclude: &quot;lib/foo.html&quot;
+</pre>
+
+  <p>You must provide the file’s location from the top of the package.</p>
+
+  <aside class="alert alert-info">
+    <p><strong>Note</strong>:
+To pass a value to the transformer,
+put a colon (<code>:</code>) after the transformer’s name.
+Indent the next line by 4 spaces and use the form:</p>
+
+    <pre><code>    &lt;parameter&gt;: &lt;value&gt;
+</code></pre>
+  </aside>
+
+  <h3 id="specified-assets">Processing specific assets</h3>
+
+  <p>If you want a transformer to run <em>only</em> on a particular file, you can
+use <code>$include</code>. The following example tells pub to run the transformer
+only on lib/foo.html, assuming that foo.html is a file type that it
+would operate on under normal conditions:</p>
+
+  <pre class="prettyprint lang-yaml">
+transformers:
+- simple_transformer:
+    $include: &quot;lib/foo.html&quot;
+</pre>
+
+  <p>You can’t use the include tag to force a transformer to operate on a
+file type that it would not otherwise process.</p>
+
+  <h3 id="glob-syntax">Using glob syntax</h3>
+
+  <p>You can specify a list of files for the include or exclude tags:</p>
+
+  <pre class="prettyprint lang-yaml">
+$exclude: [&quot;lib/foo.html&quot;, &quot;lib/bar.html&quot;]
+</pre>
+
+  <p>Or you can use <em>glob</em> syntax to specify a group of files.</p>
+
+  <p>For example, you can instruct the transformer to process any file that
+ends with <code>.txt</code>, across all directories in the package, using <code>**.txt</code>:</p>
+
+  <pre class="prettyprint lang-yaml">
+transformers:
+- my_transformer:
+    $include: **.txt
+</pre>
+
+  <p>You can also specify an entire directory for inclusion or exclusion.
+For example, you can instruct the transformer to ignore any files in
+the <code>lib/untransformed</code> directory like this:</p>
+
+  <pre class="prettyprint lang-yaml">
+transformers:
+- my_transformer:
+    $exclude: lib/untransformed
+</pre>
+
+  <p>For more information on how to use glob syntax,
+see the <a href="https://pub.dartlang.org/packages/glob">glob</a> package.</p>
+
+  <p>If you publish a package that uses the glob syntax, be aware that
+earlier versions of pub will not understand. To ensure that a
+compatible version of pub is used, add an SDK contraint to your pubspec:</p>
+
+  <pre class="prettyprint lang-yaml">
+environment:
+    sdk: &quot;&gt;=1.8.0 &lt;2.0.0&quot;
+</pre>
+
+  <h2 id="configure-assets">How to configure assets</h2>
+
+  <p>You can use include and exclude to make a transformer, 
+such as dart2js, treat certain assets in a special way.</p>
+
+  <p>For example, say that your project includes a Dart file that
+was written by another programmer who wasn’t as careful as you are
+about cleaning up compiler warnings. You want to suppress the
+warnings from the dart2js compiler <em>for this particular file</em>
+when running <code>pub build</code> or <code>pub serve</code>.
+The offending code is in the <code>lib/lax_code.dart</code> file.
+You can disable the warnings only on that file by using
+the following:</p>
+
+  <pre class="prettyprint lang-yaml">
+transformers:
+- $dart2js:
+    suppressWarnings: true
+    $include: &quot;lib/lax_code.dart&quot;
+- $dart2js:
+    suppressWarnings: false
+    $exclude: &quot;lib/lax_code.dart&quot;
+</pre>
+
+  <p>This suppresses warnings when processing lib/lax_code.dart, but
+allows warnings when compiling all other Dart files.</p>
+
+  <aside class="alert alert-info">
+    <p><strong>Note</strong>:
+To pass a value to the transformer,
+put a colon (<code>:</code>) after the transformer’s name.
+Indent the next line by 4 spaces and use the form:</p>
+
+    <pre><code>    &lt;parameter&gt;: &lt;value&gt;
+</code></pre>
+  </aside>
+
+  <h2 id="writing-transformer">Writing a transformer</h2>
+
+  <p>To write a transformer, see
+<a href="transformers/index.html">Writing a Pub Transformer</a>.</p>
+</div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+
+
+
+
+</body>
+</html>
+

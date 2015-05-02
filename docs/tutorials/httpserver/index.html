@@ -1,0 +1,1605 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Write HTTP Clients & Servers | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Write HTTP Clients & Servers | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="Communicate over the internet">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+    <div class="container col-md-12 col-md-offset-0 sub-page">
+      <div class="has-permalinks">
+      
+<!-- NAVI LINKS -->
+<div id="tutorial-navigation-links-top" class="row">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-3">
+        <a href="/docs/tutorials/"><img src="/docs/tutorials/images/tute-home.png" width="36" /></a>
+      </div>
+      <div class="col-md-3">
+        <a href="/docs/tutorials/cmdline/"><i class="glyphicon glyphicon-chevron-left"> </i> Write Command-Line Apps</a>
+      </div>
+      <div class="col-md-3">
+      </div>
+      <div class="col-md-3">
+        <a href="/docs/tutorials/" class="pull-right">Home <i class="glyphicon glyphicon-chevron-right"> </i> </a>
+      </div>
+    </div> 
+    <hr />
+  </div> 
+</div>
+
+<!-- PAGE -->
+<div class="row">
+
+  <!-- LEFT SIDE BAR -->
+  <div class="col-md-3">
+
+    <div id="tutorial-side">
+      <div id="whats-the-point">
+        <h4 id="page-highlights">What's the point?</h4>
+        
+<ul>
+  <li>Knowledge of Futures and Streams is a prerequisite.</li>
+  <li>The HTTP protocol allows clients and servers to communicate.</li>
+  <li>The dart:io package has classes for writing HTTP programs.</li>
+  <li>Servers listen for requests on a host and port.</li>
+  <li>Clients send requests using an HTTP method request.</li>
+  <li>The http_server package provides higher-level building blocks.</li>
+</ul>
+
+
+      </div> <!-- whats-the-point -->
+
+      <div id="code-links">
+        <h4 id="examples">Examples</h4>
+
+        
+<p>This tutorial features these examples,
+which live under the <strong>httpserver</strong> directory:</p>
+
+<ul>
+  <li>hello_world_server.dart</li>
+  <li>number_thinker.dart</li>
+  <li>basic_writer_server.dart</li>
+  <li>basic_writer_client.dart</li>
+  <li>mini_file_server.dart</li>
+  <li>basic_file_server.dart</li>
+  <li>hello_world_server_secure.dart</li>
+</ul>
+
+<p>
+Don't have the source code?
+<a href="https://github.com/dart-lang/dart-tutorials-samples/archive/master.zip">
+  Download it.
+</a>
+
+</p>
+
+
+        <a href="https://drone.io/github.com/dart-lang/dart-tutorials-samples/latest">
+           <img src="https://drone.io/github.com/dart-lang/dart-tutorials-samples/status.png" alt="Build Status" style="margin-top:10px;max-width:100%;" />
+        </a>
+      </div> <!-- end code-links -->
+
+      <div id="tutorial-toc">
+        <a href="https://github.com/dart-lang/dartlang.org/issues" target="_blank">
+        <i class="glyphicon glyphicon-comment"> </i>
+        Send feedback
+        </a>
+      </div> <!-- tutorial-toc -->
+      
+    </div> <!-- tutorial-side -->
+
+  </div> <!-- end div col-md-3 -->
+
+  <!-- CONTENT-->
+  <article class="col-md-9 tutorial-content">
+
+    
+<div class="tute-target-title">
+<h1>Write HTTP Clients &amp; Servers</h1>
+<h3>Communicate over the internet</h3>
+</div>
+
+<aside class="alert alert-info">
+  <p><strong>Prerequisite:</strong></p>
+
+  <ul>
+    <li>
+      <p>HTTP servers and clients rely heavily on
+<a href="https://api.dartlang.org/dart_async/Future.html" target="_blank">Future</a>s
+and
+<a href="https://api.dartlang.org/dart_async/Stream.html" target="_blank">Stream</a>s,
+which are not explained in this tutorial.
+Refer to <a href="/docs/tutorials/futures/">Use Future-Based APIs</a>
+and
+<a href="/docs/tutorials/streams/">Use Streams for Data</a>
+for information about using these classes.</p>
+    </li>
+    <li>
+      <p>Although you can use <code>dart</code> on the command line to run the samples,
+this tutorial uses Dart Editor,
+which you can <a href="/downloads/">download</a> if you don’t already have it.</p>
+    </li>
+  </ul>
+</aside>
+
+<p>HTTP (Hyper-Text Transfer Protocol) is a communication protocol used
+to send data from one program to another over the internet.
+At one end of the data transfer is a server
+and at the other end is a client.
+The client is often browser-based
+(either a user typing in a browser or a script running in a browser),
+but might also be a standalone program.</p>
+
+<p>The server <em>binds</em> to a host and port (it
+makes an exclusive connection to an IP address and
+a port number).
+Then the server listens for requests.
+Because of Dart’s asynchronouse nature,
+the server can handle many requests at a single time,
+as follows:</p>
+
+<ul>
+  <li>Server listens</li>
+  <li>Client connects</li>
+  <li>Server accepts and receives request (and continues to listen)</li>
+  <li>Server can continue to accept other requests</li>
+  <li>Server writes response of request or several, possibly interleaved, requests</li>
+  <li>Server finally ends(closes) the response(s).</li>
+</ul>
+
+<p>In Dart,
+the
+<a href="https://api.dartlang.org/dart_io.html" target="_blank">dart:io</a>
+library contains
+the classes and functions you need to write HTTP
+clients and servers.
+In addition, the
+<a href="https://pub.dartlang.org/packages/http_server" target="_blank">http_server</a> package
+contains some higher-level classes that make it easier to write
+clients and servers.</p>
+
+<aside class="alert alert-info">
+  <p><strong>Important:</strong>
+<em>Browser-based programs <strong>cannot</strong> use the dart:io library.</em></p>
+
+  <p>The API in the dart:io library
+work <em>only</em> with standalone, command-line programs.
+They do not work in the browser.
+To make HTTP requests from a browser-based client
+refer to the
+<a href="https://api.dartlang.org/dart_html/HttpRequest.html" target="_blank">dart:html HttpRequest</a> class.</p>
+</aside>
+
+<p>This tutorial provides several examples that show how easy
+it is to write Dart HTTP servers and clients.
+Beginning with the hello world of servers,
+you learn how to write the code for a server
+from binding and listening to responding to requests.
+You also learn about the client-side: making different
+kinds of requests (GET and POST),
+writing browser-based and command-line clients.</p>
+
+<ul>
+  <li><a href="#get-the-source-code">Get the source code</a></li>
+  <li><a href="#run-hello-world">Run the hello world server</a></li>
+  <li><a href="#binding">Binding a server to a host and port</a></li>
+  <li><a href="#using-forms-to-make-get-requests">Using HTML forms to make GET requests</a></li>
+  <li><a href="#httprequest-object">Listening for and handling requests</a></li>
+  <li><a href="#making-post">Making a POST request from a standalone client</a></li>
+  <li><a href="#handling-post">Handling a POST request in a server</a></li>
+  <li><a href="#using-http-server-package">Using the http_server package</a></li>
+  <li><a href="#using-https">Using https with bindSecure()</a></li>
+  <li><a href="#other-resources">Other resources</a></li>
+  <li><a href="#what-next">What next?</a></li>
+</ul>
+
+<h2 id="get-the-source-code">Get the source code</h2>
+
+<ul>
+  <li>
+    Get the Dart Tutorials
+    <a href="https://github.com/dart-lang/dart-tutorials-samples/archive/master.zip">
+      example code.
+    </a>
+  </li>
+
+  <li>
+    <p>In Dart Editor, open the <code>bin/httpserver</code> directory, which contains
+the sources you need for this tutorial.</p>
+  </li>
+</ul>
+
+<p><strong>Note:</strong> These examples are compatible with Dart 1.3.</p>
+
+<h2 id="run-hello-world">Run the hello world server</h2>
+
+<p><em>Example file for this section:
+<a href="https://github.com/dart-lang/dart-tutorials-samples/blob/master/bin/httpserver/hello_world_server.dart" target="_target">hello_world_server.dart</a>.</em></p>
+
+<p>Let’s begin with a small server that responds to all requests
+with the string <code>Hello, world!</code></p>
+
+<ul>
+
+  <li>
+    <p>In the <code>bin/httpserver</code> directory,
+right-click <code>hello_world_server.dart</code>
+and choose <strong>Run</strong> from the menu.</p>
+
+    <p><img src="images/hello_world_listening.png" alt="The hello world server is listening for requests." /></p>
+  </li>
+
+  <li>
+    <p>Then, in any browser, enter <code>localhost:4040</code>.
+The browser displays <code>Hello, world!</code></p>
+
+    <p><img src="images/hello_world_response.png" alt="The response from the hello world server." /></p>
+  </li>
+</ul>
+
+<p>In this case, the server is a Dart program
+and the client is the browser you used.
+However, you can write client programs in Dart—either
+a browser-based client script, or a standalone program.</p>
+
+<h3 id="a-quick-glance-at-the-code">A quick glance at the code</h3>
+
+<p>In the code for the hello world server,
+an HTTP server binds to a host and port,
+listens for HTTP requests, and writes a response.
+Note that the program imports
+the <code>dart:io</code> library, which contains the HTTP-related
+classes both for server-side programs and for
+client-side programs (but not for browser-based scripts).</p>
+
+<pre class="prettyprint lang-dart">
+<code class="nocode highlight">import &#39;dart:io&#39;;</code>
+
+main() {
+  HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4040)
+      .then((HttpServer server) {
+    print(&#39;listening on localhost, port ${server.port}&#39;);
+    server.listen((HttpRequest request) {
+      request.response.write(&#39;Hello, world!&#39;);
+      request.response.close();
+    });
+  }).catchError((e) =&gt; print(e.toString()));
+}
+</pre>
+<div class="prettify-filename">hello_world_server.dart</div>
+
+<p>The next few sections cover server-side binding,
+making a client-side GET request,
+listening, and responding.</p>
+
+<h2 id="binding">Binding a server to a host and port</h2>
+
+<p><em>Example for this section: hello_world_server.dart.</em></p>
+
+<p>The first line of code in <code>main()</code>
+uses <code>HttpServer.bind()</code> to create an
+<a href="https://api.dartlang.org/dart_io/HttpServer.html" target="_blank">HttpServer</a>
+object and bind it to a host and port.</p>
+
+<pre class="prettyprint lang-dart">
+HttpServer.bind(<code class="nocode highlight">InternetAddress.LOOPBACK_IP_V4</code>, <code class="nocode highlight">4040</code>)
+    .then((<code class="nocode highlight">HttpServer server</code>) {
+  ...
+</pre>
+<div class="prettify-filename">hello_world_server.dart</div>
+
+<p>The <code>bind()</code> method uses a Future to run asynchronously.
+When the bind is successful, the callback of <code>then()</code>
+is called with the new HttpServer object as a parameter.</p>
+
+<h3 id="hostname">Hostname</h3>
+<p>The first parameter of <code>bind()</code> specifies the hostname.
+You can specify a particular hostname or IP address as a String.
+Alternatively, you can specify the host using these predefined values
+provided by the
+<a href="https://api.dartlang.org/dart_io/InternetAddress.html" target="_blank">InternetAddress</a> class:</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Value</th>
+      <th>Use case</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>LOOPBACK_IP_V4<br /><em>or</em><br />LOOPBACK_IP_V6</td>
+      <td>The server listens for client activity on the loopback address, which is effectively localhost. Uses either version 4 or 6 of the IP protocol. These are used primarily for testing. We recommend that you use these values instead of <code>localhost</code> or <code>127.0.0.1</code>.</td>
+    </tr>
+    <tr>
+      <td>ANY_IP_V4<br /><em>or</em><br />ANY_IP_V6</td>
+      <td>The server listens for client activity on the specified port on any IP address. Uses either version 4 or 6 of the IP protocol.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>By default, when using a V6 internet address,
+a V4 listener is used as well.</p>
+
+<h3 id="port">Port</h3>
+
+<p>The second parameter to <code>bind()</code> is an integer
+that specifies the port.
+The port uniquely identifies a service on the host computer.
+Port numbers below 1024 are reserved (except for 0)
+for standard services.
+For example, FTP data transfer typically runs on port 20,
+quote of the day on port 17, and HTTP on port 80.
+Your program should use port numbers from 1024 and higher.
+If the port is already in use,
+the connection for your server will be refused.</p>
+
+<h3 id="listening-for-requests">Listening for requests</h3>
+
+<p>The server begins listening for requests by calling the
+<code>listen()</code> method.
+For each received request, the callback of <code>listen()</code>,
+highlighted below, is called with an
+<a href="https://api.dartlang.org/dart_io/HttpRequest.html" target="_blank">HttpRequest</a>
+object.</p>
+
+<pre class="prettyprint lang-dart">
+...
+server.listen(<code class="nocode highlight">(HttpRequest request) {</code>
+  <code class="nocode highlight">request.response.write(&#39;Hello, world!&#39;);</code>
+  <code class="nocode highlight">request.response.close();</code>
+<code class="nocode highlight">}</code>);
+...
+</pre>
+<div class="prettify-filename">hello_world_server.dart</div>
+
+<p>You’ll learn more about what the HttpRequest object contains
+and how to write the response in the section
+<a href="#httprequest-object">Listening for and handling requests</a>.
+But first, let’s look at one way a client generates a request.</p>
+
+<h2 id="using-forms-to-make-get-requests">Using HTML forms to make GET requests</h2>
+
+<p><em>Example files for this section:
+<a href="https://github.com/dart-lang/dart-tutorials-samples/blob/master/bin/httpserver/number_thinker.dart" target="_blank">number_thinker.dart</a> and
+<a href="https://github.com/dart-lang/dart-tutorials-samples/blob/master/bin/httpserver/make_a_guess.html" target="_blank">make_a_guess.html</a>.</em></p>
+
+<p>This section features a command-line server that
+randomly chooses a number between 0 and 9.
+The client is a basic HTML web-page, <code>make_a_guess.html</code>,
+that you can use the to guess the number.</p>
+
+<hr />
+
+<p><strong>Try it!</strong></p>
+
+<ul>
+  <li>
+    <p><strong>Run the number thinker server</strong></p>
+
+    <p>In Dart Editor, right-click <code>number_thinker.dart</code>
+  and choose <strong>Run</strong> from the menu.</p>
+
+    <p><img src="images/number_thinker_thinking.png" alt="The number thinker server is listening for requests." /></p>
+
+  </li>
+
+  <li>
+    <p><strong>Open the HTML page</strong></p>
+
+    <p>In Dart Editor, right-click <code>make_a_guess.html</code>
+  and select <strong>Run in Dartium</strong>.</p>
+
+  </li>
+  <li>
+    <p><strong>Make a guess</strong></p>
+
+    <p>Choose a number and press the <strong>Guess</strong> button.</p>
+
+    <p><img src="images/guessing.png" alt="The user makes a guess using a pull-down menu." /></p>
+
+    <p>Note the components of the URL on the results page.</p>
+
+    <p><img src="images/url.png" alt="The components of a URL." /></p>
+
+  </li>
+</ul>
+<hr />
+
+<p>No Dart code is involved in the client.
+The client request is made from the browser
+to the Dart server through an HTML form
+within make_a_guess.html,
+which provides an automatic way to formulate and send client HTTP requests.
+The form contains the pull-down list and the button.
+The form also specifies the URL, which includes the port number,
+and the kind of request (the <em>request method</em>).
+It might also include elements that build a query string.
+(To learn more about forms, see
+<a href="/docs/tutorials/forms/">Get Input from a Form</a>.)</p>
+
+<p>Here’s the HTML code for the form in make_a_guess.html:</p>
+
+<pre class="prettyprint lang-html">
+<code class="nocode note">1</code> &lt;form <code class="nocode highlight">action=&quot;http://localhost:4041&quot;</code>
+<code class="nocode note">2</code>       <code class="nocode highlight">method=&quot;GET&quot;</code>&gt;
+
+<code class="nocode note">3</code>   &lt;select <code class="nocode highlight">name=&quot;q&quot;</code>&gt;
+        &lt;option value=&quot;0&quot;&gt;0&lt;/option&gt;
+        &lt;option value=&quot;1&quot;&gt;1&lt;/option&gt;
+        &lt;option value=&quot;2&quot;&gt;2&lt;/option&gt;
+        ...
+        &lt;option value=&quot;9&quot;&gt;9&lt;/option&gt;
+      &lt;/select&gt;
+<code class="nocode note">4</code>   &lt;input <code class="nocode highlight">type=&quot;submit&quot;</code> value=&quot;Guess&quot;&gt;
+    &lt;/form&gt;
+</pre>
+<div class="prettify-filename">make_a_guess.html</div>
+
+<p><span class="code-note">1</span>
+URL to send the request to.</p>
+
+<p><span class="code-note">2</span>
+The kind of request, here a <code>GET</code> request. Other common
+kinds of requests include POST, PUT, and DELETE.</p>
+
+<p><span class="code-note">3</span>
+Any element within the form that has a name becomes
+a parameter in the query string.</p>
+
+<p><span class="code-note">4</span>
+When pressed, the submit button formulates
+the request based on the content of the form and sends it.</p>
+
+<h3 id="a-restful-get-request">A RESTful GET request</h3>
+
+<p>REST (REpresentational State Transfer) is a set of principles
+for designing Web services.
+Well-behaved HTTP clients and servers observe the REST principles
+defined for GET requests.</p>
+
+<p>A GET request:</p>
+
+<ul>
+  <li>only retrieves data</li>
+  <li>doesn’t change the state of the server</li>
+  <li>has length limits</li>
+  <li>can send query strings in the URL of the request</li>
+</ul>
+
+<p>The client in this example makes a REST-compliant GET request.</p>
+
+<h2 id="httprequest-object">Listening for and handling requests</h2>
+
+<p><em>Example files for this section:
+number_thinker.dart and make_a_guess.html.</em></p>
+
+<p>Now that you’ve seen the browser-based client for this example,
+let’s take a look at the Dart code for the number thinker server,
+starting with <code>main()</code>.
+Once again the server binds to a host and port.
+Here, the callback of <code>then()</code>
+is a top-level function
+named <code>listenForRequests()</code>.</p>
+
+<pre class="prettyprint lang-dart">
+import &#39;dart:io&#39;;
+import &#39;dart:math&#39; show Random;
+
+int myNumber = new Random().nextInt(10);
+
+void main() {
+  print(&quot;I&#39;m thinking of a number. $myNumber&quot;);
+  HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4041)
+            .then(<code class="nocode highlight">listenForRequests</code>)
+            .catchError((e) =&gt; print (e.toString()));
+}
+...
+</pre>
+<div class="prettify-filename">number_thinker.dart</div>
+
+<p>The code for <code>listenForRequests()</code> calls <code>listen()</code> so that
+the HttpServer starts to listen on the host and port for requests.
+When a request comes in, the server creates an HttpRequest object
+and passes it to the callback of <code>listen()</code>.
+Thus, as requests come in, the HttpServer object provides
+a stream of HttpRequest objects.
+Note that the HttpServer class implements
+<a href="https://api.dartlang.org/dart_async/Stream.html" target="_blank">Stream</a>.</p>
+
+<pre class="prettyprint lang-dart">
+    ...
+    listenForRequests(HttpServer _server) {
+<code class="nocode note">1</code>   _server.listen(<code class="nocode highlight">(HttpRequest request) {</code>
+       <code class="nocode highlight"> ...</code>
+     <code class="nocode highlight"> }</code>,
+<code class="nocode note">2</code>   <code class="nocode highlight">onDone</code>: () =&gt; print(&#39;Done with requests.&#39;),
+<code class="nocode note">3</code>   <code class="nocode highlight">onError</code>: (e) =&gt; print(e.toString() );
+    }
+    ...
+</pre>
+<div class="prettify-filename">number_thinker.dart</div>
+
+<p>The <code>listen()</code> method takes one required and two optional parameters:</p>
+
+<p><span class="code-note">1</span>
+A callback function, which is called for each client request.</p>
+
+<p><span class="code-note">2</span>
+<code>onDone</code> is called when the server is shut down.</p>
+
+<p><span class="code-note">3</span>
+<code>onError</code> is called if an error occurs.</p>
+
+<p>An HttpRequest object has many properties that provide
+information about the request.
+The following table lists some useful properties:</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Information</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>method</code></td>
+      <td>A String: ‘GET’, ‘POST’, ‘PUT’, and so on.</td>
+    </tr>
+    <tr>
+      <td><code>uri</code></td>
+      <td>A  <a href="https://api.dartlang.org/dart_core/Uri.html" target="_blank">Uri</a> object: scheme, host, port, query string, and other information about the requested resource.</td>
+    </tr>
+    <tr>
+      <td><code>response</code></td>
+      <td>An <a href="https://api.dartlang.org/dart_io/HttpResponse.html" target="_blank">HttpResponse</a> object: where the server writes its response.</td>
+    </tr>
+    <tr>
+      <td><code>headers</code></td>
+      <td>An <a href="https://api.dartlang.org/dart_io/HttpHeaders.html" target="_blank">HttpHeaders</a> object: the headers for the request, including <a href="https://api.dartlang.org/dart_io/ContentType.html" target="_blank">ContentType</a>, content length, date, and so on.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="using-the-method-property">Using the method property</h3>
+
+<p>The code below from the number thinker example uses the HttpRequest <code>method</code>
+property to determine what kind of request has been received.
+This server handles only GET requests.</p>
+
+<pre class="prettyprint lang-dart">
+listenForRequests(_server) {
+  _server.listen((HttpRequest request) {
+    if (<code class="nocode highlight">request.method == &#39;GET&#39;</code>) {
+      handleGet(request);
+    } else {
+      request.response.statusCode = HttpStatus.METHOD_NOT_ALLOWED;
+      request.response.write(&quot;Unsupported request: ${request.method}.&quot;);
+      request.response.close();
+    }
+  },
+  onDone: () =&gt; print(&#39;No more requests.&#39;),
+  onError: (e) =&gt; print(e.toString()) );
+}
+</pre>
+<div class="prettify-filename">number_thinker.dart</div>
+
+<h3 id="using-the-uri-property">Using the uri property</h3>
+
+<p>Typing a URL into a browser generates a GET request,
+which simply requests data from the specified resource.
+It can send a minimal amount of data along with the request
+through a query string attached to the URI.</p>
+
+<pre class="prettyprint lang-dart">
+void handleGet(HttpRequest request) {
+  String guess = <code class="nocode highlight">request.uri</code>.queryParameters[&#39;q&#39;];
+  ...
+}
+</pre>
+<div class="prettify-filename">number_thinker.dart</div>
+
+<p>Use the <code>uri</code> property from the HttpRequest object to get a
+<a href="https://api.dartlang.org/dart_core/Uri.html" target="_blank">Uri</a> object
+that contains the information about the URL typed by the user.
+The <code>queryParameters</code> property of the Uri object is a Map containing
+the components of the query string.
+Refer to the desired parameter by name.
+This example uses <code>q</code> to identify the guessed number.</p>
+
+<h3 id="setting-the-status-code-for-the-response">Setting the status code for the response</h3>
+
+<p>The server should set the status code to indicate the success or
+failure of the request. Earlier you saw the number thinker set
+the status code to <code>METHOD_NOT_ALLOWED</code> to reject non-GET requests.
+Later in the code,
+to indicate that the request was successful and the response is complete,
+the number thinker server sets the HttpResponse status code to <code>HttpStatus.OK</code>.</p>
+
+<pre class="prettyprint lang-dart">
+void handleGet(HttpRequest request) {
+  String guess = request.uri.queryParameters[&#39;q&#39;];
+  <code class="nocode highlight">request.response.statusCode = HttpStatus.OK</code>;
+  ...
+}
+</pre>
+<div class="prettify-filename">number_thinker.dart</div>
+
+<p><code>HttpStatus.OK</code> and <code>HttpStatus.METHOD_NOT_ALLOWED</code> are
+one of many pre-defined status codes in the
+<a href="https://api.dartlang.org/dart_io/HttpStatus.html" target="_blank">HttpStatus</a> class.
+Other useful pre-defined status codes are
+<code>HttpStatus.METHOD_NOT_ALLOWED</code>
+and
+<code>HttpStatus.NOT_FOUND</code> (your classic 404).</p>
+
+<p>In addition to <code>statusCode</code>,
+the HttpResponse object has other useful properties:</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Information</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>contentLength</code></td>
+      <td>The length of the response. -1 means the length is not known in advance.</td>
+    </tr>
+    <tr>
+      <td><code>cookies</code></td>
+      <td>A List of <a href="https://api.dartlang.org/dart_io/Cookie.html" target="_blank">Cookie</a>s to set in the client.</td>
+    </tr>
+    <tr>
+      <td><code>encoding</code></td>
+      <td>The <a href="https://api.dartlang.org/dart_convert/Encoding.html" target="_blank">Encoding</a> used when writing strings, like JSON and UTF-8.</td>
+    </tr>
+    <tr>
+      <td><code>headers</code></td>
+      <td>The response headers, an <a href="https://api.dartlang.org/dart_io/HttpHeaders.html" target="_blank">HttpHeaders</a> object.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="writing-the-response-to-the-httpresponse-object">Writing the response to the HttpResponse object</h3>
+
+<p>Every HttpRequest object has a corresponding HttpResponse object.
+The server sends data back to the client through the response object.</p>
+
+<p>Use one of the HttpResponse write methods
+(<code>write()</code>, <code>writeln()</code>, <code>writeAll()</code>, or <code>writeCharCodes()</code>)
+to write the response data to the HttpResponse object.
+Or connect the HttpResponse object to a stream via <code>addStream</code>
+and write to the stream.
+Close the object when the response is complete.
+Closing the HttpResponse object,
+sends the data back to the client.</p>
+
+<pre class="prettyprint lang-dart">
+void handleGet(HttpRequest request) {
+  ...
+  if (guess == myNumber.toString()) {
+    <code class="nocode highlight">request.response.writeln(&#39;true&#39;)</code>;
+    <code class="nocode highlight">request.response.writeln(&quot;I&#39;m thinking of another number.&quot;)</code>;
+    <code class="nocode highlight">request.response.close()</code>;
+    ...
+  }
+}
+</pre>
+<div class="prettify-filename">number_thinker.dart</div>
+
+<h2 id="making-post">Making a POST request from a standalone client</h2>
+
+<p><em>Example files for this section:
+<a href="https://github.com/dart-lang/dart-tutorials-samples/blob/master/bin/httpserver/basic_writer_server.dart" target="_blank">basic_writer_server.dart</a>
+and
+<a href="https://github.com/dart-lang/dart-tutorials-samples/blob/master/bin/httpserver/basic_writer_client.dart" target="_blank">basic_writer_client.dart</a>.</em></p>
+
+<p>In the hello world and the number thinker examples,
+the browser generated simple GET requests.
+For more complex GET requests and other kinds of requests, such
+as POST, PUT, or DELETE,
+you need to write a client program, of which there are two kinds:</p>
+
+<ul>
+  <li>
+    <p>A standalone client program, which uses
+the 
+<a href="https://api.dartlang.org/dart_io/HttpClient.html" target="_blank">HttpClient</a>
+class from <code>dart:io</code>.</p>
+  </li>
+  <li>
+    <p>A browser-based client, which uses API from
+<a href="https://api.dartlang.org/dart_html.html" target="_blank">dart:html</a>.
+This tutorial does not cover browser-based clients.
+To look at code for a browser-based client and
+related server, see note_client.dart, note_server.dart,
+and take_note.html.
+Also, check out the
+<a href="/docs/tutorials/forms/">Get Input from a Form</a> tutorial.)</p>
+  </li>
+</ul>
+
+<p>Let’s look at a standalone client, <code>basic_writer_client.dart</code>,
+and its server <code>basic_writer_server.dart</code>.
+The client makes a POST request
+to save JSON data to a server-side file.
+The server accepts the request and saves the file.</p>
+
+<hr />
+
+<p><strong>Try it!</strong></p>
+
+<p>Run the server and client on the command line.</p>
+
+<ul>
+  <li>
+    <p>First the server: </p>
+
+    <pre class="prettyprint lang-bash">
+$ dart bin/httpserver/basic_writer_server.dart
+</pre>
+  </li>
+
+  <li>
+    <p>Then the client:</p>
+
+    <pre class="prettyprint lang-bash">
+$ dart bin/httpserver/basic_writer_client.dart
+</pre>
+  </li>
+
+  <li>
+    <p>The server writes the data to <code>file.txt</code>:</p>
+
+    <pre class="prettyprint lang-bash">
+{&quot;name&quot;:&quot;Han Solo&quot;,&quot;job&quot;:&quot;reluctant hero&quot;,&quot;BFF&quot;:&quot;Chewbacca&quot;,&quot;ship&quot;:&quot;Millennium Falcon&quot;,&quot;weakness&quot;:&quot;smuggling debts&quot;}
+</pre>
+  </li>
+</ul>
+
+<hr />
+
+<p>The client creates an HttpClient object and uses the
+<code>post()</code> method to make the request.
+Making a request involves two Futures:</p>
+
+<ul>
+  <li>
+    <p>The <code>post()</code> method establishes a network
+connection to the server and returns the first Future,
+which returns an HttpClientRequest object.</p>
+  </li>
+  <li>
+    <p>The client composes the request object and closes it.
+The <code>close()</code> method sends the request to the server
+and returns the second Future.</p>
+  </li>
+</ul>
+
+<pre class="prettyprint lang-dart">
+   import &#39;dart:io&#39;;
+   import &#39;dart:convert&#39; show UTF8, JSON;
+
+   main() {
+     Map jsonData = {
+       &#39;name&#39;:     &#39;Han Solo&#39;,
+       &#39;job&#39;:      &#39;reluctant hero&#39;,
+       &#39;BFF&#39;:      &#39;Chewbacca&#39;,
+       &#39;ship&#39;:     &#39;Millennium Falcon&#39;,
+       &#39;weakness&#39;: &#39;smuggling debts&#39;
+     };
+  
+<code class="nocode note">1</code>  new HttpClient().<code class="nocode highlight">post(InternetAddress.LOOPBACK_IP_V4.host, 4049, &#39;/file.txt&#39;)</code>
+<code class="nocode note">2</code>      .then((<code class="nocode highlight">HttpClientRequest</code> request) {
+<code class="nocode note">3</code>      <code class="nocode highlight">request.headers.contentType = ContentType.JSON;</code>
+<code class="nocode note">4</code>      <code class="nocode highlight">request.write(JSON.encode(jsonData))</code>;
+<code class="nocode note">5</code>      <code class="nocode highlight">return request.close();</code>
+       })
+<code class="nocode note">6</code>    .then((<code class="nocode highlight">HttpClientResponse response</code>) {
+<code class="nocode note">7</code>      response.transform(<code class="nocode highlight">UTF8.decoder</code>).listen((contents) {
+           print(contents);
+         });
+       });
+   }
+</pre>
+<div class="prettify-filename">basic_writer_client.dart</div>
+
+<p><span class="code-note">1</span>
+The <code>post()</code> method requires the host, port, and the path to the requested
+resource.
+In addition to <code>post()</code>, the HttpClient class provides functions
+for making other kinds of
+requests, including <code>postUrl()</code>, <code>get()</code>, and <code>open()</code>.</p>
+
+<p><span class="code-note">2</span>
+When the <code>post()</code> connection succeeds,
+the callback of the first Future receives an
+<a href="https://api.dartlang.org/dart_io/HttpClientRequest.html" target="_blank">HttpClientRequest</a>
+object.</p>
+
+<p><span class="code-note">3</span>
+An HttpClientRequest object has an HttpHeaders object,
+which contains the request headers.
+For some headers,
+like <code>contentType</code>,
+HttpHeaders has a property specific to that header.
+For other headers, use the <code>set()</code> method to
+put the header in the HttpHeaders object.</p>
+
+<p><span class="code-note">4</span>
+The client writes data to the request object using <code>write()</code>.
+The encoding, JSON in this example,
+matches the type specified in the ContentType header.</p>
+
+<p><span class="code-note">5</span>
+The <code>close()</code> method sends the request to the server
+and returns a Future</p>
+
+<p><span class="code-note">6</span>
+When the client receives the response,
+the second Future completes with an
+<a href="https://api.dartlang.org/dart_io/HttpClientResponse.html" target="_blank">HttpClientResponse</a> object.
+In this example, the client program decodes
+and prints the text of the response.</p>
+
+<p><span class="code-note">7</span>
+The response from the server is encoded in UTF-8.
+Use a transformer defined in the <code>dart:convert</code> library
+to convert the data into regular Dart string format.</p>
+
+<h3 id="a-restful-post-request">A RESTful POST request</h3>
+
+<p>Similar to GET requests, REST provides guidelines for POST requests.</p>
+
+<p>A POST request:</p>
+
+<ul>
+  <li>creates a resource (in this example, a file)</li>
+  <li>uses a URI that has a structure similiar to file and directory pathnames;
+for example, the URI has no query string</li>
+  <li>transfers data as JSON or XML</li>
+  <li>has no state and does not change the state of the server</li>
+  <li>has no length limits</li>
+</ul>
+
+<p><strong>Bonus code:</strong>
+If you would like to see some client code that
+makes GET requests,
+check out the code for <code>number_guesser.dart</code>.
+It’s a standalone client for the number thinker server
+that makes periodic guesses until it guesses correctly.</p>
+
+<h2 id="handling-post">Handling a POST request in a server</h2>
+
+<p><em>Example files for this section:
+basic_writer_server.dart and basic_writer_client.dart.</em></p>
+
+<p>An HttpRequest object is a Stream of lists of bytes (<code>Stream&lt;List&lt;int&gt;&gt;</code>).
+To get the data sent from the client,
+listen for data on the HttpRequest object.</p>
+
+<p>If the request from the client contains a large amount of
+data, the data might arrive in multiple chunks.
+In our next example, basic_writer_server.dart,
+the server writes the chunks to a StringBuffer.
+After the server receives all the data,
+the callback of <code>onDone</code> is called.</p>
+
+<p><img src="images/flowchart.png" alt="The flow of control in a server processing requests." /></p>
+
+<p>The <code>basic_writer_server.dart</code> file implements
+a server that follows this pattern.</p>
+
+<pre class="prettyprint lang-dart">
+   import &#39;dart:io&#39;;
+   import &#39;dart:convert&#39;;
+
+   void main() {
+    
+     HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4049).then((server) {
+       server.listen((req) {
+      
+         ContentType contentType = req.headers.contentType;
+         BytesBuilder builder = new BytesBuilder();
+
+         if (req.method == &#39;POST&#39; &amp;&amp;
+<code class="nocode note">1</code>          <code class="nocode highlight">contentType != null &amp;&amp;</code>
+             <code class="nocode highlight">contentType.mimeType == &#39;application/json&#39;</code>) {
+           req.listen((buffer) {
+<code class="nocode note">2</code>          <code class="nocode highlight">builder.add(buffer);</code>
+<code class="nocode note">3</code>        }, <code class="nocode highlight">onDone:</code> {
+             // write to a file, get the file name from the URI
+             String jsonString = UTF8.decode(builder.takeBytes());
+<code class="nocode note">4</code>          String filename = <code class="nocode highlight">req.uri.pathSegments.last</code>;
+             new File(filename).writeAsString(jsonString,
+                 mode: FileMode.WRITE).then((_) {
+<code class="nocode note">5</code>                Map jsonData = <code class="nocode highlight">JSON.decode(jsonString)</code>;
+                   req.response.statusCode = HttpStatus.OK;
+                   req.response.write(&#39;Wrote data for ${jsonData[&#39;name&#39;]}.&#39;);
+                   req.response.close();
+                 });
+           });
+         } else {
+           req.response.statusCode = HttpStatus.METHOD_NOT_ALLOWED;
+           req.response.write(&quot;Unsupported request: ${req.method}.&quot;);
+           req.response.close();
+         }
+       });
+     });
+   }
+</pre>
+<div class="prettify-filename">basic_writer_server.dart</div>
+
+<p><span class="code-note">1</span>
+The request object has an HttpHeaders object.
+Recall that the client set the <code>contentType</code> header to JSON (application/json).
+This server rejects requests that are not JSON-encoded.</p>
+
+<p><span class="code-note">2</span>
+A POST request has no limit on the amount of data it can send
+and the data might be sent in multiple chunks.
+Furthermore, JSON is UTF-8, and UTF-8 characters can be encoded over
+multiple bytes.
+Therefore, the server uses a
+<a href="https://api.dartlang.org/dart_io/BytesBuilder.html" target="_blank">BytesBuilder</a>
+object to collect the data until all the data
+is delivered, then the callback of <code>onDone</code> is called.</p>
+
+<p><span class="code-note">3</span>
+The callback of <code>onDone</code> writes the data to the file
+specified by the client in the Uri.</p>
+
+<p><span class="code-note">4</span>
+The URL for the request is <code>localhost:4049/file.txt</code>.
+The code <code>req.uri.pathSegments.last</code> extracts the file name
+from the URI: <code>file.txt</code>.</p>
+
+<p><span class="code-note">5</span>
+The data sent by the client is JSON formatted.
+The server decodes it using the JSON codec available in the
+<a href="https://api.dartlang.org/dart_convert.html" target="_blank">dart:convert</a>
+library.</p>
+
+<h4 id="a-note-about-cors-headers">A note about CORS Headers</h4>
+
+<p>If you want to serve clients that are running on a different origin
+(a different host or port), you need to add CORS headers.
+The following code,
+take from note_server.dart,
+allows POST and OPTIONS requests from any origin.
+Use CORS headers with caution,
+because they can open your network up to security risks.</p>
+
+<pre class="prettyprint lang-dart">
+void addCorsHeaders(HttpResponse res) {
+  req.response.headers.add(&#39;Access-Control-Allow-Origin&#39;, &#39;*&#39;);
+  res.response.headers.add(&#39;Access-Control-Allow-Methods&#39;, &#39;POST, OPTIONS&#39;);
+  res.response.headers.add(&#39;Access-Control-Allow-Headers&#39;,
+      &#39;Origin, X-Requested-With, Content-Type, Accept&#39;);
+}
+</pre>
+<div class="prettify-filename">note_server.dart</div>
+
+<p>For more information, refer to Wikipedia’s article
+<a href="http://en.wikipedia.org/wiki/Cross-origin_resource_sharing">Cross-origin resource sharing</a>.</p>
+
+<h2 id="using-http-server-package">Using the http_server package</h2>
+
+<p><em>Example files for this section:
+<a href="https://github.com/dart-lang/dart-tutorials-samples/blob/master/bin/httpserver/mini_file_server.dart" target="_blank">mini_file_server.dart</a> and
+<a href="https://github.com/dart-lang/dart-tutorials-samples/blob/master/bin/httpserver/static_file_server.dart" target="_blank">static_file_server.dart</a>.</em></p>
+
+<p>For some higher-level building blocks,
+we recommend that you try the 
+<a href="https://pub.dartlang.org/packages/http_server">http_server</a>
+pub package,
+which contains a set of classes that,
+together with the HttpServer class in the <code>dart:io</code> library,
+make it easier to implement HTTP servers.</p>
+
+<p>In this section, we compare a server written
+using API only from dart:io to a server
+with the same functionality
+written using dart:io together with http_server.</p>
+
+<p>You can find the first server in <code>mini_file_server.dart</code>.
+It responds to all requests by returning the contents of the
+<code>index.html</code> file in the same directory as its source.</p>
+
+<p><strong>Try it!</strong></p>
+
+<ul>
+  <li>
+    <p>Run the server on the command line:</p>
+
+    <pre class="prettyprint lang-bash">
+$ dart bin/httpserver/mini_file_server.dart
+</pre>
+  </li>
+
+  <li>
+    <p>Type <code>localhost:4044</code> into the browser.
+The server displays an HTML file:</p>
+
+    <p><img src="images/index_file.png" alt="The index.html file served by mini_file_server.dart." /></p>
+
+  </li>
+</ul>
+
+<p>Here’s the code for mini file server:</p>
+
+<pre class="prettyprint lang-dart">
+import &#39;dart:io&#39;;
+
+main() {
+  HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4044).then((server) {
+    server.listen((HttpRequest req) {
+      File file = new File(&#39;index.html&#39;);
+      file.exists().then((bool found) {
+        if (found) {
+          file.openRead()
+              .pipe(req.response)  // HttpResponse type.
+              .catchError((e) =&gt; print(e.toString()));
+        } else {
+          req.response.statusCode = HttpStatus.NOT_FOUND;
+          req.response.close();
+        }
+      });
+    });
+  });
+}
+</pre>
+<div class="prettify-filename">mini_file_server.dart</div>
+
+<p>This code determines if the file exists,
+and if it does, opens the file and pipes the contents
+to the HttpResponse object.</p>
+
+<p>The second server,
+whose code you can find in 
+<a href="https://github.com/dart-lang/dart-tutorials-samples/blob/master/bin/httpserver/basic_file_server.dart" target="_blank">basic_file_server.dart</a>,
+uses the <code>http_server</code> package.</p>
+
+<p><strong>Try it!</strong></p>
+
+<ul>
+  <li>
+    <p>Run the server on the command line:</p>
+
+    <pre class="prettyprint lang-bash">
+$ dart bin/httpserver/basic_file_server.dart
+</pre>
+  </li>
+
+  <li>
+    <p>Type <code>localhost:4046</code> into the browser.
+The server displays the same index.html file as the previous:</p>
+
+    <p><img src="images/index_file_4046.png" alt="The index.html file served by basic_file_server.dart." /></p>
+
+  </li>
+</ul>
+
+<p>In this server, the code for handling the request is much shorter,
+because the
+<a href="https://api.dartlang.org/apidocs/channels/stable/#http_server/http_server.VirtualDirectory" target="_blank">VirtualDirectory</a>
+class handles the details of serving the file.</p>
+
+<pre class="prettyprint lang-dart">
+import &#39;dart:io&#39;;
+import &#39;package:http_server/http_server.dart&#39;;
+
+void main() {
+
+  VirtualDirectory staticFiles = new VirtualDirectory(&#39;.&#39;);
+    
+  HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4046).then((server) {
+    server.listen((req) {
+      <code class="nocode highlight">staticFiles.serveFile(new File(&#39;index.html&#39;), req);</code>
+    });
+  });
+}
+</pre>
+<div class="prettify-filename">basic_file_server.dart</div>
+
+<p>Here, the requested resource, index.html, is served by
+the <code>serveFile()</code> method in the VirtualDirectory class.
+You don’t need to write code to open a file, and pipe its contents
+to the request.</p>
+
+<p>Below is code for another file server that also uses the http_server
+package, <code>static_file_server.dart</code>.
+This server serves any file from the server’s directory
+or subdirectory.</p>
+
+<p>Run the file server, either on the command line or in Dart Editor,
+and test it with this URL <code>localhost:4048/file.txt</code>.
+Change <code>file.txt</code> to other filenames within the directory.</p>
+
+<pre class="prettyprint lang-dart">
+    import &#39;dart:io&#39;;
+    import &#39;package:http_server/http_server.dart&#39;;
+    import &#39;package:path/path.dart&#39;;
+
+    void main() {
+      var pathToBuild = join(dirname(Platform.script.toFilePath()));
+
+      var staticFiles = new VirtualDirectory(pathToBuild);
+<code class="nocode note">1</code>   staticFiles.allowDirectoryListing = true;
+<code class="nocode note">2</code>   staticFiles.directoryHandler = (dir, request) {
+        var indexUri = new Uri.file(dir.path).resolve(&#39;index.html&#39;);
+<code class="nocode note">3</code>     staticFiles.serveFile(new File(indexUri.toFilePath()), request);
+      };
+
+      HttpServer.bind(InternetAddress.LOOPBACK_IP_V4, 4048).then((server) {
+<code class="nocode note">4</code>     server.listen(staticFiles.serveRequest);
+      });
+    }
+</pre>
+<div class="prettify-filename">static_file_server.dart</div>
+
+<p><span class="code-note">1</span>
+Allows clients to request files within the server’s directory.</p>
+
+<p><span class="code-note">2</span>
+An anonymous function that handles requests for the directory itself,
+that is, the URL contains no filename.
+The function redirects these requests to <code>index.html</code>.</p>
+
+<p><span class="code-note">3</span>
+The <code>serveFile</code> method serves a file.
+In this example, it serves <code>index.html</code> for directory requests.</p>
+
+<p><span class="code-note">4</span>
+The <code>serveRequest</code> method provided by the VirtualDirectory
+class handles requests that specify a file.</p>
+
+<h2 id="using-https">Using https with bindSecure()</h2>
+
+<p><em>Example for this section:
+<a href="https://github.com/dart-lang/dart-tutorials-samples/blob/master/bin/httpserver/hello_world_server_secure.dart" target="_blank">hello_world_server_secure.dart</a>.</em></p>
+
+<p>You might have noticed that the HttpServer class defines a
+method called <code>bindSecure()</code>, which provides a secure connection
+using HTTPS (Hyper Text Transfer Protocol with Secure Sockets Layer).
+To use the bindSecure() method, you need a certificate,
+which is provided by a Certificate Authority (CA).
+For more information about certificates refer to
+<a href="http://www.tldp.org/HOWTO/SSL-Certificates-HOWTO/x64.html">What is SSL and what are Certificates?</a></p>
+
+<p>For illustrative purposes only,
+the following server, <code>hello_world_server_secure.dart</code>,
+calls <code>bindSecure()</code> using
+a certificate created by the Dart team for testing.
+You <strong>must</strong> provide your own certificates for your servers.</p>
+
+<pre class="prettyprint lang-dart">
+    import &#39;dart:io&#39;;
+
+    main() {
+<code class="nocode note">1</code>  <code class="nocode highlight">var testPkcertDatabase = Platform.script.resolve(&#39;pkcert&#39;).toFilePath();</code>
+<code class="nocode note">2</code>  <code class="nocode highlight">SecureSocket.initialize(database: testPkcertDatabase,</code>
+         <code class="nocode highlight">password: &#39;dartdart&#39;);</code>
+  
+<code class="nocode note">3</code>  HttpServer.bindSecure(&#39;localhost&#39;, 4047,
+          <code class="nocode highlight">certificateName: &#39;localhost_cert&#39;</code>).then((server) {
+        print(&#39;listening&#39;);
+        server.listen((HttpRequest request) {
+          request.response.write(&#39;Hello, world!&#39;);
+          request.response.close();
+        });
+      });
+    }
+</pre>
+<div class="prettify-filename">hello_world_server_secure.dart</div>
+
+<p><span class="code-note">1</span>
+Get the path to the certificate database.</p>
+
+<p><span class="code-note">2</span>
+Create and initialize a secure socket,
+providing the certificate to the socket.</p>
+
+<p><span class="code-note">3</span>
+Use the <code>bindSecure()</code> method to bind to a host and port,
+providing the name of the certificate.</p>
+
+<h2 id="other-resources">Other resources</h2>
+
+<p>Visit these API docs
+for further details about the classes and libraries discussed in this tutorial.</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Dart class</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://api.dartlang.org/dart_io/HttpServer.html" target="_blank">HttpServer</a></td>
+      <td>An HTTP server</td>
+    </tr>
+    <tr>
+      <td><a href="https://api.dartlang.org/dart_io/HttpClient.html" target="_blank">HttpClient</a></td>
+      <td>An HTTP client</td>
+    </tr>
+    <tr>
+      <td><a href="https://api.dartlang.org/dart_io/HttpRequest.html" target="_blank">HttpRequest</a></td>
+      <td>A server-side request object</td>
+    </tr>
+    <tr>
+      <td><a href="https://api.dartlang.org/dart_io/HttpResponse.html" target="_blank">HttpResponse</a></td>
+      <td>A server-side response object</td>
+    </tr>
+    <tr>
+      <td><a href="https://api.dartlang.org/dart_io/HttpClientRequest.html" target="_blank">HttpClientRequest</a></td>
+      <td>A client-side request object</td>
+    </tr>
+    <tr>
+      <td><a href="https://api.dartlang.org/dart_io/HttpClientResponse.html" target="_blank">HttpClientResponse</a></td>
+      <td>A client-side response object</td>
+    </tr>
+    <tr>
+      <td><a href="https://api.dartlang.org/dart_io/HttpHeaders.html" target="_blank">HttpHeaders</a></td>
+      <td>The headers for a request</td>
+    </tr>
+    <tr>
+      <td><a href="https://api.dartlang.org/dart_io/HttpStatus.html" target="_blank">HttpStatus</a></td>
+      <td>The status of the response</td>
+    </tr>
+    <tr>
+      <td><a href="https://api.dartlang.org/dart_io/InternetAddres.html" target="_blank">InternetAddress</a></td>
+      <td>An internet address</td>
+    </tr>
+    <tr>
+      <td><a href="https://pub.dartlang.org/packages/http_server" target="_blank">http_server</a> package</td>
+      <td>A package with higher-level HTTP classes</td>
+    </tr>
+    <tr>
+      <td><a href="https://api.dartlang.org/dart_io/BytesBuilder.html" target="_blank">BytesBuilder</a></td>
+      <td>A buffer-like object that efficiently collects bytes and lists of bytes</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="what-next">What next?</h2>
+
+<ul>
+  <li>
+    <p><a href="/docs/serverguide.html">Command-Line Apps</a>
+links to resources for writing standalone Dart applications,
+including servers.</p>
+  </li>
+  <li>
+    <p><a href="/docs/tutorials/forms/">Get Input from a Form</a> shows how to make a POST
+request from a browser-based client using an HTML form.
+It also discusses the related server.</p>
+  </li>
+  <li>
+    <p>Be sure to investigate the other packages on
+<a href="https://pub.dartlang.org/" target="_blank">pub.dartlang.org</a>.</p>
+  </li>
+</ul>
+
+
+
+  </article>
+</div>
+
+<!-- NAVI LINKS -->
+<div id="tutorial-navigation-links-bottom" class="row">
+  <div class="col-md-12">
+    <hr />
+    <div class="row">
+      <div class="col-md-3">
+        <a href="/docs/tutorials/"><img src="/docs/tutorials/images/tute-home.png" width="36" /></a>
+      </div>
+      <div class="col-md-3">
+        <a href="/docs/tutorials/cmdline/"><i class="glyphicon glyphicon-chevron-left"> </i> Write Command-Line Apps</a>
+      </div>
+      <div class="col-md-3">
+      </div>
+      <div class="col-md-3">
+        <a href="/docs/tutorials/" class="pull-right">Home <i class="glyphicon glyphicon-chevron-right"> </i> </a>
+      </div>
+    </div> 
+  </div> 
+</div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+<link href="/docs/tutorials/httpserver/httpserver.css" rel="stylesheet" type="text/css">
+
+
+
+</body>
+</html>
+

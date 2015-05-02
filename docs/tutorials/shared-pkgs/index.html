@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>Install Shared Packages | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="Install Shared Packages | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="Packages are bundles of source code, tools, and resources that help you to organize and share code">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+    <div class="container col-md-12 col-md-offset-0 sub-page">
+      <div class="has-permalinks">
+      
+<!-- NAVI LINKS -->
+<div id="tutorial-navigation-links-top" class="row">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-3">
+        <a href="/docs/tutorials/"><img src="/docs/tutorials/images/tute-home.png" width="36" /></a>
+      </div>
+      <div class="col-md-3">
+        <a href="/docs/tutorials/remove-elements/"><i class="glyphicon glyphicon-chevron-left"> </i> Remove DOM Elements</a>
+      </div>
+      <div class="col-md-3">
+      </div>
+      <div class="col-md-3">
+        <a href="/docs/tutorials/polymer-intro/" class="pull-right">Define a Custom Element <i class="glyphicon glyphicon-chevron-right"> </i> </a>
+      </div>
+    </div> 
+    <hr />
+  </div> 
+</div>
+
+<!-- PAGE -->
+<div class="row">
+
+  <!-- LEFT SIDE BAR -->
+  <div class="col-md-3">
+
+    <div id="tutorial-side">
+      <div id="whats-the-point">
+        <h4 id="page-highlights">What's the point?</h4>
+        
+<ul>
+  <li>Packages are awesome.</li>
+  <li>Packages are cool.</li>
+  <li>Share your code in packages, with all your friends at school.</li>
+</ul>
+
+
+      </div> <!-- whats-the-point -->
+
+      <div id="code-links">
+        <h4 id="examples">Examples</h4>
+
+        
+<p>
+Get the vector_math package and many others from:</p>
+
+<ul>
+  <li>
+    <a href="https://pub.dartlang.org/" target="_blank">pub.dartlang.org</a>
+  </li>
+</ul>
+
+
+
+        <a href="https://drone.io/github.com/dart-lang/dart-tutorials-samples/latest">
+           <img src="https://drone.io/github.com/dart-lang/dart-tutorials-samples/status.png" alt="Build Status" style="margin-top:10px;max-width:100%;" />
+        </a>
+      </div> <!-- end code-links -->
+
+      <div id="tutorial-toc">
+        <a href="https://github.com/dart-lang/dartlang.org/issues" target="_blank">
+        <i class="glyphicon glyphicon-comment"> </i>
+        Send feedback
+        </a>
+      </div> <!-- tutorial-toc -->
+      
+    </div> <!-- tutorial-side -->
+
+  </div> <!-- end div col-md-3 -->
+
+  <!-- CONTENT-->
+  <article class="col-md-9 tutorial-content">
+
+    
+<div class="tute-target-title">
+<h1>Install Shared Packages</h1>
+<h3>Borrow and share code.</h3>
+</div>
+
+<p>Now that you’re able to create and run a Dart application
+and have a basic understanding of DOM programming,
+you are ready to leverage code written by other programmers.
+Many interesting and useful packages of reusable Dart code
+are available at the
+<a href="https://pub.dartlang.org/">pub.dartlang.org</a>
+repository.</p>
+
+<p>This tutorial shows you how to use <code>pub</code>—a package manager
+that comes with Dart—to
+install one of the packages in the repository,
+the vector_math package.
+You can follow these same steps to install any package hosted at
+<a href="https://pub.dartlang.org/">pub.dartlang.org</a>;
+just change the package name when you get to that step.
+This tutorial also describes some of the resources you can expect to find
+in a well-built package.</p>
+
+<ul>
+  <li><a href="#about-pubspec">About the pubspec.yaml file</a></li>
+  <li><a href="#name-dependencies">Name the package dependencies</a></li>
+  <li><a href="#install-dependencies">Install the package dependencies</a></li>
+  <li><a href="#about-packages">What did you get (and not get)?</a></li>
+  <li><a href="#use-package">Import libraries from a package</a></li>
+  <li><a href="#other-resources">Other resources</a></li>
+  <li><a href="#what-next">What next?</a></li>
+</ul>
+
+<h2 id="about-pubspec">About the pubspec.yaml file</h2>
+
+<p>To use an external package,
+your application must itself be a package.
+Any application with a valid pubspec.yaml file in its top-level directory
+is a package and can therefore use external packages.
+When you create an application using Dart Editor,
+Dart Editor automatically creates a <code>pubspec.yaml</code> file.</p>
+
+<p>Start Dart Editor and create a new application with the name <code>vector_victor</code>.
+Double click pubspec.yaml to view its contents.</p>
+
+<p><img class="scale-img-max" src="images/victor-files.png" alt="Dart Editor with pubspec.yaml file" /></p>
+
+<p>The pubspec.yaml file contains the package specification written in YAML
+(visit <a href="https://pub.dartlang.org/doc/pubspec.html">Pubspec Format</a>
+for in-depth coverage).
+Dart Editor provides a user interface for editing the pubspec.yaml file
+so that you don’t have to worry about the YAML format.
+Or you can click the <strong>Source</strong> tab at the bottom of the Editor pane
+to edit the YAML code directly.
+Below is the pubspec.yaml file that was
+created for the vector_victor application.</p>
+
+<p><img class="scale-img-max" src="images/pubspec.png" alt="The default pubspec.yaml file specifies name and description" /></p>
+
+<p>The package name is required.
+You’ll note that the pubspec.yaml file already
+lists a dependency on the browser package.
+Web applications that don’t use polymer.dart
+need the browser package.</p>
+
+<h2 id="name-dependencies">Name the package dependencies</h2>
+
+<p>To use an external library package,
+you need to add the package to your
+application’s list of <em>dependencies</em>
+in the pubspec.yaml file.
+Each item in the dependencies list
+specifies the name, and sometimes the version,
+of a package that your application uses.</p>
+
+<p>Let’s make the vector_victor application have a dependency 
+on the vector_math package,
+which is available at pub.dartlang.org.</p>
+
+<ul>
+  <li>Click the <strong>Add</strong> button in Dart Editor.</li>
+</ul>
+
+<p><img class="scale-img-max" src="images/dependencies-ui.png" alt="Click the add button to add a package dependency" /></p>
+
+<ul>
+  <li>Enter the name of the package in the popup window.</li>
+</ul>
+
+<p><img class="scale-img-max" src="images/add-dependency-window.png" alt="Enter the package name" /></p>
+
+<p>Dart Editor adds the package name to the list.</p>
+
+<p><img class="scale-img-max" src="images/after-add.png" alt="The application is now dependent on vector_math" /></p>
+
+<p>Notice the <strong>Version</strong> field.
+<code>any</code> means that this application can use
+any version of the vector_math package.
+You could instead specify a particular version of the package.
+When versioning becomes important to your project,
+check out
+<a href="https://pub.dartlang.org/doc/versioning.html">
+Pub’s Versioning Philosophy
+</a>.</p>
+
+<p>Here’s the new pubspec.yaml file:</p>
+
+<p><img class="scale-img-max" src="images/pubspec-vectormath.png" alt="Pubspec.yaml file with vector_math dependency" /></p>
+
+<p><a href="https://pub.dartlang.org/">pub.dartlang.org</a>
+is the primary public repository for Dart packages.
+<code>pub</code> automatically checks that
+website when resolving package dependencies.
+To use one of the packages from that site,
+you can specify it by its simple name,
+as we have done here.</p>
+
+<h2 id="install-dependencies">Install the package dependencies</h2>
+
+<p>In Dart Editor, save pubspec.yaml with <strong>File &gt; Save</strong>.
+When you save the file,
+Dart Editor automatically runs
+<a href="https://pub.dartlang.org/doc/pub-install.html">pub get</a>,
+which recursively installs the Dart libraries
+from the packages in the dependencies list.
+You can also select <strong>Pub Install</strong> from the <strong>Tools</strong> menu in Dart Editor.</p>
+
+<p>Pub puts the libraries in a directory called packages
+under the application’s top-level directory.
+Click the wee arrow to expand the packages directory.
+There you will find the vector_math directory,
+which links to the Dart libraries from the vector_math package.</p>
+
+<p><img class="scale-img-max" src="images/run-pub-install.png" alt="Pub Install finds and installs required packages" /></p>
+
+<p>Pub install works recursively;
+if the included package has dependencies, those packages are installed as well.</p>
+
+<p>Pub install creates a file called pubspec.lock,
+which identifies the specific versions of the packages that were installed.
+This helps to provide a stable development environment.
+Later you can modify the version constraints and use <code>pub update</code>
+to update to new versions as needed.</p>
+
+<h2 id="about-packages">What did you get (and not get)?</h2>
+
+<p>Besides the Dart libraries,
+the vector_math package has other resources that might be useful to you
+that do not get installed into your application directory.
+Let’s take a step back for a moment to look at what
+you got and where it came from.</p>
+
+<p>To see the contents of the vector_math package,
+visit the
+<a href="https://github.com/johnmccutchan/vector_math" target="_blank">
+Dart vector math repository
+</a>
+at github.
+Although many files and directories are in the repository,
+only one, <code>lib</code>, was installed when you ran pub get.</p>
+
+<div>
+  <hr />
+  <div class="row">
+    <div class="col-md-3">
+    <img class="scale-img-max" src="images/libraries-folder.png" alt="Dart libraries directory" />
+    </div>
+    <div class="col-md-7">
+      <em>Dart libraries</em>:
+      The lib directory contains one or more Dart libraries,
+      which can be imported into your Dart programs.
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col-md-3">
+    <img class="scale-img-max" src="images/housekeeping-files.png" alt="Housekeeping files" />
+    </div>
+    <div class="col-md-7">
+      <em>Housekeeping files</em>:
+      When using a package written by someone else,
+      the README file is a good place to start.
+      It should contain important information about the package,
+      such as its intent, contents, samples, and instructions.
+      The LICENSE file provides copyright and rules-of-use information.
+      These files can be found at the package repository.
+      They are not installed when you install a package.
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="col-md-3">
+    <img class="scale-img-max" src="images/other-folders.png" alt="Document, scripts, tests, and other resources" />
+    </div>
+    <div class="col-md-7">
+      <em>Other resources</em>:
+      Along with Dart libraries,
+      a package might also contain other resources 
+      such as example code, tests, scripts, and documentation.
+      If a package contains these resources,
+      they should be in the directories as specified in the pub
+<a href="https://pub.dartlang.org/doc/package-layout.html">conventions</a>.
+    </div>
+  </div>
+  <hr />
+</div>
+
+<h2 id="use-package">Import libraries from a package</h2>
+
+<p>Open the vector_math directory by clicking the little arrow.</p>
+
+<p><img class="scale-img-max" src="images/the-vectormath-library.png" alt="Finally, the vector_math library files" /></p>
+
+<p>The directory contains a Dart file called vector_math.dart,
+which you import into your Dart application,
+and a <code>src</code> directory,
+which contains the source code for the library.
+As with the SDK libraries,
+use the import directive to use code from an installed library.
+The Dart SDK libraries are built-in and
+are identified with the special dart: prefix.
+For external libraries installed by pub,
+use the <code>package:</code> prefix.</p>
+
+<pre class="prettyprint lang-dart">
+import &#39;package:vector_math/vector_math.dart&#39;;
+</pre>
+
+<p>Note that you specify the filename, not the library name.</p>
+
+<h2 id="other-resources">Other resources</h2>
+
+<ul>
+  <li>
+    Dart developers share packages at
+    <a href="https://pub.dartlang.org/">pub.dartlang.org</a>.
+    Look there for packages that might be useful to you,
+    or share your own Dart packages.
+    See the <a href="https://pub.dartlang.org/doc/">pub documentation</a>
+    to get started using and sharing packages.
+  </li>
+</ul>
+
+<h2 id="what-next">What next?</h2>
+
+<p>One package at pub.dartlang.org is polymer.dart,
+which makes writing web applications easier
+with data binding, templates, and declarative event handlers.
+Check out the next tutorial,
+<a href="/docs/tutorials/polymer-intro">Define a Custom Element</a>,
+for an introduction to polymer.dart.</p>
+
+
+
+  </article>
+</div>
+
+<!-- NAVI LINKS -->
+<div id="tutorial-navigation-links-bottom" class="row">
+  <div class="col-md-12">
+    <hr />
+    <div class="row">
+      <div class="col-md-3">
+        <a href="/docs/tutorials/"><img src="/docs/tutorials/images/tute-home.png" width="36" /></a>
+      </div>
+      <div class="col-md-3">
+        <a href="/docs/tutorials/remove-elements/"><i class="glyphicon glyphicon-chevron-left"> </i> Remove DOM Elements</a>
+      </div>
+      <div class="col-md-3">
+      </div>
+      <div class="col-md-3">
+        <a href="/docs/tutorials/polymer-intro/" class="pull-right">Define a Custom Element <i class="glyphicon glyphicon-chevron-right"> </i> </a>
+      </div>
+    </div> 
+  </div> 
+</div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+
+
+
+
+</body>
+</html>
+

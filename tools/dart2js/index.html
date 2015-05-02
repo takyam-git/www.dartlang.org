@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/Product">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>dart2js: The Dart-to-JavaScript Compiler | Dart: Structured web apps</title>
+  <meta property="twitter:account_id" content="376585411" />
+  <meta itemprop="name" content="dart2js: The Dart-to-JavaScript Compiler | Dart: Structured web apps">
+  
+  <meta itemprop="image" content="https://www.dartlang.org/imgs/dart-logo-wordmark-1200w.png">
+  
+  <meta itemprop="description" content="Dart is a new platform for building structured web apps for modern browsers. It includes a language, a VM, libraries, tools, and a compiler to JavaScript. Try Dart today!">
+
+
+
+<!-- making pagespeed insights happy -->
+<style>
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://themes.googleusercontent.com/static/fonts/montserrat/v4/IQHow_FEYlDC4Gzy_m8fcnbFhgvWbfSbdVg11QabG8w.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/Hgo13k-tfSpn0qi1SFdUfbO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://themes.googleusercontent.com/static/fonts/roboto/v10/CrYjSnGjrRCn0pd9VQsnFOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+}
+</style>
+
+<link rel='stylesheet' type='text/css' href='/bundles/96e4b278be2e9b94cffcad9b0b04384c.css' />
+
+
+  
+  
+
+  <link rel="alternate" type="application/atom+xml" href="http://news.dartlang.org/feeds/posts/default" title="Atom feed">
+  <link href="https://plus.google.com/109866369054280216564" rel="publisher">
+
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+  <![endif]-->
+
+  <script>
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-49880327-3', 'dartlang.org');
+ga('create', 'UA-26406144-4',
+    {'cookieDomain': 'dartlang.org',
+     'siteSpeedSampleRate': 50,
+     'name': 'dartlangTracker'});
+
+ga('send', 'pageview');
+ga('dartlangTracker.send', 'pageview');
+
+</script>
+
+
+  <script async="" defer="" src="//survey.g.doubleclick.net/async_survey?site=apno2k33xucna4srya26u4i2ri"></script>
+
+</head>
+<body onload="prettyPrint()" data-spy="scroll" data-target=".bs-sidebar">
+
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="dart-developer-summit-reg" style="text-align:center;background-color: hsl(172,67%,80%);">
+        <a href="/events/2015/summit/">Watch sessions from the first Dart Developer Summit</a>
+      </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="sprite-icon-dart-logo"></i></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+              <a href="#" class="dropdown=toggle" data-toggle="dropdown">
+                Get Started <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/codelabs/darrrt/">Learn Dart in Minutes</a></li>
+                <li><a href="/downloads/">Download Dart</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Fundamentals <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/dart-up-and-running/ch02.html">Language Tour</a></li>
+                <li><a href="/docs/dart-up-and-running/ch03.html">Library Tour</a></li>
+                <li><a href="/docs/">Programmer's Guide</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/tools/">Dart Tools</a></li>
+                <li><a href="/tools/pub/">Pub Package and Asset Manager</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/tutorials/get-started/">Tutorial: Get Started</a></li>
+                <li><a href="/docs/tutorials/shared-pkgs/">Tutorial: Packages</a></li>
+                <li><a href="/docs/tutorials/futures/">Tutorial: Async</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Browser<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/polymer/">Polymer</a></li>
+                <li><a href="/codelabs/polymer/">Polymer Code Lab</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/connect-dart-html/">Tutorial: HTML</a></li>
+                <li><a href="/docs/tutorials/polymer-intro/">Tutorial: Polymer</a></li>
+                <li><a href="/docs/tutorials/fetchdata/">Tutorial: Forms & Data</a></li>
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/tools/editor/mobile.html">Mobile</a></li>
+
+                <li class="divider"></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Google APIs Client Libraries</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    Server <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/docs/tutorials/cmdline/">Tutorial: Basic Command-Line Apps</a></li>
+                <li><a href="/docs/tutorials/httpserver/">Tutorial: HTTP Servers and Clients</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/server/google-cloud-platform/">Deploying Your Server Application</a></li>
+                <i class="sprite-icon-dd-tip"></i>
+                <li><a href="/googleapis/">Using Google APIs from Your Server</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/docs/serverguide.html">Additional Resources</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    More <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <i class="sprite-icon-dd-tip"></i>
+
+                <li><a href="/samples/">Code Samples</a></li>
+                <li><a href="/docs/synonyms/">Synonyms with Other Languages</a></li>
+                <li><a href="/dart-by-example/">Dart by Example</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/articles/">Articles</a></li>
+                <li><a href="http://api.dartlang.org">API Reference</a></li>
+                <li><a href="/docs/spec/">Language Specification</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/community/who-uses-dart.html">Who Uses Dart</a></li>
+                <li><a href="/support/faq.html">FAQ</a></li>
+                <li><a href="/logos/">Logos and Colors</a></li>
+                <li><a href="/books/">Books</a></li>
+                <li><a href="/performance/">Performance</a></li>
+
+                <li class="divider"></li>
+                <li><a href="/slides/">Presentations</a></li>
+                <li><a href="/dart-tips/">Dart Tips Videos</a></li>
+                <li><a href="/support/">Support</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <form class="navbar-search" action="/search.html" id="cse-search-box">
+                <input type="hidden" name="cx" value="011220921317074318178:i4mscbaxtru">
+                <input type="hidden" name="ie" value="UTF-8">
+                <input type="hidden" name="hl" value="en">
+                <input type="search" name="q" class="search-query placeholder-position-fix form-control" id="q" autocomplete="off" placeholder="Search">
+              </form>
+            </li>
+            <li><a href="https://twitter.com/dart_lang" class="btn"><i class="sprite-icon-social-twitter"></i></a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts" class="btn"><i class="sprite-icon-social-gplus"></i></a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+
+<div class="container-page">
+  <div class="container">
+    <div class="container col-md-10 col-md-offset-1 sub-page">
+      <div>
+      <div class="col-md-4">
+  <div class="bs-sidebar" data-spy="affix" data-offset-bottom="350" role="complementary">
+
+<ol class="toc nav bs-sidenav" id="markdown-toc">
+  <li><a href="#basic-usage">Basic usage</a></li>
+  <li><a href="#pubspec-usage">Usage in pubspec</a></li>
+  <li><a href="#options">Options</a></li>
+  <li><a href="#helping-dart2js-generate-efficient-code">Helping dart2js generate better code</a></li>
+  <li><a href="#debugging">Debugging</a>    <ol>
+      <li><a href="#dart2js-debugging-chrome">Chrome</a></li>
+      <li><a href="#dart2js-debugging-ie">Internet Explorer</a></li>
+      <li><a href="#dart2js-debugging-firefox">Firefox</a></li>
+      <li><a href="#dart2js-debugging-safari">Safari</a></li>
+    </ol>
+  </li>
+</ol>
+
+  </div>
+</div>
+<div class="col-md-8">
+  <p><!-- Start of content -->
+</p>
+
+  <div>
+    <ol class="breadcrumb">
+
+  <li><a href="/tools/">
+  Dart Tools</a></li>
+
+
+  <li class="active">dart2js</li>
+</ol>
+  </div>
+
+  <h1 id="dart2js-the-dart-to-javascript-compiler">dart2js: The Dart-to-JavaScript Compiler</h1>
+
+  <hr />
+  <p>Use the <em>dart2js</em> tool to compile Dart code to JavaScript.
+<a href="/tools/editor/">Dart Editor</a> uses dart2js behind the scenes whenever Dart
+Editor compiles to JavaScript. The <a href="/tools/pub/cmd/pub-serve.html"><code>pub serve</code></a>,
+<a href="/tools/pub/cmd/pub-run.html"><code>pub run</code></a>, and
+<a href="/tools/pub/cmd/pub-build.html"><code>pub build</code></a> commands also use dart2js.
+If you are using dart2js through one of the pub commands, see <a href="/tools/pub/dart2js-transformer.html">Configuring
+the Built-in dart2js Transformer for Pub</a>
+for information on how to specify dart2js flags in your pubspec file.</p>
+
+  <p>The dart2js tool provides hints for improving your Dart code and removing
+unused code. You can get these hints for all kinds of code—even command-line
+apps. Also see <a href="/tools/analyzer/">dartanalyzer</a>,
+which performs a similar analysis but, as of 1.0,
+has a different implementation.</p>
+
+  <p>This page tells you how to use dart2js on the command line. It also give tips
+on debugging the JavaScript that dart2js generates.</p>
+
+  <h2 id="basic-usage">Basic usage</h2>
+
+  <p>Here’s an example of compiling a Dart file to JavaScript:</p>
+
+  <pre class="prettyprint lang-sh">
+dart2js --out=test.js test.dart
+</pre>
+
+  <p>This command produces a file that contains the JavaScript equivalent of your
+Dart code. It also produces a source map, which can help you debug the
+JavaScript version of the app more easily.</p>
+
+  <h2 id="pubspec-usage">Usage in pubspec</h2>
+
+  <p>You can also configure dart2js options in the pubspec file.
+For more information, see
+<a href="/tools/pub/dart2js-transformer.html">Configuring the Built-in dart2js Transformer for
+Pub</a>.</p>
+
+  <h2 id="options">Options</h2>
+
+  <p>Common command-line options for dart2js include:</p>
+
+  <dl>
+    <dt><code>-o &lt;file&gt;</code> or <code>--out=&lt;file&gt;</code></dt>
+    <dd>Generate the output into <code>&lt;file&gt;</code>. If not specified,
+the output goes in a file named <code>out.js</code>.</dd>
+    <dt><code>-c</code> or <code>--checked</code></dt>
+    <dd>Insert runtime type checks, and enable assertions (checked mode).</dd>
+    <dt><code>-m</code> or <code>--minify</code></dt>
+    <dd>Generate minified output.</dd>
+    <dt><code>-h</code> or <code>--help</code></dt>
+    <dd>Display help. (Use <code>-vh</code> for information about all options.)</dd>
+  </dl>
+
+  <p>Some other handy options include:</p>
+
+  <dl>
+    <dt><code>-p &lt;path&gt;</code> or <code>--package-root=&lt;path&gt;</code></dt>
+    <dd>Specify where to find “package:” imports.</dd>
+    <dt><code>-D&lt;flag&gt;=&lt;value&gt;</code></dt>
+    <dd>Define an environment variable.</dd>
+    <dt><code>--version</code></dt>
+    <dd>Display version information for dart2js.</dd>
+  </dl>
+
+  <p>The following options help you control the output of dart2js:</p>
+
+  <dl>
+    <dt><code>--suppress-warnings</code></dt>
+    <dd>Don’t display warnings.</dd>
+    <dt><code>--suppress-hints</code></dt>
+    <dd>Don’t display hints.</dd>
+    <dt><code>--terse</code></dt>
+    <dd>Emit diagnostics, but don’t suggest how to get rid of the diagnosed problems.</dd>
+    <dt><code>-v</code> or <code>--verbose</code></dt>
+    <dd>Display lots of information.</dd>
+  </dl>
+
+  <p>The following options control the analysis that dart2js performs on Dart code:</p>
+
+  <dl>
+    <dt><code>--analyze-all</code></dt>
+    <dd>Analyze even the code that isn’t reachable from <code>main()</code>. This option
+is useful for finding errors in libraries, but using it can result in
+bigger and slower output.</dd>
+    <dt><code>-analyze-only</code></dt>
+    <dd>Analyze the code, but don’t generate code.</dd>
+    <dt><code>--analyze-signatures-only</code></dt>
+    <dd>Like <code>--analyze-only</code>, but skip analysis of method bodies and field
+initializers.</dd>
+    <dt><code>--enable-diagnostic-colors</code></dt>
+    <dd>Add colors to diagnostic messages.  </dd>
+    <dt><code>--show-package-warnings</code></dt>
+    <dd>Show warnings and hints generated from packages.</dd>
+    <dt><code>--csp</code></dt>
+    <dd>If true, disables dynamic generation of code in the generated output.
+This is necessary to satisfy CSP restrictions
+(see <a href="http://www.w3.org/TR/CSP/">W3C Content Security Policy</a>).
+The default is false.</dd>
+  </dl>
+
+  <aside class="alert alert-info">
+    <p><strong>Version note:</strong> Before Dart 1.8, the CSP version of JavaScript was generated
+automatically, and saved with the extension <code>.precompiled.js</code>.
+As of the 1.8 release, you must specify the CSP format using the <code>--csp</code> flag,
+and the resulting file is saved with the normal <code>.js</code> extension.</p>
+  </aside>
+
+  <dl>
+    <dt><code>--categories=Server</code></dt>
+    <dd>Use with <code>--analyze-only</code> to analyze a command-line app. The default
+category is <code>Client</code>, which tells dart2js to expect a web app. This option is only for dart2dart.</dd>
+    <dt><code>--dump-info</code></dt>
+    <dd>Generates an <code>out.info.json</code> file with information about the generated code.
+You can inspect the generated file with the <a href="http://dart-lang.github.io/dump-info-visualizer/build/web/viewer.html">viewer</a>. </dd>
+    <dt><code>--output-type=dart</code></dt>
+    <dd>Output Dart code instead of JavaScript. If you are looking for dart2dart, use this option.    </dd>
+  </dl>
+
+  <h2 id="helping-dart2js-generate-efficient-code">Helping dart2js generate better code</h2>
+
+  <p>You can do a couple of things to improve the code that dart2js generates:</p>
+
+  <ul>
+    <li>
+      <p>Write your code in a way that makes type inference easier.</p>
+    </li>
+    <li>
+      <p>Once you’re ready to deploy your app, use the dart2js <code>--minify</code> option to
+reduce code size.</p>
+    </li>
+  </ul>
+
+  <aside class="alert alert-info">
+    <p><strong>Note:</strong>
+Don’t worry about the size of your app’s included libraries. The dart2js tool
+performs tree shaking to omit unused classes, functions, methods, and so on.
+Just import the libraries you need, and let dart2js get rid of what you don’t
+need.</p>
+  </aside>
+
+  <p>Follow these practices to help dart2js do better type inference, so it can generate smaller and faster JavaScript code:</p>
+
+  <ul>
+    <li>
+      <p>Avoid using the dart:mirrors library, directly or indirectly.  If you must
+use it, provide <code>@MirrorsUsed</code> annotations.</p>
+    </li>
+    <li>
+      <p>Don’t use <code>Function.apply()</code>.</p>
+    </li>
+    <li>
+      <p>Don’t override <code>noSuchMethod()</code>.</p>
+    </li>
+    <li>
+      <p>Avoid setting variables to null.</p>
+    </li>
+    <li>
+      <p>Be consistent with the types of arguments you pass into each function or
+method.</p>
+    </li>
+  </ul>
+
+  <h2 id="debugging">Debugging</h2>
+
+  <p>This section gives tips for debugging dart2js-produced code in Chrome, Firefox,
+and Safari. Debugging the JavaScript produced by dart2js is easiest in
+browsers such as Chrome that support source maps.</p>
+
+  <p>Whichever browser you use, you should enable pausing on at least
+uncaught exceptions, and perhaps on all exceptions. For frameworks such
+as dart:isolate and dart:async that wrap user code in try-catch, we
+recommend pausing on all exceptions.</p>
+
+  <h3 id="dart2js-debugging-chrome">Chrome</h3>
+
+  <p>To debug in Chrome:</p>
+
+  <ol>
+    <li>
+      <p>Open the Developer Tools window, as described in the
+<a href="https://developer.chrome.com/devtools/index">Chrome DevTools documentation</a>.</p>
+    </li>
+    <li>
+      <p>Turn on source maps, as described in the video
+<a href="http://bit.ly/YugIUY">SourceMaps in Chrome</a>.</p>
+    </li>
+    <li>
+      <p>Enable debugging, either on all exceptions or only on uncaught exceptions,
+as described in <a href="https://developer.chrome.com/devtools/docs/javascript-debugging#pause-on-uncaught-exceptions">Pause on Uncaught
+Exceptions</a>.</p>
+    </li>
+    <li>
+      <p>Reload your application.</p>
+    </li>
+  </ol>
+
+  <h3 id="dart2js-debugging-ie">Internet Explorer</h3>
+
+  <p>To debug in Internet Explorer:</p>
+
+  <ol>
+    <li>
+      <p>Update to the latest version of Internet Explorer. (Source-map support
+was added to IE in April 2014).</p>
+    </li>
+    <li>
+      <p>Load <strong>Developer Tools</strong> (<strong>F12</strong>). For more information, see
+<a href="http://msdn.microsoft.com/library/ie/bg182326(v=vs.85)">Using the F12 developer tools</a>.</p>
+    </li>
+    <li>
+      <p>Reload the application. The <strong>debugger</strong> tab shows source-mapped files.</p>
+    </li>
+    <li>
+      <p>Exception behavior can be controlled through <strong>Ctrl+Shift+E</strong>;
+the default is <strong>Break on unhandled exceptions</strong>.</p>
+    </li>
+  </ol>
+
+  <h3 id="dart2js-debugging-firefox">Firefox</h3>
+
+  <p>Firefox doesn’t yet support source maps (see <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=771597">bug #771597</a>).</p>
+
+  <p>To debug in Firefox:</p>
+
+  <ol>
+<li>Enable the Developer Toolbar, as described in Kevin Dangoor’s blog post,
+   <a href="https://hacks.mozilla.org/2012/08/new-firefox-command-line-helps-you-develop-faster/">New Firefox Command Line Helps You Develop
+   Faster"</a>.<br /><br /></li>
+            
+<li>Click <strong>Pause on exceptions</strong>, as shown in the
+   following figure.<br /></li>
+            
+<img src="/tools/images/daur_0408.png" alt="Firefox Toolbar" /><br /><br />
+
+<li>Reload your application.</li>
+</ol>
+
+  <h3 id="dart2js-debugging-safari">Safari</h3>
+
+  <p>To debug in Safari:</p>
+
+  <ol>
+    <li>
+      <p>Turn on the Develop menu, as described in the <a href="https://developer.apple.com/library/safari/documentation/AppleApplications/Conceptual/Safari_Developer_Guide/GettingStarted/GettingStarted.html#//apple_ref/doc/uid/TP40007874-CH2-SW1">Safari Web Inspector Guide</a>.</p>
+    </li>
+    <li>
+      <p>Enable breaks, either on all exceptions or only on uncaught exceptions. See Figure 4-2 on the Safari <a href="https://developer.apple.com/library/safari/documentation/AppleApplications/Conceptual/Safari_Developer_Guide/Debugger/Debugger.html#//apple_ref/doc/uid/TP40007874-CH5-SW1">Debugging</a> page.</p>
+    </li>
+    <li>
+      <p>Reload your application.</p>
+    </li>
+  </ol>
+</div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <footer class="footer container-full hidden-print">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <h3>A new language, with tools and libraries, for SCALABLE web app engineering</h3>
+          <p>Dart is an <a href="https://code.google.com/p/dart/">open-source project</a> with contributors from Google and elsewhere.</p>
+          <p class="sm">Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code samples are licensed under the BSD License.</p>
+        </div>
+        <div class="col-md-2 col-md-offset-1">
+          <h4>Popular Topics</h4>
+          <ul>
+            <li><a href="/polymer/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Polymer.dart</a></li>
+            <li><a href="/performance/">Performance</a></li>
+            <li><a href="/docs/dart-up-and-running/ch02.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Language tour</a> &amp;
+            <a href="/docs/dart-up-and-running/ch03.html?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">library tour</a></li>
+            <li><a href="/samples/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Code samples</a></li>
+            <li><a href="/docs/tutorials/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">Tutorials</a> &amp;
+                <a href="/codelabs/darrrt/?utm_source=site&amp;utm_medium=footer&amp;utm_campaign=homepage">code lab</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="http://pub.dartlang.org/">Pub packages</a></li>
+            <li><a href="/docs/synonyms/">Synonyms with other languages</a></li>
+            <li><a href="http://code.google.com/p/dart/issues/list">Dart bugs and feature requests</a></li>
+            <li><a href="https://github.com/dart-lang/dartlang.org">www.dartlang.org repo</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/support/">Mailing lists</a></li>
+            <li><a href="https://plus.google.com/communities/114566943291919232850">G+ community</a></li>
+            <li><a href="https://plus.google.com/+dartlang/posts">G+ announcement group</a></li>
+            <li><a href="http://stackoverflow.com/questions/tagged/dart">Stack Overflow</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer> <!-- End footer -->
+
+
+
+<script type='text/javascript' src='/bundles/d0739a444baf6bcd9d6405389c2e294f.js'></script>
+
+
+
+
+<link rel='stylesheet' type='text/css' href='/bundles/2afe6beaa026f8648e912263a89be985.css' />
+
+
+
+
+
+
+</body>
+</html>
+
