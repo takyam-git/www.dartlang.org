@@ -3,4 +3,4 @@ URL: http://www.dartlang.org
 
 /* github release information */
 branch: master
-tree: https://github.com/dart-lang/dartlang.org/tree/5fc7737a79af7d224b544f49397428793d5b32c9
+tree: https://github.com/dart-lang/dartlang.org/tree/1be96c0639efd26a025f19168f5b41098c91023b
