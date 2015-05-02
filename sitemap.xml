@@ -2,1351 +2,1351 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.dartlang.org/tools/pub/transformers/aggregate.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/observatory/allocation-profile.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/server/google-cloud-platform/app-engine/api.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/polymer/app-directories.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/pub/assets-and-transformers.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/authors/bob-nystrom.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/observatory/breakpoints.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/editor/build.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/docs/dart-up-and-running/ch01.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/docs/dart-up-and-running/ch02.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/docs/dart-up-and-running/ch03.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/docs/dart-up-and-running/ch04.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/docs/dart-up-and-running/ch05.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/authors/chris-buckett.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/server/google-cloud-platform/app-engine/client-server/client-code.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/observatory/code-coverage.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/observatory/cpu-profile.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/slides/2012/06/io12/dart-a-modern-web-language.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/dart-tips/dart-tips-ep-1.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/dart-tips/dart-tips-ep-10.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/dart-tips/dart-tips-ep-11.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/dart-tips/dart-tips-ep-2.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/dart-tips/dart-tips-ep-3.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/dart-tips/dart-tips-ep-4.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/dart-tips/dart-tips-ep-5.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/dart-tips/dart-tips-ep-6.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/dart-tips/dart-tips-ep-7.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/dart-tips/dart-tips-ep-8.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/dart-tips/dart-tips-ep-9.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/pub/dart2js-transformer.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/authors/david-chandler.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/pub/dependencies.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/server/google-cloud-platform/app-engine/deploy.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/authors/eli-brandt.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/observatory/evaluate.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/faq.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/polymer/faq.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/support/faq.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/pub/faq.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/authors/florian-loitsch.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/docs/dart-up-and-running/foreword.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/observatory/get-started.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/pub/get-started.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/authors/gilad-bracha.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/pub/glossary.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/observatory/glossary.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/authors/graham-wheeler.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/observatory/heap-map.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/dartium/home.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/slides/2011/12/gtug/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/support/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/docs/synonyms/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/articles/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/articles/mixins/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/docs/tutorials/add-elements/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/docs/tutorials/connect-dart-html/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/articles/style-guide/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/docs/dart-up-and-running/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/articles/numeric-computation/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/docs/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/docs/tutorials/get-started/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/articles/idiomatic-dart/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/articles/event-loop/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/articles/broadcast-streams/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/articles/reflection-with-mirrors/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/articles/await-async/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/docs/spec/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/articles/embedding-in-html/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/books/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/docs/tutorials/cmdline/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/articles/serialization/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/docs/tutorials/fetchdata/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/articles/dart-unit-tests/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/docs/tutorials/forms/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/downloads/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/docs/tutorials/polymer-intro/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/articles/simd/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/articles/snapshots/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/docs/tutorials/shared-pkgs/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/docs/tutorials/remove-elements/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/docs/tutorials/indexeddb/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/performance/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/docs/tutorials/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/articles/optional-types/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/googleapis/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/articles/native-extensions-for-standalone-dart-vm/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/downloads/archive/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/articles/converters-and-codecs/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/polymer/creating-elements/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/polymer/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/polymer/reference/release-notes/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/polymer/reference/error-messages/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/articles/improving-the-dom/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/samples/anagram/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/pub/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/samples/countdown/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/webstorm/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/polymer/using-elements/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/logos/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/samples/google_maps/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/docs/tutorials/streams/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/articles/doc-comment-guidelines/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/samples/jsonp/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/samples/filesystem/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/samples/multi_touch/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/samples/raf/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/samples/dnd/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/samples/slambook/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/samples/solar3d/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/samples/indexeddb_todo/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/samples/swipe/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/samples/stopwatch/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/samples/geolocation/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/samples/dndfiles/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/codelabs/darrrt/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/samples/searchable_list/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/samples/gauge/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/samples/solar/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/samples/appcache/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/slides/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/articles/json-web-service/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/samples/terminal/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/articles/benchmarking/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/samples/todo_with_delete/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/samples/imagefilters/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/server/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/articles/api-naming-guide/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/codelabs/server/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/articles/futures-and-error-handling/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/articles/creating-streams/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/dart-by-example/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/editor/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/articles/why-not-bytecode/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/dartdocgen/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/server/google-cloud-platform/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/articles/zones/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/pub/transformers/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/dartfmt/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/articles/writing-unit-tests-for-pub-packages/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/sdk/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/samples/websockets/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/analyzer/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/dart-vm/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/observatory/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/performance/io/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/dartium/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/codelabs/polymer/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/samples/todo/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/server/google-cloud-platform/app-engine/client-server/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/samples/tracker/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/server/google-cloud-platform/app-engine/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/articles/emulating-functions/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/articles/js-dart-interop/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/dart-tips/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/articles/why-dart-types/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/docs/tutorials/httpserver/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/docs/tutorials/futures/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/samples/polymer_intl/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/samples/localstorage/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/dart2js/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/pub/cmd/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/samples/webaudio/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/samples/todomvc/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/samples/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/articles/mocking-with-dart/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/articles/io/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/polymer/spa/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/pub/transformers/examples/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/codelabs/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/polymer/reference/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/eclipse-plugin/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/samples/video/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/articles/beyond-async/</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/pub/installing.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/observatory/isolate.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/authors/john-mccutchan.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/authors/kathy-walrath.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/authors/lasse-nielsen.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/pub/transformers/lazy-transformer.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/downloads/linux.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/downloads/mac.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/authors/mads-ager.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/authors/mary-campione.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/editor/mobile.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/authors/nicolas-garnier.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/pub/package-layout.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/docs/dart-up-and-running/preface.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/private-files.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/pub/cmd/pub-build.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/pub/cmd/pub-cache.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/pub/cmd/pub-deps.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/pub/cmd/pub-downgrade.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/pub/cmd/pub-get.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/pub/cmd/pub-global.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/pub/cmd/pub-lish.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/pub/cmd/pub-run.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/pub/cmd/pub-serve.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/pub/cmd/pub-upgrade.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/pub/cmd/pub-uploader.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/pub/publishing.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/pub/pubspec.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/slides/2012/06/io12/putting-the-app-back-into-web-apps.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/server/google-cloud-platform/app-engine/run.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/observatory/screens.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/search.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/server/google-cloud-platform/app-engine/client-server/server-code.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/docs/serverguide.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/authors/seth-ladd.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/server/google-cloud-platform/app-engine/setup.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/authors/shailen-tuli.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/authors/sigmund-cherem.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/authors/siva-annamalai.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/observatory/stack-trace.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/observatory/tags.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tos.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/editor/troubleshoot.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/pub/troubleshoot.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/polymer/upgrading-to-polymer-from-web-ui.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/editor/using.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/tools/pub/versioning.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/authors/vijay-menon.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/community/who-uses-dart.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.dartlang.org/authors/william-hesse.html</loc>
-    <lastmod>2015-05-03T02:29:38+09:00</lastmod>
+    <lastmod>2015-05-03T02:41:23+09:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
