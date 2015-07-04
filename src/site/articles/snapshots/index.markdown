@@ -15,158 +15,145 @@ article:
 
 # {{ page.title }}
 
-<em>Written by Siva Annamalai <br />
-<time pubdate date="2013-02-13">February 2013</time>
+<em>著：Siva Annamalai <br />
+<time pubdate date="2013-02-13">2013年2月</time>
 </em>
 
-This article talks about snapshots in Dart—both
-what they are and how they can make Dart apps start up faster.
-If you write command-line apps,
-you should be able to improve their startup time
-by generating your own snapshots,
-following the instructions in this article.
+この記事はDartのスナップショットについて
+ーーそれが何モノかという事と、どのようにDartアプリの起動を高速化しているのかについて話します。
+コマンドラインのアプリを書いている場合、
+この記事の例を参考にスナップショットを生成する事で、
+起動時間を改善する事ができるはずです。
 
-## What is a snapshot?
+## スナップショットとは何ですか？
 
-A snapshot is a sequence of bytes
-that represents a serialized form
-of one or more Dart objects.
-This representation closely corresponds to
-the way these Dart objects are represented
-in an isolate’s heap in memory.
+スナップショットとは、1つかそれ以上のDartオブジェクトの
+シリアライズされた形式で表される一連のバイトの事です。
+つまり、Dartオブジェクトがisolateの
+ヒープメモリでの表現方法に厳密に一致しています。
 
-The Dart VM uses snapshots for two main reasons:
+Dart VMは主に2つの理由でスナップショットを使っています：
 
-* **Speeding up initial startup time**
-  for an application.
-  A snapshot of the core libraries and application script
-  typically contains preparsed data for
-  the core libraries and the application script.
-  This means it is not necessary to parse and tokenize
-  the libraries and script during startup.
+* アプリの **初回の起動の高速化** のために使っています。
+  コアライブラリとアプリケーションスクリプトのスナップショットは、
+  通常はコアライブラリとアプリケーションスクリプトのパースしたデータを含んでいます。
+  つまり、起動時にライブラリやスクリプトを
+  パースしたりトークン化する必要が無いという事を意味します。
+* あるisolateから他のisolateへ **オブジェクトを渡す** ために使います。
 
-* **Passing objects**
-  from one isolate to another isolate.
+DartVMは次の種類のスナップショットを使っています：
 
-The Dart VM uses the following kinds of snapshots:
+* **フルスナップショット**は、
+  初期化後のisolateのヒープを完全に表現します。
+  これはDartVMがDartのコアライブラリや、
+  他のdart:convert、dart:io、dart:isolate等といった
+  ライブラリの高速な起動や初期化のために使います。
+* **スクリプトスナップショット**は、
+  アプリケーションスクリプトがisolateにロードされた後、
+  実行される前の、isolateのヒープを完全に表現します。
+  これはDartVMがアプリケーションの高速な起動と初期化のために使います。
+  例えば、dart2js を起動するスクリプトは、
+  事前に作成された dart2js アプリのスクリプトスナップショットを使います。
+* **オブジェクトスナップショット**。
+  あるisolateから他のisolateへのメッセージングは、
+  他のisolateへ送るために、DartVMでは
+  Dartオブジェクトのスナップショットを作成する実装になっています。
 
-* A **full snapshot**,
-  which is a complete representation of
-  an isolate’s heap after it is initialized.
-  This is used by the Dart VM for
-  fast startup and initialization of
-  the entire Dart core library and other libraries
-  such as dart:convert, dart:io, dart:isolate, and so on.
+## スクリプトスナップショットを生成し、利用する方法
 
-* A **script snapshot**,
-  which is a complete representation of
-  an application script in an isolate’s heap
-  after the script is loaded into the isolate,
-  but before the script starts executing.
-  This is used by the Dart VM for
-  fast startup and initialization of applications.
-  For example, the script that starts dart2js
-  uses a pre-created script snapshot of the dart2js application.
-
-* An **object snapshot**.
-  Messaging from one isolate to another
-  is implemented in the Dart VM by
-  creating a snapshot of the Dart object
-  that needs to be sent to the other isolate.
-
-
-## How to generate and use script snapshots
-
-You can generate and use script snapshots using the Dart VM (dart).
+DartVM (dart)を使う事で、スクリプトスナップショットを生成し、利用する事ができます。
 
 <aside class="alert alert-info" markdown="1">
-**Note:**
-Don't bother creating a script
-snapshot for a program that you're going to run
-just a few times.
-A script snapshot is useful only for deployed applications
-where the cost of creating the snapshot
-is amortized over many launches.
+**注意:**
+たかだか数回しか使わないプログラムのために、
+スクリプトスナップショットを作成する必要はありません。
+スクリプトスナップショットは、たくさん起動する事で
+スナップショット作成のコストを償却できるような
+デプロイをされるアプリケーションの場合において価値があるのです。
 </aside>
 
-To generate a script snapshot,
-use dart with the `--snapshot` option.
-You can use the `--package_root` option
-to specify the location of packages used in imports
-(`import 'package:...'`).
+スクリプトスナップショットを生成するには、
+`--snapshot` オプションを付けてdartコマンドを使ってください。
+importで使っているパッケージ(`import 'package:...'`)の場所を指定するには
+`--package_root`オプションを使ってください。
 
 {% prettify sh %}
 dart [--package_root=<path>] --snapshot=<output_file> <dart_file>
 {% endprettify %}
 
-The `--snapshot` option writes
-a script snapshot of _dart-script-file_ to _out-file_.
-For example, the following command creates
-a snapshot of the Dart script `dart2js.dart`,
-putting it into a file called `dart2js.snapshot`.
+`--snapshot` オプションは _dart-script-file_ のスクリプトスナップショットを
+_out-file_に書き出します。
+例えば次のコマンドでは、`dart2js.dart` という
+Dartスクリプトのスナップショットを作成し、
+`dart2js.snapshot` と呼ばれるファイルの中に設置します。
 
 {% prettify sh %}
 dart --snapshot=dart2js.snapshot \
     dart-sdk/lib/dart2js/lib/_internal/compiler/implementation/dart2js.dart
 {% endprettify %}
 
-To execute a script from its snapshot,
-specify the snapshot file on the command line:
+そのスナップショットからスクリプトを実行するには、
+スナップショットファイルをコマンドラインで指定します：
 
 {% prettify sh %}
 dart <snapshot_file> <args>
 {% endprettify %}
 
-Any _args_ you specify are passed to the script.
-For example, you can run dart2js like this,
-passing `myscript.dart -oout.js` as command-line arguments to dart2js:
+指定した _引数_ はスクリプトに渡されます。
+例えば、 `myscript.dart -oout.js` を
+dart2jsのコマンドライン引数に渡す時は、
+dart2jsをこのように実行する事ができます：
 
 {% prettify sh %}
 dart dart2js.snapshot myscript.dart -oout.js
 {% endprettify %}
 
-## How to generate full snapshots
+## フルスナップショットを生成する方法
 
-Read this section if you’re working on
-one of the rare projects that embed the Dart VM (for example, Dartium).
-The gen_snapshot tool writes a full snapshot
-(corelibs, dart:uri, dart:io, dart:utf, dart:json, dart:isolate, ...)
-to _out-file_:
+（例えばDartiumのような）DartVMを埋め込む
+稀なプロジェクトのひとつで働いている場合、
+この項目を読んでみてください。
+gen_snapshotツールは
+(コアライブラリ、dart:uri、dart:io、dart:utf、dart:json、dart:isolateなどの)
+フルスナップショットを _out-file_ に書き出します：
 
 {% prettify sh %}
 gen_snapshot [<options>] --snapshot=<out_file>
 {% endprettify %}
 
-You can use the following _options_:
+次の _オプション_ が利用できます
 
 <table class="table">
   <tr style="text-align:left">
-    <th>Option</th> <th>Description</th>
+    <th>利用可能なオプション</th> <th>概要</th>
   </tr>
   <tr>
     <td class="nowrap">
       --package_root=<em>path</em>
     </td>
     <td>
-      Specifies the location of packages used in imports
-      (<code>import 'package:...'</code>).</td>
+      import(<code>import 'package:...'</code>)で
+      使ってるパッケージの場所を指定します
+    </td>
   </tr>
   <tr>
     <td class="nowrap">
       --url_mapping=<em>mapping</em>
     </td>
     <td>
-      Provides a URL mapping on the command line for URI resolution
-      during library imports.</td>
+      ライブラリのimportの際のURI解決のために、
+      コマンドライン上でのURLのマッピングを提供します
+    </td>
   </tr>
 </table>
 
 
-## Summary
+## まとめ
 
-You can find more information about snapshots
-and how they are implemented by browsing the files in the
-[runtime/vm directory](https://github.com/dart-lang/sdk/tree/master/runtime/vm).
-Start by looking for "Snapshot" in
-[snapshot.h](https://github.com/dart-lang/sdk/blob/master/runtime/vm/snapshot.h).
-Note that the code might move as the implementation changes.
+スナップショットについてもっと詳しく知りたい場合や、
+どのように実装されてるか知りたい場合は、
+[runtime/vm directory](https://github.com/dart-lang/sdk/tree/master/runtime/vm) のファイルを見てみてください。
+まずは [snapshot.h](https://github.com/dart-lang/sdk/blob/master/runtime/vm/snapshot.h)の
+"Snapshot"を探すところから初めてみてください。
+コードは実装上の都合で移動されるかもしれませんので注意してください。
+
