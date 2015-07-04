@@ -10,8 +10,7 @@ short-title: "dart"
 # {{ page.title }}
 
 You can use the _dart_ tool (`bin/dart`) to run Dart command-line apps such as
-server-side scripts, programs, and servers. During development, you also
-have the option to run command-line apps using [Dart Editor](/tools/editor/).
+server-side scripts, programs, and servers.
 
 ### Basic usage {#basic-usage}
 
@@ -70,11 +69,16 @@ instruct the VM to delay the start up, or the exit, of an isolate:
   If your standalone app executes quickly,
   it might exit before you can open Observatory. To avoid this situation,
   specify this flag on startup.  You must explicitly release all isolates
-  in the Observatory UI.
+  in the [Observatory debugger](/tools/observatory/debugger.html).
 
 `--pause-isolates-on-start`
 : Causes the VM to pause before starting any isolate.
-  You must explicitly start each isolate in the Observatory UI. 
+  You must explicitly start each isolate in the
+  [Observatory debugger](/tools/observatory/debugger.html). 
+
+`--observe`
+: A shortcut that combines `--enable-vm-service` and
+  `--pause-isolates-on-exit`.
 
 `--profile`
 : On Windows, Observatory's
@@ -84,7 +88,7 @@ instruct the VM to delay the start up, or the exit, of an isolate:
 The following is an example Observatory run:
 
 {% prettify sh %}
-$ dart --enable-vm-service --pause-isolates-on-exit <script>.dart
+$ dart --observe <script>.dart
 {% endprettify %}
 
 For more information, see [Observatory](/tools/observatory/).

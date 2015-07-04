@@ -29,9 +29,12 @@ Some of Observatory's features allow you to:
 You can use Observatory to examine the internals of a running 
 Dart VM in real time, at any time.
 
-For a brief overview of Observatory, check out the following video.
+In the following video, recorded at the recent
+[Dart Developer Summit](/events/2015/summit/),
+John McCutchan and Todd Turnidge show how
+to profile and debug a Dart applicaton.
 
-<iframe style="display:block;margin: 0 auto;" width="560" height="315" src="//www.youtube.com/embed/Ww8ISWzZGRE" frameborder="0" allowfullscreen></iframe>
+<iframe style="display:block;margin: 0 auto;" width="560" height="315" src="https://www.youtube.com/embed/y39pZCExsOs?list=PLOU2XLYxmsIIQorIS8gagUiMau9S84vZV" frameborder="0" allowfullscreen></iframe>
 
 ## Using Observatory
 
@@ -42,13 +45,13 @@ To get started with Observatory, read the following:
 To learn about specific features, read these pages:
 
 * [Allocation Profile](allocation-profile.html)
-* [Breakpoints](breakpoints.html)
 * [Code Coverage](code-coverage.html)
 * [CPU Profile](cpu-profile.html)
+* [Debugger](debugger.html)
 * [Evaluating Expressions](evaluate.html)
 * [Heap Map](heap-map.html)
 * [Isolate](isolate.html)
-* [Stack Trace](stack-trace.html)
+* [Metrics](metrics.html)
 * [User and VM Tags](tags.html)
 
 The following pages have reference information about Observatory:
@@ -64,8 +67,8 @@ with users.
 
 ## Filing bugs and feature requests
 
-To see existing issues or create a new one directly, go to the
-[Observatory issue list](https://code.google.com/p/dart/issues/list?can=2&q=Area%3DObservatory&colspec=ID+Type+Status+Priority+Area+Milestone+Owner+Summary+Modified&cells=tiles).
+To see existing issues or create a new one directly, see all
+[Observatory issues](https://github.com/dart-lang/sdk/labels/Area-Observatory).
 
 {% include observatory_footer.html %}
 

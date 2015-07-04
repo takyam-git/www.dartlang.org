@@ -23,7 +23,7 @@ Thanks in advance!
   - This enables Polymer-style event binding, which only works inside a
     polymer-element's template.
   - This also sets up data binding to your component's fields, and turns on
-    [Polymer Expressions](http://pub.dartlang.org/packages/polymer_expressions)
+    [Polymer Expressions](https://pub.dartlang.org/packages/polymer_expressions)
     in bindings.
 
 * You can place `<template>` elements on the main HTML page, but they will *not*
@@ -96,7 +96,7 @@ Thanks in advance!
   library for more information.
 
 * Data binding expressions are now
-  [Polymer Expressions](http://pub.dartlang.org/packages/polymer_expressions)
+  [Polymer Expressions](https://pub.dartlang.org/packages/polymer_expressions)
   instead of Dart expressions. Polymer Expressions are a powerful data binding
   language which offers null safety and convenient filtering operations.
 
@@ -116,7 +116,7 @@ Thanks in advance!
 * Null is treated as false in `template if` expressions.
   Non-null and non-false values are treated as true.
   There are known issues with this, please track
-  [issue 13044](https://code.google.com/p/dart/issues/detail?id=13044).
+  [issue 13044](https://github.com/dart-lang/sdk/issues/13044).
 
 * The `iterate` attribute no longer exists on template, use `repeat` instead.
 

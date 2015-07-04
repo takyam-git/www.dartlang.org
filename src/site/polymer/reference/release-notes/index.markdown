@@ -14,7 +14,7 @@ has-permalinks: true
 This page describes each stable release of polymer.dart, starting with 0.10.
 For information about earlier releases and interim versions,
 see the CHANGELOG.md tab of the
-[polymer.dart pub page](http://pub.dartlang.org/packages/polymer)
+[polymer.dart pub page](https://pub.dartlang.org/packages/polymer)
 and the release announcements in the
 [Dart web forum](https://groups.google.com/a/dartlang.org/forum/#!forum/web).
 
@@ -80,7 +80,7 @@ new core and paper elements packages follow.
 
 We are also releasing a new Polymer example which demonstrates how to use core
 and paper elements to make a responsive single page app with very little css and
-no HTML imports. See the tutorial [here](https://www.dartlang.org/polymer/spa/),
+no HTML imports. See the tutorial [here](/polymer/spa/),
 live demo [here](http://dart-lang.github.io/polymer-spa-example/final/), and the
 code [here](https://github.com/dart-lang/polymer-spa-example).
 
@@ -417,7 +417,7 @@ The syntax of property path changed.
 This is only relevant if you are not using polymer expressions, 
 but use template-binding directly with its default syntax.
 (See the changelog for
-[observe](http://pub.dartlang.org/packages/observe) 0.11.0)
+[observe](https://pub.dartlang.org/packages/observe) 0.11.0)
 
 ###Many bug fixes
 
@@ -585,7 +585,7 @@ Here is a summary of what changed since our last stable release (0.9.5+2).
 * Interop with polymer-js elements works!
 
 * Polymer polyfills are now consolidated in the
-  [web_components package](http://pub.dartlang.org/packages/web_components).
+  [web_components package](https://pub.dartlang.org/packages/web_components).
   Instead of our own `shadow_dom.js`,
   we now can simply use a `platform.js` from
   [polymer-project.org](http://polymer-project.org).
@@ -601,7 +601,7 @@ Here is a summary of what changed since our last stable release (0.9.5+2).
   (which were silently hidden if you were not using loggers).
   We now throw errors asycnhronously,
   but are looking into making them throw synchronously
-  ([17789](https://code.google.com/p/dart/issues/detail?id=17789)).
+  ([17789](https://github.com/dart-lang/sdk/issues/17789)).
 
 
 ### Noticeable breaking changes
@@ -613,7 +613,7 @@ Here is a summary of what changed since our last stable release (0.9.5+2).
   (See the
   [todomvc example](https://github.com/dart-lang/sample-todomvc-polymer),
   or check out the
-  [tutorial](https://www.dartlang.org/docs/tutorials/polymer-intro/).)
+  [tutorial](/docs/tutorials/polymer-intro/).)
 
 * "noscript" polymer-elements are created by polymer.js,
   and therefore cannot be extended (subtyped) in Dart.
@@ -629,5 +629,5 @@ Here is a summary of what changed since our last stable release (0.9.5+2).
   but if you don't use our transformers and
   you use observe or polymer_expressions on their own,
   you'll need to do something special in your app
-  (see [observe's changelog](http://pub.dartlang.org/packages/observe)
+  (see [observe's changelog](https://pub.dartlang.org/packages/observe)
   for a simple workaround).

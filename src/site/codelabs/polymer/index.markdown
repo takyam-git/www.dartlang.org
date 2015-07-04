@@ -17,6 +17,17 @@ To complete this lab you should have programming experience,
 but you don't need experience
 with web programming or the Dart langauge.
 
+<aside class="alert alert-warning" markdown="1">
+  **Note:**
+  This code lab should be updated or deleted.
+  It relies on a version of polymer.dart that will soon be obsolete.
+  A new version of polymer.dart, based on the recently released
+  [Polymer 1.0](https://blog.polymer-project.org/announcements/2015/05/29/one-dot-oh/),
+  is in the works. This lab also depends on Dart Editor,
+  which is [retired as of 1.11](http://news.dartlang.org/2015/04/the-present-and-future-of-editors-and.html).
+  Pull requests [welcome!](https://github.com/dart-lang/www.dartlang.org/issues/1396)
+</aside>
+
 In this code lab, you build a single-page admin console for code labs.
 (Yes, this is a meta code lab.) The console lets you add, remove,
 and edit the code labs, as well as filter them by their difficulty level.
@@ -191,8 +202,8 @@ A Polymer element is a custom, reusable, complex HTML element.
 In polymer.dart, the visual aspect of the element is implemented in HTML
 and CSS, and the element's behavior is implemented in Dart.
 You can use Polymer elements that others have created (such as
-[core elements](http://pub.dartlang.org/packages/core_elements) or
-[paper elements](http://pub.dartlang.org/packages/paper_elements)),
+[core elements](https://pub.dartlang.org/packages/core_elements) or
+[paper elements](https://pub.dartlang.org/packages/paper_elements)),
 or you can build your own.
 
 A Polymer element is defined in an HTML file

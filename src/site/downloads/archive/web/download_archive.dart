@@ -83,7 +83,7 @@ DateTime parseDateTime(String date) {
   throw 'unrecognized DateTime format: $date';
 }
 
-void getListing(String channel, String respString) {
+Future getListing(String channel, String respString) async {
   Map<String, Object> resp = JSON.decode(respString);
   List<String> versions = (resp["prefixes"] as List<String>);
   versions.removeWhere((e) => e.contains('latest'));
@@ -91,19 +91,18 @@ void getListing(String channel, String respString) {
   // Format is lines of "channels/stable/release/\d+/".
   Iterable<Future> versionRequests = versions.map(
       (String path) => HttpRequest.getString("$storageBase/${path}VERSION"));
-  Future versionResponses = Future.wait(versionRequests.toList());
-  versionResponses.then((Iterable versionStringsIter) {
-    List<String> versionStrings = versionStringsIter.toList();
-    List<Map<String, String>> y =
-        versionStrings.map((e) => JSON.decode(e)).toList();
-    y.sort((a, b) =>
-        -(parseDateTime(a['date']).compareTo(parseDateTime(b['date']))));
-    y.forEach((v) {
-      addVersion(channel, v);
-    });
-    versionSelectors[channel].options[1].selected = true;
-    versionSelectors[channel].dispatchEvent(new Event("change"));
+
+  List versionStringsIter = await Future.wait(versionRequests.toList());
+  List<String> versionStrings = versionStringsIter.toList();
+  List<Map<String, String>> y =
+      versionStrings.map((e) => JSON.decode(e)).toList();
+  y.sort((a, b) =>
+      -(parseDateTime(a['date']).compareTo(parseDateTime(b['date']))));
+  y.forEach((v) {
+    addVersion(channel, v);
   });
+  versionSelectors[channel].options[1].selected = true;
+  versionSelectors[channel].dispatchEvent(new Event("change"));
 }
 
 const Map<String, String> archiveMap = const {
@@ -150,6 +149,26 @@ void addVersion(String channel, Map<String, String> version) {
     ..attributes['value'] = version['version'];
   versionSelectors[channel].children.add(o);
 
+  // Attempt to parse the revision number, this only works for
+  // pre-github revisions.
+  int parsedRevision = int.parse(version['revision'], onError: (_) => null);
+
+  /// Use the revision number for anything <= 1.11.0-dev.0.0 (rev 45519)
+  /// and the version string for later ones.
+  String versionString;
+  if (parsedRevision != null) {
+    versionString = parsedRevision.toString();
+  } else {
+    versionString = version['version'];
+  }
+
+  String prettyRevRef;
+  if (parsedRevision != null) {
+    prettyRevRef = 'r$parsedRevision';
+  } else {
+    prettyRevRef = 'ref ${version['revision'].substring(0, 7)}';
+  }
+
   // Json is like: { 'revision': '...', 'version': '...', 'date': '...' }.
   platforms.forEach((String name, Map<String, List> widthListings) {
     widthListings.forEach((String width, List<String> archives) {
@@ -158,11 +177,10 @@ void addVersion(String channel, Map<String, String> version) {
         ..attributes['data-os'] = archiveMap[name];
 
       var versionCell = row.addCell()..text = version['version'];
-      if (version.containsKey('revision')) {
-        versionCell.append(new SpanElement()
-          ..text = '  (rev ${version['revision']})'
-          ..classes.add('muted'));
-      }
+
+      versionCell.append(new SpanElement()
+        ..text = '  (${prettyRevRef})'
+        ..classes.add('muted'));
 
       row.addCell()..text = name;
       row.addCell()
@@ -172,22 +190,14 @@ void addVersion(String channel, Map<String, String> version) {
       TableCellElement c = row.addCell()..classes.add('archives');
       possibleArchives.forEach((String pa) {
         if (archives.contains(pa)) {
-          // Attempt to parse the revision number, this only works for
-          // pre-github revisions.
-          int parsedRevision;
-          try {
-            parsedRevision = int.parse(version['revision']);
-          } catch (e) {}
 
-          /// Use the revision number for anything <= 1.11.0-dev.0.0 (rev 45519)
-          /// and the version string for later ones.
-          String versionString;
-          if (version.containsKey('revision') && parsedRevision != null) {
-            versionString = version['revision'];
-          } else {
-            versionString = version['version'];
+          // We had no editor downloads after the move to GitHub.
+          // This skips the editor link in those cases
+          if (parsedRevision == null && pa == 'Dart Editor') {
+            return;
           }
-          String uri = '$storageBase/channels/$channel/release/$versionString' +
+
+          String uri = '$storageBase/channels/$channel/release/$versionString'
               '/${directoryMap[pa]}/${archiveMap[pa]}-${archiveMap[name]}-'
               '${archiveMap[width]}${suffixMap[pa]}';
           c.append(new AnchorElement()
@@ -209,8 +219,8 @@ void addVersion(String channel, Map<String, String> version) {
   TableRowElement row = tables[channel].addRow()
     ..attributes['data-version'] = version['version']
     ..attributes['data-os'] = 'api';
-  SpanElement rev = new SpanElement()
-    ..text = '  (rev ${version['revision']})'
+  var rev = new SpanElement()
+    ..text = '  (${prettyRevRef})'
     ..classes.add('muted');
   row.addCell()
     ..text = version['version']
@@ -218,9 +228,8 @@ void addVersion(String channel, Map<String, String> version) {
   row.addCell()..text = '---';
   row.addCell()..text = '---';
   TableCellElement c = row.addCell()..classes.add('archives');
-  String uri =
-      '$storageBase/channels/$channel/release/${version['revision']}/' +
-          'api-docs/dart-api-docs.zip';
+  String uri = '$storageBase/channels/$channel/release/${versionString}/' +
+      'api-docs/dart-api-docs.zip';
   c.append(new AnchorElement()
     ..text = 'JSON-formatted API documentation'
     ..attributes['href'] = uri);

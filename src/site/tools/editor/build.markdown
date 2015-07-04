@@ -11,6 +11,8 @@ has-permalinks: false
 
 # {{page.title}} 
 
+{% include dart-editor-obsolete.html %}
+
 Build.dart is a simple build script convention
 that lets you add behavior to the Dart Editor build system.
 If the root of a Dart Editor project has a script named `build.dart`,
@@ -64,7 +66,7 @@ any of the following command-line flags:
 `--deploy`
 : Creates a directory containing the files needed to deploy this
   application to a server.
-  Used only for the <a href="/polymer/">Polymer.dart</a>
+  Used only for the <a href="/polymer/">polymer.dart</a>
   linter and build tool.
   You can find more information in the polymer library file
   [builder.dart](https://github.com/dart-lang/polymer-dart/blob/master/lib/builder.dart).

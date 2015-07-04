@@ -10,6 +10,8 @@ has-permalinks: false
   
 # {{ page.title }}
 
+{% include dart-editor-obsolete.html %}
+
 If you are completely new to using Dart Editor,
 first read [Dart Editor](/tools/editor/).
 
@@ -80,7 +82,7 @@ It’s easy to create a simple web or command-line app from scratch:
     you, make sure **Generate sample content** is selected.
 
 4.  Select the kind of application you’re writing, such as command line,
-    web, or web using [Polymer.dart.](/polymer/)
+    web, or web using [polymer.dart.](/polymer/)
 
 5.  Click **Finish** to create a directory with initial files for the app.
 

@@ -75,8 +75,8 @@ command is used to start up a development server.
 This server can be accessed via the browser on localhost and
 allows you to view your web-based app.
 
-Dart Editor also uses `pub serve` to serve all of the Dart scripts,
-and assets (HTML, images, CSS) to Dartium.
+IDEs such as WebStorm also use `pub serve` to serve all of the
+Dart scripts and assets (HTML, images, CSS) to Dartium.
 
 ### Command-line apps
 
@@ -102,7 +102,7 @@ the assets into the build directory.
 
 If you want to share your Dart packages with the world, you can
 use the [`pub publish`](pub-lish.html) command to upload your package to 
-[pub.dartlang.org](http://pub.dartlang.org). The
+[pub.dartlang.org](https://pub.dartlang.org). The
 [`pub uploader`](pub-uploader.html) command enables specific users
 to modify and upload new versions of your package.
 

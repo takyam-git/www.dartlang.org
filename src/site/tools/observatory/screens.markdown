@@ -19,8 +19,9 @@ route to each one.
 ### Allocation Profile {#allocation-profile-screen}
 
 Shows an isolate's allocated memory and gives an overview
-of the state of [old space](glossary.html#old-space)
-and [new space](glossary.html#new-space) at the time of the last sample.
+of the state of [old generation](glossary.html#old-generation)
+and [new generation](glossary.html#new-generation) at the time of the
+last sample.
 
 Most direct route
 : Choose the **allocation profile** link in an isolate screen, or from the
@@ -29,12 +30,7 @@ Most direct route
 More information
 : [Allocation Profile](allocation-profile.html)
 
-### Breakpoints {#breakpoints-screen}
-
-Inspecting breakpoints is not yet available.
-
-More information
-: [Breakpoints](breakpoints.html)
+---
 
 ### Class {#class-screen}
 
@@ -45,6 +41,8 @@ fields, and functions.
 Most direct route
 : Click a class name from the list in a [library](#library-screen) screen.
 
+---
+
 ### Class hierarchy {#class-hierarchy-feature}
 
 Shows the class hierarchy for the app.
@@ -53,16 +51,18 @@ Most direct route:
 : Choose the **class hierarchy** link on the [VM](#vm-screen) screen,
   or from an [isolate](#isolate-screen) screen.
 
+---
+
 ### Code {#code-screen}
 
 Shows the disassembly code for a Dart function.
-(Note that this screen can be slow to load
-(issue [18912](https://code.google.com/p/dart/issues/detail?id=18912)).)
 Most developers never need to use this screen.
 
 Most direct route
 : Click a function name in the profile tree on
   the [CPU Profile](cpu-profile.html) screen.
+
+---
 
 ### Code coverage {#code-coverage-feature}
 
@@ -74,6 +74,8 @@ Most direct route
 More information
 : [Code Coverage](code-coverage.html)
 
+---
+
 ### CPU profile {#cpu-profile-screen}
 
 Displays a sampled profile of an isolate.
@@ -84,6 +86,21 @@ Most direct route
 
 More information
 : [CPU Profile](cpu-profile.html)
+
+---
+
+### Debugger {#debugger-screen}
+
+Set breakpoints and debug your app.
+
+Most direct route
+: Choose the **debugger** link in the VM or isolate screen, or from the
+  isolate's pulldown menu in the blue bar.
+
+More information
+: [Debugger](debugger.html)
+
+---
 
 ### Evaluating Expressions {#evaluate-expressions-feature}
 
@@ -97,6 +114,8 @@ Most direct route
 More information
 : [Evaluating Expressions](evaluate.html)
 
+---
+
 ### Function {#function-screen}
 
 Shows details about a specific function, including its code.
@@ -106,6 +125,8 @@ Most direct route
 : Click a function name from the list on a
   [library](#library-screen) or [class](#class-screen) screen.
 
+---
+
 ### Heap map {#heap-map-screen}
 
 Displays allocated memory as a color blocked image.
@@ -113,9 +134,7 @@ Displays allocated memory as a color blocked image.
 Most direct route
 : Choose the **heap map** link on the [VM](#vm-screen) screen,
   or from an [isolate](#isolate-screen) screen.
-
-More information
-: [Heap Map](heap-map.html)
+---
 
 ### Instance {#instance-screen}
 
@@ -125,6 +144,7 @@ Most direct route
 : Click a variable name from the list on a [library](#library-screen),
   [class](#class-screen), or [isolate](#isolate-screen) screen.
   
+---
 
 ### Isolate {#isolate-screen}
 
@@ -139,6 +159,8 @@ Most direct route
 More information
 : [Isolate](isolate.html)
 
+---
+
 ### Library {#library-screen}
 
 Contains clickable lists of imports, scripts, classes,
@@ -146,9 +168,21 @@ class variables, and functions. You can drill down through these links
 into most aspects of your application.
 
 Most direct route
-: Choose the **library** link on the [VM](#vm-screen) screen.
-  Also, you can also choose from a clickable list of libraries
-  on an [isolate](#isolate-screen) screen.
+: Expand the **library** link on the [isolate](#isolate-screen) screen.
+
+---
+
+### Metrics {#metrics}
+
+Contains the metrics being collected on your app.
+
+Most direct route
+: Choose the **metrics** link on the [VM](#vm-screen) screen.
+
+More information
+: [Metrics](metrics.html)
+
+---
 
 ### Script {#script-screen}
 
@@ -157,16 +191,7 @@ Displays the code from a Dart file.
 Most direct route
 : Click a function name from the list on a [library](#library-screen) screen.
 
-### Stack trace {#stack-trace-screen}
-
-Displays the current stack trace.
-
-Most direct route
-: Choose the **stack trace** link on the [VM](#vm-screen) screen,
-  or from an [isolate](#isolate-screen) screen.
-
-More information
-: [Stack Trace](stack-trace.html)
+---
 
 ### VM {#vm-screen}
 
